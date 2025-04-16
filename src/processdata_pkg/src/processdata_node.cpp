@@ -4,16 +4,22 @@
 #include<yolo11_pkg/coordinate.h>
 #include<yolo11_pkg/array.h>
 
+yolo11_pkg::array::Ptr camera_msg;
 
 void cameradata_Callback(const yolo11_pkg::array::ConstPtr& msg)
 {
-    for(const auto& camera_data: msg->array){
-        ROS_INFO("Received camera:%d,%d",static_cast<int>(camera_data.x),static_cast<int>(camera_data.y));
-    }
+    camera_msg.reset(new yolo11_pkg::array(*msg));
+    // for(const auto& camera_data: msg->array){
+    //     ROS_INFO("Received camera:%d,%d",static_cast<int>(camera_data.x),static_cast<int>(camera_data.y));
+    // }
 }
-void processdata_Callback(const radar_msgs::array::ConstPtr& msg)
+void processdata_Callback(const radar_msgs::array::ConstPtr& radar_msg)
 {
-    for(const auto& radar_data: msg->array){
+    // 做数据关联与融合
+    for(const auto& radar_data: radar_msg->array){
+        for(const auto& camera_data: camera_msg->array){
+            
+        }
         ROS_INFO("Received radar:%d,%.3f,%.3f",static_cast<int>(radar_data.n),radar_data.r,radar_data.phi);
     }
 }
