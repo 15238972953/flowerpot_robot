@@ -30,7 +30,7 @@ catkin_ws ————工作空间
 
 **ros文件系统如下所示：**
 
-![image-20250416203205223](C:\Users\pengdefeng\AppData\Roaming\Typora\typora-user-images\image-20250416203205223.png)
+![image-20250416203205223](.\picture\image-20250416203205223.png)
 
 **准备步骤：**
 
