@@ -68,6 +68,8 @@ def LidarCallback(msg):
         radar_data.n = cluster_idx
         radar_data.r = r
         radar_data.phi = phi
+        if radar_data.r < 0.25:
+            continue
         msg.array.append(radar_data)
 
     lidar_pub.publish(msg)
