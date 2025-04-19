@@ -1,0 +1,2 @@
+lsx10/lslidar:lsx10/lslidar_driver:lsx10/lslidar_msgs:processdata_pkg:radar_msgs:radar_pkg:yolo11_pkg
+-DCATKIN_DEVEL_PREFIX=/home/jetson/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jetson/catkin_ws/install -G Unix Makefiles

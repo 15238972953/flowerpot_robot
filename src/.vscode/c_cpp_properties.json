@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/jetson/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/jetson/catkin_ws/src/lsx10/lslidar_driver/include/**",
+        "/home/jetson/catkin_ws/src/processdata_pkg/include/**",
+        "/home/jetson/catkin_ws/src/radar_msgs/include/**",
+        "/home/jetson/catkin_ws/src/radar_pkg/include/**",
+        "/home/jetson/catkin_ws/src/wpr_simulation/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-arm64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

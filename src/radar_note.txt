@@ -1,0 +1,7 @@
+rosrun radar_pkg radar_node
+catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_msgs
+catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_driver
+roslaunch lslidar_driver lslidar_serial.launch
+ll /dev/|grep ttyCH343USB
+sudo chmod 777 /dev/ttyCH343USB0
+
