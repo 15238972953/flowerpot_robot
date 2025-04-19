@@ -10,6 +10,13 @@
 #include "HungarianAlgorithm.h"
 #include "KalmanFilter.h"
 
+// 二维点结构
+struct Point {
+    float x;
+    float y;
+    Point(float _x = 0, float _y = 0);
+};
+
 class ProcessDataNode {
 public:
     ProcessDataNode();
@@ -24,8 +31,10 @@ private:
     ros::Subscriber camera_processed_sub;
 
     // 存储最新数据
-    std::vector<std::pair<float, float>> camera_points;
-    std::vector<std::pair<float, float>> radar_points;
+    std::vector<Point> camera_points;
+    std::vector<Point> radar_points;
+
+    KalmanFilter kf;
 };
 
 #endif

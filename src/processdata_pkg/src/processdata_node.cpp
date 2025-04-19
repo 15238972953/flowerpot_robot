@@ -35,19 +35,26 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
 
         radar_points.emplace_back(radar_data.r,radar_data.phi);
     }
-    
+
     if(camera_points.size() > 0 && radar_points.size() > 0){
         // 进行数据关联
-        auto association = associatePoints(radar_points, camera_points);
+        auto matches = HungarianAlgorithm::associatePoints(radar_points, camera_points, 20);  // 最大匹配距离为20
         // 进行数据融合
-        for(const auto& pair: association){
-            int radar_index = pair.first;
-            int camera_index = pair.second;
-            if(camera_index != -1){
-                //将雷达数据与相机数据进行融合
-            }
+        for(const auto& match: matches){
+            int radar_index = match.first;
+            int camera_index = match.second;
+            
+            //将雷达数据与相机数据进行融合
+            // 更新滤波器
+            kf.UpdateCamera(camera_points[camera_index]);
+            kf.UpdateRadar(radar_points[radar_index]);
+            // 获取融合结果
+            auto fused_pos = kf.GetFusedPosition();
+            ROS_INFO("Fused data:%.3f,%.3f",fused_pos[0],fused_pos[1]);
         }
     }
+    camera_points.clear();
+    radar_points.clear();
 }
 
 int main(int argc, char *argv[])
