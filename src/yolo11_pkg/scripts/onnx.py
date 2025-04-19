@@ -8,6 +8,7 @@ import yaml
 import time
 from yolo11_pkg.msg import coordinate,array
 import rospy
+from Coordinate_Transformation import pixel_to_world
 
 
 class YOLOv8:
@@ -97,10 +98,11 @@ class YOLOv8:
                 self.draw_detections(input_image, boxes[i], scores[valid_indices[i]], class_ids[i])
                 pot_coordinate = coordinate()
                 pot_coordinate.x = int(boxes[i][0] + boxes[i][2] / 2)
-                pot_coordinate.y = int(boxes[i][1] + boxes[i][3] / 2)
+                pot_coordinate.y = int(boxes[i][1] + boxes[i][3])
+                pot_coordinate.x, pot_coordinate.y = pixel_to_world(pot_coordinate.x / 2, pot_coordinate.y / 2)
                 msg.array.append(pot_coordinate)
         self.yolo11_pub.publish(msg)
-        rospy.loginfo("yolo11_data:%s",msg)
+        # rospy.loginfo("yolo11_data:%s",msg)
 
         return input_image
 

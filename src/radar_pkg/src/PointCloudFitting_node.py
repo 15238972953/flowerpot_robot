@@ -73,7 +73,7 @@ def LidarCallback(msg):
         msg.array.append(radar_data)
 
     lidar_pub.publish(msg)
-    rospy.loginfo("Publish Radar Data: %s",msg)
+    # rospy.loginfo("Publish Radar Data: %s",msg)
 
 if __name__  == "__main__":
     rospy.init_node("PointCloudFitting_node")

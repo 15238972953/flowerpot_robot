@@ -13,6 +13,7 @@
         "/home/jetson/catkin_ws/src/radar_msgs/include/**",
         "/home/jetson/catkin_ws/src/radar_pkg/include/**",
         "/home/jetson/catkin_ws/src/wpr_simulation/include/**",
+        "/home/jetson/catkin_ws/src/processdata_pkg/include/**",
         "/usr/include/**"
       ],
       "name": "ROS",
