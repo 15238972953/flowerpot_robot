@@ -61,18 +61,19 @@
    self)
   )
 
-(setf (get yolo11_pkg::array :md5sum-) "5a32149513fa1aa3cce229c0f0ef79c6")
+(setf (get yolo11_pkg::array :md5sum-) "d286bc6474499998e6b0bd97d35f2154")
 (setf (get yolo11_pkg::array :datatype-) "yolo11_pkg/array")
 (setf (get yolo11_pkg::array :definition-)
       "coordinate[] array
 ================================================================================
 MSG: yolo11_pkg/coordinate
-int16 x
-int16 y
+float32 x
+float32 y
+
 ")
 
 
 
-(provide :yolo11_pkg/array "5a32149513fa1aa3cce229c0f0ef79c6")
+(provide :yolo11_pkg/array "d286bc6474499998e6b0bd97d35f2154")
 
 

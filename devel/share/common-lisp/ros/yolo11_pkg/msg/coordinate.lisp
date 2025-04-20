@@ -10,13 +10,13 @@
   ((x
     :reader x
     :initarg :x
-    :type cl:fixnum
-    :initform 0)
+    :type cl:float
+    :initform 0.0)
    (y
     :reader y
     :initarg :y
-    :type cl:fixnum
-    :initform 0))
+    :type cl:float
+    :initform 0.0))
 )
 
 (cl:defclass coordinate (<coordinate>)
@@ -38,25 +38,31 @@
   (y m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <coordinate>) ostream)
   "Serializes a message object of type '<coordinate>"
-  (cl:let* ((signed (cl:slot-value msg 'x)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    )
-  (cl:let* ((signed (cl:slot-value msg 'y)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    )
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'x))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'y))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <coordinate>) istream)
   "Deserializes a message object of type '<coordinate>"
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'x) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'y) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'x) (roslisp-utils:decode-single-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'y) (roslisp-utils:decode-single-float-bits bits)))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<coordinate>)))
@@ -67,20 +73,20 @@
   "yolo11_pkg/coordinate")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<coordinate>)))
   "Returns md5sum for a message object of type '<coordinate>"
-  "6d78a6b8c9650c754bf0432d3d1707c3")
+  "ff8d7d66dd3e4b731ef14a45d38888b6")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'coordinate)))
   "Returns md5sum for a message object of type 'coordinate"
-  "6d78a6b8c9650c754bf0432d3d1707c3")
+  "ff8d7d66dd3e4b731ef14a45d38888b6")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<coordinate>)))
   "Returns full string definition for message of type '<coordinate>"
-  (cl:format cl:nil "int16 x~%int16 y~%~%"))
+  (cl:format cl:nil "float32 x~%float32 y~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'coordinate)))
   "Returns full string definition for message of type 'coordinate"
-  (cl:format cl:nil "int16 x~%int16 y~%~%"))
+  (cl:format cl:nil "float32 x~%float32 y~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <coordinate>))
   (cl:+ 0
-     2
-     2
+     4
+     4
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <coordinate>))
   "Converts a ROS message object to a list"

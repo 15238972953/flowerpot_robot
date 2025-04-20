@@ -123,12 +123,12 @@ struct MD5Sum< ::yolo11_pkg::array_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "5a32149513fa1aa3cce229c0f0ef79c6";
+    return "d286bc6474499998e6b0bd97d35f2154";
   }
 
   static const char* value(const ::yolo11_pkg::array_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x5a32149513fa1aa3ULL;
-  static const uint64_t static_value2 = 0xcce229c0f0ef79c6ULL;
+  static const uint64_t static_value1 = 0xd286bc6474499998ULL;
+  static const uint64_t static_value2 = 0xe6b0bd97d35f2154ULL;
 };
 
 template<class ContainerAllocator>
@@ -150,8 +150,8 @@ struct Definition< ::yolo11_pkg::array_<ContainerAllocator> >
     return "coordinate[] array\n"
 "================================================================================\n"
 "MSG: yolo11_pkg/coordinate\n"
-"int16 x\n"
-"int16 y\n"
+"float32 x\n"
+"float32 y\n"
 ;
   }
 

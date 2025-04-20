@@ -9,14 +9,15 @@ import struct
 import yolo11_pkg.msg
 
 class array(genpy.Message):
-  _md5sum = "5a32149513fa1aa3cce229c0f0ef79c6"
+  _md5sum = "d286bc6474499998e6b0bd97d35f2154"
   _type = "yolo11_pkg/array"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """coordinate[] array
 ================================================================================
 MSG: yolo11_pkg/coordinate
-int16 x
-int16 y"""
+float32 x
+float32 y
+"""
   __slots__ = ['array']
   _slot_types = ['yolo11_pkg/coordinate[]']
 
@@ -58,7 +59,7 @@ int16 y"""
       buff.write(_struct_I.pack(length))
       for val1 in self.array:
         _x = val1
-        buff.write(_get_struct_2h().pack(_x.x, _x.y))
+        buff.write(_get_struct_2f().pack(_x.x, _x.y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -81,8 +82,8 @@ int16 y"""
         val1 = yolo11_pkg.msg.coordinate()
         _x = val1
         start = end
-        end += 4
-        (_x.x, _x.y,) = _get_struct_2h().unpack(str[start:end])
+        end += 8
+        (_x.x, _x.y,) = _get_struct_2f().unpack(str[start:end])
         self.array.append(val1)
       return self
     except struct.error as e:
@@ -100,7 +101,7 @@ int16 y"""
       buff.write(_struct_I.pack(length))
       for val1 in self.array:
         _x = val1
-        buff.write(_get_struct_2h().pack(_x.x, _x.y))
+        buff.write(_get_struct_2f().pack(_x.x, _x.y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -124,8 +125,8 @@ int16 y"""
         val1 = yolo11_pkg.msg.coordinate()
         _x = val1
         start = end
-        end += 4
-        (_x.x, _x.y,) = _get_struct_2h().unpack(str[start:end])
+        end += 8
+        (_x.x, _x.y,) = _get_struct_2f().unpack(str[start:end])
         self.array.append(val1)
       return self
     except struct.error as e:
@@ -135,9 +136,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2h = None
-def _get_struct_2h():
-    global _struct_2h
-    if _struct_2h is None:
-        _struct_2h = struct.Struct("<2h")
-    return _struct_2h
+_struct_2f = None
+def _get_struct_2f():
+    global _struct_2f
+    if _struct_2f is None:
+        _struct_2f = struct.Struct("<2f")
+    return _struct_2f

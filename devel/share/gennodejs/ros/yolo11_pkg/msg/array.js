@@ -58,7 +58,7 @@ class array {
 
   static getMessageSize(object) {
     let length = 0;
-    length += 4 * object.array.length;
+    length += 8 * object.array.length;
     return length + 4;
   }
 
@@ -69,7 +69,7 @@ class array {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '5a32149513fa1aa3cce229c0f0ef79c6';
+    return 'd286bc6474499998e6b0bd97d35f2154';
   }
 
   static messageDefinition() {
@@ -78,8 +78,9 @@ class array {
     coordinate[] array
     ================================================================================
     MSG: yolo11_pkg/coordinate
-    int16 x
-    int16 y
+    float32 x
+    float32 y
+    
     `;
   }
 

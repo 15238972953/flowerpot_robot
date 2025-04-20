@@ -25,6 +25,7 @@ private:
 
     // 存储最新数据
     std::vector<Point> camera_points;
+    std::vector<Point> tmp_camera_points;
     std::vector<Point> radar_points;
 
     KalmanFilter kf;

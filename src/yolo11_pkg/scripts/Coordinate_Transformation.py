@@ -30,7 +30,7 @@ H_refined, _ = cv2.findHomography(src_filtered, dst_filtered)
 def pixel_to_world(u, v, H = H_refined):
     point = np.array([[u, v]], dtype=np.float32).reshape(-1, 1, 2)
     transformed_point = cv2.perspectiveTransform(point, H)
-    return transformed_point[0, 0, 0], transformed_point[0, 0, 1]
+    return transformed_point[0, 0, 0], transformed_point[0, 0, 1] + 8
 
 # 示例：计算 (50, 50) 的实际坐标
 # u, v = 170.5,179

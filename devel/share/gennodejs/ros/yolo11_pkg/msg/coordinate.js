@@ -26,13 +26,13 @@ class coordinate {
         this.x = initObj.x
       }
       else {
-        this.x = 0;
+        this.x = 0.0;
       }
       if (initObj.hasOwnProperty('y')) {
         this.y = initObj.y
       }
       else {
-        this.y = 0;
+        this.y = 0.0;
       }
     }
   }
@@ -40,9 +40,9 @@ class coordinate {
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type coordinate
     // Serialize message field [x]
-    bufferOffset = _serializer.int16(obj.x, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.x, buffer, bufferOffset);
     // Serialize message field [y]
-    bufferOffset = _serializer.int16(obj.y, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.y, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -51,14 +51,14 @@ class coordinate {
     let len;
     let data = new coordinate(null);
     // Deserialize message field [x]
-    data.x = _deserializer.int16(buffer, bufferOffset);
+    data.x = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [y]
-    data.y = _deserializer.int16(buffer, bufferOffset);
+    data.y = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 4;
+    return 8;
   }
 
   static datatype() {
@@ -68,14 +68,15 @@ class coordinate {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '6d78a6b8c9650c754bf0432d3d1707c3';
+    return 'ff8d7d66dd3e4b731ef14a45d38888b6';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int16 x
-    int16 y
+    float32 x
+    float32 y
+    
     `;
   }
 
@@ -89,14 +90,14 @@ class coordinate {
       resolved.x = msg.x;
     }
     else {
-      resolved.x = 0
+      resolved.x = 0.0
     }
 
     if (msg.y !== undefined) {
       resolved.y = msg.y;
     }
     else {
-      resolved.y = 0
+      resolved.y = 0.0
     }
 
     return resolved;

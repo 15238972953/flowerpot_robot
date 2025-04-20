@@ -66,14 +66,14 @@ def LidarCallback(msg):
         phi = np.arctan2(center_y, center_x)
         radar_data = radar()
         radar_data.n = cluster_idx
-        radar_data.r = r
+        radar_data.r = r + 0.04
         radar_data.phi = phi
         if radar_data.r < 0.25:
             continue
         msg.array.append(radar_data)
 
     lidar_pub.publish(msg)
-    # rospy.loginfo("Publish Radar Data: %s",msg)
+    rospy.loginfo("Publish Radar Data: %s",msg)
 
 if __name__  == "__main__":
     rospy.init_node("PointCloudFitting_node")

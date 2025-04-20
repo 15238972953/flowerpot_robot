@@ -24,21 +24,21 @@ struct coordinate_
   typedef coordinate_<ContainerAllocator> Type;
 
   coordinate_()
-    : x(0)
-    , y(0)  {
+    : x(0.0)
+    , y(0.0)  {
     }
   coordinate_(const ContainerAllocator& _alloc)
-    : x(0)
-    , y(0)  {
+    : x(0.0)
+    , y(0.0)  {
   (void)_alloc;
     }
 
 
 
-   typedef int16_t _x_type;
+   typedef float _x_type;
   _x_type x;
 
-   typedef int16_t _y_type;
+   typedef float _y_type;
   _y_type y;
 
 
@@ -128,12 +128,12 @@ struct MD5Sum< ::yolo11_pkg::coordinate_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "6d78a6b8c9650c754bf0432d3d1707c3";
+    return "ff8d7d66dd3e4b731ef14a45d38888b6";
   }
 
   static const char* value(const ::yolo11_pkg::coordinate_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x6d78a6b8c9650c75ULL;
-  static const uint64_t static_value2 = 0x4bf0432d3d1707c3ULL;
+  static const uint64_t static_value1 = 0xff8d7d66dd3e4b73ULL;
+  static const uint64_t static_value2 = 0x1ef14a45d38888b6ULL;
 };
 
 template<class ContainerAllocator>
@@ -152,8 +152,8 @@ struct Definition< ::yolo11_pkg::coordinate_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int16 x\n"
-"int16 y\n"
+    return "float32 x\n"
+"float32 y\n"
 ;
   }
 
@@ -193,9 +193,9 @@ struct Printer< ::yolo11_pkg::coordinate_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::yolo11_pkg::coordinate_<ContainerAllocator>& v)
   {
     s << indent << "x: ";
-    Printer<int16_t>::stream(s, indent + "  ", v.x);
+    Printer<float>::stream(s, indent + "  ", v.x);
     s << indent << "y: ";
-    Printer<int16_t>::stream(s, indent + "  ", v.y);
+    Printer<float>::stream(s, indent + "  ", v.y);
   }
 };
 

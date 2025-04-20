@@ -102,7 +102,7 @@ class YOLOv8:
                 pot_coordinate.x, pot_coordinate.y = pixel_to_world(pot_coordinate.x / 2, pot_coordinate.y / 2)
                 msg.array.append(pot_coordinate)
         self.yolo11_pub.publish(msg)
-        # rospy.loginfo("yolo11_data:%s",msg)
+        rospy.loginfo("yolo11_data:%s",msg)
 
         return input_image
 
@@ -113,7 +113,7 @@ class YOLOv8:
         start_time = time.time()
         output = self.session.run(None, {self.input_name: img_data})
         fps = 1.0 / (time.time() - start_time)
-        print(f"[INFO] YOLO FPS: {fps:.2f}")
+        # print(f"[INFO] YOLO FPS: {fps:.2f}")
 
         return self.postprocess(frame.copy(), output)
 
@@ -150,8 +150,8 @@ if __name__ == "__main__":
     parser.add_argument("--model", type=str, default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/best.onnx", help="Path to ONNX model.")
     parser.add_argument("--yaml", default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/flower.yaml", help="Path to YAML file containing class names.")
     parser.add_argument("--source", type=str, default="0", help="Video source (0 for webcam or video file path).")
-    parser.add_argument("--conf-thres", type=float, default=0.7, help="Confidence threshold")
-    parser.add_argument("--iou-thres", type=float, default=0.5, help="NMS IoU threshold")
+    parser.add_argument("--conf-thres", type=float, default=0.9, help="Confidence threshold")
+    parser.add_argument("--iou-thres", type=float, default=0.7, help="NMS IoU threshold")
     args = parser.parse_args()
 
     detector = YOLOv8(args.model, args.yaml, args.source, args.conf_thres, args.iou_thres)

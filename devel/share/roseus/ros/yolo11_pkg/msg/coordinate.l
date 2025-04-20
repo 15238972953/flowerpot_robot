@@ -19,12 +19,12 @@
 (defmethod yolo11_pkg::coordinate
   (:init
    (&key
-    ((:x __x) 0)
-    ((:y __y) 0)
+    ((:x __x) 0.0)
+    ((:y __y) 0.0)
     )
    (send-super :init)
-   (setq _x (round __x))
-   (setq _y (round __y))
+   (setq _x (float __x))
+   (setq _y (float __y))
    self)
   (:x
    (&optional __x)
@@ -35,40 +35,41 @@
   (:serialization-length
    ()
    (+
-    ;; int16 _x
-    2
-    ;; int16 _y
-    2
+    ;; float32 _x
+    4
+    ;; float32 _y
+    4
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; int16 _x
-       (write-word _x s)
-     ;; int16 _y
-       (write-word _y s)
+     ;; float32 _x
+       (sys::poke _x (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _y
+       (sys::poke _y (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; int16 _x
-     (setq _x (sys::peek buf ptr- :short)) (incf ptr- 2)
-   ;; int16 _y
-     (setq _y (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; float32 _x
+     (setq _x (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _y
+     (setq _y (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get yolo11_pkg::coordinate :md5sum-) "6d78a6b8c9650c754bf0432d3d1707c3")
+(setf (get yolo11_pkg::coordinate :md5sum-) "ff8d7d66dd3e4b731ef14a45d38888b6")
 (setf (get yolo11_pkg::coordinate :datatype-) "yolo11_pkg/coordinate")
 (setf (get yolo11_pkg::coordinate :definition-)
-      "int16 x
-int16 y
+      "float32 x
+float32 y
+
 ")
 
 
 
-(provide :yolo11_pkg/coordinate "6d78a6b8c9650c754bf0432d3d1707c3")
+(provide :yolo11_pkg/coordinate "ff8d7d66dd3e4b731ef14a45d38888b6")
 
 

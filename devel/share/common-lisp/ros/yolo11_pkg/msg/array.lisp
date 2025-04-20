@@ -58,16 +58,16 @@
   "yolo11_pkg/array")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<array>)))
   "Returns md5sum for a message object of type '<array>"
-  "5a32149513fa1aa3cce229c0f0ef79c6")
+  "d286bc6474499998e6b0bd97d35f2154")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'array)))
   "Returns md5sum for a message object of type 'array"
-  "5a32149513fa1aa3cce229c0f0ef79c6")
+  "d286bc6474499998e6b0bd97d35f2154")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<array>)))
   "Returns full string definition for message of type '<array>"
-  (cl:format cl:nil "coordinate[] array~%================================================================================~%MSG: yolo11_pkg/coordinate~%int16 x~%int16 y~%~%"))
+  (cl:format cl:nil "coordinate[] array~%================================================================================~%MSG: yolo11_pkg/coordinate~%float32 x~%float32 y~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'array)))
   "Returns full string definition for message of type 'array"
-  (cl:format cl:nil "coordinate[] array~%================================================================================~%MSG: yolo11_pkg/coordinate~%int16 x~%int16 y~%~%"))
+  (cl:format cl:nil "coordinate[] array~%================================================================================~%MSG: yolo11_pkg/coordinate~%float32 x~%float32 y~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <array>))
   (cl:+ 0
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'array) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ (roslisp-msg-protocol:serialization-length ele))))
