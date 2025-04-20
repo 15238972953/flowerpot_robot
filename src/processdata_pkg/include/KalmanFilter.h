@@ -1,42 +1,24 @@
-#ifndef KALMAN_FILTER_H
-#define KALMAN_FILTER_H
+#ifndef KALMAN_FILTER_FUSION_H
+#define KALMAN_FILTER_FUSION_H
 
+#include <vector>
 #include <eigen3/Eigen/Dense>
 
-class KalmanFilter {
+class KalmanFilterFusion {
 public:
-    KalmanFilter();
+    KalmanFilterFusion();
 
-    // 初始化滤波器
-    void Init(const Eigen::Vector2d& initial_pos);
-
-    // 更新步骤 (相机观测)
-    void UpdateCamera(const Eigen::Vector2d& z);
-
-    // 更新步骤 (雷达观测)
-    void UpdateRadar(const Eigen::Vector2d& z);
-
-    // 获取融合后的位置
-    Eigen::Vector2d GetFusedPosition() const;
+    // 融合关联好的相机和雷达位置
+    std::vector<Eigen::Vector2d> fusePositions(
+            const std::vector<Eigen::Vector2d>& camera_positions,
+            const std::vector<Eigen::Vector2d>& radar_positions);
 
 private:
-    // 状态向量 [x, y]
-    Eigen::Vector2d x_;
+    // 相机观测噪声协方差
+    Eigen::Matrix2d R_camera_;
 
-    // 状态协方差矩阵
-    Eigen::Matrix2d P_;
-
-    // 过程噪声协方差矩阵
-    Eigen::Matrix2d Q_;
-
-    // 观测噪声协方差矩阵
-    Eigen::Matrix2d R_camera_;  // 相机
-    Eigen::Matrix2d R_radar_;   // 雷达
-
-    // 单位矩阵
-    Eigen::Matrix2d I_;
-
-    bool is_initialized_;
+    // 雷达观测噪声协方差
+    Eigen::Matrix2d R_radar_;
 };
 
-#endif // KALMAN_FILTER_H
+#endif // KALMAN_FILTER_FUSION_H

@@ -28,7 +28,9 @@ private:
     std::vector<Point> tmp_camera_points;
     std::vector<Point> radar_points;
 
-    KalmanFilter kf;
+    std::vector<Point> camera_matchs, radar_matchs;  //保存匹配后的数据
+    std::vector<Point> fused_matchs;   //保存融合后的数据
+    KalmanFilterFusion fuser;
 };
 
 #endif

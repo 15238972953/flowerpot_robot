@@ -81,22 +81,22 @@ float euclideanDistance(const Point& p1, const Point& p2) {
     return std::sqrt(std::pow(p1.x - p2.x, 2) + std::pow(p1.y - p2.y, 2));
 }
 
-// 使用匈牙利算法进行数据关联
-std::vector<std::pair<int, int>> associatePoints(
+// 使用匈牙利算法进行数据关联，返回关联到的数据对
+std::vector<std::pair<Point, Point>> associatePoints(
         const std::vector<Point>& sensor1_points,
         const std::vector<Point>& sensor2_points,
         float max_distance) {
 
-    std::vector<std::pair<int, int>> matches;
+    std::vector<std::pair<Point, Point>> matched_pairs;
 
     if (sensor1_points.empty() || sensor2_points.empty()) {
-        return matches;
+        return matched_pairs;
     }
 
     // 创建成本矩阵
-    std::vector<std::vector<float>> cost_matrix(
+    std::vector<std::vector<double>> cost_matrix(
             sensor1_points.size(),
-            std::vector<float>(sensor2_points.size(), max_distance * 2));  // 初始化为最大距离的2倍
+            std::vector<double>(sensor2_points.size(), max_distance * 2));  // 初始化为最大距离的2倍
 
     for (size_t i = 0; i < sensor1_points.size(); ++i) {
         for (size_t j = 0; j < sensor2_points.size(); ++j) {
@@ -111,12 +111,15 @@ std::vector<std::pair<int, int>> associatePoints(
     HungarianAlgorithm hungarian(cost_matrix);
     std::vector<int> assignment = hungarian.solve();
 
-    // 构建匹配结果
+    // 构建匹配结果对
     for (size_t i = 0; i < assignment.size(); ++i) {
         if (assignment[i] != -1 && cost_matrix[i][assignment[i]] <= max_distance) {
-            matches.emplace_back(i, assignment[i]);
+            matched_pairs.emplace_back(
+                    sensor1_points[i],
+                    sensor2_points[assignment[i]]
+            );
         }
     }
 
-    return matches;
+    return matched_pairs;
 }

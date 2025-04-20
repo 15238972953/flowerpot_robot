@@ -1,62 +1,34 @@
 #include "KalmanFilter.h"
 #include <iostream>
-
-KalmanFilter::KalmanFilter() : is_initialized_(false) {
-    // 初始化协方差矩阵
-    P_ << 1.0, 0.0,
-            0.0, 1.0;
-
-    // 过程噪声协方差矩阵 (目标静止，噪声很小)
-    Q_ << 0.001, 0.0,
-            0.0, 0.001;
-
-    // 观测噪声协方差矩阵
-    R_camera_ << 0.1, 0.0,   // 相机精度较高
-            0.0, 0.1;
-
-    R_radar_ << 0.2, 0.0,    // 雷达精度较低
-            0.0, 0.2;
-
-    I_ = Eigen::Matrix2d::Identity();
+KalmanFilterFusion::KalmanFilterFusion() {
+    // 初始化噪声参数
+    R_camera_ = Eigen::Matrix2d::Identity() * 0.25;  // 相机噪声较小
+    R_radar_ = Eigen::Matrix2d::Identity() * 0.5;   // 雷达噪声较大
 }
 
-void KalmanFilter::Init(const Eigen::Vector2d& initial_pos) {
-    x_ = initial_pos;
-    is_initialized_ = true;
-    std::cout << "Filter initialized with position: "
-              << x_.transpose() << std::endl;
-}
+std::vector<Eigen::Vector2d> KalmanFilterFusion::fusePositions(
+        const std::vector<Eigen::Vector2d>& camera_positions,
+        const std::vector<Eigen::Vector2d>& radar_positions) {
 
-void KalmanFilter::UpdateCamera(const Eigen::Vector2d& z) {
-    if (!is_initialized_) {
-        Init(z);
-        return;
+    std::vector<Eigen::Vector2d> fused_positions;
+
+    // 检查输入数据是否匹配
+    if (camera_positions.size() != radar_positions.size()) {
+        std::cerr << "Error: Camera and radar data size mismatch!" << std::endl;
+        return fused_positions;
     }
 
-    // 计算卡尔曼增益
-    Eigen::Matrix2d S = P_ + R_camera_;
-    Eigen::Matrix2d K = P_ * S.inverse();
+    // 对每对关联好的观测进行融合
+    for (size_t i = 0; i < camera_positions.size(); ++i) {
+        // 计算卡尔曼增益
+        Eigen::Matrix2d K = R_radar_ * (R_camera_ + R_radar_).inverse();
 
-    // 更新状态和协方差
-    x_ = x_ + K * (z - x_);
-    P_ = (I_ - K) * P_;
-}
+        // 融合位置 (简单加权平均)
+        Eigen::Vector2d fused_pos = camera_positions[i] +
+                                    K * (radar_positions[i] - camera_positions[i]);
 
-void KalmanFilter::UpdateRadar(const Eigen::Vector2d& z) {
-    if (!is_initialized_) {
-        Init(z);
-        return;
+        fused_positions.push_back(fused_pos);
     }
 
-    // 计算卡尔曼增益
-    Eigen::Matrix2d S = P_ + R_radar_;
-    Eigen::Matrix2d K = P_ * S.inverse();
-
-    // 更新状态和协方差
-    x_ = x_ + K * (z - x_);
-    P_ = (I_ - K) * P_;
-}
-
-Eigen::Vector2d KalmanFilter::GetFusedPosition() const {
-    return x_;
+    return fused_positions;
 }

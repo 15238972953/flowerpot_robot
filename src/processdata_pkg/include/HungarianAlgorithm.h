@@ -27,7 +27,7 @@ private:
 float euclideanDistance(const Point& p1, const Point& p2);
 
 // 使用匈牙利算法进行数据关联
-std::vector<std::pair<int, int>> associatePoints(
+std::vector<std::pair<Point, Point>> associatePoints(
         const std::vector<Point>& sensor1_points,
         const std::vector<Point>& sensor2_points,
         float max_distance);

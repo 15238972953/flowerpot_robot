@@ -36,23 +36,17 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
     ROS_INFO("Matchs:%lu ,%lu",camera_points.size(),radar_points.size());
     if(camera_points.size() > 0 && radar_points.size() > 0){
         // 进行数据关联
-        auto matches = associatePoints(radar_points, camera_points, 10);  // 最大匹配距离为10
-        // 进行数据融合
-        for(const auto& match: matches){
-            int radar_index = match.first;
-            int camera_index = match.second;
-            ROS_INFO("Match:(%.3f,%.3f) -> (%.3f,%.3f)",camera_points[camera_index].x,camera_points[camera_index].y, 
-                                                            radar_points[radar_index].x,radar_points[radar_index].y);
-            //将雷达数据与相机数据进行融合
-            // 更新滤波器
-            kf.UpdateCamera(Eigen::Vector2d(camera_points[camera_index].x,
-                                             camera_points[camera_index].y));
-            kf.UpdateRadar(Eigen::Vector2d(radar_points[radar_index].x,
-                                             radar_points[radar_index].y));
-            // 获取融合结果
-            auto fused_pos = kf.GetFusedPosition();
-            ROS_INFO("Fused data:%.3f,%.3f",fused_pos[0],fused_pos[1]);
+        auto matched_pairs = associatePoints(radar_points, camera_points, 10);  // 最大匹配距离为10
+
+        for (const auto& pair : matched_pairs) {
+            camera_matchs.emplace_back(pair.first);
+            radar_matchs.emplace_back(pair.second);
         }
+        //将雷达数据与相机数据进行融合
+        fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
+        
+        
+        ROS_INFO("Fused data:%.3f,%.3f",fused_pos[0],fused_pos[1]);
     }
     camera_points.clear();
     radar_points.clear();
