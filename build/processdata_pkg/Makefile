@@ -182,6 +182,60 @@ processdata_node/fast:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/build
 .PHONY : processdata_node/fast
 
+src/HungarianAlgorithm.o: src/HungarianAlgorithm.cpp.o
+
+.PHONY : src/HungarianAlgorithm.o
+
+# target to build an object file
+src/HungarianAlgorithm.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/HungarianAlgorithm.cpp.o
+.PHONY : src/HungarianAlgorithm.cpp.o
+
+src/HungarianAlgorithm.i: src/HungarianAlgorithm.cpp.i
+
+.PHONY : src/HungarianAlgorithm.i
+
+# target to preprocess a source file
+src/HungarianAlgorithm.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/HungarianAlgorithm.cpp.i
+.PHONY : src/HungarianAlgorithm.cpp.i
+
+src/HungarianAlgorithm.s: src/HungarianAlgorithm.cpp.s
+
+.PHONY : src/HungarianAlgorithm.s
+
+# target to generate assembly for a file
+src/HungarianAlgorithm.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/HungarianAlgorithm.cpp.s
+.PHONY : src/HungarianAlgorithm.cpp.s
+
+src/KalmanFilter.o: src/KalmanFilter.cpp.o
+
+.PHONY : src/KalmanFilter.o
+
+# target to build an object file
+src/KalmanFilter.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter.cpp.o
+.PHONY : src/KalmanFilter.cpp.o
+
+src/KalmanFilter.i: src/KalmanFilter.cpp.i
+
+.PHONY : src/KalmanFilter.i
+
+# target to preprocess a source file
+src/KalmanFilter.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter.cpp.i
+.PHONY : src/KalmanFilter.cpp.i
+
+src/KalmanFilter.s: src/KalmanFilter.cpp.s
+
+.PHONY : src/KalmanFilter.s
+
+# target to generate assembly for a file
+src/KalmanFilter.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter.cpp.s
+.PHONY : src/KalmanFilter.cpp.s
+
 src/processdata_node.o: src/processdata_node.cpp.o
 
 .PHONY : src/processdata_node.o
@@ -223,6 +277,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... processdata_node"
+	@echo "... src/HungarianAlgorithm.o"
+	@echo "... src/HungarianAlgorithm.i"
+	@echo "... src/HungarianAlgorithm.s"
+	@echo "... src/KalmanFilter.o"
+	@echo "... src/KalmanFilter.i"
+	@echo "... src/KalmanFilter.s"
 	@echo "... src/processdata_node.o"
 	@echo "... src/processdata_node.i"
 	@echo "... src/processdata_node.s"

@@ -4,8 +4,8 @@
 
 ProcessDataNode::ProcessDataNode() {
     // 初始化订阅者
-    radar_processed_sub = nh.subscribe("Array_Radar", 1000, &ProcessDataNode::radarCallback, this);
-    camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameraCallback, this);
+    radar_processed_sub = nh.subscribe("Array_Radar", 1000, &ProcessDataNode::radardata_Callback, this);
+    camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameradata_Callback, this);
 }
 
 void ProcessDataNode::cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg)
@@ -38,7 +38,7 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
 
     if(camera_points.size() > 0 && radar_points.size() > 0){
         // 进行数据关联
-        auto matches = HungarianAlgorithm::associatePoints(radar_points, camera_points, 20);  // 最大匹配距离为20
+        auto matches = associatePoints(radar_points, camera_points, 20);  // 最大匹配距离为20
         // 进行数据融合
         for(const auto& match: matches){
             int radar_index = match.first;
@@ -46,8 +46,10 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
             
             //将雷达数据与相机数据进行融合
             // 更新滤波器
-            kf.UpdateCamera(camera_points[camera_index]);
-            kf.UpdateRadar(radar_points[radar_index]);
+            kf.UpdateCamera(Eigen::Vector2d(camera_points[camera_index].x,
+                                             camera_points[camera_index].y));
+            kf.UpdateRadar(Eigen::Vector2d(radar_points[radar_index].x,
+                                             radar_points[radar_index].y));
             // 获取融合结果
             auto fused_pos = kf.GetFusedPosition();
             ROS_INFO("Fused data:%.3f,%.3f",fused_pos[0],fused_pos[1]);

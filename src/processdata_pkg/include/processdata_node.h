@@ -10,13 +10,6 @@
 #include "HungarianAlgorithm.h"
 #include "KalmanFilter.h"
 
-// 二维点结构
-struct Point {
-    float x;
-    float y;
-    Point(float _x = 0, float _y = 0);
-};
-
 class ProcessDataNode {
 public:
     ProcessDataNode();
