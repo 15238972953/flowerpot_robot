@@ -5,3 +5,5 @@ roslaunch lslidar_driver lslidar_serial.launch
 ll /dev/|grep ttyCH343USB
 sudo chmod 777 /dev/ttyCH343USB0
 
+export https_proxy=http://192.168.189.28:7890
+export http_proxy=http://192.168.189.28:7890

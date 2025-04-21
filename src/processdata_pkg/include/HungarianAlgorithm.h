@@ -2,12 +2,17 @@
 #define HUNGARIAN_ALGORITHM_H
 
 #include <vector>
+#include <eigen3/Eigen/Dense>
 
 // 二维点结构
 struct Point {
     float x;
     float y;
     Point(float _x = 0, float _y = 0);
+
+    Eigen::Vector2d toVector2d() const {
+        return Eigen::Vector2d(x, y);
+    }
 };
 
 // 匈牙利算法类

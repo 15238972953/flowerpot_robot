@@ -208,7 +208,7 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(processdata_node src/processdata_node.cpp src/HungarianAlgorithm.cpp src/KalmanFilter.cpp)
+add_executable(processdata_node src/processdata_node.cpp src/HungarianAlgorithm.cpp src/KalmanFilter_fusion.cpp src/KalmanFilter_filter.cpp src/pid_controller.cpp)
 target_link_libraries(processdata_node
   ${catkin_LIBRARIES}
 )

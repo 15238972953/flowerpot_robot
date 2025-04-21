@@ -1,6 +1,7 @@
 #ifndef KALMAN_FILTER_FUSION_H
 #define KALMAN_FILTER_FUSION_H
 
+#include "HungarianAlgorithm.h"
 #include <vector>
 #include <eigen3/Eigen/Dense>
 

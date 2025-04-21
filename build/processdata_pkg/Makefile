@@ -209,32 +209,86 @@ src/HungarianAlgorithm.cpp.s:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/HungarianAlgorithm.cpp.s
 .PHONY : src/HungarianAlgorithm.cpp.s
 
-src/KalmanFilter.o: src/KalmanFilter.cpp.o
+src/KalmanFilter_filter.o: src/KalmanFilter_filter.cpp.o
 
-.PHONY : src/KalmanFilter.o
+.PHONY : src/KalmanFilter_filter.o
 
 # target to build an object file
-src/KalmanFilter.cpp.o:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter.cpp.o
-.PHONY : src/KalmanFilter.cpp.o
+src/KalmanFilter_filter.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_filter.cpp.o
+.PHONY : src/KalmanFilter_filter.cpp.o
 
-src/KalmanFilter.i: src/KalmanFilter.cpp.i
+src/KalmanFilter_filter.i: src/KalmanFilter_filter.cpp.i
 
-.PHONY : src/KalmanFilter.i
+.PHONY : src/KalmanFilter_filter.i
 
 # target to preprocess a source file
-src/KalmanFilter.cpp.i:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter.cpp.i
-.PHONY : src/KalmanFilter.cpp.i
+src/KalmanFilter_filter.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_filter.cpp.i
+.PHONY : src/KalmanFilter_filter.cpp.i
 
-src/KalmanFilter.s: src/KalmanFilter.cpp.s
+src/KalmanFilter_filter.s: src/KalmanFilter_filter.cpp.s
 
-.PHONY : src/KalmanFilter.s
+.PHONY : src/KalmanFilter_filter.s
 
 # target to generate assembly for a file
-src/KalmanFilter.cpp.s:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter.cpp.s
-.PHONY : src/KalmanFilter.cpp.s
+src/KalmanFilter_filter.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_filter.cpp.s
+.PHONY : src/KalmanFilter_filter.cpp.s
+
+src/KalmanFilter_fusion.o: src/KalmanFilter_fusion.cpp.o
+
+.PHONY : src/KalmanFilter_fusion.o
+
+# target to build an object file
+src/KalmanFilter_fusion.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_fusion.cpp.o
+.PHONY : src/KalmanFilter_fusion.cpp.o
+
+src/KalmanFilter_fusion.i: src/KalmanFilter_fusion.cpp.i
+
+.PHONY : src/KalmanFilter_fusion.i
+
+# target to preprocess a source file
+src/KalmanFilter_fusion.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_fusion.cpp.i
+.PHONY : src/KalmanFilter_fusion.cpp.i
+
+src/KalmanFilter_fusion.s: src/KalmanFilter_fusion.cpp.s
+
+.PHONY : src/KalmanFilter_fusion.s
+
+# target to generate assembly for a file
+src/KalmanFilter_fusion.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_fusion.cpp.s
+.PHONY : src/KalmanFilter_fusion.cpp.s
+
+src/pid_controller.o: src/pid_controller.cpp.o
+
+.PHONY : src/pid_controller.o
+
+# target to build an object file
+src/pid_controller.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/pid_controller.cpp.o
+.PHONY : src/pid_controller.cpp.o
+
+src/pid_controller.i: src/pid_controller.cpp.i
+
+.PHONY : src/pid_controller.i
+
+# target to preprocess a source file
+src/pid_controller.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/pid_controller.cpp.i
+.PHONY : src/pid_controller.cpp.i
+
+src/pid_controller.s: src/pid_controller.cpp.s
+
+.PHONY : src/pid_controller.s
+
+# target to generate assembly for a file
+src/pid_controller.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/pid_controller.cpp.s
+.PHONY : src/pid_controller.cpp.s
 
 src/processdata_node.o: src/processdata_node.cpp.o
 
@@ -280,9 +334,15 @@ help:
 	@echo "... src/HungarianAlgorithm.o"
 	@echo "... src/HungarianAlgorithm.i"
 	@echo "... src/HungarianAlgorithm.s"
-	@echo "... src/KalmanFilter.o"
-	@echo "... src/KalmanFilter.i"
-	@echo "... src/KalmanFilter.s"
+	@echo "... src/KalmanFilter_filter.o"
+	@echo "... src/KalmanFilter_filter.i"
+	@echo "... src/KalmanFilter_filter.s"
+	@echo "... src/KalmanFilter_fusion.o"
+	@echo "... src/KalmanFilter_fusion.i"
+	@echo "... src/KalmanFilter_fusion.s"
+	@echo "... src/pid_controller.o"
+	@echo "... src/pid_controller.i"
+	@echo "... src/pid_controller.s"
 	@echo "... src/processdata_node.o"
 	@echo "... src/processdata_node.i"
 	@echo "... src/processdata_node.s"

@@ -94,9 +94,9 @@ std::vector<std::pair<Point, Point>> associatePoints(
     }
 
     // 创建成本矩阵
-    std::vector<std::vector<double>> cost_matrix(
+    std::vector<std::vector<float>> cost_matrix(
             sensor1_points.size(),
-            std::vector<double>(sensor2_points.size(), max_distance * 2));  // 初始化为最大距离的2倍
+            std::vector<float>(sensor2_points.size(), max_distance * 2));  // 初始化为最大距离的2倍
 
     for (size_t i = 0; i < sensor1_points.size(); ++i) {
         for (size_t j = 0; j < sensor2_points.size(); ++j) {

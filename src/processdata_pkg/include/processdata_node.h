@@ -8,14 +8,9 @@
 #include<yolo11_pkg/array.h>
 #include<cmath>
 #include "HungarianAlgorithm.h"
-#include "KalmanFilter.h"
-
-struct PWM
-{
-    int PWM_Left;
-    int PWM_Right;
-    PWM(int _PWM_Left = 0, _PWM_Right = 0);
-};
+#include "KalmanFilter_fusion.h"
+#include "KalmanFilter_filter.h"
+#include "pid_controller.h"
 
 
 class ProcessDataNode {
@@ -37,10 +32,11 @@ private:
     std::vector<Point> tmp_camera_points;
     std::vector<Point> radar_points;
 
-    std::vector<Point> camera_matchs, radar_matchs;  //保存匹配后的数据
-    std::vector<Point> fused_matchs;   //保存融合后的数据
+    std::vector<Eigen::Vector2d> camera_matchs, radar_matchs;  //保存匹配后的数据
+    std::vector<Eigen::Vector2d> fused_matchs;   //保存融合后的数据
     KalmanFilterFusion fuser;   //融合相机和雷达的滤波器
-    KalmanFilter kf;      //最近目标的靠近滤波器
 };
+
+std::vector<Point> convert(const std::vector<Eigen::Vector2d> eigenVectors);
 
 #endif

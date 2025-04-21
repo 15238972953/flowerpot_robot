@@ -1,4 +1,12 @@
 #include "processdata_node.h"
+KalmanFilter kf;      //最近目标的靠近滤波器
+
+std::vector<Point> convert(const std::vector<Eigen::Vector2d> eigenVectors) {
+    std::vector<Point> points(eigenVectors.size());
+    std::transform(eigenVectors.begin(), eigenVectors.end(), points.begin(),
+                    [](const Eigen::Vector2d& vec) { return Point{static_cast<float>(vec[0]), static_cast<float>(vec[1])}; });
+    return points;
+    }
 
 ProcessDataNode::ProcessDataNode() {
     // 初始化订阅者
@@ -46,7 +54,7 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         float x = -radar_data.r * 100 * std::sin(radar_data.phi);  // 计算x坐标
         float y = radar_data.r * 100 * std::cos(radar_data.phi);  // 计算y坐标
         // ROS_INFO("Received radar:%.3f,%.3f",radar_data.r,radar_data.phi);
-        ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
+        // ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
 
         radar_points.emplace_back(x,y);
     }
@@ -57,20 +65,26 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         auto matched_pairs = associatePoints(radar_points, camera_points, 10);  // 最大匹配距离为10
 
         for (const auto& pair : matched_pairs) {
-            camera_matchs.emplace_back(pair.first);
-            radar_matchs.emplace_back(pair.second);
+            camera_matchs.emplace_back(pair.first.toVector2d());
+            radar_matchs.emplace_back(pair.second.toVector2d());
         }
         //将雷达数据与相机数据进行融合
         fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
+        // for (auto match:fused_matchs)
+        // {
+        //     ROS_INFO("fused_matchs:%.3f,%.3f",match[0],match[1]);
+        // }
+        
         // 选择最近的花盆
-        Point target_pot = selectClosestPot(detected_pots);
+        Point target_pot = selectClosestPot(convert(fused_matchs));
+        
         // 卡尔曼滤波处理
-        KalmanFilter::Kalman_process();
-        // 获取滤波后的目标位置（相对于机器人）
+        kf.Kalman_process(target_pot);
+        // // 获取滤波后的目标位置（相对于机器人）
         Eigen::Vector2d filtered_pos = kf.getPosition();
-        PWM PWM_Motor = PIDController::calculatePWM(filtered_pos);
-        ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.x, PWM_Motor.y);
-        // ROS_INFO("Fused data:%.3f,%.3f",fused_pos[0],fused_pos[1]);
+        PWM PWM_Motor = calculatePWM(filtered_pos);
+        ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
+        ROS_INFO("Fused data:%.3f,%.3f",filtered_pos[0],filtered_pos[1]);
     }
     camera_points.clear();
     radar_points.clear();

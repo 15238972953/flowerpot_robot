@@ -2,6 +2,8 @@
 #define KALMAN_FILTER_FILTER_H
 
 #include <eigen3/Eigen/Dense>
+#include "HungarianAlgorithm.h"
+#include "processdata_node.h"
 
 class KalmanFilter {
 public:
@@ -14,7 +16,7 @@ public:
     Eigen::Vector2d getPosition() const;
     Eigen::Vector4d getState() const;
     bool isInitialized() const;
-    void Kalman_process(); 
+    void Kalman_process(Point target_pot); 
 
 private:
     Eigen::Vector4d state_;       // [rel_x, rel_y, rel_vx, rel_vy] (相对机器人的位置和速度)
@@ -26,5 +28,5 @@ private:
     Eigen::Matrix4d I_;           // Identity matrix
     bool is_initialized_;
 };
-
+extern KalmanFilter kf;
 #endif // KALMAN_FILTER_H

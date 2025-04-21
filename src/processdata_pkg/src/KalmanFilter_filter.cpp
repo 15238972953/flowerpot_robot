@@ -69,7 +69,7 @@ bool KalmanFilter::isInitialized() const {
 }
 
 // 卡尔曼滤波处理
-void KalmanFilter::Kalman_process() {
+void KalmanFilter::Kalman_process(Point target_pot) {
     if (!kf.isInitialized()) {
         Eigen::Vector4d initial_state;
         initial_state << target_pot.x, target_pot.y, 0.0, 0.0; // 初始相对速度为0
