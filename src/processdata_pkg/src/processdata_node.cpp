@@ -12,6 +12,8 @@ ProcessDataNode::ProcessDataNode() {
     // 初始化订阅者
     radar_processed_sub = nh.subscribe("Array_Radar", 1000, &ProcessDataNode::radardata_Callback, this);
     camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameradata_Callback, this);
+    //初始化发布者
+    serial_data_pub = nh.advertise<processdata_pkg::serial_data>("serial_data", 1000);
 }
 
 // 选择最近的花盆
@@ -83,6 +85,10 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         // // 获取滤波后的目标位置（相对于机器人）
         Eigen::Vector2d filtered_pos = kf.getPosition();
         PWM PWM_Motor = calculatePWM(filtered_pos);
+        serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+        serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+        serial_msg.command = 0;
+        serial_data_pub.publish(serial_msg);
         ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
         ROS_INFO("Fused data:%.3f,%.3f",filtered_pos[0],filtered_pos[1]);
     }

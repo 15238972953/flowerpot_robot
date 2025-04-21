@@ -7,6 +7,7 @@
 #include<yolo11_pkg/coordinate.h>
 #include<yolo11_pkg/array.h>
 #include<cmath>
+#include<processdata_pkg/serial_data.h>
 #include "HungarianAlgorithm.h"
 #include "KalmanFilter_fusion.h"
 #include "KalmanFilter_filter.h"
@@ -26,6 +27,7 @@ private:
     ros::NodeHandle nh;
     ros::Subscriber radar_processed_sub;
     ros::Subscriber camera_processed_sub;
+    ros::Publisher serial_data_pub;
 
     // 存储最新数据
     std::vector<Point> camera_points;
@@ -35,6 +37,9 @@ private:
     std::vector<Eigen::Vector2d> camera_matchs, radar_matchs;  //保存匹配后的数据
     std::vector<Eigen::Vector2d> fused_matchs;   //保存融合后的数据
     KalmanFilterFusion fuser;   //融合相机和雷达的滤波器
+     
+    processdata_pkg::serial_data serial_msg;    //通过串口发送给stm32的数据
+    int command;  //用于记录机械臂的指令
 };
 
 std::vector<Point> convert(const std::vector<Eigen::Vector2d> eigenVectors);

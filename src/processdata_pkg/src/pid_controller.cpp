@@ -32,8 +32,8 @@ double PIDController::compute_Y(double setpoint, double current_Y_value) {
 PWM calculatePWM(Eigen::Vector2d filtered_pos, const double target_x, const double target_y) {
     PWM PWM_Value;
     // 初始化PID控制器，x和y方向分别使用不同的PID参数
-    PIDController pid_x(5.0, 0.1, 0.01);
-    PIDController pid_y(5.0, 0.1, 0.01);
+    PIDController pid_x(2.5, 0.1, 0.01);
+    PIDController pid_y(2.5, 0.1, 0.01);
 
     // 使用PID控制器计算x和y方向的输出
     double output_x = pid_x.compute_X(target_x, filtered_pos.x());
@@ -45,10 +45,10 @@ PWM calculatePWM(Eigen::Vector2d filtered_pos, const double target_x, const doub
     int right_pwm = output_y - output_x;
 
     // 限制PWM值在0到255之间
-    if (left_pwm < -255) left_pwm = -255;
-    if (left_pwm > 255) left_pwm = 255;
-    if (right_pwm < -255) right_pwm = -255;
-    if (right_pwm > 255) right_pwm = 255;
+    if (left_pwm < -127) left_pwm = -127;
+    if (left_pwm > 127) left_pwm = 127;
+    if (right_pwm < -127) right_pwm = -127;
+    if (right_pwm > 127) right_pwm = 127;
     PWM_Value.PWM_Left = left_pwm;
     PWM_Value.PWM_Right = right_pwm;
     return PWM_Value;
