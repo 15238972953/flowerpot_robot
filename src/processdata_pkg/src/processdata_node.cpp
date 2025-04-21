@@ -6,6 +6,24 @@ ProcessDataNode::ProcessDataNode() {
     camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameradata_Callback, this);
 }
 
+// 选择最近的花盆
+Point ProcessDataNode::selectClosestPot(const std::vector<Point>& pots) {
+    if (pots.empty()) return {0, 0};
+
+    Point closest = pots[0];
+    double min_dist = std::hypot(closest.x, closest.y);
+
+    for (const auto& pot : pots) {
+        double dist = std::hypot(pot.x, pot.y);
+        if (dist < min_dist) {
+            min_dist = dist;
+            closest = pot;
+        }
+    }
+
+    return closest;
+}
+
 void ProcessDataNode::cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg)
 {
     tmp_camera_points.clear();
@@ -33,7 +51,7 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         radar_points.emplace_back(x,y);
     }
     camera_points = tmp_camera_points;
-    ROS_INFO("Matchs:%lu ,%lu",camera_points.size(),radar_points.size());
+    // ROS_INFO("Matchs:%lu ,%lu",camera_points.size(),radar_points.size());
     if(camera_points.size() > 0 && radar_points.size() > 0){
         // 进行数据关联
         auto matched_pairs = associatePoints(radar_points, camera_points, 10);  // 最大匹配距离为10
@@ -44,9 +62,15 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         }
         //将雷达数据与相机数据进行融合
         fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
-        
-        
-        ROS_INFO("Fused data:%.3f,%.3f",fused_pos[0],fused_pos[1]);
+        // 选择最近的花盆
+        Point target_pot = selectClosestPot(detected_pots);
+        // 卡尔曼滤波处理
+        KalmanFilter::Kalman_process();
+        // 获取滤波后的目标位置（相对于机器人）
+        Eigen::Vector2d filtered_pos = kf.getPosition();
+        PWM PWM_Motor = PIDController::calculatePWM(filtered_pos);
+        ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.x, PWM_Motor.y);
+        // ROS_INFO("Fused data:%.3f,%.3f",fused_pos[0],fused_pos[1]);
     }
     camera_points.clear();
     radar_points.clear();
