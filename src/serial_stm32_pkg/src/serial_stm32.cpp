@@ -1,11 +1,11 @@
 #include "serial_stm32.h"
 #include <iostream>
 
-// rosrun serial_stm32_pkg serial_stm32 _port:=/dev/ttyTHS1 _baud_rate:=115200
+// rosrun serial_stm32_pkg serial_stm32 _port:=/dev/ttyTHS0 _baud_rate:=115200
 SerialCommNode::SerialCommNode() {
     // 从参数服务器获取串口配置参数
     ros::NodeHandle private_nh("~");
-    private_nh.param<std::string>("port", port_, "/dev/ttyTHS1");
+    private_nh.param<std::string>("port", port_, "/dev/ttyTHS0");
     private_nh.param("baud_rate", baud_rate_, 115200);
     
     // 订阅serial_data话题，用于接收要发送给STM32的数据
@@ -48,13 +48,19 @@ bool SerialCommNode::setupSerialPort() {
 }
 
 void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::ConstPtr& msg) {
+    ROS_INFO("Hello");
     if (!serial_.isOpen()) {
         ROS_WARN("Serial port is not open. Cannot send data.");
         return;
     }
     try {
         // 发送数据到STM32
-        size_t bytes_written = serial_.write(msg->serial_data);
+        std::vector<uint8_t> buffer(3);
+        buffer.push_back(msg->PWM_Left);
+        buffer.push_back(msg->PWM_Right);
+        buffer.push_back(msg->command);
+        size_t bytes_written = serial_.write(buffer);
+
         ROS_DEBUG("Sent %lu bytes to STM32", bytes_written);
     } catch (serial::IOException& e) {
         ROS_ERROR("Error writing to serial port: %s", e.what());
@@ -100,21 +106,21 @@ void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::Cons
 //     return false;
 // }
 
-void SerialCommNode::run() {
-    ros::Rate loop_rate(12); // 12Hz
+// void SerialCommNode::run() {
+//     ros::Rate loop_rate(12); // 12Hz
     
-    while (ros::ok()) {
-        // 处理ROS回调
-        ros::spinOnce();
-        loop_rate.sleep();
-    }
-}
+//     while (ros::ok()) {
+//         // 处理ROS回调
+//         ros::spinOnce();
+//         loop_rate.sleep();
+//     }
+// }
 
 int main(int argc, char** argv) {
     ros::init(argc, argv, "serial_stm32_node");
     
     SerialCommNode node;
-    node.run();
-    
+    // node.run();
+    ros::spin();
     return 0;
 }

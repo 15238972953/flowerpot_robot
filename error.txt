@@ -1,0 +1,8 @@
+... logging to /home/jetson/.ros/log/949bea24-1f7d-11f0-9467-488f4cf99769/roslaunch-unbutu-16807.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+
+RLException: Invalid roslaunch XML syntax: not well-formed (invalid token): line 4, column 28
+The traceback for the exception was written to the log file
+

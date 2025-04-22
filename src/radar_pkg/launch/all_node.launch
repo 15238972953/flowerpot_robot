@@ -1,0 +1,34 @@
+<launch>
+    <!-- radar节点 -->
+    <node 
+        pkg="radar_pkg"     
+        type="PointCloudFitting_node.py" 
+        name="PointCloudFitting_node"    
+        output="screen"        
+        respawn="true"     
+    />
+    <!-- camera节点 -->
+    <node 
+        pkg="yolo11_pkg"  
+        type="onnx.py" 
+        name="yolo11_node"     
+        output="screen"       
+        respawn="true"     
+    />
+    <!-- radar和camera数据处理节点 -->
+    <node 
+        pkg="processdata_pkg" 
+        type="processdata_node" 
+        name="processdata_node" 
+        output="screen"
+        respawn="true"
+    />
+    <!-- serial_stm32节点 -->
+    <node 
+        pkg="serial_stm32_pkg" 
+        type="serial_stm32_node" 
+        name="serial_stm32_node"
+        output="screen"
+        respawn="true"
+    />
+</launch>

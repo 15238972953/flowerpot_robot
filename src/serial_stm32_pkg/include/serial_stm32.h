@@ -4,16 +4,17 @@
 #include <ros/ros.h>
 #include <serial/serial.h>
 #include <processdata_pkg/serial_data.h>
+#include <vector>
 
 class SerialCommNode {
 public:
     SerialCommNode();
     ~SerialCommNode();
     
-    void run();
+    // void run();
 
 private:
-    void serialDataCallback(const std_msgs::UInt8MultiArray::ConstPtr& msg);
+void serialDataCallback(const processdata_pkg::serial_data::ConstPtr& msg);
     bool setupSerialPort();
     
     ros::NodeHandle nh_;

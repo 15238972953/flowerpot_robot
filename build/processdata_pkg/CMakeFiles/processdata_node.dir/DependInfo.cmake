@@ -21,8 +21,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/jetson/catkin_ws/src/processdata_pkg/include"
   "/home/jetson/catkin_ws/devel/include"
+  "/home/jetson/catkin_ws/src/processdata_pkg/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
