@@ -62,30 +62,30 @@ void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::Cons
 }
 
 //CRC校验：CRC4多项式 x^4 + x + 1 (0x3)
-uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high) {
-    uint8_t crc = 0xF;
-    uint32_t data = (byte1 << 16) | (byte2 << 8) | byte3_high;
+// uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high) {
+//     uint8_t crc = 0xF;
+//     uint32_t data = (byte1 << 16) | (byte2 << 8) | byte3_high;
     
-    for(int i = 23; i >= 0; i--) {
-        crc ^= (data >> i) & 0x1;
-        if(crc & 0x8) {
-            crc = (crc << 1) ^ 0x3;
-        } else {
-            crc <<= 1;
-        }
-        crc &= 0xF;
-    }
-    return crc;
-}
+//     for(int i = 23; i >= 0; i--) {
+//         crc ^= (data >> i) & 0x1;
+//         if(crc & 0x8) {
+//             crc = (crc << 1) ^ 0x3;
+//         } else {
+//             crc <<= 1;
+//         }
+//         crc &= 0xF;
+//     }
+//     return crc;
+// }
 
-// 打包数据
-void packData(uint16_t data, uint8_t& byte1, uint8_t& byte2, uint8_t& byte3) {
-    byte1 = (data >> 12) & 0xFF;
-    byte2 = (data >> 4) & 0xFF;
-    uint8_t byte3_high = (data & 0x0F) << 4;
-    uint8_t checksum = calculateNibbleChecksum(byte1, byte2, byte3_high);
-    byte3 = byte3_high | checksum;
-}
+// // 打包数据
+// void packData(uint16_t data, uint8_t& byte1, uint8_t& byte2, uint8_t& byte3) {
+//     byte1 = (data >> 12) & 0xFF;
+//     byte2 = (data >> 4) & 0xFF;
+//     uint8_t byte3_high = (data & 0x0F) << 4;
+//     uint8_t checksum = calculateNibbleChecksum(byte1, byte2, byte3_high);
+//     byte3 = byte3_high | checksum;
+// }
 
 // // 解包并校验
 // bool unpackAndVerify(uint8_t byte1, uint8_t byte2, uint8_t byte3, uint16_t& out_data) {

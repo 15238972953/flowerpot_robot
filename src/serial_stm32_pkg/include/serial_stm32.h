@@ -24,7 +24,7 @@ private:
     int baud_rate_;
 };
 
-uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high);
-void packData(uint16_t data, uint8_t& byte1, uint8_t& byte2, uint8_t& byte3);
+// uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high);
+// void packData(uint16_t data, uint8_t& byte1, uint8_t& byte2, uint8_t& byte3);
 
 #endif // SERIAL_COMM_H
