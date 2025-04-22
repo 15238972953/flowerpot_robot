@@ -7,11 +7,10 @@ SerialCommNode::SerialCommNode() {
     ros::NodeHandle private_nh("~");
     private_nh.param<std::string>("port", port_, "/dev/ttyTHS1");
     private_nh.param("baud_rate", baud_rate_, 115200);
-    private_nh.param("encoder_data_size", encoder_data_size_, 4); // 假设每个编码器数据占4字节
     
     // 订阅serial_data话题，用于接收要发送给STM32的数据
     serial_data_sub_ = nh_.subscribe<processdata_pkg::serial_data>(
-        "serial_data", 10, &SerialCommNode::serialDataCallback, this);
+        "serial_data", 100, &SerialCommNode::serialDataCallback, this);
     
     // 初始化串口
     if (!setupSerialPort()) {

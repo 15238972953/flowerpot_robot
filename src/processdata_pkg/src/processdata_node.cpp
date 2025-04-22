@@ -87,7 +87,7 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         PWM PWM_Motor = calculatePWM(filtered_pos);
         serial_msg.PWM_Left = PWM_Motor.PWM_Left;
         serial_msg.PWM_Right = PWM_Motor.PWM_Right;
-        serial_msg.command = 0;
+        serial_msg.command = 15;
         serial_data_pub.publish(serial_msg);
         ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
         ROS_INFO("Fused data:%.3f,%.3f",filtered_pos[0],filtered_pos[1]);
