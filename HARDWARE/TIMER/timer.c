@@ -2,7 +2,7 @@
 
 extern int Motor_Speed_Left;
 extern int Motor_Speed_Right;
-extern int RemoteControl_KeyValue;
+extern int Command;
 
 
 void TIM6_init(u16 arr,u16 psc)
@@ -63,17 +63,17 @@ void TIM7_init(u16 arr,u16 psc)
 void TIM7_IRQHandler(void)                          //得到编码器素的和位置
 {
 	if(TIM_GetITStatus(TIM7,TIM_IT_Update)==SET){	
-		OLED_ShowNum(0,20,tmp_buf[1],3,8,1);
+		//OLED_ShowNum(0,20,tmp_buf[1],3,8,1);
 //		OLED_ShowNum(0,30,tmp_buf[2],3,8,1);
 //		OLED_ShowNum(0,40,tmp_buf[3],3,8,1);
 //		OLED_ShowNum(40,40,Motor_Speed_Left,3,8,1);
 //		OLED_ShowNum(40,50,Motor_Speed_Right,3,8,1);
-		if(0!=RemoteControl_KeyValue){
-		OLED_ShowNum(70,50,RemoteControl_KeyValue,1,8,1);
-		}
-		//show_voltage(1);
-		
-		OLED_Refresh();
+//		if(0!=Command){
+//		OLED_ShowNum(70,50,Command,1,8,1);
+//		}
+//		//show_voltage(1);
+//		
+//		OLED_Refresh();
 	}
 	TIM_ClearITPendingBit(TIM7,TIM_IT_Update);        //清除中断标志位
 }

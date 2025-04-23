@@ -5,8 +5,8 @@
 #include "delay.h"
 #include "24l01.h"
 
-#define USART3_REC_LEN  			200  	//定义最大接收字节数 200
-#define EN_USART3_RX 			1		//使能（1）/禁止（0）串口1接收
+#define USART1_REC_LEN  			200  	//定义最大接收字节数 200
+#define EN_USART1_RX 			1		//使能（1）/禁止（0）串口1接收
 
 extern u8 res;
 

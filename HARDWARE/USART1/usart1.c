@@ -1,7 +1,7 @@
 #include "usart1.h"
-u8 USART3_RX_BUF[USART3_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+u8 USART1_RX_BUF[USART1_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
 
-u16 USART3_RX_STA=0;       //接收状态标记	
+u16 USART1_RX_STA=0;       //接收状态标记	
 u8 res = 0;
 void USART1_Init(unsigned long baudrate)
 {

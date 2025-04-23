@@ -13,6 +13,7 @@
 #include "usart1.h"
 #include "power.h"
 #include "timer.h"
+#include "UART3.h"
 
 #define __MAIN_H	
 

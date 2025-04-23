@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\USER;..\FWLIB\inc;..\USER;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\OLED;..\HARDWARE\LED;..\HARDWARE\EC11;..\HARDWARE\POWER;..\HARDWARE\STEPPER;..\HARDWARE\MOTOR;..\HARDWARE\NRF24L01;..\HARDWARE\USART1;..\HARDWARE\TIMER;..\HARDWARE\MULTIMENU;..\HARDWARE\EXTI</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\USER;..\FWLIB\inc;..\USER;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\OLED;..\HARDWARE\LED;..\HARDWARE\EC11;..\HARDWARE\POWER;..\HARDWARE\STEPPER;..\HARDWARE\MOTOR;..\HARDWARE\NRF24L01;..\HARDWARE\USART1;..\HARDWARE\TIMER;..\HARDWARE\MULTIMENU;..\HARDWARE\EXTI;..\HARDWARE\USART3</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -685,6 +685,11 @@
               <FileName>exti.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\EXTI\exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\USART3\UART3.c</FilePath>
             </File>
           </Files>
         </Group>
