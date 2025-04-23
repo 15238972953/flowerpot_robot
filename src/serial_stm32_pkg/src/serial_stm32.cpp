@@ -1,7 +1,7 @@
 #include "serial_stm32.h"
 #include <iostream>
 
-// rosrun serial_stm32_pkg serial_stm32 _port:=/dev/ttyTHS0 _baud_rate:=115200
+// rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200
 SerialCommNode::SerialCommNode() {
     // 从参数服务器获取串口配置参数
     ros::NodeHandle private_nh("~");
@@ -48,22 +48,24 @@ bool SerialCommNode::setupSerialPort() {
 }
 
 void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::ConstPtr& msg) {
-    ROS_INFO("Hello");
+    // ROS_INFO("Hello");
     if (!serial_.isOpen()) {
-        ROS_WARN("Serial port is not open. Cannot send data.");
+        ROS_INFO("Serial port is not open. Cannot send data.");
         return;
     }
     try {
         // 发送数据到STM32
         std::vector<uint8_t> buffer(3);
-        buffer.push_back(msg->PWM_Left);
-        buffer.push_back(msg->PWM_Right);
-        buffer.push_back(msg->command);
+        buffer[0] = msg->PWM_Left;
+        buffer[1] = msg->PWM_Right;
+        buffer[2] = msg->command;
         size_t bytes_written = serial_.write(buffer);
-
-        ROS_DEBUG("Sent %lu bytes to STM32", bytes_written);
+        for(int i=0;i<buffer.size();++i){
+            ROS_INFO("buffer:%d,%d",i,buffer[i]);
+        }
+        ROS_INFO("Sent %lu bytes to STM32", bytes_written);
     } catch (serial::IOException& e) {
-        ROS_ERROR("Error writing to serial port: %s", e.what());
+        ROS_INFO("Error writing to serial port: %s", e.what());
     }
 }
 

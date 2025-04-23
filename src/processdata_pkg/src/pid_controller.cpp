@@ -18,7 +18,7 @@ double PIDController::compute_Y(double setpoint, double current_Y_value) {
     double error = current_Y_value - setpoint;
     if (error > 40)
     {
-        return 255;
+        return 90;
     }else{
         integral_ += error;
         double derivative = (error - prev_error_);
@@ -32,8 +32,8 @@ double PIDController::compute_Y(double setpoint, double current_Y_value) {
 PWM calculatePWM(Eigen::Vector2d filtered_pos, const double target_x, const double target_y) {
     PWM PWM_Value;
     // 初始化PID控制器，x和y方向分别使用不同的PID参数
-    PIDController pid_x(2.5, 0.1, 0.01);
-    PIDController pid_y(2.5, 0.1, 0.01);
+    PIDController pid_x(1, 0.1, 0.01);
+    PIDController pid_y(2, 0.1, 0.01);
 
     // 使用PID控制器计算x和y方向的输出
     double output_x = pid_x.compute_X(target_x, filtered_pos.x());

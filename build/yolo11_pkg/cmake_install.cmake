@@ -91,3 +91,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolo11_pkg" TYPE FILE FILES "/home/jetson/catkin_ws/src/yolo11_pkg/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/yolo11_pkg" TYPE PROGRAM FILES "/home/jetson/catkin_ws/build/yolo11_pkg/catkin_generated/installspace/camera.sh")
+endif()
+

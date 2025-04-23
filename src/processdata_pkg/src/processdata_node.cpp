@@ -43,7 +43,7 @@ void ProcessDataNode::cameradata_Callback(const yolo11_pkg::array::ConstPtr& cam
         float r = std::sqrt(x * x + y * y);          // 计算半径
         float theta_rad = std::atan2(y, x);          // 计算角度（弧度）
         // ROS_INFO("Received camera:%.3f,%.3f",r,theta_rad);
-        ROS_INFO("Received xycamera:%.3f,%.3f",x,y);
+        // ROS_INFO("Received xycamera:%.3f,%.3f",x,y);
 
         tmp_camera_points.emplace_back(x,y);
     }
@@ -90,7 +90,7 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         serial_msg.command = 15;
         serial_data_pub.publish(serial_msg);
         ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
-        ROS_INFO("Fused data:%.3f,%.3f",filtered_pos[0],filtered_pos[1]);
+        // ROS_INFO("Fused data:%.3f,%.3f",filtered_pos[0],filtered_pos[1]);    
     }
     camera_points.clear();
     radar_points.clear();

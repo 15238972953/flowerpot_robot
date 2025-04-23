@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-import os
-
-# 动态切换Conda环境
-conda_env = "yolo11"
-conda_python = f"/home/jetson/miniconda3/envs/{conda_env}/bin/python3"
-os.system(f"{conda_python} onnx.py")
 
 import argparse
 import cv2
@@ -156,7 +150,7 @@ if __name__ == "__main__":
     parser.add_argument("--model", type=str, default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/best.onnx", help="Path to ONNX model.")
     parser.add_argument("--yaml", default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/flower.yaml", help="Path to YAML file containing class names.")
     parser.add_argument("--source", type=str, default="0", help="Video source (0 for webcam or video file path).")
-    parser.add_argument("--conf-thres", type=float, default=0.7, help="Confidence threshold")
+    parser.add_argument("--conf-thres", type=float, default=0.8, help="Confidence threshold")
     parser.add_argument("--iou-thres", type=float, default=0.7, help="NMS IoU threshold")
     args = parser.parse_args()
 

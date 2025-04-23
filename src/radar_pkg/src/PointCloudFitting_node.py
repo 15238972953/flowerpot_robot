@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-import os
-
-# 动态切换Conda环境
-conda_env = "pointcloud"
-conda_python = f"/home/jetson/miniconda3/envs/{conda_env}/bin/python3"
-os.system(f"{conda_python} PointCloudFitting_node.py")
 
 import rospy
 from sensor_msgs.msg import LaserScan
