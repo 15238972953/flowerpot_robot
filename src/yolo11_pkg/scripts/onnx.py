@@ -147,7 +147,7 @@ class YOLOv8:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/best.onnx", help="Path to ONNX model.")
+    parser.add_argument("--model", type=str, default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/best-MobileNetV2.onnx", help="Path to ONNX model.")
     parser.add_argument("--yaml", default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/flower.yaml", help="Path to YAML file containing class names.")
     parser.add_argument("--source", type=str, default="0", help="Video source (0 for webcam or video file path).")
     parser.add_argument("--conf-thres", type=float, default=0.8, help="Confidence threshold")
