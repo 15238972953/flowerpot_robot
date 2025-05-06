@@ -1,8 +1,11 @@
-... logging to /home/jetson/.ros/log/949bea24-1f7d-11f0-9467-488f4cf99769/roslaunch-unbutu-16807.log
-Checking log directory for disk usage. This may take a while.
-Press Ctrl-C to interrupt
-Done checking log file disk usage. Usage is <1GB.
-
-RLException: Invalid roslaunch XML syntax: not well-formed (invalid token): line 4, column 28
-The traceback for the exception was written to the log file
+Traceback (most recent call last):
+  File "/home/jetson/catkin_ws/src/yolo11_pkg/scripts/onnx.py", line 158, in <module>
+    detector.run_video_detection()
+  File "/home/jetson/catkin_ws/src/yolo11_pkg/scripts/onnx.py", line 138, in run_video_detection
+    processed_frame = self.process_frame(frame)
+  File "/home/jetson/catkin_ws/src/yolo11_pkg/scripts/onnx.py", line 114, in process_frame
+    output = self.session.run(None, {self.input_name: img_data})
+  File "/home/jetson/miniconda3/envs/yolo11/lib/python3.10/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py", line 220, in run
+    return self._sess.run(output_names, input_feed, run_options)
+onnxruntime.capi.onnxruntime_pybind11_state.InvalidArgument: [ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Unexpected input data type. Actual: (tensor(float)) , expected: (tensor(float16))
 
