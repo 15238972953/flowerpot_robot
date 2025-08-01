@@ -1,0 +1,44 @@
+<launch>
+  <!-- 启动 gmapping 节点 -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <!-- 激光雷达话题（根据你的实际话题修改） -->
+    <param name="scan" value="/scan"/>
+    
+    <!-- 机器人坐标系（通常不需要修改） -->
+    <param name="base_frame" value="base_link"/>
+    <param name="odom_frame" value="odom"/>
+    
+    <!-- 建图参数（根据机器人尺寸和运动特性调整） -->
+    <param name="map_update_interval" value="3.0"/>  <!-- 地图更新间隔（秒） -->
+    <param name="maxUrange" value="10.0"/>          <!-- 激光最大有效距离（米） -->
+    <param name="sigma" value="0.05"/>              <!-- 激光数据噪声标准差 -->
+    <param name="kernelSize" value="1"/>            <!-- kernel 大小 -->
+    <param name="lstep" value="0.05"/>              <!-- 平移优化步长 -->
+    <param name="astep" value="0.05"/>              <!-- 旋转优化步长 -->
+    <param name="iterations" value="5"/>            <!-- 迭代次数 -->
+    <param name="lsigma" value="0.075"/>            <!-- 激光噪声 -->
+    <param name="ogain" value="3.0"/>               <!-- 里程计增益 -->
+    <param name="lskip" value="0"/>                 <!-- 激光数据跳采样 -->
+    <param name="srr" value="0.1"/>                 <!-- 平移噪声系数 -->
+    <param name="srt" value="0.2"/>                 <!-- 平移-旋转噪声系数 -->
+    <param name="str" value="0.1"/>                 <!-- 旋转-平移噪声系数 -->
+    <param name="stt" value="0.2"/>                 <!-- 旋转噪声系数 -->
+    <param name="linearUpdate" value="0.5"/>        <!-- 平移超过此值时更新地图（米） -->
+    <param name="angularUpdate" value="0.436"/>     <!-- 旋转超过此值时更新地图（弧度，约25度） -->
+    <param name="temporalUpdate" value="-1.0"/>     <!-- 时间间隔更新（-1表示禁用） -->
+    <param name="resampleThreshold" value="0.5"/>   <!-- 重采样阈值 -->
+    <param name="particles" value="30"/>            <!-- 粒子数量（越多越精确但越耗资源） -->
+    <param name="xmin" value="-10.0"/>              <!-- 地图初始范围（x最小值） -->
+    <param name="ymin" value="-10.0"/>              <!-- 地图初始范围（y最小值） -->
+    <param name="xmax" value="10.0"/>               <!-- 地图初始范围（x最大值） -->
+    <param name="ymax" value="10.0"/>               <!-- 地图初始范围（y最大值） -->
+    <param name="delta" value="0.05"/>              <!-- 地图分辨率（米/像素） -->
+    <param name="llsamplerange" value="0.01"/>      <!-- 线性采样范围 -->
+    <param name="llsamplestep" value="0.01"/>       <!-- 线性采样步长 -->
+    <param name="lasamplerange" value="0.005"/>     <!-- 角度采样范围 -->
+    <param name="lasamplestep" value="0.005"/>      <!-- 角度采样步长 -->
+  </node>
+
+  <!-- 启动 rviz 可视化（可选）
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find gmapping_pkg)/rviz/gmapping.rviz"/> -->
+</launch>

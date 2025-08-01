@@ -554,3 +554,62 @@ make[1]: Leaving directory '/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp'
 
 
 
+Performing C++ SOURCE FILE Test COMPILER_HAS_HIDDEN_VISIBILITY succeeded with the following output:
+Change Dir: /home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4b5c9/fast && /usr/bin/make -f CMakeFiles/cmTC_4b5c9.dir/build.make CMakeFiles/cmTC_4b5c9.dir/build
+make[1]: Entering directory '/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4b5c9.dir/src.cxx.o
+/usr/bin/c++    -DCOMPILER_HAS_HIDDEN_VISIBILITY   -fvisibility=hidden -o CMakeFiles/cmTC_4b5c9.dir/src.cxx.o -c /home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_4b5c9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b5c9.dir/link.txt --verbose=1
+/usr/bin/c++   -DCOMPILER_HAS_HIDDEN_VISIBILITY    -rdynamic CMakeFiles/cmTC_4b5c9.dir/src.cxx.o  -o cmTC_4b5c9 
+make[1]: Leaving directory '/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY succeeded with the following output:
+Change Dir: /home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b351c/fast && /usr/bin/make -f CMakeFiles/cmTC_b351c.dir/build.make CMakeFiles/cmTC_b351c.dir/build
+make[1]: Entering directory '/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b351c.dir/src.cxx.o
+/usr/bin/c++    -DCOMPILER_HAS_HIDDEN_INLINE_VISIBILITY   -fvisibility-inlines-hidden -o CMakeFiles/cmTC_b351c.dir/src.cxx.o -c /home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_b351c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b351c.dir/link.txt --verbose=1
+/usr/bin/c++   -DCOMPILER_HAS_HIDDEN_INLINE_VISIBILITY    -rdynamic CMakeFiles/cmTC_b351c.dir/src.cxx.o  -o cmTC_b351c 
+make[1]: Leaving directory '/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED_ATTR succeeded with the following output:
+Change Dir: /home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_984ea/fast && /usr/bin/make -f CMakeFiles/cmTC_984ea.dir/build.make CMakeFiles/cmTC_984ea.dir/build
+make[1]: Entering directory '/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_984ea.dir/src.cxx.o
+/usr/bin/c++    -DCOMPILER_HAS_DEPRECATED_ATTR   -o CMakeFiles/cmTC_984ea.dir/src.cxx.o -c /home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx
+/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx:2:34: warning: ‘int somefunc()’ is deprecated [-Wdeprecated-declarations]
+    2 |     int main() { return somefunc();}
+      |                                  ^
+/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx:1:37: note: declared here
+    1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+      |                                     ^~~~~~~~
+/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx:2:34: warning: ‘int somefunc()’ is deprecated [-Wdeprecated-declarations]
+    2 |     int main() { return somefunc();}
+      |                                  ^
+/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp/src.cxx:1:37: note: declared here
+    1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+      |                                     ^~~~~~~~
+Linking CXX executable cmTC_984ea
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_984ea.dir/link.txt --verbose=1
+/usr/bin/c++   -DCOMPILER_HAS_DEPRECATED_ATTR    -rdynamic CMakeFiles/cmTC_984ea.dir/src.cxx.o  -o cmTC_984ea 
+make[1]: Leaving directory '/home/jetson/catkin_ws/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+__attribute__((__deprecated__)) int somefunc() { return 0; }
+    int main() { return somefunc();}

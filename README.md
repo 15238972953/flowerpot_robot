@@ -61,7 +61,7 @@ code .
 
 3，终端运行：`sudo chmod 777 /dev/ttyCH343USB0`将接口的权限修改为最大；
 
-4，启动雷达：`roslaunch lslidar_driver lslidar_serial_launch`
+4，启动雷达：`roslaunch lslidar_driver lslidar_serial.launch`
 
 5，测试是否成功：`rostopic echo /scan`
 
@@ -71,7 +71,7 @@ code .
 
 需安装：对应的库（yaml，rospkg，scikit-learn等库，不要装plt的库（没用到）），以后应该就不需要安装了；
 
-在`roscore`和 `roslaunch lslidar_driver lslidar_serial_launch`的前提下，
+在`roscore`和 `roslaunch lslidar_driver lslidar_serial.launch`的前提下，
 
 在catkin_ws目录下运行 `rosrun radar_pkg PointCloudFitting_node.py`即可在终端输出花盆的极坐标信息；
 

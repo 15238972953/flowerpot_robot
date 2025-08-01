@@ -990,6 +990,18 @@ global_planner_LIB_DEPENDS:STATIC=general;navfn;general;costmap_2d;general;layer
 global_planner_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/navigation/global_planner
 
 //Value Computed by CMake
+gmapping_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/slam_gmapping/gmapping
+
+//Value Computed by CMake
+gmapping_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/slam_gmapping/gmapping
+
+//Value Computed by CMake
+gmapping_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/gmapping_pkg
+
+//Value Computed by CMake
+gmapping_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/gmapping_pkg
+
+//Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/gtest/googlemock
 
 //Dependencies for the target
@@ -1009,6 +1021,9 @@ googletest-distribution_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/gtest
 
 //Value Computed by CMake
 googletest-distribution_SOURCE_DIR:STATIC=/usr/src/googletest
+
+//Dependencies for the target
+gridfastslam_LIB_DEPENDS:STATIC=general;scanmatcher;general;log;general;sensor_range;general;sensor_odometry;general;sensor_base;general;utils;
 
 //Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/gtest/googletest
@@ -1079,6 +1094,9 @@ layers_LIB_DEPENDS:STATIC=general;costmap_2d;
 
 //Path to a library.
 lib:FILEPATH=/opt/ros/noetic/lib/librostime.so
+
+//Dependencies for the target
+log_LIB_DEPENDS:STATIC=general;sensor_range;general;sensor_odometry;general;sensor_base;
 
 //Value Computed by CMake
 lslidar_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/lsx10/lslidar
@@ -1193,6 +1211,15 @@ octomap_DIR:PATH=/usr/lib/aarch64-linux-gnu/octomap
 
 //Path to a library.
 onelib:FILEPATH=/usr/lib/aarch64-linux-gnu/libgazebo_opende_ou.so
+
+//Value Computed by CMake
+openslam_gmapping_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/openslam_gmapping
+
+//The directory containing a CMake configuration file for openslam_gmapping.
+openslam_gmapping_DIR:PATH=openslam_gmapping_DIR-NOTFOUND
+
+//Value Computed by CMake
+openslam_gmapping_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/openslam_gmapping
 
 //The directory containing a CMake configuration file for pcl_conversions.
 pcl_conversions_DIR:PATH=/opt/ros/noetic/share/pcl_conversions/cmake
@@ -1347,11 +1374,20 @@ rotate_recovery_LIB_DEPENDS:STATIC=general;base_local_planner;general;trajectory
 //Value Computed by CMake
 rotate_recovery_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/navigation/rotate_recovery
 
+//Dependencies for the target
+scanmatcher_LIB_DEPENDS:STATIC=general;log;general;sensor_range;general;sensor_odometry;general;sensor_base;general;utils;
+
 //The directory containing a CMake configuration file for sdformat9.
 sdformat9_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/sdformat9
 
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/noetic/share/sensor_msgs/cmake
+
+//Dependencies for the target
+sensor_odometry_LIB_DEPENDS:STATIC=general;sensor_base;
+
+//Dependencies for the target
+sensor_range_LIB_DEPENDS:STATIC=general;sensor_base;
 
 //The directory containing a CMake configuration file for serial.
 serial_DIR:PATH=/opt/ros/noetic/share/serial/cmake
@@ -1361,6 +1397,12 @@ serial_stm32_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/serial_stm32_pkg
 
 //Value Computed by CMake
 serial_stm32_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/serial_stm32_pkg
+
+//Value Computed by CMake
+slam_gmapping_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/slam_gmapping/slam_gmapping
+
+//Value Computed by CMake
+slam_gmapping_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/slam_gmapping/slam_gmapping
 
 //The directory containing a CMake configuration file for smclib.
 smclib_DIR:PATH=/opt/ros/noetic/share/smclib/cmake
@@ -1644,7 +1686,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=29
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=30
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1687,6 +1729,14 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Compiler support for a deprecated attribute
+COMPILER_HAS_DEPRECATED:INTERNAL=1
+//Test COMPILER_HAS_DEPRECATED_ATTR
+COMPILER_HAS_DEPRECATED_ATTR:INTERNAL=1
+//Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+COMPILER_HAS_HIDDEN_INLINE_VISIBILITY:INTERNAL=1
+//Test COMPILER_HAS_HIDDEN_VISIBILITY
+COMPILER_HAS_HIDDEN_VISIBILITY:INTERNAL=1
 //ADVANCED property for variable: CPPZMQ_INCLUDE_DIRS
 CPPZMQ_INCLUDE_DIRS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CURL_INCLUDE_DIR
