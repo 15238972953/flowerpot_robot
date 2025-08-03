@@ -200,10 +200,16 @@ struct Printer< ::processdata_pkg::serial_data_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::processdata_pkg::serial_data_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "PWM_Left: ";
     Printer<int8_t>::stream(s, indent + "  ", v.PWM_Left);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "PWM_Right: ";
     Printer<int8_t>::stream(s, indent + "  ", v.PWM_Right);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "command: ";
     Printer<int8_t>::stream(s, indent + "  ", v.command);
   }

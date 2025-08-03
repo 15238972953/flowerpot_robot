@@ -1,0 +1,181 @@
+-- Using CATKIN_DEVEL_PREFIX: /home/jetson/catkin_ws/devel
+-- Using CMAKE_PREFIX_PATH: /home/jetson/catkin_ws/devel;/opt/ros/noetic
+-- This workspace overlays: /home/jetson/catkin_ws/devel;/opt/ros/noetic
+-- Found PythonInterp: /home/jetson/miniconda3/bin/python3 (found suitable version "3.12.9", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /home/jetson/miniconda3/bin/python3
+-- Using Debian Python package layout
+-- Using empy: /home/jetson/miniconda3/lib/python3.12/site-packages/em.py
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/jetson/catkin_ws/build/test_results
+-- Forcing gtest/gmock from source, though one was otherwise available.
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+-- Found PythonInterp: /home/jetson/miniconda3/bin/python3 (found version "3.12.9") 
+-- Using Python nosetests: /usr/bin/nosetests3
+-- catkin 0.8.12
+-- BUILD_SHARED_LIBS is on
+-- BUILD_SHARED_LIBS is on
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- ~~  traversing 26 packages in topological order:
+-- ~~  - lslidar (metapackage)
+-- ~~  - navigation (metapackage)
+-- ~~  - lslidar_msgs
+-- ~~  - gmapping_pkg
+-- ~~  - imu_pkg
+-- ~~  - radar_msgs
+-- ~~  - processdata_pkg
+-- ~~  - map_server
+-- ~~  - serial_stm32_pkg
+-- ~~  - radar_pkg
+-- ~~  - lslidar_driver
+-- ~~  - amcl
+-- ~~  - fake_localization
+-- ~~  - voxel_grid
+-- ~~  - costmap_2d
+-- ~~  - nav_core
+-- ~~  - base_local_planner
+-- ~~  - carrot_planner
+-- ~~  - clear_costmap_recovery
+-- ~~  - dwa_local_planner
+-- ~~  - move_slow_and_clear
+-- ~~  - navfn
+-- ~~  - global_planner
+-- ~~  - rotate_recovery
+-- ~~  - move_base
+-- ~~  - yolo11_pkg
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- +++ processing catkin metapackage: 'lslidar'
+-- ==> add_subdirectory(lsx10/lslidar)
+-- +++ processing catkin metapackage: 'navigation'
+-- ==> add_subdirectory(navigation/navigation)
+-- +++ processing catkin package: 'lslidar_msgs'
+-- ==> add_subdirectory(lsx10/lslidar_msgs)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- lslidar_msgs: 5 messages, 0 services
+-- +++ processing catkin package: 'gmapping_pkg'
+-- ==> add_subdirectory(gmapping_pkg)
+-- +++ processing catkin package: 'imu_pkg'
+-- ==> add_subdirectory(imu_pkg)
+-- +++ processing catkin package: 'radar_msgs'
+-- ==> add_subdirectory(radar_msgs)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- radar_msgs: 2 messages, 0 services
+-- +++ processing catkin package: 'processdata_pkg'
+-- ==> add_subdirectory(processdata_pkg)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- processdata_pkg: 1 messages, 0 services
+-- +++ processing catkin package: 'map_server'
+-- ==> add_subdirectory(navigation/map_server)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: filesystem 
+-- +++ processing catkin package: 'serial_stm32_pkg'
+-- ==> add_subdirectory(serial_stm32_pkg)
+-- +++ processing catkin package: 'radar_pkg'
+-- ==> add_subdirectory(radar_pkg)
+-- Installing devel-space wrapper /home/jetson/catkin_ws/src/radar_pkg/src/radar.sh to /home/jetson/catkin_ws/devel/lib/radar_pkg
+-- +++ processing catkin package: 'lslidar_driver'
+-- ==> add_subdirectory(lsx10/lslidar_driver)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0")  
+CMake Warning at /opt/ros/noetic/share/catkin/cmake/catkin_package.cmake:166 (message):
+  catkin_package() DEPENDS on 'boost' but neither 'boost_INCLUDE_DIRS' nor
+  'boost_LIBRARIES' is defined.
+Call Stack (most recent call first):
+  /opt/ros/noetic/share/catkin/cmake/catkin_package.cmake:102 (_catkin_package)
+  lsx10/lslidar_driver/CMakeLists.txt:22 (catkin_package)
+
+
+-- +++ processing catkin package: 'amcl'
+-- ==> add_subdirectory(navigation/amcl)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'fake_localization'
+-- ==> add_subdirectory(navigation/fake_localization)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'voxel_grid'
+-- ==> add_subdirectory(navigation/voxel_grid)
+-- +++ processing catkin package: 'costmap_2d'
+-- ==> add_subdirectory(navigation/costmap_2d)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: system thread 
+-- costmap_2d: 1 messages, 0 services
+-- +++ processing catkin package: 'nav_core'
+-- ==> add_subdirectory(navigation/nav_core)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'base_local_planner'
+-- ==> add_subdirectory(navigation/base_local_planner)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: thread 
+-- base_local_planner: 1 messages, 0 services
+-- +++ processing catkin package: 'carrot_planner'
+-- ==> add_subdirectory(navigation/carrot_planner)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'clear_costmap_recovery'
+-- ==> add_subdirectory(navigation/clear_costmap_recovery)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'dwa_local_planner'
+-- ==> add_subdirectory(navigation/dwa_local_planner)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'move_slow_and_clear'
+-- ==> add_subdirectory(navigation/move_slow_and_clear)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'navfn'
+-- ==> add_subdirectory(navigation/navfn)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- navfn: 0 messages, 2 services
+-- NAVFN_HAVE_FLTK: 1, NETPBM: 
+-- FLTK orf NETPBM not found: cannot build navtest
+-- +++ processing catkin package: 'global_planner'
+-- ==> add_subdirectory(navigation/global_planner)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'rotate_recovery'
+-- ==> add_subdirectory(navigation/rotate_recovery)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'move_base'
+-- ==> add_subdirectory(navigation/move_base)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'yolo11_pkg'
+-- ==> add_subdirectory(yolo11_pkg)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- yolo11_pkg: 2 messages, 0 services
+-- Installing devel-space wrapper /home/jetson/catkin_ws/src/yolo11_pkg/scripts/camera.sh to /home/jetson/catkin_ws/devel/lib/yolo11_pkg
+-- Configuring done
+WARNING: Target "map_server_utest" requests linking to directory "/usr/lib/aarch64-linux-gnu".  Targets may link only to libraries.  CMake is dropping the item.
+WARNING: Target "map_server_utest" requests linking to directory "/usr/lib/aarch64-linux-gnu".  Targets may link only to libraries.  CMake is dropping the item.
+WARNING: Target "map_server_image_loader" requests linking to directory "/usr/lib/aarch64-linux-gnu".  Targets may link only to libraries.  CMake is dropping the item.
+WARNING: Target "map_server" requests linking to directory "/usr/lib/aarch64-linux-gnu".  Targets may link only to libraries.  CMake is dropping the item.
+-- Generating done
+-- Build files have been written to: /home/jetson/catkin_ws/build
+cd /home/jetson/catkin_ws/build && /usr/bin/cmake -S/home/jetson/catkin_ws/src -B/home/jetson/catkin_ws/build --check-build-system CMakeFiles/Makefile.cmake 0
+cd /home/jetson/catkin_ws/build && /usr/bin/cmake -E cmake_progress_start /home/jetson/catkin_ws/build/CMakeFiles /home/jetson/catkin_ws/build/imu_pkg/CMakeFiles/progress.marks
+cd /home/jetson/catkin_ws/build && make -f CMakeFiles/Makefile2 imu_pkg/all
+make[1]: Entering directory '/home/jetson/catkin_ws/build'
+make -f imu_pkg/CMakeFiles/imu_node.dir/build.make imu_pkg/CMakeFiles/imu_node.dir/depend
+make[2]: Entering directory '/home/jetson/catkin_ws/build'
+cd /home/jetson/catkin_ws/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/jetson/catkin_ws/src /home/jetson/catkin_ws/src/imu_pkg /home/jetson/catkin_ws/build /home/jetson/catkin_ws/build/imu_pkg /home/jetson/catkin_ws/build/imu_pkg/CMakeFiles/imu_node.dir/DependInfo.cmake --color=
+Dependee "/home/jetson/catkin_ws/build/imu_pkg/CMakeFiles/imu_node.dir/DependInfo.cmake" is newer than depender "/home/jetson/catkin_ws/build/imu_pkg/CMakeFiles/imu_node.dir/depend.internal".
+Dependee "/home/jetson/catkin_ws/build/imu_pkg/CMakeFiles/CMakeDirectoryInformation.cmake" is newer than depender "/home/jetson/catkin_ws/build/imu_pkg/CMakeFiles/imu_node.dir/depend.internal".
+Scanning dependencies of target imu_node
+make[2]: Leaving directory '/home/jetson/catkin_ws/build'
+make -f imu_pkg/CMakeFiles/imu_node.dir/build.make imu_pkg/CMakeFiles/imu_node.dir/build
+make[2]: Entering directory '/home/jetson/catkin_ws/build'
+Building CXX object imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o
+cd /home/jetson/catkin_ws/build/imu_pkg && /usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"imu_pkg\" -Dimu_node_EXPORTS -I/home/jetson/catkin_ws/src/imu_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -fPIC   -o CMakeFiles/imu_node.dir/src/imu_node.cpp.o -c /home/jetson/catkin_ws/src/imu_pkg/src/imu_node.cpp
+Linking CXX shared library /home/jetson/catkin_ws/devel/lib/libimu_node.so
+cd /home/jetson/catkin_ws/build/imu_pkg && /usr/bin/cmake -E cmake_link_script CMakeFiles/imu_node.dir/link.txt --verbose=1
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libimu_node.so -o /home/jetson/catkin_ws/devel/lib/libimu_node.so CMakeFiles/imu_node.dir/src/imu_node.cpp.o  -Wl,-rpath,/opt/ros/noetic/lib /opt/ros/noetic/lib/libroscpp.so -lpthread /usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0 /usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0 /opt/ros/noetic/lib/librosconsole.so /opt/ros/noetic/lib/librosconsole_log4cxx.so /opt/ros/noetic/lib/librosconsole_backend_interface.so -llog4cxx /usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0 /opt/ros/noetic/lib/libxmlrpcpp.so /opt/ros/noetic/lib/libserial.so /opt/ros/noetic/lib/libroscpp_serialization.so /opt/ros/noetic/lib/librostime.so /usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0 /opt/ros/noetic/lib/libcpp_common.so /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0 /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0 /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4 
+make[2]: Leaving directory '/home/jetson/catkin_ws/build'
+Built target imu_node
+make[1]: Leaving directory '/home/jetson/catkin_ws/build'
+/usr/bin/cmake -E cmake_progress_start /home/jetson/catkin_ws/build/CMakeFiles 0
+Base path: /home/jetson/catkin_ws
+Source space: /home/jetson/catkin_ws/src
+Build space: /home/jetson/catkin_ws/build
+Devel space: /home/jetson/catkin_ws/devel
+Install space: /home/jetson/catkin_ws/install
+####
+#### Running command: "cmake /home/jetson/catkin_ws/src -DCATKIN_DEVEL_PREFIX=/home/jetson/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jetson/catkin_ws/install -G Unix Makefiles" in "/home/jetson/catkin_ws/build"
+####
+####
+#### Running command: "make -j1 VERBOSE=1" in "/home/jetson/catkin_ws/build/imu_pkg"
+####

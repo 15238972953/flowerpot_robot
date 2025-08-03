@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/navfn/CMakeFiles/_navfn_generate_messages_check_deps_SetCostmap.dir/progress.make
 
 navigation/navfn/CMakeFiles/_navfn_generate_messages_check_deps_SetCostmap:
-	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py navfn /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv 
+	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py navfn /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv 
 
 _navfn_generate_messages_check_deps_SetCostmap: navigation/navfn/CMakeFiles/_navfn_generate_messages_check_deps_SetCostmap
 _navfn_generate_messages_check_deps_SetCostmap: navigation/navfn/CMakeFiles/_navfn_generate_messages_check_deps_SetCostmap.dir/build.make

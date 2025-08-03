@@ -200,10 +200,16 @@ struct Printer< ::radar_msgs::radar_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::radar_msgs::radar_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "n: ";
     Printer<int8_t>::stream(s, indent + "  ", v.n);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "r: ";
     Printer<float>::stream(s, indent + "  ", v.r);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "phi: ";
     Printer<float>::stream(s, indent + "  ", v.phi);
   }

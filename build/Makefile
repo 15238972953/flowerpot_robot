@@ -701,6 +701,19 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named imu_node
+
+# Build rule for target.
+imu_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_node
+.PHONY : imu_node
+
+# fast build rule for target.
+imu_node/fast:
+	$(MAKE) -f imu_pkg/CMakeFiles/imu_node.dir/build.make imu_pkg/CMakeFiles/imu_node.dir/build
+.PHONY : imu_node/fast
+
+#=============================================================================
 # Target rules for targets named radar_msgs_generate_messages
 
 # Build rule for target.
@@ -4823,6 +4836,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... imu_node"
 	@echo "... radar_msgs_generate_messages"
 	@echo "... radar_msgs_generate_messages_eus"
 	@echo "... _radar_msgs_generate_messages_check_deps_array"

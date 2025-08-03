@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/costmap_2d/CMakeFiles/costmap_2d_willow-full-0.025.pgm.dir/progress.make
 
 navigation/costmap_2d/CMakeFiles/costmap_2d_willow-full-0.025.pgm:
-	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/costmap_2d/willow-full-0.025.pgm /home/jetson/catkin_ws/devel/share/costmap_2d/test/willow-full-0.025.pgm e66b17ee374f2d7657972efcb3e2e4f7 --ignore-error
+	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/costmap_2d/willow-full-0.025.pgm /home/jetson/catkin_ws/devel/share/costmap_2d/test/willow-full-0.025.pgm e66b17ee374f2d7657972efcb3e2e4f7 --ignore-error
 
 costmap_2d_willow-full-0.025.pgm: navigation/costmap_2d/CMakeFiles/costmap_2d_willow-full-0.025.pgm
 costmap_2d_willow-full-0.025.pgm: navigation/costmap_2d/CMakeFiles/costmap_2d_willow-full-0.025.pgm.dir/build.make

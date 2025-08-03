@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/base_local_planner/CMakeFiles/_base_local_planner_generate_messages_check_deps_Position2DInt.dir/progress.make
 
 navigation/base_local_planner/CMakeFiles/_base_local_planner_generate_messages_check_deps_Position2DInt:
-	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py base_local_planner /home/jetson/catkin_ws/src/navigation/base_local_planner/msg/Position2DInt.msg 
+	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py base_local_planner /home/jetson/catkin_ws/src/navigation/base_local_planner/msg/Position2DInt.msg 
 
 _base_local_planner_generate_messages_check_deps_Position2DInt: navigation/base_local_planner/CMakeFiles/_base_local_planner_generate_messages_check_deps_Position2DInt
 _base_local_planner_generate_messages_check_deps_Position2DInt: navigation/base_local_planner/CMakeFiles/_base_local_planner_generate_messages_check_deps_Position2DInt.dir/build.make

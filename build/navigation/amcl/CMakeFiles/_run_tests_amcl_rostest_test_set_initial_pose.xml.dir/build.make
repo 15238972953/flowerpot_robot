@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/amcl/CMakeFiles/_run_tests_amcl_rostest_test_set_initial_pose.xml.dir/progress.make
 
 navigation/amcl/CMakeFiles/_run_tests_amcl_rostest_test_set_initial_pose.xml:
-	cd /home/jetson/catkin_ws/build/navigation/amcl && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/amcl/rostest-test_set_initial_pose.xml "/usr/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/jetson/catkin_ws/src/navigation/amcl --package=amcl --results-filename test_set_initial_pose.xml --results-base-dir \"/home/jetson/catkin_ws/build/test_results\" /home/jetson/catkin_ws/src/navigation/amcl/test/set_initial_pose.xml "
+	cd /home/jetson/catkin_ws/build/navigation/amcl && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/amcl/rostest-test_set_initial_pose.xml "/home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/jetson/catkin_ws/src/navigation/amcl --package=amcl --results-filename test_set_initial_pose.xml --results-base-dir \"/home/jetson/catkin_ws/build/test_results\" /home/jetson/catkin_ws/src/navigation/amcl/test/set_initial_pose.xml "
 
 _run_tests_amcl_rostest_test_set_initial_pose.xml: navigation/amcl/CMakeFiles/_run_tests_amcl_rostest_test_set_initial_pose.xml
 _run_tests_amcl_rostest_test_set_initial_pose.xml: navigation/amcl/CMakeFiles/_run_tests_amcl_rostest_test_set_initial_pose.xml.dir/build.make

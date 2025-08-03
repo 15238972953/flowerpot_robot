@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/map_server/CMakeFiles/_run_tests_map_server_rostest_test_rtest.xml.dir/progress.make
 
 navigation/map_server/CMakeFiles/_run_tests_map_server_rostest_test_rtest.xml:
-	cd /home/jetson/catkin_ws/build/navigation/map_server && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/map_server/rostest-test_rtest.xml "/usr/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/jetson/catkin_ws/src/navigation/map_server --package=map_server --results-filename test_rtest.xml --results-base-dir \"/home/jetson/catkin_ws/build/test_results\" /home/jetson/catkin_ws/src/navigation/map_server/test/rtest.xml "
+	cd /home/jetson/catkin_ws/build/navigation/map_server && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/map_server/rostest-test_rtest.xml "/home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/jetson/catkin_ws/src/navigation/map_server --package=map_server --results-filename test_rtest.xml --results-base-dir \"/home/jetson/catkin_ws/build/test_results\" /home/jetson/catkin_ws/src/navigation/map_server/test/rtest.xml "
 
 _run_tests_map_server_rostest_test_rtest.xml: navigation/map_server/CMakeFiles/_run_tests_map_server_rostest_test_rtest.xml
 _run_tests_map_server_rostest_test_rtest.xml: navigation/map_server/CMakeFiles/_run_tests_map_server_rostest_test_rtest.xml.dir/build.make

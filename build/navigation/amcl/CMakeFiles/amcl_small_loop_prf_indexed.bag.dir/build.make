@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/amcl/CMakeFiles/amcl_small_loop_prf_indexed.bag.dir/progress.make
 
 navigation/amcl/CMakeFiles/amcl_small_loop_prf_indexed.bag:
-	cd /home/jetson/catkin_ws/build/navigation/amcl && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/amcl/small_loop_prf_indexed.bag /home/jetson/catkin_ws/devel/share/amcl/test/small_loop_prf_indexed.bag e4ef0fc006872b43f12ed8a7ce7dcd81 --ignore-error
+	cd /home/jetson/catkin_ws/build/navigation/amcl && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/amcl/small_loop_prf_indexed.bag /home/jetson/catkin_ws/devel/share/amcl/test/small_loop_prf_indexed.bag e4ef0fc006872b43f12ed8a7ce7dcd81 --ignore-error
 
 amcl_small_loop_prf_indexed.bag: navigation/amcl/CMakeFiles/amcl_small_loop_prf_indexed.bag
 amcl_small_loop_prf_indexed.bag: navigation/amcl/CMakeFiles/amcl_small_loop_prf_indexed.bag.dir/build.make

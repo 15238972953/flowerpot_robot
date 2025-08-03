@@ -86,5 +86,16 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 # 6、串口通信
 
 
+# 7.IMU
+
 
 # 更新中。。。
+
+# 注意：
+1.在`rm -rf build devel`后重新进行编译时会因为包的编译依赖关系而报错：
+```bash
+catkin_make --pkg lslidar_msgs
+catkin_make --pkg lslidar lslidar_driver
+catkin_make --pkg yolo11_pkg   # 要在processdata_pkg之前
+catkin_make --pkg processdata_pkg   
+```

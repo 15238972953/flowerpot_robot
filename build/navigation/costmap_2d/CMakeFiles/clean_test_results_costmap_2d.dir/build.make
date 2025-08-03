@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/costmap_2d/CMakeFiles/clean_test_results_costmap_2d.dir/progress.make
 
 navigation/costmap_2d/CMakeFiles/clean_test_results_costmap_2d:
-	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/costmap_2d
+	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/costmap_2d
 
 clean_test_results_costmap_2d: navigation/costmap_2d/CMakeFiles/clean_test_results_costmap_2d
 clean_test_results_costmap_2d: navigation/costmap_2d/CMakeFiles/clean_test_results_costmap_2d.dir/build.make

@@ -197,14 +197,25 @@ struct Printer< ::lslidar_msgs::LslidarPacket_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::lslidar_msgs::LslidarPacket_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "stamp: ";
     Printer<ros::Time>::stream(s, indent + "  ", v.stamp);
-    s << indent << "data[]" << std::endl;
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "data: ";
+    if (v.data.empty() || true)
+      s << "[";
     for (size_t i = 0; i < v.data.size(); ++i)
     {
-      s << indent << "  data[" << i << "]: ";
-      Printer<uint8_t>::stream(s, indent + "  ", v.data[i]);
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<uint8_t>::stream(s, true ? std::string() : indent + "    ", v.data[i]);
     }
+    if (v.data.empty() || true)
+      s << "]";
   }
 };
 

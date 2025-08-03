@@ -118,6 +118,21 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/home/jetson/catkin_ws/install/setup.fish;/home/jetson/catkin_ws/install/local_setup.fish")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+file(INSTALL DESTINATION "/home/jetson/catkin_ws/install" TYPE FILE FILES
+    "/home/jetson/catkin_ws/build/catkin_generated/installspace/setup.fish"
+    "/home/jetson/catkin_ws/build/catkin_generated/installspace/local_setup.fish"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
    "/home/jetson/catkin_ws/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
@@ -135,6 +150,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/jetson/catkin_ws/build/navigation/navigation/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/lsx10/lslidar_msgs/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/gmapping_pkg/cmake_install.cmake")
+  include("/home/jetson/catkin_ws/build/imu_pkg/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/radar_msgs/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/processdata_pkg/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/navigation/map_server/cmake_install.cmake")

@@ -60,22 +60,22 @@ navigation/navfn/CMakeFiles/navfn_generate_messages_eus: /home/jetson/catkin_ws/
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv
-/home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
+/home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from navfn/MakeNavPlan.srv"
-	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv
+	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/SetCostmap.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/SetCostmap.l: /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from navfn/SetCostmap.srv"
-	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv
+	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for navfn"
-	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/navfn navfn geometry_msgs
+	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/navfn navfn geometry_msgs
 
 navfn_generate_messages_eus: navigation/navfn/CMakeFiles/navfn_generate_messages_eus
 navfn_generate_messages_eus: /home/jetson/catkin_ws/devel/share/roseus/ros/navfn/srv/MakeNavPlan.l

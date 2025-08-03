@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/map_server/CMakeFiles/run_tests_map_server_gtest_map_server_utest.dir/progress.make
 
 navigation/map_server/CMakeFiles/run_tests_map_server_gtest_map_server_utest:
-	cd /home/jetson/catkin_ws/build/navigation/map_server && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/map_server/gtest-map_server_utest.xml "/home/jetson/catkin_ws/devel/lib/map_server/map_server_utest --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/map_server/gtest-map_server_utest.xml"
+	cd /home/jetson/catkin_ws/build/navigation/map_server && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/map_server/gtest-map_server_utest.xml "/home/jetson/catkin_ws/devel/lib/map_server/map_server_utest --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/map_server/gtest-map_server_utest.xml"
 
 run_tests_map_server_gtest_map_server_utest: navigation/map_server/CMakeFiles/run_tests_map_server_gtest_map_server_utest
 run_tests_map_server_gtest_map_server_utest: navigation/map_server/CMakeFiles/run_tests_map_server_gtest_map_server_utest.dir/build.make

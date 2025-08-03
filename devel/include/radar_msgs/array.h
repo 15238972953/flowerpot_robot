@@ -190,14 +190,21 @@ struct Printer< ::radar_msgs::array_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::radar_msgs::array_<ContainerAllocator>& v)
   {
-    s << indent << "array[]" << std::endl;
+    if (false || !indent.empty())
+      s << std::endl;
+    s << indent << "array: ";
+    if (v.array.empty() || false)
+      s << "[";
     for (size_t i = 0; i < v.array.size(); ++i)
     {
-      s << indent << "  array[" << i << "]: ";
-      s << std::endl;
-      s << indent;
-      Printer< ::radar_msgs::radar_<ContainerAllocator> >::stream(s, indent + "    ", v.array[i]);
+      if (false && i > 0)
+        s << ", ";
+      else if (!false)
+        s << std::endl << indent << "  -";
+      Printer< ::radar_msgs::radar_<ContainerAllocator> >::stream(s, false ? std::string() : indent + "    ", v.array[i]);
     }
+    if (v.array.empty() || false)
+      s << "]";
   }
 };
 

@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/amcl/CMakeFiles/amcl_rosie_localization_stage.bag.dir/progress.make
 
 navigation/amcl/CMakeFiles/amcl_rosie_localization_stage.bag:
-	cd /home/jetson/catkin_ws/build/navigation/amcl && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/amcl/rosie_localization_stage.bag /home/jetson/catkin_ws/devel/share/amcl/test/rosie_localization_stage.bag 3347bf3835724cfa45e958c5c1846066 --ignore-error
+	cd /home/jetson/catkin_ws/build/navigation/amcl && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/amcl/rosie_localization_stage.bag /home/jetson/catkin_ws/devel/share/amcl/test/rosie_localization_stage.bag 3347bf3835724cfa45e958c5c1846066 --ignore-error
 
 amcl_rosie_localization_stage.bag: navigation/amcl/CMakeFiles/amcl_rosie_localization_stage.bag
 amcl_rosie_localization_stage.bag: navigation/amcl/CMakeFiles/amcl_rosie_localization_stage.bag.dir/build.make

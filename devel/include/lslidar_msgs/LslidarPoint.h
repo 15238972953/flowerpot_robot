@@ -237,18 +237,32 @@ struct Printer< ::lslidar_msgs::LslidarPoint_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::lslidar_msgs::LslidarPoint_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "time: ";
     Printer<float>::stream(s, indent + "  ", v.time);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "x: ";
     Printer<double>::stream(s, indent + "  ", v.x);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "y: ";
     Printer<double>::stream(s, indent + "  ", v.y);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "z: ";
     Printer<double>::stream(s, indent + "  ", v.z);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "azimuth: ";
     Printer<double>::stream(s, indent + "  ", v.azimuth);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "distance: ";
     Printer<double>::stream(s, indent + "  ", v.distance);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "intensity: ";
     Printer<double>::stream(s, indent + "  ", v.intensity);
   }

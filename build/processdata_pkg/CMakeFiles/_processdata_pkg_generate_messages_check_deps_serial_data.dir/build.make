@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include processdata_pkg/CMakeFiles/_processdata_pkg_generate_messages_check_deps_serial_data.dir/progress.make
 
 processdata_pkg/CMakeFiles/_processdata_pkg_generate_messages_check_deps_serial_data:
-	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py processdata_pkg /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg 
+	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py processdata_pkg /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg 
 
 _processdata_pkg_generate_messages_check_deps_serial_data: processdata_pkg/CMakeFiles/_processdata_pkg_generate_messages_check_deps_serial_data
 _processdata_pkg_generate_messages_check_deps_serial_data: processdata_pkg/CMakeFiles/_processdata_pkg_generate_messages_check_deps_serial_data.dir/build.make

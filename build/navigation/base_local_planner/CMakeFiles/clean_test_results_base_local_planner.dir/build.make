@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/base_local_planner/CMakeFiles/clean_test_results_base_local_planner.dir/progress.make
 
 navigation/base_local_planner/CMakeFiles/clean_test_results_base_local_planner:
-	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/base_local_planner
+	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/base_local_planner
 
 clean_test_results_base_local_planner: navigation/base_local_planner/CMakeFiles/clean_test_results_base_local_planner
 clean_test_results_base_local_planner: navigation/base_local_planner/CMakeFiles/clean_test_results_base_local_planner.dir/build.make

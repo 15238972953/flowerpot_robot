@@ -1,0 +1,8 @@
+prefix=/home/jetson/catkin_ws/devel
+
+Name: imu_pkg
+Description: Description of imu_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib -limu_pkg
+Requires: roscpp serial std_msgs

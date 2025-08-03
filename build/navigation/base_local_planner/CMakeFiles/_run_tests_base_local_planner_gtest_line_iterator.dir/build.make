@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/base_local_planner/CMakeFiles/_run_tests_base_local_planner_gtest_line_iterator.dir/progress.make
 
 navigation/base_local_planner/CMakeFiles/_run_tests_base_local_planner_gtest_line_iterator:
-	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-line_iterator.xml "/home/jetson/catkin_ws/devel/lib/base_local_planner/line_iterator --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-line_iterator.xml"
+	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-line_iterator.xml "/home/jetson/catkin_ws/devel/lib/base_local_planner/line_iterator --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-line_iterator.xml"
 
 _run_tests_base_local_planner_gtest_line_iterator: navigation/base_local_planner/CMakeFiles/_run_tests_base_local_planner_gtest_line_iterator
 _run_tests_base_local_planner_gtest_line_iterator: navigation/base_local_planner/CMakeFiles/_run_tests_base_local_planner_gtest_line_iterator.dir/build.make

@@ -263,17 +263,17 @@ int orientation_window_size;
 
 
 
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       int lethal_cost;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       int neutral_cost;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double cost_factor;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       bool publish_potential;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       int orientation_mode;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       int orientation_window_size;
 //#line 231 "/opt/ros/noetic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
@@ -301,16 +301,16 @@ int orientation_window_size;
       {
         ROS_ERROR("GlobalPlannerConfig::__fromMessage__ called with an unexpected parameter.");
         ROS_ERROR("Booleans:");
-        for (unsigned int i = 0; i < msg.bools.size(); i++)
+        for (size_t i = 0; i < msg.bools.size(); i++)
           ROS_ERROR("  %s", msg.bools[i].name.c_str());
         ROS_ERROR("Integers:");
-        for (unsigned int i = 0; i < msg.ints.size(); i++)
+        for (size_t i = 0; i < msg.ints.size(); i++)
           ROS_ERROR("  %s", msg.ints[i].name.c_str());
         ROS_ERROR("Doubles:");
-        for (unsigned int i = 0; i < msg.doubles.size(); i++)
+        for (size_t i = 0; i < msg.doubles.size(); i++)
           ROS_ERROR("  %s", msg.doubles[i].name.c_str());
         ROS_ERROR("Strings:");
-        for (unsigned int i = 0; i < msg.strs.size(); i++)
+        for (size_t i = 0; i < msg.strs.size(); i++)
           ROS_ERROR("  %s", msg.strs[i].name.c_str());
         // @todo Check that there are no duplicates. Make this error more
         // explicit.
@@ -413,69 +413,69 @@ int orientation_window_size;
     GlobalPlannerConfigStatics()
     {
 GlobalPlannerConfig::GroupDescription<GlobalPlannerConfig::DEFAULT, GlobalPlannerConfig> Default("Default", "", 0, 0, true, &GlobalPlannerConfig::groups);
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.lethal_cost = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.lethal_cost = 255;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.lethal_cost = 253;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("lethal_cost", "int", 0, "Lethal Cost", "", &GlobalPlannerConfig::lethal_cost)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("lethal_cost", "int", 0, "Lethal Cost", "", &GlobalPlannerConfig::lethal_cost)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.neutral_cost = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.neutral_cost = 255;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.neutral_cost = 50;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("neutral_cost", "int", 0, "Neutral Cost", "", &GlobalPlannerConfig::neutral_cost)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("neutral_cost", "int", 0, "Neutral Cost", "", &GlobalPlannerConfig::neutral_cost)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.cost_factor = 0.01;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.cost_factor = 5.0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.cost_factor = 3.0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<double>("cost_factor", "double", 0, "Factor to multiply each cost from costmap by", "", &GlobalPlannerConfig::cost_factor)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<double>("cost_factor", "double", 0, "Factor to multiply each cost from costmap by", "", &GlobalPlannerConfig::cost_factor)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.publish_potential = 0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.publish_potential = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.publish_potential = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<bool>("publish_potential", "bool", 0, "Publish Potential Costmap", "", &GlobalPlannerConfig::publish_potential)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<bool>("publish_potential", "bool", 0, "Publish Potential Costmap", "", &GlobalPlannerConfig::publish_potential)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.orientation_mode = 0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.orientation_mode = 6;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.orientation_mode = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("orientation_mode", "int", 0, "How to set the orientation of each point", "{'enum': [{'name': 'None', 'type': 'int', 'value': 0, 'srcline': 14, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'No orientations added except goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Forward', 'type': 'int', 'value': 1, 'srcline': 15, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Positive x axis points along path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Interpolate', 'type': 'int', 'value': 2, 'srcline': 17, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Orientations are a linear blend of start and goal pose', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'ForwardThenInterpolate', 'type': 'int', 'value': 3, 'srcline': 18, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Forward orientation until last straightaway, then a linear blend until the goal pose', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Backward', 'type': 'int', 'value': 4, 'srcline': 20, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Negative x axis points along the path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Leftward', 'type': 'int', 'value': 5, 'srcline': 22, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Positive y axis points along the path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Rightward', 'type': 'int', 'value': 6, 'srcline': 24, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Negative y axis points along the path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}], 'enum_description': 'How to set the orientation of each point'}", &GlobalPlannerConfig::orientation_mode)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("orientation_mode", "int", 0, "How to set the orientation of each point", "{'enum': [{'name': 'None', 'type': 'int', 'value': 0, 'srcline': 14, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'No orientations added except goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Forward', 'type': 'int', 'value': 1, 'srcline': 15, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Positive x axis points along path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Interpolate', 'type': 'int', 'value': 2, 'srcline': 17, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Orientations are a linear blend of start and goal pose', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'ForwardThenInterpolate', 'type': 'int', 'value': 3, 'srcline': 18, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Forward orientation until last straightaway, then a linear blend until the goal pose', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Backward', 'type': 'int', 'value': 4, 'srcline': 20, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Negative x axis points along the path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Leftward', 'type': 'int', 'value': 5, 'srcline': 22, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Positive y axis points along the path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Rightward', 'type': 'int', 'value': 6, 'srcline': 24, 'srcfile': '/home/jetson/catkin_ws/src/navigation/global_planner/cfg/GlobalPlanner.cfg', 'description': 'Negative y axis points along the path, except for the goal orientation', 'ctype': 'int', 'cconsttype': 'const int'}], 'enum_description': 'How to set the orientation of each point'}", &GlobalPlannerConfig::orientation_mode)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.orientation_window_size = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.orientation_window_size = 255;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.orientation_window_size = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("orientation_window_size", "int", 0, "What window to use to determine the orientation based on the position derivative specified by the orientation mode", "", &GlobalPlannerConfig::orientation_window_size)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(GlobalPlannerConfig::AbstractParamDescriptionConstPtr(new GlobalPlannerConfig::ParamDescription<int>("orientation_window_size", "int", 0, "What window to use to determine the orientation based on the position derivative specified by the orientation mode", "", &GlobalPlannerConfig::orientation_window_size)));
-//#line 246 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 247 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
-//#line 246 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 247 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __group_descriptions__.push_back(GlobalPlannerConfig::AbstractGroupDescriptionConstPtr(new GlobalPlannerConfig::GroupDescription<GlobalPlannerConfig::DEFAULT, GlobalPlannerConfig>(Default)));
 //#line 369 "/opt/ros/noetic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 

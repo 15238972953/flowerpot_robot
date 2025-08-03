@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/navfn/test/CMakeFiles/run_tests_navfn_gtest_path_calc_test.dir/progress.make
 
 navigation/navfn/test/CMakeFiles/run_tests_navfn_gtest_path_calc_test:
-	cd /home/jetson/catkin_ws/build/navigation/navfn/test && ../../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/navfn/gtest-path_calc_test.xml "/home/jetson/catkin_ws/devel/lib/navfn/path_calc_test --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/navfn/gtest-path_calc_test.xml"
+	cd /home/jetson/catkin_ws/build/navigation/navfn/test && ../../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/navfn/gtest-path_calc_test.xml "/home/jetson/catkin_ws/devel/lib/navfn/path_calc_test --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/navfn/gtest-path_calc_test.xml"
 
 run_tests_navfn_gtest_path_calc_test: navigation/navfn/test/CMakeFiles/run_tests_navfn_gtest_path_calc_test
 run_tests_navfn_gtest_path_calc_test: navigation/navfn/test/CMakeFiles/run_tests_navfn_gtest_path_calc_test.dir/build.make

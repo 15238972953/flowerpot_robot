@@ -24,7 +24,7 @@ echo_and_run mkdir -p "$DESTDIR/home/jetson/catkin_ws/install/lib/python3/dist-p
 echo_and_run /usr/bin/env \
     PYTHONPATH="/home/jetson/catkin_ws/install/lib/python3/dist-packages:/home/jetson/catkin_ws/build/lib/python3/dist-packages:$PYTHONPATH" \
     CATKIN_BINARY_DIR="/home/jetson/catkin_ws/build" \
-    "/usr/bin/python3" \
+    "/home/jetson/miniconda3/bin/python3" \
     "/home/jetson/catkin_ws/src/navigation/base_local_planner/setup.py" \
     egg_info --egg-base /home/jetson/catkin_ws/build/navigation/base_local_planner \
     build --build-base "/home/jetson/catkin_ws/build/navigation/base_local_planner" \

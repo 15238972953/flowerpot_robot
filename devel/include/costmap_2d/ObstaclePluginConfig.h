@@ -259,13 +259,13 @@ int combination_method;
 
 
 
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       bool enabled;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       bool footprint_clearing_enabled;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double max_obstacle_height;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       int combination_method;
 //#line 231 "/opt/ros/noetic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
@@ -293,16 +293,16 @@ int combination_method;
       {
         ROS_ERROR("ObstaclePluginConfig::__fromMessage__ called with an unexpected parameter.");
         ROS_ERROR("Booleans:");
-        for (unsigned int i = 0; i < msg.bools.size(); i++)
+        for (size_t i = 0; i < msg.bools.size(); i++)
           ROS_ERROR("  %s", msg.bools[i].name.c_str());
         ROS_ERROR("Integers:");
-        for (unsigned int i = 0; i < msg.ints.size(); i++)
+        for (size_t i = 0; i < msg.ints.size(); i++)
           ROS_ERROR("  %s", msg.ints[i].name.c_str());
         ROS_ERROR("Doubles:");
-        for (unsigned int i = 0; i < msg.doubles.size(); i++)
+        for (size_t i = 0; i < msg.doubles.size(); i++)
           ROS_ERROR("  %s", msg.doubles[i].name.c_str());
         ROS_ERROR("Strings:");
-        for (unsigned int i = 0; i < msg.strs.size(); i++)
+        for (size_t i = 0; i < msg.strs.size(); i++)
           ROS_ERROR("  %s", msg.strs[i].name.c_str());
         // @todo Check that there are no duplicates. Make this error more
         // explicit.
@@ -405,49 +405,49 @@ int combination_method;
     ObstaclePluginConfigStatics()
     {
 ObstaclePluginConfig::GroupDescription<ObstaclePluginConfig::DEFAULT, ObstaclePluginConfig> Default("Default", "", 0, 0, true, &ObstaclePluginConfig::groups);
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.enabled = 0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.enabled = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.enabled = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<bool>("enabled", "bool", 0, "Whether to apply this plugin or not", "", &ObstaclePluginConfig::enabled)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<bool>("enabled", "bool", 0, "Whether to apply this plugin or not", "", &ObstaclePluginConfig::enabled)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.footprint_clearing_enabled = 0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.footprint_clearing_enabled = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.footprint_clearing_enabled = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<bool>("footprint_clearing_enabled", "bool", 0, "Whether to clear the robot's footprint of lethal obstacles", "", &ObstaclePluginConfig::footprint_clearing_enabled)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<bool>("footprint_clearing_enabled", "bool", 0, "Whether to clear the robot's footprint of lethal obstacles", "", &ObstaclePluginConfig::footprint_clearing_enabled)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.max_obstacle_height = 0.0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.max_obstacle_height = 50.0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.max_obstacle_height = 2.0;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<double>("max_obstacle_height", "double", 0, "The maximum height of any obstacle to be inserted into the costmap in meters.", "", &ObstaclePluginConfig::max_obstacle_height)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<double>("max_obstacle_height", "double", 0, "The maximum height of any obstacle to be inserted into the costmap in meters.", "", &ObstaclePluginConfig::max_obstacle_height)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __min__.combination_method = -2147483648;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.combination_method = 2147483647;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __default__.combination_method = 1;
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<int>("combination_method", "int", 0, "Method for combining two layers", "{'enum': [{'name': 'Overwrite', 'type': 'int', 'value': 0, 'srcline': 11, 'srcfile': '/home/jetson/catkin_ws/src/navigation/costmap_2d/cfg/ObstaclePlugin.cfg', 'description': 'Overwrite values', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Maximum', 'type': 'int', 'value': 1, 'srcline': 12, 'srcfile': '/home/jetson/catkin_ws/src/navigation/costmap_2d/cfg/ObstaclePlugin.cfg', 'description': 'Take the maximum of the values', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Nothing', 'type': 'int', 'value': 99, 'srcline': 13, 'srcfile': '/home/jetson/catkin_ws/src/navigation/costmap_2d/cfg/ObstaclePlugin.cfg', 'description': 'Do nothing', 'ctype': 'int', 'cconsttype': 'const int'}], 'enum_description': 'Method for combining layers enum'}", &ObstaclePluginConfig::combination_method)));
-//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 292 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(ObstaclePluginConfig::AbstractParamDescriptionConstPtr(new ObstaclePluginConfig::ParamDescription<int>("combination_method", "int", 0, "Method for combining two layers", "{'enum': [{'name': 'Overwrite', 'type': 'int', 'value': 0, 'srcline': 11, 'srcfile': '/home/jetson/catkin_ws/src/navigation/costmap_2d/cfg/ObstaclePlugin.cfg', 'description': 'Overwrite values', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Maximum', 'type': 'int', 'value': 1, 'srcline': 12, 'srcfile': '/home/jetson/catkin_ws/src/navigation/costmap_2d/cfg/ObstaclePlugin.cfg', 'description': 'Take the maximum of the values', 'ctype': 'int', 'cconsttype': 'const int'}, {'name': 'Nothing', 'type': 'int', 'value': 99, 'srcline': 13, 'srcfile': '/home/jetson/catkin_ws/src/navigation/costmap_2d/cfg/ObstaclePlugin.cfg', 'description': 'Do nothing', 'ctype': 'int', 'cconsttype': 'const int'}], 'enum_description': 'Method for combining layers enum'}", &ObstaclePluginConfig::combination_method)));
-//#line 246 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 247 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
-//#line 246 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+//#line 247 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __group_descriptions__.push_back(ObstaclePluginConfig::AbstractGroupDescriptionConstPtr(new ObstaclePluginConfig::GroupDescription<ObstaclePluginConfig::DEFAULT, ObstaclePluginConfig>(Default)));
 //#line 369 "/opt/ros/noetic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 

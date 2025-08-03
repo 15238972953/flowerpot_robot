@@ -200,14 +200,27 @@ struct Printer< ::navfn::SetCostmapRequest_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::navfn::SetCostmapRequest_<ContainerAllocator>& v)
   {
-    s << indent << "costs[]" << std::endl;
+    if (false || !indent.empty())
+      s << std::endl;
+    s << indent << "costs: ";
+    if (v.costs.empty() || true)
+      s << "[";
     for (size_t i = 0; i < v.costs.size(); ++i)
     {
-      s << indent << "  costs[" << i << "]: ";
-      Printer<uint8_t>::stream(s, indent + "  ", v.costs[i]);
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<uint8_t>::stream(s, true ? std::string() : indent + "    ", v.costs[i]);
     }
+    if (v.costs.empty() || true)
+      s << "]";
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "height: ";
     Printer<uint16_t>::stream(s, indent + "  ", v.height);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "width: ";
     Printer<uint16_t>::stream(s, indent + "  ", v.width);
   }

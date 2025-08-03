@@ -184,6 +184,8 @@ struct Printer< ::lslidar_msgs::LslidarDifop_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::lslidar_msgs::LslidarDifop_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "rpm: ";
     Printer<int64_t>::stream(s, indent + "  ", v.rpm);
   }

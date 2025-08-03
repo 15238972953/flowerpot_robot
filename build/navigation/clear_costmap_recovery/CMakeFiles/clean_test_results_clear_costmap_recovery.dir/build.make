@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/clear_costmap_recovery/CMakeFiles/clean_test_results_clear_costmap_recovery.dir/progress.make
 
 navigation/clear_costmap_recovery/CMakeFiles/clean_test_results_clear_costmap_recovery:
-	cd /home/jetson/catkin_ws/build/navigation/clear_costmap_recovery && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/clear_costmap_recovery
+	cd /home/jetson/catkin_ws/build/navigation/clear_costmap_recovery && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/clear_costmap_recovery
 
 clean_test_results_clear_costmap_recovery: navigation/clear_costmap_recovery/CMakeFiles/clean_test_results_clear_costmap_recovery
 clean_test_results_clear_costmap_recovery: navigation/clear_costmap_recovery/CMakeFiles/clean_test_results_clear_costmap_recovery.dir/build.make

@@ -192,8 +192,12 @@ struct Printer< ::base_local_planner::Position2DInt_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::base_local_planner::Position2DInt_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "x: ";
     Printer<int64_t>::stream(s, indent + "  ", v.x);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "y: ";
     Printer<int64_t>::stream(s, indent + "  ", v.y);
   }

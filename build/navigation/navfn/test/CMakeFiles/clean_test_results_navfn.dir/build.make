@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/navfn/test/CMakeFiles/clean_test_results_navfn.dir/progress.make
 
 navigation/navfn/test/CMakeFiles/clean_test_results_navfn:
-	cd /home/jetson/catkin_ws/build/navigation/navfn/test && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/navfn
+	cd /home/jetson/catkin_ws/build/navigation/navfn/test && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/navfn
 
 clean_test_results_navfn: navigation/navfn/test/CMakeFiles/clean_test_results_navfn
 clean_test_results_navfn: navigation/navfn/test/CMakeFiles/clean_test_results_navfn.dir/build.make

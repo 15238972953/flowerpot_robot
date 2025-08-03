@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/base_local_planner/CMakeFiles/run_tests_base_local_planner_gtest_base_local_planner_utest.dir/progress.make
 
 navigation/base_local_planner/CMakeFiles/run_tests_base_local_planner_gtest_base_local_planner_utest:
-	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-base_local_planner_utest.xml "/home/jetson/catkin_ws/devel/lib/base_local_planner/base_local_planner_utest --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-base_local_planner_utest.xml"
+	cd /home/jetson/catkin_ws/build/navigation/base_local_planner && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-base_local_planner_utest.xml "/home/jetson/catkin_ws/devel/lib/base_local_planner/base_local_planner_utest --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/base_local_planner/gtest-base_local_planner_utest.xml"
 
 run_tests_base_local_planner_gtest_base_local_planner_utest: navigation/base_local_planner/CMakeFiles/run_tests_base_local_planner_gtest_base_local_planner_utest
 run_tests_base_local_planner_gtest_base_local_planner_utest: navigation/base_local_planner/CMakeFiles/run_tests_base_local_planner_gtest_base_local_planner_utest.dir/build.make

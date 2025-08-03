@@ -237,17 +237,25 @@ struct Printer< ::lslidar_msgs::LslidarSweep_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::lslidar_msgs::LslidarSweep_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "header: ";
-    s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
-    s << indent << "scans[]" << std::endl;
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "scans: ";
+    if (v.scans.empty() || false)
+      s << "[";
     for (size_t i = 0; i < v.scans.size(); ++i)
     {
-      s << indent << "  scans[" << i << "]: ";
-      s << std::endl;
-      s << indent;
-      Printer< ::lslidar_msgs::LslidarScan_<ContainerAllocator> >::stream(s, indent + "    ", v.scans[i]);
+      if (false && i > 0)
+        s << ", ";
+      else if (!false)
+        s << std::endl << indent << "  -";
+      Printer< ::lslidar_msgs::LslidarScan_<ContainerAllocator> >::stream(s, false ? std::string() : indent + "    ", v.scans[i]);
     }
+    if (v.scans.empty() || false)
+      s << "]";
   }
 };
 

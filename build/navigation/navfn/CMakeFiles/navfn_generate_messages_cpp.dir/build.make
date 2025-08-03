@@ -59,22 +59,22 @@ navigation/navfn/CMakeFiles/navfn_generate_messages_cpp: /home/jetson/catkin_ws/
 
 /home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv
-/home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
+/home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 /home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/gencpp/msg.h.template
 /home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h: /opt/ros/noetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from navfn/MakeNavPlan.srv"
-	cd /home/jetson/catkin_ws/src/navigation/navfn && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/include/navfn -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/jetson/catkin_ws/src/navigation/navfn && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/include/navfn -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/jetson/catkin_ws/devel/include/navfn/SetCostmap.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/jetson/catkin_ws/devel/include/navfn/SetCostmap.h: /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv
 /home/jetson/catkin_ws/devel/include/navfn/SetCostmap.h: /opt/ros/noetic/share/gencpp/msg.h.template
 /home/jetson/catkin_ws/devel/include/navfn/SetCostmap.h: /opt/ros/noetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from navfn/SetCostmap.srv"
-	cd /home/jetson/catkin_ws/src/navigation/navfn && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/include/navfn -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/jetson/catkin_ws/src/navigation/navfn && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/include/navfn -e /opt/ros/noetic/share/gencpp/cmake/..
 
 navfn_generate_messages_cpp: navigation/navfn/CMakeFiles/navfn_generate_messages_cpp
 navfn_generate_messages_cpp: /home/jetson/catkin_ws/devel/include/navfn/MakeNavPlan.h

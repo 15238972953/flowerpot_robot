@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/costmap_2d/CMakeFiles/costmap_2d_simple_driving_test_indexed.bag.dir/progress.make
 
 navigation/costmap_2d/CMakeFiles/costmap_2d_simple_driving_test_indexed.bag:
-	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/costmap_2d/simple_driving_test_indexed.bag /home/jetson/catkin_ws/devel/share/costmap_2d/test/simple_driving_test_indexed.bag 61168cff9425b11e093ea3a627c81c8d --ignore-error
+	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/costmap_2d/simple_driving_test_indexed.bag /home/jetson/catkin_ws/devel/share/costmap_2d/test/simple_driving_test_indexed.bag 61168cff9425b11e093ea3a627c81c8d --ignore-error
 
 costmap_2d_simple_driving_test_indexed.bag: navigation/costmap_2d/CMakeFiles/costmap_2d_simple_driving_test_indexed.bag
 costmap_2d_simple_driving_test_indexed.bag: navigation/costmap_2d/CMakeFiles/costmap_2d_simple_driving_test_indexed.bag.dir/build.make

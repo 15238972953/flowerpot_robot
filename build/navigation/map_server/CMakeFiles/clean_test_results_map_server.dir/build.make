@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/map_server/CMakeFiles/clean_test_results_map_server.dir/progress.make
 
 navigation/map_server/CMakeFiles/clean_test_results_map_server:
-	cd /home/jetson/catkin_ws/build/navigation/map_server && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/map_server
+	cd /home/jetson/catkin_ws/build/navigation/map_server && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/map_server
 
 clean_test_results_map_server: navigation/map_server/CMakeFiles/clean_test_results_map_server
 clean_test_results_map_server: navigation/map_server/CMakeFiles/clean_test_results_map_server.dir/build.make

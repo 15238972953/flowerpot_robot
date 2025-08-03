@@ -212,16 +212,25 @@ struct Printer< ::lslidar_msgs::LslidarScan_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::lslidar_msgs::LslidarScan_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "altitude: ";
     Printer<double>::stream(s, indent + "  ", v.altitude);
-    s << indent << "points[]" << std::endl;
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "points: ";
+    if (v.points.empty() || false)
+      s << "[";
     for (size_t i = 0; i < v.points.size(); ++i)
     {
-      s << indent << "  points[" << i << "]: ";
-      s << std::endl;
-      s << indent;
-      Printer< ::lslidar_msgs::LslidarPoint_<ContainerAllocator> >::stream(s, indent + "    ", v.points[i]);
+      if (false && i > 0)
+        s << ", ";
+      else if (!false)
+        s << std::endl << indent << "  -";
+      Printer< ::lslidar_msgs::LslidarPoint_<ContainerAllocator> >::stream(s, false ? std::string() : indent + "    ", v.points[i]);
     }
+    if (v.points.empty() || false)
+      s << "]";
   }
 };
 

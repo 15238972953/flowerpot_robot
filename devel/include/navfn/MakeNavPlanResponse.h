@@ -249,18 +249,29 @@ struct Printer< ::navfn::MakeNavPlanResponse_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::navfn::MakeNavPlanResponse_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "plan_found: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.plan_found);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "error_message: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>::stream(s, indent + "  ", v.error_message);
-    s << indent << "path[]" << std::endl;
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "path: ";
+    if (v.path.empty() || false)
+      s << "[";
     for (size_t i = 0; i < v.path.size(); ++i)
     {
-      s << indent << "  path[" << i << "]: ";
-      s << std::endl;
-      s << indent;
-      Printer< ::geometry_msgs::PoseStamped_<ContainerAllocator> >::stream(s, indent + "    ", v.path[i]);
+      if (false && i > 0)
+        s << ", ";
+      else if (!false)
+        s << std::endl << indent << "  -";
+      Printer< ::geometry_msgs::PoseStamped_<ContainerAllocator> >::stream(s, false ? std::string() : indent + "    ", v.path[i]);
     }
+    if (v.path.empty() || false)
+      s << "]";
   }
 };
 

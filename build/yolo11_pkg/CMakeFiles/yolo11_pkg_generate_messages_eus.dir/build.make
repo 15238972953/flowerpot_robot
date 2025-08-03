@@ -61,17 +61,17 @@ yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_eus: /home/jetson/catkin_ws/d
 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/coordinate.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/coordinate.l: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from yolo11_pkg/coordinate.msg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/array.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/array.l: /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg
 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/array.l: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from yolo11_pkg/array.msg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for yolo11_pkg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg yolo11_pkg std_msgs
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg yolo11_pkg std_msgs
 
 yolo11_pkg_generate_messages_eus: yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_eus
 yolo11_pkg_generate_messages_eus: /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/coordinate.l

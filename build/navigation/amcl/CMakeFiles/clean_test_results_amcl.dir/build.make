@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/amcl/CMakeFiles/clean_test_results_amcl.dir/progress.make
 
 navigation/amcl/CMakeFiles/clean_test_results_amcl:
-	cd /home/jetson/catkin_ws/build/navigation/amcl && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/amcl
+	cd /home/jetson/catkin_ws/build/navigation/amcl && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/amcl
 
 clean_test_results_amcl: navigation/amcl/CMakeFiles/clean_test_results_amcl
 clean_test_results_amcl: navigation/amcl/CMakeFiles/clean_test_results_amcl.dir/build.make

@@ -192,8 +192,12 @@ struct Printer< ::yolo11_pkg::coordinate_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::yolo11_pkg::coordinate_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "x: ";
     Printer<float>::stream(s, indent + "  ", v.x);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "y: ";
     Printer<float>::stream(s, indent + "  ", v.y);
   }

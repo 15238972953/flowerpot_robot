@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/costmap_2d/CMakeFiles/run_tests_costmap_2d_gtest_coordinates_test.dir/progress.make
 
 navigation/costmap_2d/CMakeFiles/run_tests_costmap_2d_gtest_coordinates_test:
-	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/costmap_2d/gtest-coordinates_test.xml "/home/jetson/catkin_ws/devel/lib/costmap_2d/coordinates_test --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/costmap_2d/gtest-coordinates_test.xml"
+	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/costmap_2d/gtest-coordinates_test.xml "/home/jetson/catkin_ws/devel/lib/costmap_2d/coordinates_test --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/costmap_2d/gtest-coordinates_test.xml"
 
 run_tests_costmap_2d_gtest_coordinates_test: navigation/costmap_2d/CMakeFiles/run_tests_costmap_2d_gtest_coordinates_test
 run_tests_costmap_2d_gtest_coordinates_test: navigation/costmap_2d/CMakeFiles/run_tests_costmap_2d_gtest_coordinates_test.dir/build.make

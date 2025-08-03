@@ -60,11 +60,11 @@ processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_eus: /home/jetson/c
 /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg/msg/serial_data.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg/msg/serial_data.l: /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from processdata_pkg/serial_data.msg"
-	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg -Iprocessdata_pkg:/home/jetson/catkin_ws/src/processdata_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p processdata_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg/msg
+	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg -Iprocessdata_pkg:/home/jetson/catkin_ws/src/processdata_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p processdata_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg/msg
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for processdata_pkg"
-	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg processdata_pkg std_msgs
+	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg processdata_pkg std_msgs
 
 processdata_pkg_generate_messages_eus: processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_eus
 processdata_pkg_generate_messages_eus: /home/jetson/catkin_ws/devel/share/roseus/ros/processdata_pkg/msg/serial_data.l

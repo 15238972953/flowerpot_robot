@@ -60,24 +60,24 @@ navigation/navfn/CMakeFiles/navfn_generate_messages_py: /home/jetson/catkin_ws/d
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+/home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
+/home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV navfn/MakeNavPlan"
-	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv
+	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/jetson/catkin_ws/src/navigation/navfn/srv/MakeNavPlan.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_SetCostmap.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_SetCostmap.py: /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python code from SRV navfn/SetCostmap"
-	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv
+	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/jetson/catkin_ws/src/navigation/navfn/srv/SetCostmap.srv -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p navfn -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_SetCostmap.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python srv __init__.py for navfn"
-	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv --initpy
+	cd /home/jetson/catkin_ws/build/navigation/navfn && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv --initpy
 
 navfn_generate_messages_py: navigation/navfn/CMakeFiles/navfn_generate_messages_py
 navfn_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/navfn/srv/_MakeNavPlan.py

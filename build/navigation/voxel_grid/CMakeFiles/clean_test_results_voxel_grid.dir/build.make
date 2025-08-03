@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/voxel_grid/CMakeFiles/clean_test_results_voxel_grid.dir/progress.make
 
 navigation/voxel_grid/CMakeFiles/clean_test_results_voxel_grid:
-	cd /home/jetson/catkin_ws/build/navigation/voxel_grid && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/voxel_grid
+	cd /home/jetson/catkin_ws/build/navigation/voxel_grid && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/jetson/catkin_ws/build/test_results/voxel_grid
 
 clean_test_results_voxel_grid: navigation/voxel_grid/CMakeFiles/clean_test_results_voxel_grid
 clean_test_results_voxel_grid: navigation/voxel_grid/CMakeFiles/clean_test_results_voxel_grid.dir/build.make

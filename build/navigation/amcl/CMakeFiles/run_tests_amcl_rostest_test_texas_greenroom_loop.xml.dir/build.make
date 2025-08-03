@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/amcl/CMakeFiles/run_tests_amcl_rostest_test_texas_greenroom_loop.xml.dir/progress.make
 
 navigation/amcl/CMakeFiles/run_tests_amcl_rostest_test_texas_greenroom_loop.xml:
-	cd /home/jetson/catkin_ws/build/navigation/amcl && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/amcl/rostest-test_texas_greenroom_loop.xml "/usr/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/jetson/catkin_ws/src/navigation/amcl --package=amcl --results-filename test_texas_greenroom_loop.xml --results-base-dir \"/home/jetson/catkin_ws/build/test_results\" /home/jetson/catkin_ws/src/navigation/amcl/test/texas_greenroom_loop.xml "
+	cd /home/jetson/catkin_ws/build/navigation/amcl && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/amcl/rostest-test_texas_greenroom_loop.xml "/home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/jetson/catkin_ws/src/navigation/amcl --package=amcl --results-filename test_texas_greenroom_loop.xml --results-base-dir \"/home/jetson/catkin_ws/build/test_results\" /home/jetson/catkin_ws/src/navigation/amcl/test/texas_greenroom_loop.xml "
 
 run_tests_amcl_rostest_test_texas_greenroom_loop.xml: navigation/amcl/CMakeFiles/run_tests_amcl_rostest_test_texas_greenroom_loop.xml
 run_tests_amcl_rostest_test_texas_greenroom_loop.xml: navigation/amcl/CMakeFiles/run_tests_amcl_rostest_test_texas_greenroom_loop.xml.dir/build.make

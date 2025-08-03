@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/voxel_grid/CMakeFiles/_run_tests_voxel_grid_gtest_voxel_grid_tests.dir/progress.make
 
 navigation/voxel_grid/CMakeFiles/_run_tests_voxel_grid_gtest_voxel_grid_tests:
-	cd /home/jetson/catkin_ws/build/navigation/voxel_grid && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/voxel_grid/gtest-voxel_grid_tests.xml "/home/jetson/catkin_ws/devel/lib/voxel_grid/voxel_grid_tests --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/voxel_grid/gtest-voxel_grid_tests.xml"
+	cd /home/jetson/catkin_ws/build/navigation/voxel_grid && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/jetson/catkin_ws/build/test_results/voxel_grid/gtest-voxel_grid_tests.xml "/home/jetson/catkin_ws/devel/lib/voxel_grid/voxel_grid_tests --gtest_output=xml:/home/jetson/catkin_ws/build/test_results/voxel_grid/gtest-voxel_grid_tests.xml"
 
 _run_tests_voxel_grid_gtest_voxel_grid_tests: navigation/voxel_grid/CMakeFiles/_run_tests_voxel_grid_gtest_voxel_grid_tests
 _run_tests_voxel_grid_gtest_voxel_grid_tests: navigation/voxel_grid/CMakeFiles/_run_tests_voxel_grid_gtest_voxel_grid_tests.dir/build.make

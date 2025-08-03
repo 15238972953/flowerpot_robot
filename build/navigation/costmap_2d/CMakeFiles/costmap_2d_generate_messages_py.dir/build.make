@@ -59,16 +59,16 @@ navigation/costmap_2d/CMakeFiles/costmap_2d_generate_messages_py: /home/jetson/c
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py: /home/jetson/catkin_ws/src/navigation/costmap_2d/msg/VoxelGrid.msg
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py: /opt/ros/noetic/share/geometry_msgs/msg/Point32.msg
+/home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG costmap_2d/VoxelGrid"
-	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/navigation/costmap_2d/msg/VoxelGrid.msg -Icostmap_2d:/home/jetson/catkin_ws/src/navigation/costmap_2d/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Imap_msgs:/opt/ros/noetic/share/map_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -p costmap_2d -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg
+	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/navigation/costmap_2d/msg/VoxelGrid.msg -Icostmap_2d:/home/jetson/catkin_ws/src/navigation/costmap_2d/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -Imap_msgs:/opt/ros/noetic/share/map_msgs/cmake/../msg -Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -p costmap_2d -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for costmap_2d"
-	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg --initpy
+	cd /home/jetson/catkin_ws/build/navigation/costmap_2d && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg --initpy
 
 costmap_2d_generate_messages_py: navigation/costmap_2d/CMakeFiles/costmap_2d_generate_messages_py
 costmap_2d_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/costmap_2d/msg/_VoxelGrid.py

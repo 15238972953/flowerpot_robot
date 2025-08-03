@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include navigation/amcl/CMakeFiles/amcl_willow-full-0.05.pgm.dir/progress.make
 
 navigation/amcl/CMakeFiles/amcl_willow-full-0.05.pgm:
-	cd /home/jetson/catkin_ws/build/navigation/amcl && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/amcl/willow-full-0.05.pgm /home/jetson/catkin_ws/devel/share/amcl/test/willow-full-0.05.pgm b61694296e08965096c5e78611fd9765 --ignore-error
+	cd /home/jetson/catkin_ws/build/navigation/amcl && /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/amcl/willow-full-0.05.pgm /home/jetson/catkin_ws/devel/share/amcl/test/willow-full-0.05.pgm b61694296e08965096c5e78611fd9765 --ignore-error
 
 amcl_willow-full-0.05.pgm: navigation/amcl/CMakeFiles/amcl_willow-full-0.05.pgm
 amcl_willow-full-0.05.pgm: navigation/amcl/CMakeFiles/amcl_willow-full-0.05.pgm.dir/build.make

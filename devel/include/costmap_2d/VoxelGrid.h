@@ -278,25 +278,43 @@ struct Printer< ::costmap_2d::VoxelGrid_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::costmap_2d::VoxelGrid_<ContainerAllocator>& v)
   {
+    if (false || !indent.empty())
+      s << std::endl;
     s << indent << "header: ";
-    s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
-    s << indent << "data[]" << std::endl;
+    if (true || !indent.empty())
+      s << std::endl;
+    s << indent << "data: ";
+    if (v.data.empty() || true)
+      s << "[";
     for (size_t i = 0; i < v.data.size(); ++i)
     {
-      s << indent << "  data[" << i << "]: ";
-      Printer<uint32_t>::stream(s, indent + "  ", v.data[i]);
+      if (true && i > 0)
+        s << ", ";
+      else if (!true)
+        s << std::endl << indent << "  -";
+      Printer<uint32_t>::stream(s, true ? std::string() : indent + "    ", v.data[i]);
     }
+    if (v.data.empty() || true)
+      s << "]";
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "origin: ";
-    s << std::endl;
     Printer< ::geometry_msgs::Point32_<ContainerAllocator> >::stream(s, indent + "  ", v.origin);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "resolutions: ";
-    s << std::endl;
     Printer< ::geometry_msgs::Vector3_<ContainerAllocator> >::stream(s, indent + "  ", v.resolutions);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "size_x: ";
     Printer<uint32_t>::stream(s, indent + "  ", v.size_x);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "size_y: ";
     Printer<uint32_t>::stream(s, indent + "  ", v.size_y);
+    if (true || !indent.empty())
+      s << std::endl;
     s << indent << "size_z: ";
     Printer<uint32_t>::stream(s, indent + "  ", v.size_z);
   }

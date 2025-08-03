@@ -60,13 +60,13 @@ radar_msgs/CMakeFiles/radar_msgs_generate_messages_nodejs: /home/jetson/catkin_w
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/radar.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/radar.js: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from radar_msgs/radar.msg"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg
 
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/array.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/array.js: /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/array.js: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from radar_msgs/array.msg"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg
 
 radar_msgs_generate_messages_nodejs: radar_msgs/CMakeFiles/radar_msgs_generate_messages_nodejs
 radar_msgs_generate_messages_nodejs: /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/radar.js
