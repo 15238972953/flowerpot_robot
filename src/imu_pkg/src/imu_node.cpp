@@ -2,19 +2,14 @@
 #include <boost/circular_buffer.hpp>
 #include <cstdint>
 
-RingBuffer SerialReader::ring_buf; 
+ReadState current_state = ReadState::WAIT_FOR_55;
 
-SerialReader::SerialReader(ros::NodeHandle& nh) 
-    : nh_(nh), 
-      private_nh_("~"),
-      is_serial_connected_(false) {
-    
+SerialReader::SerialReader(ros::NodeHandle& nh) : nh_(nh), private_nh_("~"), is_serial_connected_(false) {
+    // 初始化 Publisher，话题名称为 "yaw_angle"
+    yaw_pub_ = nh.advertise<std_msgs::Float32>("yaw_angle", 10);
     // 从参数服务器获取配置
     private_nh_.param<std::string>("port", port_, "/dev/ttyUSB0");
     private_nh_.param<int>("baudrate", baudrate_, 9600);
-    
-    // 初始化发布者
-    data_pub_ = nh_.advertise<std_msgs::String>("serial_data", 1000);
     
     // 初始化串口
     is_serial_connected_ = initSerial();
@@ -49,104 +44,61 @@ bool SerialReader::initSerial() {
 }
 
 void SerialReader::processData(const std::vector<uint8_t> &frame) {
-
     // 检查包头
-    if (frame[0] == FRAME_HEADER && frame[1] == 0x53) {
-        SAngle angle;
-        memcpy(&angle, frame.data(), sizeof(SAngle));
+    if (frame[0] == FRAME_HEADER && frame[11] == FRAME_HEADER && frame[22] == FRAME_HEADER && frame[33] == FRAME_HEADER) {
 
-        // 发布角度数据 (这里只发布Yaw角度)
-        std_msgs::Float32 yaw_msg;
-        yaw_msg.data = static_cast<float>(((angle.yaw[1]<<8)|angle.yaw[0])/32768.0f*180.0f);
+        // 角度数据说明：
+        //   1   2     3     4     5       6    7     8  9  10 11
+        // 0x55	0x53 RollL RollH PitchL	PitchH YawL	YawH VL	VH SUM
 
-
-        if(angle.sum == FRAME_HEADER + 0x53 + angle.roll[0] + angle.roll[1]
-                    + angle.pitch[0] + angle.pitch[1] + angle.yaw[0] + angle.yaw[1]
-                    + angle.V[0] + angle.V[1])
-        {
-            data_pub_.publish(yaw_msg);
-            ROS_DEBUG_THROTTLE(1.0, "Now Angle - Yaw: %.2f", yaw_msg.data);
+        if(frame[10] == static_cast<uint8_t>(frame[0] + frame[1] + frame[2] + frame[3] + frame[4] + 
+                        frame[5] + frame[6] + frame[7] + frame[8] + frame[9])) {
+            float yaw = static_cast<float>(((frame[7]<<8)|frame[6])/32768.0f*180.0f);
+            ROS_INFO("Now Angle - Yaw: %.2f", yaw);
+             // 发布 yaw 数据
+            std_msgs::Float32 yaw_msg;
+            yaw_msg.data = yaw;
+            yaw_pub_.publish(yaw_msg);
+        } else {
+            ROS_ERROR("Checksum error, data may be corrupted");
         }
     }
 }
 
 void SerialReader::readData() {
-    // size_t available = serial_.available();
-    // if (available > 0) {
-    //     std::vector<uint8_t> temp(available);
-    //     size_t len = serial_.read(temp.data(), available);
-    //     ROS_INFO("Read %zu , cun %zu ", available, len);
-    // }
-    try {
-        // 1. 读取数据到环形缓冲区
-        size_t available = serial_.available();
-        if (available > 0) {
-            std::vector<uint8_t> temp(available);
-            serial_.read(temp.data(), available);
-            // 写入环形缓冲区（自动处理溢出）
-            size_t written = ring_buf.write(temp.data(), available);
-            if (written < available) {
-                ROS_WARN("Ring buffer full, dropped %zu bytes", available - written);
-            }
-            // ROS_INFO("available: %zu , written: %zu ", available, written);
+    std::vector<uint8_t> temp(44);
+    while (serial_.available() > 0) {
+        uint8_t byte;
+        if (current_state == ReadState::WAIT_FOR_55) {
+            size_t bytes_read = serial_.read(&byte, 1);  // 每次读取 1 字节
+            if (bytes_read == 1 && byte == 0x55) {
+                size_t bytes_read = serial_.read(&byte, 1);
+                if (bytes_read == 1 && byte == 0x52) {
+                    ROS_INFO("Received frame header 0x55 0x52, preparing to read 44 bytes");
+                    uint8_t discard_buffer[9];  // 临时缓冲区（不存储，仅用于读取）
+                    size_t bytes_read = serial_.read(discard_buffer, sizeof(discard_buffer));  // 读取 9 字节
+                    current_state = ReadState::READ_44_BYTES;
+                }                    
+            }    
+        } else {
+            size_t bytes_read = serial_.read(temp.data(), 44);
+            if (bytes_read == 44) {
+                // 以十六进制打印数据，每行11个
+                // for (size_t i = 0; i < temp.size(); i += 11) {
+                //     std::stringstream ss;
+                //     ss << "Data [" << i << "-" << std::min(i+10, temp.size()-1) << "]: ";
+                //     for (size_t j = i; j < i+11 && j < temp.size(); j++) {
+                //         ss << "0x" << std::hex << std::setw(2) << std::setfill('0') 
+                //         << static_cast<int>(temp[j]) << " ";
+                //     }
+                //     ROS_INFO("%s", ss.str().c_str());
+                // }
+                // 处理读取到的数据
+                processData(temp);
+            } else {
+                ROS_WARN("Expected 44 bytes");
+            }  
         }
-
-        std::vector<uint8_t> frame(FRAME_LENGTH);
-        // 2. 解析完整帧（利用环形缓冲区特性，避免数据拷贝）
-        while (ring_buf.count >= FRAME_LENGTH) {
-            ROS_INFO_STREAM("header: 0x" << std::hex << static_cast<int>(ring_buf.peek(ring_buf.tail)));
-            if((frame[0]=ring_buf.readByte()) != FRAME_HEADER) {
-                continue; // 重新检查缓冲区长度
-            }else if((frame[1]=ring_buf.readByte()) == 0x53 && ring_buf.count >= 9){
-                for (size_t i = 2; i < FRAME_LENGTH; ++i) {
-                    frame[i] = ring_buf.readByte();
-                }
-                // 处理帧数据
-                processData(frame);
-            }
-        }
-
-        //     // 查找帧头（从当前tail位置开始）
-        //     size_t header_offset = std::string::npos;
-
-        //     for (size_t i = 0; i <= ring_buf.count - FRAME_LENGTH; ++i) {
-        //         if (ring_buf.peek(i) == FRAME_HEADER) {
-        //             header_offset = i;
-        //             break;
-        //         }
-        //     }
-
-        //     // // 未找到帧头：清空所有数据（快速处理）
-        //     // if (header_offset == std::string::npos) {
-        //     //     ring_buf.clear();
-        //     //     break;
-        //     // }
-
-        //     // 跳过帧头前的无效数据
-        //     if (header_offset > 0) {
-        //         ring_buf.skip(header_offset);
-        //         continue;  // 跳过数据后重新检查缓冲区长度
-        //     }
-
-        //     // 现在帧头位于tail位置，检查是否有完整帧
-        //     if (ring_buf.count < FRAME_LENGTH) break;
-
-        //     // 提取完整帧数据（无需拷贝，直接通过peek访问）
-        //     uint8_t frame[FRAME_LENGTH];
-        //     for (size_t i = 0; i < FRAME_LENGTH; ++i) {
-        //         frame[i] = ring_buf.peek(i);
-        //     }
-
-        //     // 处理帧数据
-        //     processData(frame);
-
-        //     // 跳过已处理的帧（仅移动指针，无数据拷贝）
-        //     ring_buf.skip(FRAME_LENGTH);
-        // }
-
-    } catch (const std::exception& e) {
-        ROS_ERROR("Serial read error: %s", e.what());
-        ring_buf.clear();  // 出错时清空缓冲区
     }
 }
 

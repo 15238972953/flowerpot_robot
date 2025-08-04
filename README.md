@@ -84,9 +84,12 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 数据关联->数据融合->选择最近的花盆->PID计算出PWM；
 
 # 6、串口通信
-
+已实现
 
 # 7.IMU
+**串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyCH343USB0`)
+**帧率：** 10HZ;
+**topic:** yaw_angle;
 
 
 # 更新中。。。
