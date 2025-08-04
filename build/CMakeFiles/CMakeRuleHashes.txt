@@ -21,6 +21,7 @@ b9a9ba63081d784a63286e60437ecb9c /home/jetson/catkin_ws/devel/include/navfn/SetC
 993f7b3d7827a10ab48ec37933934a7c /home/jetson/catkin_ws/devel/include/processdata_pkg/serial_data.h
 38cfcb17959665ffdfb2ecd63322cba7 /home/jetson/catkin_ws/devel/include/radar_msgs/array.h
 794f850e0bd243979cddd30d9080ef1d /home/jetson/catkin_ws/devel/include/radar_msgs/radar.h
+828d45691bc996803a2e7942f1d155ee /home/jetson/catkin_ws/devel/include/serial_stm32_pkg/EncoderData.h
 de80a208cfb7abed585aea3d8f0ad0c9 /home/jetson/catkin_ws/devel/include/yolo11_pkg/array.h
 b279f859b1edec83a4dccdee1be1f7ab /home/jetson/catkin_ws/devel/include/yolo11_pkg/coordinate.h
 4e8c0c3e696ab68fdb9747a91fdbd987 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/base_local_planner/msg/_Position2DInt.py
@@ -41,6 +42,8 @@ a9b3e0e24930a61c4bc551788b788cb9 /home/jetson/catkin_ws/devel/lib/python3/dist-p
 6477296050bebc972c746390a6197d6f /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/__init__.py
 a68820d7586a795eb576da86723af38e /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_array.py
 ea31fa2ec67f5054f49cf1c651121aab /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_radar.py
+b143d70a4e78edadcdd7440461709923 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/_EncoderData.py
+6743d96b9ece9f41af78a83dd6b1f219 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/__init__.py
 11b01a6c029b650f2ee32f8cf021cc0d /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/__init__.py
 0a072f5cd9bf0f5d478e059b7091ac39 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_array.py
 a6d1e051a0cabad7096d50cd141cb85f /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_coordinate.py
@@ -56,6 +59,7 @@ ccc6b26e112d14137fd55fea5424cf0d /home/jetson/catkin_ws/devel/share/common-lisp/
 d497149cfcaa8b0ef5a110c79b93621f /home/jetson/catkin_ws/devel/share/common-lisp/ros/processdata_pkg/msg/serial_data.lisp
 538584d2511ad4d2845be73346814cab /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/array.lisp
 78616242b7bd342da93e63334c57be03 /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/radar.lisp
+95cf69b7b92dbab01274eb751336a703 /home/jetson/catkin_ws/devel/share/common-lisp/ros/serial_stm32_pkg/msg/EncoderData.lisp
 95071825355d91c377a2ca786b431a56 /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/array.lisp
 fe23be618997d484baee39df281c1447 /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/coordinate.lisp
 74d69cea1b0501397bce76b5a906aecb /home/jetson/catkin_ws/devel/share/gennodejs/ros/base_local_planner/msg/Position2DInt.js
@@ -70,6 +74,7 @@ f645faa97ef22edd854317768c94aa31 /home/jetson/catkin_ws/devel/share/gennodejs/ro
 ef846be40a332dd6bc40a599d5787de3 /home/jetson/catkin_ws/devel/share/gennodejs/ros/processdata_pkg/msg/serial_data.js
 964d1a864bb38da230cc76ad84e8eab3 /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/array.js
 d5b9522fc6cbcc2d08d5031dfbf4b560 /home/jetson/catkin_ws/devel/share/gennodejs/ros/radar_msgs/msg/radar.js
+9d89af746ebda923ae146c388f6ec67d /home/jetson/catkin_ws/devel/share/gennodejs/ros/serial_stm32_pkg/msg/EncoderData.js
 55c120c8c3f784a62f5d3732efd38b64 /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/array.js
 b619ef1c01b28d54bd5b2747d0eb6c01 /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/coordinate.js
 04ea9e0ab779bc6cc90ec31416ac2b7e /home/jetson/catkin_ws/devel/share/roseus/ros/base_local_planner/manifest.l
@@ -90,6 +95,8 @@ cd045de00de32dbf805c85fb14ce84d9 /home/jetson/catkin_ws/devel/share/roseus/ros/p
 37a0c89fa89bd99ec6d65c9eb46839d6 /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/manifest.l
 cb0659732f1e412fe7015ff32e9017ae /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/array.l
 5b044be913aa78ddc96b4abda9e7930a /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/radar.l
+7f4c7ed3cdca9b2c7cfc83d4bb0e7611 /home/jetson/catkin_ws/devel/share/roseus/ros/serial_stm32_pkg/manifest.l
+cc3200fce9aa301345640dbaa2395649 /home/jetson/catkin_ws/devel/share/roseus/ros/serial_stm32_pkg/msg/EncoderData.l
 04546653191372fae0378c0218fef901 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/manifest.l
 9fb5d7416826338d0c7553886d639851 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/array.l
 c6bbb3e99d283af00b90fdcd499b0865 /home/jetson/catkin_ws/devel/share/roseus/ros/yolo11_pkg/msg/coordinate.l
@@ -98,7 +105,7 @@ c6bbb3e99d283af00b90fdcd499b0865 /home/jetson/catkin_ws/devel/share/roseus/ros/y
 e8afd5a3af96f403386bbb4d0e3aa221 lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarPacket
 7ed8b30895287e7788dafa801adc767b lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarPoint
 d541fb72d0dc94f9a2e2b3d2c17d3619 lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarScan
-410eb056988aaa4384af88114c9954d6 lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarSweep
+05929baa6504d3c3518edac261ca37e3 lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarSweep
 4b0432bb5a3615924fdb939c708c13d5 lsx10/lslidar_msgs/CMakeFiles/lslidar_msgs_generate_messages_cpp
 4b0432bb5a3615924fdb939c708c13d5 lsx10/lslidar_msgs/CMakeFiles/lslidar_msgs_generate_messages_eus
 4b0432bb5a3615924fdb939c708c13d5 lsx10/lslidar_msgs/CMakeFiles/lslidar_msgs_generate_messages_lisp
@@ -180,7 +187,7 @@ d66e41fc41eebfcbaeb9e53c92e28cad navigation/map_server/CMakeFiles/clean_test_res
 d278bee2d5bd78ca029653a400c82dfa navigation/map_server/CMakeFiles/run_tests_map_server_gtest_map_server_utest
 de94913e155cbe4c0d268a2917d59a0b navigation/map_server/CMakeFiles/run_tests_map_server_rostest_test_rtest.xml
 485622b3a822f2307692ed86538f5bcf navigation/move_base/CMakeFiles/move_base_gencfg
-e90fba21fd701b7b3c4fcb593fefb95b navigation/navfn/CMakeFiles/_navfn_generate_messages_check_deps_MakeNavPlan
+3ec541daa52ce28bb7996fdf06f095d3 navigation/navfn/CMakeFiles/_navfn_generate_messages_check_deps_MakeNavPlan
 ade2a7b07a92990c95839237c4b8a8a0 navigation/navfn/CMakeFiles/_navfn_generate_messages_check_deps_SetCostmap
 5855f0e9b1990b83a700e5fc03c4f4cc navigation/navfn/CMakeFiles/navfn_generate_messages_cpp
 5855f0e9b1990b83a700e5fc03c4f4cc navigation/navfn/CMakeFiles/navfn_generate_messages_eus
@@ -206,6 +213,12 @@ fedd31252c3265dc45727c1f18539f9b radar_msgs/CMakeFiles/_radar_msgs_generate_mess
 408c18feed6001f2adfe4a5945450db6 radar_msgs/CMakeFiles/radar_msgs_generate_messages_lisp
 408c18feed6001f2adfe4a5945450db6 radar_msgs/CMakeFiles/radar_msgs_generate_messages_nodejs
 408c18feed6001f2adfe4a5945450db6 radar_msgs/CMakeFiles/radar_msgs_generate_messages_py
+904bf04a62c9e89292d0ea0166bcb934 serial_stm32_pkg/CMakeFiles/_serial_stm32_pkg_generate_messages_check_deps_EncoderData
+93bd9e777c094bd3cef5460a9e7a0ffc serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_cpp
+93bd9e777c094bd3cef5460a9e7a0ffc serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_eus
+93bd9e777c094bd3cef5460a9e7a0ffc serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_lisp
+93bd9e777c094bd3cef5460a9e7a0ffc serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_nodejs
+93bd9e777c094bd3cef5460a9e7a0ffc serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py
 614c1a0b5c325372d5a771f70528ee42 yolo11_pkg/CMakeFiles/_yolo11_pkg_generate_messages_check_deps_array
 e4629d4ba13a99bf0a43fcac50d687f5 yolo11_pkg/CMakeFiles/_yolo11_pkg_generate_messages_check_deps_coordinate
 3a19f096d54f3a4e6fe87af35b25eacc yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_cpp

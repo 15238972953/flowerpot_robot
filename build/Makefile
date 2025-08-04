@@ -1520,6 +1520,162 @@ run_tests_map_server_gtest/fast:
 .PHONY : run_tests_map_server_gtest/fast
 
 #=============================================================================
+# Target rules for targets named serial_stm32_pkg_generate_messages
+
+# Build rule for target.
+serial_stm32_pkg_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_generate_messages
+.PHONY : serial_stm32_pkg_generate_messages
+
+# fast build rule for target.
+serial_stm32_pkg_generate_messages/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages.dir/build
+.PHONY : serial_stm32_pkg_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_gencpp
+
+# Build rule for target.
+serial_stm32_pkg_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_gencpp
+.PHONY : serial_stm32_pkg_gencpp
+
+# fast build rule for target.
+serial_stm32_pkg_gencpp/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_gencpp.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_gencpp.dir/build
+.PHONY : serial_stm32_pkg_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named _serial_stm32_pkg_generate_messages_check_deps_EncoderData
+
+# Build rule for target.
+_serial_stm32_pkg_generate_messages_check_deps_EncoderData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _serial_stm32_pkg_generate_messages_check_deps_EncoderData
+.PHONY : _serial_stm32_pkg_generate_messages_check_deps_EncoderData
+
+# fast build rule for target.
+_serial_stm32_pkg_generate_messages_check_deps_EncoderData/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/_serial_stm32_pkg_generate_messages_check_deps_EncoderData.dir/build.make serial_stm32_pkg/CMakeFiles/_serial_stm32_pkg_generate_messages_check_deps_EncoderData.dir/build
+.PHONY : _serial_stm32_pkg_generate_messages_check_deps_EncoderData/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_generate_messages_cpp
+
+# Build rule for target.
+serial_stm32_pkg_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_generate_messages_cpp
+.PHONY : serial_stm32_pkg_generate_messages_cpp
+
+# fast build rule for target.
+serial_stm32_pkg_generate_messages_cpp/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_cpp.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_cpp.dir/build
+.PHONY : serial_stm32_pkg_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_gennodejs
+
+# Build rule for target.
+serial_stm32_pkg_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_gennodejs
+.PHONY : serial_stm32_pkg_gennodejs
+
+# fast build rule for target.
+serial_stm32_pkg_gennodejs/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_gennodejs.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_gennodejs.dir/build
+.PHONY : serial_stm32_pkg_gennodejs/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_generate_messages_eus
+
+# Build rule for target.
+serial_stm32_pkg_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_generate_messages_eus
+.PHONY : serial_stm32_pkg_generate_messages_eus
+
+# fast build rule for target.
+serial_stm32_pkg_generate_messages_eus/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_eus.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_eus.dir/build
+.PHONY : serial_stm32_pkg_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_generate_messages_py
+
+# Build rule for target.
+serial_stm32_pkg_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_generate_messages_py
+.PHONY : serial_stm32_pkg_generate_messages_py
+
+# fast build rule for target.
+serial_stm32_pkg_generate_messages_py/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py.dir/build
+.PHONY : serial_stm32_pkg_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_geneus
+
+# Build rule for target.
+serial_stm32_pkg_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_geneus
+.PHONY : serial_stm32_pkg_geneus
+
+# fast build rule for target.
+serial_stm32_pkg_geneus/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_geneus.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_geneus.dir/build
+.PHONY : serial_stm32_pkg_geneus/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_generate_messages_lisp
+
+# Build rule for target.
+serial_stm32_pkg_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_generate_messages_lisp
+.PHONY : serial_stm32_pkg_generate_messages_lisp
+
+# fast build rule for target.
+serial_stm32_pkg_generate_messages_lisp/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_lisp.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_lisp.dir/build
+.PHONY : serial_stm32_pkg_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_genlisp
+
+# Build rule for target.
+serial_stm32_pkg_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_genlisp
+.PHONY : serial_stm32_pkg_genlisp
+
+# fast build rule for target.
+serial_stm32_pkg_genlisp/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_genlisp.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_genlisp.dir/build
+.PHONY : serial_stm32_pkg_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_generate_messages_nodejs
+
+# Build rule for target.
+serial_stm32_pkg_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_generate_messages_nodejs
+.PHONY : serial_stm32_pkg_generate_messages_nodejs
+
+# fast build rule for target.
+serial_stm32_pkg_generate_messages_nodejs/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_nodejs.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_nodejs.dir/build
+.PHONY : serial_stm32_pkg_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named serial_stm32_pkg_genpy
+
+# Build rule for target.
+serial_stm32_pkg_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serial_stm32_pkg_genpy
+.PHONY : serial_stm32_pkg_genpy
+
+# fast build rule for target.
+serial_stm32_pkg_genpy/fast:
+	$(MAKE) -f serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_genpy.dir/build.make serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_genpy.dir/build
+.PHONY : serial_stm32_pkg_genpy/fast
+
+#=============================================================================
 # Target rules for targets named serial_stm32_node
 
 # Build rule for target.
@@ -4899,6 +5055,18 @@ help:
 	@echo "... map_server-map_saver"
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... run_tests_map_server_gtest"
+	@echo "... serial_stm32_pkg_generate_messages"
+	@echo "... serial_stm32_pkg_gencpp"
+	@echo "... _serial_stm32_pkg_generate_messages_check_deps_EncoderData"
+	@echo "... serial_stm32_pkg_generate_messages_cpp"
+	@echo "... serial_stm32_pkg_gennodejs"
+	@echo "... serial_stm32_pkg_generate_messages_eus"
+	@echo "... serial_stm32_pkg_generate_messages_py"
+	@echo "... serial_stm32_pkg_geneus"
+	@echo "... serial_stm32_pkg_generate_messages_lisp"
+	@echo "... serial_stm32_pkg_genlisp"
+	@echo "... serial_stm32_pkg_generate_messages_nodejs"
+	@echo "... serial_stm32_pkg_genpy"
 	@echo "... serial_stm32_node"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_nodejs"

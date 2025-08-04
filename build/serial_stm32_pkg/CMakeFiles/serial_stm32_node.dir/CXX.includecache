@@ -6,12 +6,46 @@
 
 #IncludeRegexTransform: 
 
+/home/jetson/catkin_ws/devel/include/processdata_pkg/serial_data.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+/home/jetson/catkin_ws/devel/include/serial_stm32_pkg/EncoderData.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/jetson/catkin_ws/src/serial_stm32_pkg/include/serial_stm32.h
 ros/ros.h
 -
 serial/serial.h
 -
 processdata_pkg/serial_data.h
+-
+serial_stm32_pkg/EncoderData.h
 -
 vector
 -
@@ -230,6 +264,10 @@ boost/make_shared.hpp
 cstddef
 -
 memory
+-
+
+/opt/ros/noetic/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/noetic/include/ros/message_traits.h

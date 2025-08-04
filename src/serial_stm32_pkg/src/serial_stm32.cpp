@@ -12,6 +12,9 @@ SerialCommNode::SerialCommNode() {
     serial_data_sub_ = nh_.subscribe<processdata_pkg::serial_data>(
         "serial_data", 100, &SerialCommNode::serialDataCallback, this);
     
+    // 发布编码器数据到EncoderData话题
+    encoder_data_pub_ = nh_.advertise<serial_stm32_pkg::EncoderData>("EncoderData", 30);
+    
     // 初始化串口
     if (!setupSerialPort()) {
         ROS_ERROR("Failed to initialize serial port!");
@@ -69,6 +72,71 @@ void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::Cons
     }
 }
 
+
+void SerialCommNode::ReceiveData() {
+        ros::Rate rate(10); // 10Hz
+        uint8_t buffer[FRAME_SIZE];
+        size_t bytes_read = 0;
+        
+        while (ros::ok()) {
+            // 尝试读取一帧数据
+            try {
+                bytes_read = serial_.read(buffer, FRAME_SIZE);
+            } catch (serial::IOException& e) {
+                ROS_ERROR_STREAM("Serial read error: " << e.what());
+                continue;
+            }
+            
+            // 检查是否收到完整帧
+            if (bytes_read == FRAME_SIZE) {
+                // 打印接收数据
+                // std::stringstream ss;
+                // ss << "Received bytes:";
+                // for (int i = 0; i < FRAME_SIZE; ++i) {
+                //     ss << " 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
+                // }
+                // ROS_INFO("%s", ss.str().c_str());
+
+
+                // 验证帧头
+                if (buffer[0] == HEADER_BYTE) {
+                    // 计算校验和
+                    uint8_t checksum = 0;
+                    for (int i = 0; i < FRAME_SIZE - 1; i++) {
+                        checksum += buffer[i];
+                    }
+                    
+                    // 验证校验和
+                    if (checksum == buffer[FRAME_SIZE - 1]) {
+                        // 解析数据
+                        uint32_t data1 = *reinterpret_cast<uint32_t*>(&buffer[1]);
+                        uint32_t data2 = *reinterpret_cast<uint32_t*>(&buffer[5]);
+                        
+                        // 发布数据
+                        encoder_data_msg_.Encoder_Left = data1;
+                        encoder_data_msg_.Encoder_Right = data2;
+                        
+                        encoder_data_pub_.publish(encoder_data_msg_);
+                        ROS_INFO("Received data: Encoder_Left=%u, Encoder_Right=%u", 
+                                data1, data2);
+                    } else {
+                        ROS_WARN("Checksum error: expected 0x%02X, got 0x%02X", 
+                                checksum, buffer[FRAME_SIZE - 1]);
+                    }
+                } else {
+                    ROS_WARN("Invalid header: 0x%02X (expected 0x%02X)", 
+                            buffer[0], HEADER_BYTE);
+                }
+            } else if (bytes_read > 0) {
+                ROS_WARN("Incomplete frame: received %zu bytes (expected %d)", 
+                        bytes_read, FRAME_SIZE);
+            }
+            
+            ros::spinOnce();
+            rate.sleep();
+        }
+    }
+
 //CRC校验：CRC4多项式 x^4 + x + 1 (0x3)
 // uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high) {
 //     uint8_t crc = 0xF;
@@ -122,7 +190,6 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "serial_stm32_node");
     
     SerialCommNode node;
-    // node.run();
-    ros::spin();
+    node.ReceiveData();
     return 0;
 }
