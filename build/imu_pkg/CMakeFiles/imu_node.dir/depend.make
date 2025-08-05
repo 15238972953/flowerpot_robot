@@ -3,6 +3,8 @@
 
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /home/jetson/catkin_ws/src/imu_pkg/include/imu_node.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /home/jetson/catkin_ws/src/imu_pkg/src/imu_node.cpp
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/geometry_msgs/Quaternion.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/geometry_msgs/Vector3.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/ros/advertise_options.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/ros/advertise_service_options.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/ros/assert.h
@@ -59,10 +61,18 @@ imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/ros/
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/ros/wall_timer.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/ros/wall_timer_options.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/rosconsole/macros_generated.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/sensor_msgs/Imu.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/serial/serial.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/serial/v8stdint.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/std_msgs/Float32.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/std_msgs/Header.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/std_msgs/String.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/Matrix3x3.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/MinMax.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/QuadWord.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/Quaternion.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/Scalar.h
+imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/tf2/LinearMath/Vector3.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 imu_pkg/CMakeFiles/imu_node.dir/src/imu_node.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
 

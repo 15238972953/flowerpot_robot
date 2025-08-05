@@ -187,7 +187,7 @@ foreach(t ${imu_pkg_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "roscpp;serial;std_msgs")
+set(depends "roscpp;serial;std_msgs;sensor_msgs;tf2;tf2_ros")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

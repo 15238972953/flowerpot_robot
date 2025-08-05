@@ -6,7 +6,8 @@ ReadState current_state = ReadState::WAIT_FOR_55;
 
 SerialReader::SerialReader(ros::NodeHandle& nh) : nh_(nh), private_nh_("~"), is_serial_connected_(false) {
     // 初始化 Publisher，话题名称为 "yaw_angle"
-    yaw_pub_ = nh.advertise<std_msgs::Float32>("yaw_angle", 10);
+    yaw_pub_ = nh.advertise<std_msgs::Float32>("yaw_angle", 10);   // 发布 yaw 角度到 "yaw_angle" 话题
+    imu_pub_ = nh.advertise<sensor_msgs::Imu>("/imu/data", 10);    // 发布 IMU 数据到 "/imu/data" 话题
     // 从参数服务器获取配置
     private_nh_.param<std::string>("port", port_, "/dev/ttyUSB0");
     private_nh_.param<int>("baudrate", baudrate_, 9600);
@@ -47,21 +48,81 @@ void SerialReader::processData(const std::vector<uint8_t> &frame) {
     // 检查包头
     if (frame[0] == FRAME_HEADER && frame[11] == FRAME_HEADER && frame[22] == FRAME_HEADER && frame[33] == FRAME_HEADER) {
 
+        // 加速度数据说明：
+        //   1   2    3   4   5   6   7   8  9  10 11
+        // 0x55	0x51 AxL AxH AyL AyH AzL AzH TL	TH SUM
+        // 角速度数据说明：
+        //   1   2    3   4   5   6   7   8   9    10   11
+        // 0x55	0x52 WxL WxH WyL WyH WzL WzH VolL VolH SUM
         // 角度数据说明：
         //   1   2     3     4     5       6    7     8  9  10 11
         // 0x55	0x53 RollL RollH PitchL	PitchH YawL	YawH VL	VH SUM
+        // 磁场数据说明：
+        //   1   2    3   4   5   6   7   8  9  10  11
+        // 0x55	0x54 HxL HxH HyL HyH HzL HzH TL TH SUM
 
+        // 新话题
+        imu.header.stamp = ros::Time::now();
+        imu.header.frame_id = "imu_link";
+        // 角度
         if(frame[10] == static_cast<uint8_t>(frame[0] + frame[1] + frame[2] + frame[3] + frame[4] + 
                         frame[5] + frame[6] + frame[7] + frame[8] + frame[9])) {
+            float roll = static_cast<float>(((frame[3]<<8)|frame[2])/32768.0f*180.0f);
+            float pitch = static_cast<float>(((frame[5]<<8)|frame[4])/32768.0f*180.0f);
             float yaw = static_cast<float>(((frame[7]<<8)|frame[6])/32768.0f*180.0f);
-            ROS_INFO("Now Angle - Yaw: %.2f", yaw);
-             // 发布 yaw 数据
-            std_msgs::Float32 yaw_msg;
-            yaw_msg.data = yaw;
-            yaw_pub_.publish(yaw_msg);
-        } else {
-            ROS_ERROR("Checksum error, data may be corrupted");
+            tf2::Quaternion q;
+            q.setRPY(roll, pitch, yaw);
+            // 四元数归一化（防止非单位四元数）
+            q.normalize();
+            // 四元数方向
+            imu.orientation.x = q.x();
+            imu.orientation.y = q.y();
+            imu.orientation.z = q.z();
+            imu.orientation.w = q.w();
+
+            // ROS_INFO("Quaternion - x: %f, y: %f, z: %f, w: %f", q.x(), q.y(), q.z(), q.w());
+            // // 计算四元数平方和
+            // double norm_sq = q.x()*q.x() + q.y()*q.y() + q.z()*q.z() + q.w()*q.w();
+            // ROS_INFO("Quaternion norm squared: %.6f (expected: 1.000000)", norm_sq);
         }
+        // 磁场（暂未用到）
+        if(frame[21] == static_cast<uint8_t>(frame[11] + frame[12] + frame[13] + frame[14] + frame[15] + 
+                        frame[16] + frame[17] + frame[18] + frame[19] + frame[20])){}
+        // 线加速度
+        if(frame[32] == static_cast<uint8_t>(frame[22] + frame[23] + frame[24] + frame[25] + frame[26] + 
+                        frame[27] + frame[28] + frame[29] + frame[30] + frame[31])) {
+            imu.linear_acceleration.x = static_cast<float>(((frame[25]<<8)|frame[24])/32768.0f*16.0f);
+            imu.linear_acceleration.y = static_cast<float>(((frame[27]<<8)|frame[26])/32768.0f*16.0f);
+            imu.linear_acceleration.z = static_cast<float>(((frame[29]<<8)|frame[28])/32768.0f*16.0f);
+        }
+        // 角速度
+        if(frame[43] == static_cast<uint8_t>(frame[33] + frame[34] + frame[35] + frame[36] + frame[37] +
+                        frame[38] + frame[39] + frame[40] + frame[41] + frame[42])) {
+            imu.angular_velocity.x = static_cast<float>(((frame[36]<<8)|frame[35])/32768.0f*2000.0f);
+            imu.angular_velocity.y = static_cast<float>(((frame[38]<<8)|frame[37])/32768.0f*2000.0f);
+            imu.angular_velocity.z = static_cast<float>(((frame[40]<<8)|frame[39])/32768.0f*2000.0f);
+        }
+        
+        // 设置协方差（若不知道可设为默认值）
+        imu.orientation_covariance = {0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01};
+        imu.angular_velocity_covariance = {0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01};
+        imu.linear_acceleration_covariance = {0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01};
+        
+        imu_pub_.publish(imu);
+
+
+        // 原话题，只输出yaw信息
+        // if(frame[10] == static_cast<uint8_t>(frame[0] + frame[1] + frame[2] + frame[3] + frame[4] + 
+        //                 frame[5] + frame[6] + frame[7] + frame[8] + frame[9])) {
+        //     float yaw = static_cast<float>(((frame[7]<<8)|frame[6])/32768.0f*180.0f);
+        //     // ROS_INFO("Now Angle - Yaw: %.2f", yaw);
+        //     // 发布 yaw 数据
+        //     std_msgs::Float32 yaw_msg;
+        //     yaw_msg.data = yaw;
+        //     yaw_pub_.publish(yaw_msg);
+        // } else {
+        //     ROS_ERROR("Checksum error, data may be corrupted");
+        // }
     }
 }
 
@@ -93,6 +154,7 @@ void SerialReader::readData() {
                 //     }
                 //     ROS_INFO("%s", ss.str().c_str());
                 // }
+
                 // 处理读取到的数据
                 processData(temp);
             } else {

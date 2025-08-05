@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(serial_stm32_pkg_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/jetson/catkin_ws/devel/include " STREQUAL " ")
+if(NOT " " STREQUAL " ")
   set(serial_stm32_pkg_INCLUDE_DIRS "")
-  set(_include_dirs "/home/jetson/catkin_ws/devel/include")
+  set(_include_dirs "")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -187,7 +187,7 @@ foreach(t ${serial_stm32_pkg_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "message_runtime;roscpp;serial;std_msgs")
+set(depends "message_runtime;roscpp;serial;std_msgs;nav_msgs;geometry_msgs;tf2_ros")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

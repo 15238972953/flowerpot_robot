@@ -1,8 +1,10 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "serial_stm32_pkg: 1 messages, 0 services")
+message(WARNING "Invoking generate_messages() without having added any message or service file before.
+You should either add add_message_files() and/or add_service_files() calls or remove the invocation of generate_messages().")
+message(STATUS "serial_stm32_pkg: 0 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iserial_stm32_pkg:/home/jetson/catkin_ws/src/serial_stm32_pkg/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg;-Inav_msgs:/opt/ros/noetic/share/nav_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg;-Itf2_msgs:/opt/ros/noetic/share/tf2_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,23 +19,12 @@ add_custom_target(serial_stm32_pkg_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg" NAME_WE)
-add_custom_target(_serial_stm32_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "serial_stm32_pkg" "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg" ""
-)
-
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
 
 ### Section generating for lang: gencpp
 ### Generating Messages
-_generate_msg_cpp(serial_stm32_pkg
-  "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/serial_stm32_pkg
-)
 
 ### Generating Services
 
@@ -49,8 +40,6 @@ add_custom_target(serial_stm32_pkg_generate_messages_cpp
 add_dependencies(serial_stm32_pkg_generate_messages serial_stm32_pkg_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg" NAME_WE)
-add_dependencies(serial_stm32_pkg_generate_messages_cpp _serial_stm32_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(serial_stm32_pkg_gencpp)
@@ -61,12 +50,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS serial_stm32_pkg_generate_messages_
 
 ### Section generating for lang: geneus
 ### Generating Messages
-_generate_msg_eus(serial_stm32_pkg
-  "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/serial_stm32_pkg
-)
 
 ### Generating Services
 
@@ -82,8 +65,6 @@ add_custom_target(serial_stm32_pkg_generate_messages_eus
 add_dependencies(serial_stm32_pkg_generate_messages serial_stm32_pkg_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg" NAME_WE)
-add_dependencies(serial_stm32_pkg_generate_messages_eus _serial_stm32_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(serial_stm32_pkg_geneus)
@@ -94,12 +75,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS serial_stm32_pkg_generate_messages_
 
 ### Section generating for lang: genlisp
 ### Generating Messages
-_generate_msg_lisp(serial_stm32_pkg
-  "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/serial_stm32_pkg
-)
 
 ### Generating Services
 
@@ -115,8 +90,6 @@ add_custom_target(serial_stm32_pkg_generate_messages_lisp
 add_dependencies(serial_stm32_pkg_generate_messages serial_stm32_pkg_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg" NAME_WE)
-add_dependencies(serial_stm32_pkg_generate_messages_lisp _serial_stm32_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(serial_stm32_pkg_genlisp)
@@ -127,12 +100,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS serial_stm32_pkg_generate_messages_
 
 ### Section generating for lang: gennodejs
 ### Generating Messages
-_generate_msg_nodejs(serial_stm32_pkg
-  "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/serial_stm32_pkg
-)
 
 ### Generating Services
 
@@ -148,8 +115,6 @@ add_custom_target(serial_stm32_pkg_generate_messages_nodejs
 add_dependencies(serial_stm32_pkg_generate_messages serial_stm32_pkg_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg" NAME_WE)
-add_dependencies(serial_stm32_pkg_generate_messages_nodejs _serial_stm32_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(serial_stm32_pkg_gennodejs)
@@ -160,12 +125,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS serial_stm32_pkg_generate_messages_
 
 ### Section generating for lang: genpy
 ### Generating Messages
-_generate_msg_py(serial_stm32_pkg
-  "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/serial_stm32_pkg
-)
 
 ### Generating Services
 
@@ -181,8 +140,6 @@ add_custom_target(serial_stm32_pkg_generate_messages_py
 add_dependencies(serial_stm32_pkg_generate_messages serial_stm32_pkg_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg" NAME_WE)
-add_dependencies(serial_stm32_pkg_generate_messages_py _serial_stm32_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(serial_stm32_pkg_genpy)
@@ -203,6 +160,15 @@ endif()
 if(TARGET std_msgs_generate_messages_cpp)
   add_dependencies(serial_stm32_pkg_generate_messages_cpp std_msgs_generate_messages_cpp)
 endif()
+if(TARGET nav_msgs_generate_messages_cpp)
+  add_dependencies(serial_stm32_pkg_generate_messages_cpp nav_msgs_generate_messages_cpp)
+endif()
+if(TARGET geometry_msgs_generate_messages_cpp)
+  add_dependencies(serial_stm32_pkg_generate_messages_cpp geometry_msgs_generate_messages_cpp)
+endif()
+if(TARGET tf2_msgs_generate_messages_cpp)
+  add_dependencies(serial_stm32_pkg_generate_messages_cpp tf2_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/serial_stm32_pkg)
   # install generated code
@@ -213,6 +179,15 @@ if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/se
 endif()
 if(TARGET std_msgs_generate_messages_eus)
   add_dependencies(serial_stm32_pkg_generate_messages_eus std_msgs_generate_messages_eus)
+endif()
+if(TARGET nav_msgs_generate_messages_eus)
+  add_dependencies(serial_stm32_pkg_generate_messages_eus nav_msgs_generate_messages_eus)
+endif()
+if(TARGET geometry_msgs_generate_messages_eus)
+  add_dependencies(serial_stm32_pkg_generate_messages_eus geometry_msgs_generate_messages_eus)
+endif()
+if(TARGET tf2_msgs_generate_messages_eus)
+  add_dependencies(serial_stm32_pkg_generate_messages_eus tf2_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/serial_stm32_pkg)
@@ -225,6 +200,15 @@ endif()
 if(TARGET std_msgs_generate_messages_lisp)
   add_dependencies(serial_stm32_pkg_generate_messages_lisp std_msgs_generate_messages_lisp)
 endif()
+if(TARGET nav_msgs_generate_messages_lisp)
+  add_dependencies(serial_stm32_pkg_generate_messages_lisp nav_msgs_generate_messages_lisp)
+endif()
+if(TARGET geometry_msgs_generate_messages_lisp)
+  add_dependencies(serial_stm32_pkg_generate_messages_lisp geometry_msgs_generate_messages_lisp)
+endif()
+if(TARGET tf2_msgs_generate_messages_lisp)
+  add_dependencies(serial_stm32_pkg_generate_messages_lisp tf2_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/serial_stm32_pkg)
   # install generated code
@@ -235,6 +219,15 @@ if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_D
 endif()
 if(TARGET std_msgs_generate_messages_nodejs)
   add_dependencies(serial_stm32_pkg_generate_messages_nodejs std_msgs_generate_messages_nodejs)
+endif()
+if(TARGET nav_msgs_generate_messages_nodejs)
+  add_dependencies(serial_stm32_pkg_generate_messages_nodejs nav_msgs_generate_messages_nodejs)
+endif()
+if(TARGET geometry_msgs_generate_messages_nodejs)
+  add_dependencies(serial_stm32_pkg_generate_messages_nodejs geometry_msgs_generate_messages_nodejs)
+endif()
+if(TARGET tf2_msgs_generate_messages_nodejs)
+  add_dependencies(serial_stm32_pkg_generate_messages_nodejs tf2_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/serial_stm32_pkg)
@@ -247,4 +240,13 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/seri
 endif()
 if(TARGET std_msgs_generate_messages_py)
   add_dependencies(serial_stm32_pkg_generate_messages_py std_msgs_generate_messages_py)
+endif()
+if(TARGET nav_msgs_generate_messages_py)
+  add_dependencies(serial_stm32_pkg_generate_messages_py nav_msgs_generate_messages_py)
+endif()
+if(TARGET geometry_msgs_generate_messages_py)
+  add_dependencies(serial_stm32_pkg_generate_messages_py geometry_msgs_generate_messages_py)
+endif()
+if(TARGET tf2_msgs_generate_messages_py)
+  add_dependencies(serial_stm32_pkg_generate_messages_py tf2_msgs_generate_messages_py)
 endif()

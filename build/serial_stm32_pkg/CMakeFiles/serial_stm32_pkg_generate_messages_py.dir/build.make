@@ -53,23 +53,6 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 # Include the progress variables for this target.
 include serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py.dir/progress.make
 
-serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/_EncoderData.py
-serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/__init__.py
-
-
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/_EncoderData.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/_EncoderData.py: /home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG serial_stm32_pkg/EncoderData"
-	cd /home/jetson/catkin_ws/build/serial_stm32_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/serial_stm32_pkg/msg/EncoderData.msg -Iserial_stm32_pkg:/home/jetson/catkin_ws/src/serial_stm32_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p serial_stm32_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg
-
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/_EncoderData.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for serial_stm32_pkg"
-	cd /home/jetson/catkin_ws/build/serial_stm32_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg --initpy
-
-serial_stm32_pkg_generate_messages_py: serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py
-serial_stm32_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/_EncoderData.py
-serial_stm32_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/serial_stm32_pkg/msg/__init__.py
 serial_stm32_pkg_generate_messages_py: serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_py.dir/build.make
 
 .PHONY : serial_stm32_pkg_generate_messages_py

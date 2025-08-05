@@ -198,66 +198,6 @@ lslidar_serial/fast:
 .PHONY : lslidar_serial/fast
 
 # Convenience name for target.
-lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_py.dir/build.make lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_lisp: lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-.PHONY : actionlib_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_generate_messages_lisp/fast:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-.PHONY : actionlib_generate_messages_lisp/fast
-
-# Convenience name for target.
-lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-.PHONY : lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_eus: lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-
-.PHONY : actionlib_generate_messages_eus
-
-# fast build rule for target.
-actionlib_generate_messages_eus/fast:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_eus.dir/build.make lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_eus.dir/build
-.PHONY : actionlib_generate_messages_eus/fast
-
-# Convenience name for target.
-lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_cpp: lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-
-.PHONY : actionlib_generate_messages_cpp
-
-# fast build rule for target.
-actionlib_generate_messages_cpp/fast:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-.PHONY : actionlib_generate_messages_cpp/fast
-
-# Convenience name for target.
 lsx10/lslidar_driver/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lsx10/lslidar_driver/CMakeFiles/tf_generate_messages_nodejs.dir/rule
 .PHONY : lsx10/lslidar_driver/CMakeFiles/tf_generate_messages_nodejs.dir/rule
@@ -496,21 +436,6 @@ nodelet_generate_messages_lisp: lsx10/lslidar_driver/CMakeFiles/nodelet_generate
 nodelet_generate_messages_lisp/fast:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f lsx10/lslidar_driver/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make lsx10/lslidar_driver/CMakeFiles/nodelet_generate_messages_lisp.dir/build
 .PHONY : nodelet_generate_messages_lisp/fast
-
-# Convenience name for target.
-lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-.PHONY : lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_nodejs: lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-
-.PHONY : actionlib_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_generate_messages_nodejs/fast:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make lsx10/lslidar_driver/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
-.PHONY : actionlib_generate_messages_nodejs/fast
 
 # Convenience name for target.
 lsx10/lslidar_driver/CMakeFiles/nodelet_generate_messages_eus.dir/rule:
@@ -1066,10 +991,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... lslidar_driver_node"
 	@echo "... lslidar_serial"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... actionlib_generate_messages_lisp"
-	@echo "... actionlib_generate_messages_eus"
-	@echo "... actionlib_generate_messages_cpp"
 	@echo "... tf_generate_messages_nodejs"
 	@echo "... tf_generate_messages_cpp"
 	@echo "... tf_generate_messages_py"
@@ -1088,7 +1009,6 @@ help:
 	@echo "... bond_generate_messages_lisp"
 	@echo "... pcl_msgs_generate_messages_lisp"
 	@echo "... nodelet_generate_messages_lisp"
-	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... nodelet_generate_messages_eus"
 	@echo "... edit_cache"
 	@echo "... tf_generate_messages_lisp"

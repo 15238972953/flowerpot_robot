@@ -12,8 +12,8 @@ SerialCommNode::SerialCommNode() {
     serial_data_sub_ = nh_.subscribe<processdata_pkg::serial_data>(
         "serial_data", 100, &SerialCommNode::serialDataCallback, this);
     
-    // 发布编码器数据到EncoderData话题
-    encoder_data_pub_ = nh_.advertise<serial_stm32_pkg::EncoderData>("EncoderData", 30);
+    // 发布标准里程计
+    odom_pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
     
     // 初始化串口
     if (!setupSerialPort()) {
@@ -72,6 +72,44 @@ void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::Cons
     }
 }
 
+// 更新里程计信息
+void SerialCommNode::updateOdometry() {
+        // 计算时间间隔
+        ros::Time current_time = ros::Time::now();
+        double dt = (current_time - last_time_).toSec();
+        last_time_ = current_time;
+
+        // 计算线速度和角速度（差分驱动模型）
+        double linear_vel = (right_speed_ + left_speed_) / 2.0;
+        double angular_vel = (right_speed_ - left_speed_) / wheel_separation_;
+
+        // 更新位置和方向（航迹推算）
+        theta_ += angular_vel * dt;
+        x_ += linear_vel * cos(theta_) * dt;
+        y_ += linear_vel * sin(theta_) * dt;
+
+        // 填充Odometry消息
+        odom.header.stamp = current_time;
+        odom.header.frame_id = "odom";
+        odom.child_frame_id = "base_link";
+
+        // 位置
+        odom.pose.pose.position.x = x_;
+        odom.pose.pose.position.y = y_;
+        odom.pose.pose.position.z = 0.0;
+        odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(theta_);
+
+        // 速度
+        odom.twist.twist.linear.x = linear_vel;
+        odom.twist.twist.angular.z = angular_vel;
+
+        // 发布里程计
+        odom_pub_.publish(odom);
+
+        // 打印调试信息（可选）
+        // ROS_DEBUG_THROTTLE(1.0, "Odom - x: %.2f m, y: %.2f m, theta: %.2f rad", x_, y_, theta_);
+    }
+
 
 void SerialCommNode::ReceiveData() {
         ros::Rate rate(10); // 10Hz
@@ -90,46 +128,44 @@ void SerialCommNode::ReceiveData() {
             // 检查是否收到完整帧
             if (bytes_read == FRAME_SIZE) {
                 // 打印接收数据
-                // std::stringstream ss;
-                // ss << "Received bytes:";
-                // for (int i = 0; i < FRAME_SIZE; ++i) {
-                //     ss << " 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
-                // }
-                // ROS_INFO("%s", ss.str().c_str());
-
-
-                // 验证帧头
-                if (buffer[0] == HEADER_BYTE) {
-                    // 计算校验和
-                    uint8_t checksum = 0;
-                    for (int i = 0; i < FRAME_SIZE - 1; i++) {
-                        checksum += buffer[i];
-                    }
-                    
-                    // 验证校验和
-                    if (checksum == buffer[FRAME_SIZE - 1]) {
-                        // 解析数据
-                        uint32_t data1 = *reinterpret_cast<uint32_t*>(&buffer[1]);
-                        uint32_t data2 = *reinterpret_cast<uint32_t*>(&buffer[5]);
-                        
-                        // 发布数据
-                        encoder_data_msg_.Encoder_Left = data1;
-                        encoder_data_msg_.Encoder_Right = data2;
-                        
-                        encoder_data_pub_.publish(encoder_data_msg_);
-                        ROS_INFO("Received data: Encoder_Left=%u, Encoder_Right=%u", 
-                                data1, data2);
-                    } else {
-                        ROS_WARN("Checksum error: expected 0x%02X, got 0x%02X", 
-                                checksum, buffer[FRAME_SIZE - 1]);
-                    }
-                } else {
-                    ROS_WARN("Invalid header: 0x%02X (expected 0x%02X)", 
-                            buffer[0], HEADER_BYTE);
+                std::stringstream ss;
+                ss << "Received bytes:";
+                for (int i = 0; i < FRAME_SIZE; ++i) {
+                    ss << " 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
                 }
-            } else if (bytes_read > 0) {
-                ROS_WARN("Incomplete frame: received %zu bytes (expected %d)", 
-                        bytes_read, FRAME_SIZE);
+                ROS_INFO("%s", ss.str().c_str());
+                int32_t data1 = *reinterpret_cast<int32_t*>(&buffer[1]);
+                ROS_INFO("Left Speed: %.4f m/s", static_cast<float>(data1/1000.0));
+
+            //     // 验证帧头
+            //     if (buffer[0] == HEADER_BYTE) {
+            //         // 计算校验和
+            //         uint8_t checksum = 0;
+            //         for (int i = 0; i < FRAME_SIZE - 1; i++) {
+            //             checksum += buffer[i];
+            //         }
+            //         // 验证校验和
+            //         if (checksum == buffer[FRAME_SIZE - 1]) {
+            //             // 解析数据
+            //             float temp_float;
+            //             std::memcpy(&temp_float, &buffer[1], sizeof(float));
+            //             left_speed_ = static_cast<double>(temp_float);
+            //             std::memcpy(&temp_float, &buffer[5], sizeof(float));
+            //             right_speed_ = static_cast<double>(temp_float);
+            //             updateOdometry();
+            //             // ROS_INFO("Received data: Encoder_Left=%u, Encoder_Right=%u", 
+            //             //         data1, data2);
+            //         } else {
+            //             ROS_WARN("Checksum error: expected 0x%02X, got 0x%02X", 
+            //                     checksum, buffer[FRAME_SIZE - 1]);
+            //         }
+            //     } else {
+            //         ROS_WARN("Invalid header: 0x%02X (expected 0x%02X)", 
+            //                 buffer[0], HEADER_BYTE);
+            //     }
+            // } else if (bytes_read > 0) {
+            //     ROS_WARN("Incomplete frame: received %zu bytes (expected %d)", 
+            //             bytes_read, FRAME_SIZE);
             }
             
             ros::spinOnce();

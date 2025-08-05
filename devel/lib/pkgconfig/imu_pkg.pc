@@ -5,4 +5,4 @@ Description: Description of imu_pkg
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib -limu_pkg
-Requires: roscpp serial std_msgs
+Requires: roscpp serial std_msgs sensor_msgs tf2 tf2_ros

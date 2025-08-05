@@ -1,2 +1,0 @@
-uint32 Encoder_Left
-uint32 Encoder_Right

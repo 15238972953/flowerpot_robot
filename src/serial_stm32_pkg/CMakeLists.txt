@@ -13,6 +13,10 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   message_generation
   processdata_pkg
+  nav_msgs
+  geometry_msgs
+  tf2
+  tf2_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -49,10 +53,9 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  EncoderData.msg
-)
+# add_message_files(
+#   FILES
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -72,6 +75,9 @@ add_message_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
+  nav_msgs
+  geometry_msgs
+  tf2_msgs
 )
 
 ################################################
@@ -106,7 +112,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES serial_stm32_pkg
- CATKIN_DEPENDS message_runtime roscpp serial std_msgs
+ CATKIN_DEPENDS message_runtime roscpp serial std_msgs nav_msgs geometry_msgs tf2_ros
 #  DEPENDS system_lib
 )
 

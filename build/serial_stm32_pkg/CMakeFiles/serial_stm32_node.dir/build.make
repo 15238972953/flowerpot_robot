@@ -90,6 +90,7 @@ serial_stm32_node_EXTERNAL_OBJECTS =
 /home/jetson/catkin_ws/devel/lib/serial_stm32_pkg/serial_stm32_node: /usr/lib/aarch64-linux-gnu/liblog4cxx.so
 /home/jetson/catkin_ws/devel/lib/serial_stm32_pkg/serial_stm32_node: /usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0
 /home/jetson/catkin_ws/devel/lib/serial_stm32_pkg/serial_stm32_node: /opt/ros/noetic/lib/libxmlrpcpp.so
+/home/jetson/catkin_ws/devel/lib/serial_stm32_pkg/serial_stm32_node: /opt/ros/noetic/lib/libtf2.so
 /home/jetson/catkin_ws/devel/lib/serial_stm32_pkg/serial_stm32_node: /opt/ros/noetic/lib/libroscpp_serialization.so
 /home/jetson/catkin_ws/devel/lib/serial_stm32_pkg/serial_stm32_node: /opt/ros/noetic/lib/librostime.so
 /home/jetson/catkin_ws/devel/lib/serial_stm32_pkg/serial_stm32_node: /usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0

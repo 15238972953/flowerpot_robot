@@ -84,14 +84,16 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 数据关联->数据融合->选择最近的花盆->PID计算出PWM；
 
 # 6、串口通信
-`sudo chmod 777 /dev/ttyTHS0`
+`sudo chmod 777 /dev/ttyTHS0`  
 `rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200`
 已实现
 
 # 7.IMU
-**串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyCH343USB0`)  
+**串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyUSB0`)  
 **帧率：** 10HZ;  
-**topic:** yaw_angle;  
+**topic:** yaw_angle;    
+**运行：** `rosrun imu_pkg imu_node`
+
 
 
 # 更新中。。。
@@ -102,5 +104,10 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 catkin_make --pkg lslidar_msgs
 catkin_make --pkg lslidar lslidar_driver
 catkin_make --pkg yolo11_pkg   # 要在processdata_pkg之前
+catkin_make --pkg radar_msgs
 catkin_make --pkg processdata_pkg   
 ```
+
+
+^C(base) jetson@unbutu:~$ rosrun gmapping slam_gmapping
+[WARN] [1754378842.372055956]: MessageFilter [target=odom ]: Dropped 100.00% of messages so far. Please turn the [ros.gmapping.message_filter] rosconsole logger to DEBUG for more information.
