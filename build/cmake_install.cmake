@@ -156,6 +156,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/jetson/catkin_ws/build/odom_pkg/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/serial_stm32_pkg/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/lsx10/lslidar_driver/cmake_install.cmake")
+  include("/home/jetson/catkin_ws/build/tracking_pkg/cmake_install.cmake")
   include("/home/jetson/catkin_ws/build/yolo11_pkg/cmake_install.cmake")
 
 endif()

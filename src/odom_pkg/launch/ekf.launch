@@ -1,0 +1,11 @@
+<launch>
+    <!-- 启动EKF节点 -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_odom" clear_params="true">
+        <rosparam command="load" file="$(find odom_pkg)/config/ekf.yaml"/>
+        <!-- 重映射输出话题 -->
+        <remap from="odometry/filtered" to="odom" />
+    </node>
+
+    <!-- 可视化验证（可选）
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find odom_pkg)/rviz/odom_fusion.rviz"/> -->
+</launch>

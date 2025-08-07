@@ -112,11 +112,13 @@ void SerialCommNode::updateOdometry() {
 
 
 void SerialCommNode::ReceiveData() {
-        ros::Rate rate(10); // 10Hz
+        ros::Rate rate(10); // 100Hz
         uint8_t buffer[FRAME_SIZE];
         size_t bytes_read = 0;
         
         while (ros::ok()) {
+            // 清空缓冲区并尝试读取
+            serial_.flushInput();
             // 尝试读取一帧数据
             try {
                 bytes_read = serial_.read(buffer, FRAME_SIZE);
@@ -128,44 +130,45 @@ void SerialCommNode::ReceiveData() {
             // 检查是否收到完整帧
             if (bytes_read == FRAME_SIZE) {
                 // 打印接收数据
-                std::stringstream ss;
-                ss << "Received bytes:";
-                for (int i = 0; i < FRAME_SIZE; ++i) {
-                    ss << " 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
-                }
-                ROS_INFO("%s", ss.str().c_str());
-                int32_t data1 = *reinterpret_cast<int32_t*>(&buffer[1]);
-                ROS_INFO("Left Speed: %.4f m/s", static_cast<float>(data1/1000.0));
+                // std::stringstream ss;
+                // ss << "Received bytes:";
+                // for (int i = 0; i < FRAME_SIZE; ++i) {
+                //     ss << " 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
+                // }
+                // ROS_INFO("%s", ss.str().c_str());
+                // int32_t data1 = *reinterpret_cast<int32_t*>(&buffer[1]);
+                // ROS_INFO("Left  Speed: %.4f m/s", static_cast<float>(data1/10000.0));
+                // int32_t data2 = *reinterpret_cast<int32_t*>(&buffer[5]);
+                // ROS_INFO("right Speed: %.4f m/s", static_cast<float>(data2/10000.0));
 
-            //     // 验证帧头
-            //     if (buffer[0] == HEADER_BYTE) {
-            //         // 计算校验和
-            //         uint8_t checksum = 0;
-            //         for (int i = 0; i < FRAME_SIZE - 1; i++) {
-            //             checksum += buffer[i];
-            //         }
-            //         // 验证校验和
-            //         if (checksum == buffer[FRAME_SIZE - 1]) {
-            //             // 解析数据
-            //             float temp_float;
-            //             std::memcpy(&temp_float, &buffer[1], sizeof(float));
-            //             left_speed_ = static_cast<double>(temp_float);
-            //             std::memcpy(&temp_float, &buffer[5], sizeof(float));
-            //             right_speed_ = static_cast<double>(temp_float);
-            //             updateOdometry();
-            //             // ROS_INFO("Received data: Encoder_Left=%u, Encoder_Right=%u", 
-            //             //         data1, data2);
-            //         } else {
-            //             ROS_WARN("Checksum error: expected 0x%02X, got 0x%02X", 
-            //                     checksum, buffer[FRAME_SIZE - 1]);
-            //         }
-            //     } else {
-            //         ROS_WARN("Invalid header: 0x%02X (expected 0x%02X)", 
-            //                 buffer[0], HEADER_BYTE);
-            //     }
-            // } else if (bytes_read > 0) {
-            //     ROS_WARN("Incomplete frame: received %zu bytes (expected %d)", 
-            //             bytes_read, FRAME_SIZE);
+                // 验证帧头
+                if (buffer[0] == HEADER_BYTE) {
+                    // 计算校验和
+                    uint8_t checksum = 0;
+                    for (int i = 0; i < FRAME_SIZE - 1; i++) {
+                        checksum += buffer[i];
+                    }
+                    // 验证校验和
+                    if (checksum == buffer[FRAME_SIZE - 1]) {
+                        // 解析数据
+                        int32_t data1 = *reinterpret_cast<int32_t*>(&buffer[1]);
+                        left_speed_ = static_cast<double>(data1)/10000.0;
+                        int32_t data2 = *reinterpret_cast<int32_t*>(&buffer[5]);
+                        right_speed_ = static_cast<double>(data2)/10000.0;
+                        updateOdometry();
+                        // ROS_INFO("Received data: Encoder_Left=%f, Encoder_Right=%f", 
+                        //         left_speed_, right_speed_);
+                    } else {
+                        ROS_WARN("Checksum error: expected 0x%02X, got 0x%02X", 
+                                checksum, buffer[FRAME_SIZE - 1]);
+                    }
+                } else {
+                    ROS_WARN("Invalid header: 0x%02X (expected 0x%02X)", 
+                            buffer[0], HEADER_BYTE);
+                }
+            } else if (bytes_read > 0) {
+                ROS_WARN("Incomplete frame: received %zu bytes (expected %d)", 
+                        bytes_read, FRAME_SIZE);
             }
             
             ros::spinOnce();

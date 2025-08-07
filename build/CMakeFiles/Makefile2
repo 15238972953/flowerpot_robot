@@ -64,6 +64,7 @@ all: imu_pkg/all
 all: odom_pkg/all
 all: serial_stm32_pkg/all
 all: lsx10/lslidar_driver/all
+all: tracking_pkg/all
 all: yolo11_pkg/all
 
 .PHONY : all
@@ -80,6 +81,7 @@ preinstall: imu_pkg/preinstall
 preinstall: odom_pkg/preinstall
 preinstall: serial_stm32_pkg/preinstall
 preinstall: lsx10/lslidar_driver/preinstall
+preinstall: tracking_pkg/preinstall
 preinstall: yolo11_pkg/preinstall
 
 .PHONY : preinstall
@@ -101,6 +103,7 @@ clean: imu_pkg/clean
 clean: odom_pkg/clean
 clean: serial_stm32_pkg/clean
 clean: lsx10/lslidar_driver/clean
+clean: tracking_pkg/clean
 clean: yolo11_pkg/clean
 
 .PHONY : clean
@@ -484,6 +487,24 @@ serial_stm32_pkg/clean: serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_genpy.dir/c
 serial_stm32_pkg/clean: serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/clean
 
 .PHONY : serial_stm32_pkg/clean
+
+#=============================================================================
+# Directory level rules for directory tracking_pkg
+
+# Recursive "all" directory target.
+tracking_pkg/all:
+
+.PHONY : tracking_pkg/all
+
+# Recursive "preinstall" directory target.
+tracking_pkg/preinstall:
+
+.PHONY : tracking_pkg/preinstall
+
+# Recursive "clean" directory target.
+tracking_pkg/clean:
+
+.PHONY : tracking_pkg/clean
 
 #=============================================================================
 # Directory level rules for directory yolo11_pkg

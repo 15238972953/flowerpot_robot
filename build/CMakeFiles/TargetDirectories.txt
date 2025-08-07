@@ -253,6 +253,13 @@
 /home/jetson/catkin_ws/build/lsx10/lslidar_driver/CMakeFiles/pcl_msgs_generate_messages_cpp.dir
 /home/jetson/catkin_ws/build/lsx10/lslidar_driver/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir
 /home/jetson/catkin_ws/build/lsx10/lslidar_driver/CMakeFiles/nodelet_topic_tools_gencfg.dir
+/home/jetson/catkin_ws/build/tracking_pkg/CMakeFiles/install/strip.dir
+/home/jetson/catkin_ws/build/tracking_pkg/CMakeFiles/install/local.dir
+/home/jetson/catkin_ws/build/tracking_pkg/CMakeFiles/install.dir
+/home/jetson/catkin_ws/build/tracking_pkg/CMakeFiles/list_install_components.dir
+/home/jetson/catkin_ws/build/tracking_pkg/CMakeFiles/rebuild_cache.dir
+/home/jetson/catkin_ws/build/tracking_pkg/CMakeFiles/edit_cache.dir
+/home/jetson/catkin_ws/build/tracking_pkg/CMakeFiles/test.dir
 /home/jetson/catkin_ws/build/yolo11_pkg/CMakeFiles/install/local.dir
 /home/jetson/catkin_ws/build/yolo11_pkg/CMakeFiles/install.dir
 /home/jetson/catkin_ws/build/yolo11_pkg/CMakeFiles/list_install_components.dir

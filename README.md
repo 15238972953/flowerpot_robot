@@ -72,12 +72,20 @@ code .
 需安装：对应的库（yaml，rospkg，scikit-learn等库，不要装plt的库（没用到）），以后应该就不需要安装了；
 
 在`roscore`和 `roslaunch lslidar_driver lslidar_serial.launch`的前提下，
+```bash
+conda activate pointcloud
+rosrun radar_pkg PointCloudFitting_node.py
+```
+即可在终端输出花盆的极坐标信息；  
 
-在catkin_ws目录下运行 `rosrun radar_pkg PointCloudFitting_node.py`即可在终端输出花盆的极坐标信息；
-
-相机识别帧率大概36帧，激光雷达节点输出帧率为12帧；
+相机识别帧率大概50帧(FP16量化后)，激光雷达节点输出帧率为12帧；
 
 # 5、相机和雷达数据的处理
+相机节点运行：
+```bash
+conda activate yolo11
+rosrun yolo11_pkg onnx.py
+```
 
 radar和yolo11发布节点，process_data中订阅节点并处理
 
@@ -85,7 +93,7 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 
 # 6、串口通信
 `sudo chmod 777 /dev/ttyTHS0`  
-`rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200`
+`rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200`  
 已实现
 
 # 7.IMU
@@ -93,6 +101,8 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 **帧率：** 10HZ;  
 **topic:** yaw_angle;    
 **运行：** `rosrun imu_pkg imu_node`
+
+# 8.相机侧边循迹导航
 
 
 
@@ -109,5 +119,6 @@ catkin_make --pkg processdata_pkg
 ```
 
 
-^C(base) jetson@unbutu:~$ rosrun gmapping slam_gmapping
-[WARN] [1754378842.372055956]: MessageFilter [target=odom ]: Dropped 100.00% of messages so far. Please turn the [ros.gmapping.message_filter] rosconsole logger to DEBUG for more information.
+(yolo11) jetson@unbutu:~/catkin_ws/src/tracking_pkg/scripts$ python3 Get_HSV.py                                                                                                                            
+[ WARN:0@0.023] global loadsave.cpp:268 findDecoder imread_('src/tracking_pkg/road.jpg'): can't open/read file: check file path/integrity                                                                  
+无法加载图片，请检查路径

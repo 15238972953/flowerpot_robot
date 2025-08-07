@@ -85,16 +85,19 @@ void SerialReader::processData(const std::vector<uint8_t> &frame) {
             // double norm_sq = q.x()*q.x() + q.y()*q.y() + q.z()*q.z() + q.w()*q.w();
             // ROS_INFO("Quaternion norm squared: %.6f (expected: 1.000000)", norm_sq);
         }
+
         // 磁场（暂未用到）
-        if(frame[21] == static_cast<uint8_t>(frame[11] + frame[12] + frame[13] + frame[14] + frame[15] + 
-                        frame[16] + frame[17] + frame[18] + frame[19] + frame[20])){}
-        // 线加速度
-        if(frame[32] == static_cast<uint8_t>(frame[22] + frame[23] + frame[24] + frame[25] + frame[26] + 
-                        frame[27] + frame[28] + frame[29] + frame[30] + frame[31])) {
-            imu.linear_acceleration.x = static_cast<float>(((frame[25]<<8)|frame[24])/32768.0f*16.0f);
-            imu.linear_acceleration.y = static_cast<float>(((frame[27]<<8)|frame[26])/32768.0f*16.0f);
-            imu.linear_acceleration.z = static_cast<float>(((frame[29]<<8)|frame[28])/32768.0f*16.0f);
-        }
+        // if(frame[21] == static_cast<uint8_t>(frame[11] + frame[12] + frame[13] + frame[14] + frame[15] + 
+        //                 frame[16] + frame[17] + frame[18] + frame[19] + frame[20])){}
+        
+        // 线加速度(暂时不用)
+        // if(frame[32] == static_cast<uint8_t>(frame[22] + frame[23] + frame[24] + frame[25] + frame[26] + 
+        //                 frame[27] + frame[28] + frame[29] + frame[30] + frame[31])) {
+        //     imu.linear_acceleration.x = static_cast<float>(((frame[25]<<8)|frame[24])/32768.0f*16.0f);
+        //     imu.linear_acceleration.y = static_cast<float>(((frame[27]<<8)|frame[26])/32768.0f*16.0f);
+        //     imu.linear_acceleration.z = static_cast<float>(((frame[29]<<8)|frame[28])/32768.0f*16.0f);
+        // }
+
         // 角速度
         if(frame[43] == static_cast<uint8_t>(frame[33] + frame[34] + frame[35] + frame[36] + frame[37] +
                         frame[38] + frame[39] + frame[40] + frame[41] + frame[42])) {
