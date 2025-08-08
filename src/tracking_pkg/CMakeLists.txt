@@ -165,7 +165,7 @@ catkin_install_python(PROGRAMS
   scripts/Get_HSV.py
   scripts/test.py
   scripts/track.py
-  
+  scripts/canny.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

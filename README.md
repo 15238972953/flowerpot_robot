@@ -118,7 +118,3 @@ catkin_make --pkg radar_msgs
 catkin_make --pkg processdata_pkg   
 ```
 
-
-(yolo11) jetson@unbutu:~/catkin_ws/src/tracking_pkg/scripts$ python3 Get_HSV.py                                                                                                                            
-[ WARN:0@0.023] global loadsave.cpp:268 findDecoder imread_('src/tracking_pkg/road.jpg'): can't open/read file: check file path/integrity                                                                  
-无法加载图片，请检查路径

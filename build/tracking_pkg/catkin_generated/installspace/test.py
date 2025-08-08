@@ -2,9 +2,9 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
-yellow_low = [20, 100, 100]
-yellow_up = [30, 255, 255]
-img = cv.imread('src/tracking_pkg/road.png')
+yellow_low = [0, 0, 0]
+yellow_up = [179, 120, 255]
+img = cv.imread('/home/jetson/catkin_ws/src/tracking_pkg/scripts/captured_photos/photo_20250807_074842.jpg')
 hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 mask = cv.inRange(hsv, np.array(yellow_low), np.array(yellow_up))
 # 计算沿x轴方向每列的白色像素数量

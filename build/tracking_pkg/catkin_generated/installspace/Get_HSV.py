@@ -105,7 +105,7 @@ def update_display(*args):
 
 if __name__ == "__main__":
     # 读取图片（修改为你的图片路径）
-    img_path = '/home/jetson/catkin_ws/src/tracking_pkg/road.jpg'  # 或者使用绝对路径
+    img_path = '/home/jetson/catkin_ws/src/tracking_pkg/scripts/captured_photos/photo_20250807_074842.jpg'  # 或者使用绝对路径
     img = cv2.imread(img_path)
     
     if img is None:
