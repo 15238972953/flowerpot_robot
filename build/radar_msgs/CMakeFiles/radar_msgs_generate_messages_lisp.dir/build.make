@@ -60,13 +60,13 @@ radar_msgs/CMakeFiles/radar_msgs_generate_messages_lisp: /home/jetson/catkin_ws/
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/radar.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/radar.lisp: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from radar_msgs/radar.msg"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg
 
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/array.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/array.lisp: /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/array.lisp: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from radar_msgs/array.msg"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg
 
 radar_msgs_generate_messages_lisp: radar_msgs/CMakeFiles/radar_msgs_generate_messages_lisp
 radar_msgs_generate_messages_lisp: /home/jetson/catkin_ws/devel/share/common-lisp/ros/radar_msgs/msg/radar.lisp

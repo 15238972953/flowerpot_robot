@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(tracking_pkg_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "include " STREQUAL " ")
   set(tracking_pkg_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -179,7 +179,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(tracking_pkg_EXPORTED_TARGETS "")
+set(tracking_pkg_EXPORTED_TARGETS "tracking_pkg_generate_messages_cpp;tracking_pkg_generate_messages_eus;tracking_pkg_generate_messages_lisp;tracking_pkg_generate_messages_nodejs;tracking_pkg_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${tracking_pkg_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -187,7 +187,7 @@ foreach(t ${tracking_pkg_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "roscpp;rospy;sensor_msgs;std_msgs")
+set(depends "message_generation;message_runtime;rospy;std_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -216,7 +216,7 @@ foreach(depend ${depends})
   _list_append_deduplicate(tracking_pkg_EXPORTED_TARGETS ${${tracking_pkg_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "tracking_pkg-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${tracking_pkg_DIR}/${extra})

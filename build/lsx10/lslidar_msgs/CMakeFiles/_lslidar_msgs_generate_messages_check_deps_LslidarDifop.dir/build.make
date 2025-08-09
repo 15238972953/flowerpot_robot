@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarDifop.dir/progress.make
 
 lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarDifop:
-	cd /home/jetson/catkin_ws/build/lsx10/lslidar_msgs && ../../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py lslidar_msgs /home/jetson/catkin_ws/src/lsx10/lslidar_msgs/msg/LslidarDifop.msg 
+	cd /home/jetson/catkin_ws/build/lsx10/lslidar_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py lslidar_msgs /home/jetson/catkin_ws/src/lsx10/lslidar_msgs/msg/LslidarDifop.msg 
 
 _lslidar_msgs_generate_messages_check_deps_LslidarDifop: lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarDifop
 _lslidar_msgs_generate_messages_check_deps_LslidarDifop: lsx10/lslidar_msgs/CMakeFiles/_lslidar_msgs_generate_messages_check_deps_LslidarDifop.dir/build.make

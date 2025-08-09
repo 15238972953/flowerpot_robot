@@ -60,13 +60,13 @@ yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_lisp: /home/jetson/catkin_ws/
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/coordinate.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/coordinate.lisp: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from yolo11_pkg/coordinate.msg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg
 
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/array.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/array.lisp: /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/array.lisp: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from yolo11_pkg/array.msg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg
 
 yolo11_pkg_generate_messages_lisp: yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_lisp
 yolo11_pkg_generate_messages_lisp: /home/jetson/catkin_ws/devel/share/common-lisp/ros/yolo11_pkg/msg/coordinate.lisp

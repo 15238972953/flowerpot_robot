@@ -61,14 +61,14 @@ radar_msgs/CMakeFiles/radar_msgs_generate_messages_cpp: /home/jetson/catkin_ws/d
 /home/jetson/catkin_ws/devel/include/radar_msgs/radar.h: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 /home/jetson/catkin_ws/devel/include/radar_msgs/radar.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from radar_msgs/radar.msg"
-	cd /home/jetson/catkin_ws/src/radar_msgs && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/include/radar_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/jetson/catkin_ws/src/radar_msgs && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/include/radar_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/jetson/catkin_ws/devel/include/radar_msgs/array.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/jetson/catkin_ws/devel/include/radar_msgs/array.h: /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg
 /home/jetson/catkin_ws/devel/include/radar_msgs/array.h: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 /home/jetson/catkin_ws/devel/include/radar_msgs/array.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from radar_msgs/array.msg"
-	cd /home/jetson/catkin_ws/src/radar_msgs && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/include/radar_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/jetson/catkin_ws/src/radar_msgs && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/include/radar_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
 radar_msgs_generate_messages_cpp: radar_msgs/CMakeFiles/radar_msgs_generate_messages_cpp
 radar_msgs_generate_messages_cpp: /home/jetson/catkin_ws/devel/include/radar_msgs/radar.h

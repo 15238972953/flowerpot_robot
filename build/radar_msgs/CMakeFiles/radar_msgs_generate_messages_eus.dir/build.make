@@ -61,17 +61,17 @@ radar_msgs/CMakeFiles/radar_msgs_generate_messages_eus: /home/jetson/catkin_ws/d
 /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/radar.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/radar.l: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from radar_msgs/radar.msg"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/array.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/array.l: /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg
 /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/array.l: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from radar_msgs/array.msg"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for radar_msgs"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs radar_msgs std_msgs
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs radar_msgs std_msgs
 
 radar_msgs_generate_messages_eus: radar_msgs/CMakeFiles/radar_msgs_generate_messages_eus
 radar_msgs_generate_messages_eus: /home/jetson/catkin_ws/devel/share/roseus/ros/radar_msgs/msg/radar.l

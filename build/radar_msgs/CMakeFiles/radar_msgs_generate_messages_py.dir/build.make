@@ -61,19 +61,19 @@ radar_msgs/CMakeFiles/radar_msgs_generate_messages_py: /home/jetson/catkin_ws/de
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_radar.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_radar.py: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG radar_msgs/radar"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_array.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_array.py: /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_array.py: /home/jetson/catkin_ws/src/radar_msgs/msg/radar.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG radar_msgs/array"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg -Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p radar_msgs -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_radar.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_array.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python msg __init__.py for radar_msgs"
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg --initpy
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg --initpy
 
 radar_msgs_generate_messages_py: radar_msgs/CMakeFiles/radar_msgs_generate_messages_py
 radar_msgs_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/radar_msgs/msg/_radar.py

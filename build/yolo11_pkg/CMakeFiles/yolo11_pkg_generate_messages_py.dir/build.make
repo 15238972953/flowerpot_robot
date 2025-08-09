@@ -61,19 +61,19 @@ yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_py: /home/jetson/catkin_ws/de
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_coordinate.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_coordinate.py: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG yolo11_pkg/coordinate"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_array.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_array.py: /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_array.py: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG yolo11_pkg/array"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_coordinate.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_array.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python msg __init__.py for yolo11_pkg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg --initpy
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg --initpy
 
 yolo11_pkg_generate_messages_py: yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_py
 yolo11_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/yolo11_pkg/msg/_coordinate.py

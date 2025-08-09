@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include radar_msgs/CMakeFiles/_radar_msgs_generate_messages_check_deps_array.dir/progress.make
 
 radar_msgs/CMakeFiles/_radar_msgs_generate_messages_check_deps_array:
-	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py radar_msgs /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg radar_msgs/radar
+	cd /home/jetson/catkin_ws/build/radar_msgs && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py radar_msgs /home/jetson/catkin_ws/src/radar_msgs/msg/array.msg radar_msgs/radar
 
 _radar_msgs_generate_messages_check_deps_array: radar_msgs/CMakeFiles/_radar_msgs_generate_messages_check_deps_array
 _radar_msgs_generate_messages_check_deps_array: radar_msgs/CMakeFiles/_radar_msgs_generate_messages_check_deps_array.dir/build.make

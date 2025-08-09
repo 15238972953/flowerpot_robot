@@ -1,17 +1,19 @@
 #ifndef PROCESSDATA_NODE_H
 #define PROCESSDATA_NODE_H
 
-#include<ros/ros.h>
-#include<radar_msgs/array.h>
-#include<radar_msgs/radar.h>
-#include<yolo11_pkg/coordinate.h>
-#include<yolo11_pkg/array.h>
-#include<cmath>
-#include<processdata_pkg/serial_data.h>
+#include <ros/ros.h>
+#include <radar_msgs/array.h>
+#include <radar_msgs/radar.h>
+#include <yolo11_pkg/coordinate.h>
+#include <yolo11_pkg/array.h>
+#include <cmath>
+#include <processdata_pkg/serial_data.h>
 #include "HungarianAlgorithm.h"
 #include "KalmanFilter_fusion.h"
 #include "KalmanFilter_filter.h"
 #include "pid_controller.h"
+#include <tracking_pkg/track.h>
+#include "track_transform.h"
 
 
 class ProcessDataNode {
@@ -22,11 +24,13 @@ private:
     void cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg);
     void radardata_Callback(const radar_msgs::array::ConstPtr& radar_msg);
     Point selectClosestPot(const std::vector<Point>& pots);
+    void trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg);
 
 private:
     ros::NodeHandle nh;
     ros::Subscriber radar_processed_sub;
     ros::Subscriber camera_processed_sub;
+    ros::Subscriber track_processed_sub;
     ros::Publisher serial_data_pub;
 
     // 存储最新数据

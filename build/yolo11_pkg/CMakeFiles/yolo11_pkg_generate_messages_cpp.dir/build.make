@@ -61,14 +61,14 @@ yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_cpp: /home/jetson/catkin_ws/d
 /home/jetson/catkin_ws/devel/include/yolo11_pkg/coordinate.h: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 /home/jetson/catkin_ws/devel/include/yolo11_pkg/coordinate.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from yolo11_pkg/coordinate.msg"
-	cd /home/jetson/catkin_ws/src/yolo11_pkg && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/include/yolo11_pkg -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/jetson/catkin_ws/src/yolo11_pkg && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/include/yolo11_pkg -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/jetson/catkin_ws/devel/include/yolo11_pkg/array.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/jetson/catkin_ws/devel/include/yolo11_pkg/array.h: /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg
 /home/jetson/catkin_ws/devel/include/yolo11_pkg/array.h: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 /home/jetson/catkin_ws/devel/include/yolo11_pkg/array.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from yolo11_pkg/array.msg"
-	cd /home/jetson/catkin_ws/src/yolo11_pkg && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/include/yolo11_pkg -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/jetson/catkin_ws/src/yolo11_pkg && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/include/yolo11_pkg -e /opt/ros/noetic/share/gencpp/cmake/..
 
 yolo11_pkg_generate_messages_cpp: yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_cpp
 yolo11_pkg_generate_messages_cpp: /home/jetson/catkin_ws/devel/include/yolo11_pkg/coordinate.h

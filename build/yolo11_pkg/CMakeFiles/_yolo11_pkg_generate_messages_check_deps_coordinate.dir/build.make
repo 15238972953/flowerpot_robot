@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include yolo11_pkg/CMakeFiles/_yolo11_pkg_generate_messages_check_deps_coordinate.dir/progress.make
 
 yolo11_pkg/CMakeFiles/_yolo11_pkg_generate_messages_check_deps_coordinate:
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py yolo11_pkg /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg 
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py yolo11_pkg /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg 
 
 _yolo11_pkg_generate_messages_check_deps_coordinate: yolo11_pkg/CMakeFiles/_yolo11_pkg_generate_messages_check_deps_coordinate
 _yolo11_pkg_generate_messages_check_deps_coordinate: yolo11_pkg/CMakeFiles/_yolo11_pkg_generate_messages_check_deps_coordinate.dir/build.make
