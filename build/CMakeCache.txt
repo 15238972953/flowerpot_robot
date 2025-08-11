@@ -343,7 +343,7 @@ GTEST_MAIN_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libgtest_main.a
 GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 
 //The directory containing a CMake configuration file for GTest.
-GTest_DIR:PATH=GTest_DIR-NOTFOUND
+GTest_DIR:PATH=/home/jetson/miniconda3/lib/cmake/GTest
 
 //Enable installation of googletest. (Projects embedding googletest
 // may want to turn this OFF.)
@@ -357,6 +357,9 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests3
+
+//The directory containing a CMake configuration file for OpenCV.
+OpenCV_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/opencv4
 
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
@@ -571,6 +574,12 @@ odom_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/odom_pkg
 
 //Value Computed by CMake
 odom_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/odom_pkg
+
+//The directory containing a CMake configuration file for opencv2.
+opencv2_DIR:PATH=opencv2_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for opencv4.
+opencv4_DIR:PATH=opencv4_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for pcl_conversions.
 pcl_conversions_DIR:PATH=/opt/ros/noetic/share/pcl_conversions/cmake
@@ -905,6 +914,8 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][c ][v1.71.0()]
+//Details about finding OpenCV
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][cfound components: core imgproc calib3d ][v4.5.4()]
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python3/dist-packages/em.py][v()]
 //Details about finding PythonInterp

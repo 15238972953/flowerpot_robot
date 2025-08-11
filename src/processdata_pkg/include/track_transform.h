@@ -4,8 +4,7 @@
 class PerspectiveTransformer {
 public:
 
-    PerspectiveTransformer(const std::vector<cv::Point2f>& slanted_points,
-                           const std::vector<cv::Point2f>& front_points);
+    PerspectiveTransformer();
 
     // 转换单个点
     cv::Point2f transformPoint(const cv::Point2f& point) const;
@@ -17,9 +16,11 @@ private:
     cv::Mat transform_matrix_;
 
     std::vector<cv::Point2f> slanted_points = {
-        {120, 80}, {520, 60}, {550, 420}, {90, 400}  // 斜视视角
-    };
+        {234, 0}, {10, 480}, {550, 420}, {90, 400}  // 斜视视角
+    };   
+
     std::vector<cv::Point2f> front_points = {
-        {100, 100}, {540, 100}, {540, 380}, {100, 380}  // 正视视角
-    };
+        {0, 0}, {320, 480}, {540, 380}, {100, 380}  // 正视视角
+    };    
+
 };

@@ -14,17 +14,33 @@
 #include "pid_controller.h"
 #include <tracking_pkg/track.h>
 #include "track_transform.h"
+#include "std_msgs/Float32.h" 
+#include <serial_stm32_pkg/encoder.h>
 
+#define INTERIM_distance 20 // 过渡状态需要的距离阈值
 
 class ProcessDataNode {
 public:
+    enum class RobotState {
+        GRASP,       // 机器人处于抓取状态
+        INTERIM,     // 机器人处于过渡状态
+        TRANSPORT,   // 机器人处于运输状态
+        ARRANGE,     // 机器人处于摆放状态
+        RETURN,      // 机器人处于返回状态
+    };
+
+public:
     ProcessDataNode();
+    RobotState current_state = RobotState::GRASP;  // 初始状态为抓取状态
 
 private:
     void cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg);
     void radardata_Callback(const radar_msgs::array::ConstPtr& radar_msg);
     Point selectClosestPot(const std::vector<Point>& pots);
     void trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg);
+    void yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg);
+    int extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg);
+    void encoderdata_Callback(const serial_stm32_pkg::encoder::ConstPtr& encoder_msg);
 
 private:
     ros::NodeHandle nh;
@@ -32,6 +48,8 @@ private:
     ros::Subscriber camera_processed_sub;
     ros::Subscriber track_processed_sub;
     ros::Publisher serial_data_pub;
+    ros::Subscriber yaw_processed_sub; 
+    ros::Subscriber encoder_processed_sub;
 
     // 存储最新数据
     std::vector<Point> camera_points;
@@ -44,6 +62,17 @@ private:
      
     processdata_pkg::serial_data serial_msg;    //通过串口发送给stm32的数据
     int command;  //用于记录机械臂的指令
+
+    PerspectiveTransformer transformer;
+
+    float yaw_angle; // 记录当前的yaw角度
+    int extend_Y; // 用于存储延长后的y坐标
+    float encoder_diatance = 0.0; // 记录编码器的距离
+
+    // 抓取命令
+    const int COMMAND_GRASP = 10;  // 抓取指令
+    const int COMMAND_RELEASE = 20; // 释放指令
+    const int COMMAND_COMMON = 30;  // 平常指令
 };
 
 std::vector<Point> convert(const std::vector<Eigen::Vector2d> eigenVectors);

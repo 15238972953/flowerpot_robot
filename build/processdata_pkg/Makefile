@@ -497,6 +497,33 @@ src/processdata_node.cpp.s:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/processdata_node.cpp.s
 .PHONY : src/processdata_node.cpp.s
 
+src/track_transform.o: src/track_transform.cpp.o
+
+.PHONY : src/track_transform.o
+
+# target to build an object file
+src/track_transform.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/track_transform.cpp.o
+.PHONY : src/track_transform.cpp.o
+
+src/track_transform.i: src/track_transform.cpp.i
+
+.PHONY : src/track_transform.i
+
+# target to preprocess a source file
+src/track_transform.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/track_transform.cpp.i
+.PHONY : src/track_transform.cpp.i
+
+src/track_transform.s: src/track_transform.cpp.s
+
+.PHONY : src/track_transform.s
+
+# target to generate assembly for a file
+src/track_transform.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/track_transform.cpp.s
+.PHONY : src/track_transform.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -538,6 +565,9 @@ help:
 	@echo "... src/processdata_node.o"
 	@echo "... src/processdata_node.i"
 	@echo "... src/processdata_node.s"
+	@echo "... src/track_transform.o"
+	@echo "... src/track_transform.i"
+	@echo "... src/track_transform.s"
 .PHONY : help
 
 

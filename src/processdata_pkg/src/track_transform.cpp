@@ -1,8 +1,7 @@
 #include "track_transform.h"
 
 // 构造函数，接受对应点初始化变换矩阵
-PerspectiveTransformer::PerspectiveTransformer(const std::vector<cv::Point2f>& slanted_points,
-                                                    const std::vector<cv::Point2f>& front_points) {
+PerspectiveTransformer::PerspectiveTransformer() {
     if (slanted_points.size() != 4 || front_points.size() != 4) {
         throw std::runtime_error("需要4组对应点");
     }

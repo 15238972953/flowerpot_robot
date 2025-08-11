@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jetson/catkin_ws/src/processdata_pkg/src/KalmanFilter_fusion.cpp" "/home/jetson/catkin_ws/build/processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_fusion.cpp.o"
   "/home/jetson/catkin_ws/src/processdata_pkg/src/pid_controller.cpp" "/home/jetson/catkin_ws/build/processdata_pkg/CMakeFiles/processdata_node.dir/src/pid_controller.cpp.o"
   "/home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.cpp" "/home/jetson/catkin_ws/build/processdata_pkg/CMakeFiles/processdata_node.dir/src/processdata_node.cpp.o"
+  "/home/jetson/catkin_ws/src/processdata_pkg/src/track_transform.cpp" "/home/jetson/catkin_ws/build/processdata_pkg/CMakeFiles/processdata_node.dir/src/track_transform.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -26,6 +27,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
+  "/usr/include/opencv4"
   )
 
 # Targets to which this target links.

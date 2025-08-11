@@ -9,14 +9,16 @@ struct PWM
 {
     int PWM_Left;
     int PWM_Right;
-    PWM(int _PWM_Left = 0, int _PWM_Right = 0);
+    PWM(int _PWM_Left = 90, int _PWM_Right = 90);
 };
+
+template <typename T>
 
 class PIDController {
 public:
     PIDController(double kp, double ki, double kd);
-    double compute_X(double setpoint, double current_value);
-    double compute_Y(double setpoint, double current_value);
+    int compute_position(T setpoint, T current_value);
+    int compute_Incremental(T setpoint, T current_value);
 
 private:
     double kp_;
@@ -27,5 +29,5 @@ private:
 };
 
 PWM calculatePWM(Eigen::Vector2d filtered_pos, const double target_x = 0.0, const double target_y = 25.0);
-
+PWM calculatePWM( const float yaw_angle, const int extend_y, const float Target_yaw_angle = 180.0, const int Target_extend_y = 480);
 #endif    

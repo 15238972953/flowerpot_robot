@@ -91,6 +91,8 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 
 数据关联->数据融合->选择最近的花盆->PID计算出PWM；
 
+**运行：** `rosrun processdata_pkg processdata_node` 
+
 # 6、串口通信
 `sudo chmod 777 /dev/ttyTHS0`  
 `rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200`  
@@ -103,6 +105,7 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 **运行：** `rosrun imu_pkg imu_node`
 
 # 8.相机侧边循迹导航
+**运行：** `rosrun tracking_pkg track.py`  
 
 
 

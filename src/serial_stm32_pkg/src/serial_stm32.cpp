@@ -13,7 +13,11 @@ SerialCommNode::SerialCommNode() {
         "serial_data", 100, &SerialCommNode::serialDataCallback, this);
     
     // 发布标准里程计
-    odom_pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
+    #ifdef ONLY_ENCODER
+        encoder_pub_ = nh_.advertise<serial_stm32_pkg::encoder>("encoder_msg", 50);
+    #else
+        odom_pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
+    #endif
     
     // 初始化串口
     if (!setupSerialPort()) {
@@ -51,6 +55,7 @@ bool SerialCommNode::setupSerialPort() {
 }
 
 void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::ConstPtr& msg) {
+    _clear_encoder = msg->clear_encoder; // 获取是否清除编码器数据的标志
     // ROS_INFO("Hello");
     if (!serial_.isOpen()) {
         ROS_INFO("Serial port is not open. Cannot send data.");
@@ -74,6 +79,26 @@ void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::Cons
 
 // 更新里程计信息
 void SerialCommNode::updateOdometry() {
+    #ifdef ONLY_ENCODER
+        if (_clear_encoder) {
+            encoder_msg.left_distance = 0.0;
+            encoder_msg.right_distance = 0.0;
+            _clear_encoder = false; // 重置清除标志
+        }
+        
+        // 计算时间间隔
+        ros::Time current_time = ros::Time::now();
+        float dt = (current_time - last_time_).toSec();
+        last_time_ = current_time;
+
+        // 分别计算左右轮的运动距离
+        float right_distance = right_speed_ * dt; 
+        float left_distance = left_speed_ * dt;
+
+        encoder_msg.right_distance += right_distance;
+        encoder_msg.left_distance += left_distance;
+        encoder_pub_.publish(encoder_msg);
+    #else
         // 计算时间间隔
         ros::Time current_time = ros::Time::now();
         double dt = (current_time - last_time_).toSec();
@@ -108,7 +133,8 @@ void SerialCommNode::updateOdometry() {
 
         // 打印调试信息（可选）
         // ROS_DEBUG_THROTTLE(1.0, "Odom - x: %.2f m, y: %.2f m, theta: %.2f rad", x_, y_, theta_);
-    }
+    #endif
+}
 
 
 void SerialCommNode::ReceiveData() {

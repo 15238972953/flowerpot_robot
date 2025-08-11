@@ -10,6 +10,8 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2/LinearMath/Matrix3x3.h>
 
+#define ONLY_YAW 1
+
 enum class ReadState {
     WAIT_FOR_55,    // 等待 0x55
     READ_44_BYTES   // 读取 44 字节
@@ -37,8 +39,11 @@ private:
 
     ros::NodeHandle nh_;            // ROS节点句柄
     ros::NodeHandle private_nh_;    // 私有节点句柄(用于获取参数)
-    ros::Publisher yaw_pub_;       // 数据发布者
-    ros::Publisher imu_pub_;       // IMU数据发布者
+    #ifdef ONLY_YAW
+        ros::Publisher yaw_pub_;       // 发布 yaw 角度
+    #else
+        ros::Publisher imu_pub_;       // 发布 IMU 数据
+    #endif
     
     serial::Serial serial_;         // 串口对象
     std::string port_;              // 串口端口

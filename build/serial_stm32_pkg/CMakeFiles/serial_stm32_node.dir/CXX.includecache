@@ -37,6 +37,8 @@ geometry_msgs/TransformStamped.h
 -
 tf/transform_datatypes.h
 -
+serial_stm32_pkg/encoder.h
+-
 
 /home/jetson/catkin_ws/src/serial_stm32_pkg/src/serial_stm32.cpp
 serial_stm32.h

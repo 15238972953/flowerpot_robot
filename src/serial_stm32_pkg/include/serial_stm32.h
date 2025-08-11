@@ -8,9 +8,12 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <tf/transform_datatypes.h>
+#include <serial_stm32_pkg/encoder.h>
 
 #define FRAME_SIZE 10
 #define HEADER_BYTE 0x55
+
+#define ONLY_ENCODER 1
 
 class SerialCommNode {
 public:
@@ -29,12 +32,17 @@ private:
     
     ros::NodeHandle nh_;
     ros::Subscriber serial_data_sub_;   // 订阅serial_data话题
-    ros::Publisher odom_pub_;           
+    #ifdef ONLY_ENCODER
+        ros::Publisher encoder_pub_; // 发布编码器数据
+        serial_stm32_pkg::encoder encoder_msg; // 编码器数据
+    #else
+        ros::Publisher odom_pub_;    // 发布标准里程计
+        nav_msgs::Odometry odom;
+    #endif
 
     serial::Serial serial_;
     std::string port_;
-    int baud_rate_;
-    nav_msgs::Odometry odom; 
+    int baud_rate_; 
     double left_speed_ = 0.0;      // 左轮线速度(m/s)
     double right_speed_ = 0.0;     // 右轮线速度(m/s)
     double x_ = 0.0, y_ = 0.0;     // 位置(m)
@@ -42,6 +50,8 @@ private:
     double wheel_separation_ = 0.355;      // 轮间距(m)
     double wheel_radius_ = 0.09;          // 轮半径(m)
     ros::Time last_time_ = ros::Time::now();
+
+    bool _clear_encoder = false; // 是否清除编码器数据
         
 };
 

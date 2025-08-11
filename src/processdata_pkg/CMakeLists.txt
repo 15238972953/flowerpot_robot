@@ -7,12 +7,20 @@ project(processdata_pkg)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+# set(OpenCV_DIR "/usr/share/opencv4")
+find_package(OpenCV REQUIRED COMPONENTS
+  core
+  imgproc
+  calib3d  # 包含perspectiveTransform
+)
+
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
   message_generation
   radar_msgs
+  # opencv4
 )
 
 ## System dependencies are found with CMake's conventions
@@ -120,7 +128,8 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   /usr/include/eigen3
-  /usr/include/opencv4
+  ${OpenCV_INCLUDE_DIRS}
+  # /usr/include/opencv4
 )
 
 ## Declare a C++ library
@@ -219,4 +228,5 @@ add_executable(processdata_node
 
 target_link_libraries(processdata_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
 )
