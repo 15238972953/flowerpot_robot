@@ -59,7 +59,7 @@ tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_lisp: /home/jetson/catkin
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/tracking_pkg/msg/track.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/jetson/catkin_ws/devel/share/common-lisp/ros/tracking_pkg/msg/track.lisp: /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from tracking_pkg/track.msg"
-	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/tracking_pkg/msg
+	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/tracking_pkg/msg
 
 tracking_pkg_generate_messages_lisp: tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_lisp
 tracking_pkg_generate_messages_lisp: /home/jetson/catkin_ws/devel/share/common-lisp/ros/tracking_pkg/msg/track.lisp

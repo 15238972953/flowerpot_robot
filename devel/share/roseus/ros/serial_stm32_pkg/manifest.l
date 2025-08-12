@@ -7,6 +7,7 @@
 ;;
 (ros::load-ros-package "actionlib")
 (ros::load-ros-package "actionlib_msgs")
+(ros::load-ros-package "common_msgs_pkg")
 (ros::load-ros-package "geometry_msgs")
 (ros::load-ros-package "nav_msgs")
 (ros::load-ros-package "roscpp")

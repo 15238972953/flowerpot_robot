@@ -105,6 +105,7 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 **运行：** `rosrun imu_pkg imu_node`
 
 # 8.相机侧边循迹导航
+**环境：** 不需要conda
 **运行：** `rosrun tracking_pkg track.py`  
 
 
@@ -118,6 +119,8 @@ catkin_make --pkg lslidar_msgs
 catkin_make --pkg lslidar lslidar_driver
 catkin_make --pkg yolo11_pkg   # 要在processdata_pkg之前
 catkin_make --pkg radar_msgs
+catkin_make --pkg common_msgs_pkg
+catkin_make --pkg tracking_pkg
 catkin_make --pkg processdata_pkg   
 ```
 

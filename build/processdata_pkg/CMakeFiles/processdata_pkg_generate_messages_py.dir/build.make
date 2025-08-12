@@ -53,23 +53,6 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 # Include the progress variables for this target.
 include processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_py.dir/progress.make
 
-processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/_serial_data.py
-processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/__init__.py
-
-
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/_serial_data.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/_serial_data.py: /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG processdata_pkg/serial_data"
-	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg -Iprocessdata_pkg:/home/jetson/catkin_ws/src/processdata_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p processdata_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg
-
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/_serial_data.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for processdata_pkg"
-	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg --initpy
-
-processdata_pkg_generate_messages_py: processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_py
-processdata_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/_serial_data.py
-processdata_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/processdata_pkg/msg/__init__.py
 processdata_pkg_generate_messages_py: processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_py.dir/build.make
 
 .PHONY : processdata_pkg_generate_messages_py

@@ -53,16 +53,6 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 # Include the progress variables for this target.
 include processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_lisp.dir/progress.make
 
-processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_lisp: /home/jetson/catkin_ws/devel/share/common-lisp/ros/processdata_pkg/msg/serial_data.lisp
-
-
-/home/jetson/catkin_ws/devel/share/common-lisp/ros/processdata_pkg/msg/serial_data.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
-/home/jetson/catkin_ws/devel/share/common-lisp/ros/processdata_pkg/msg/serial_data.lisp: /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from processdata_pkg/serial_data.msg"
-	cd /home/jetson/catkin_ws/build/processdata_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg -Iprocessdata_pkg:/home/jetson/catkin_ws/src/processdata_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p processdata_pkg -o /home/jetson/catkin_ws/devel/share/common-lisp/ros/processdata_pkg/msg
-
-processdata_pkg_generate_messages_lisp: processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_lisp
-processdata_pkg_generate_messages_lisp: /home/jetson/catkin_ws/devel/share/common-lisp/ros/processdata_pkg/msg/serial_data.lisp
 processdata_pkg_generate_messages_lisp: processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_lisp.dir/build.make
 
 .PHONY : processdata_pkg_generate_messages_lisp

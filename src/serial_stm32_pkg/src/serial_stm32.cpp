@@ -9,12 +9,12 @@ SerialCommNode::SerialCommNode() {
     private_nh.param("baud_rate", baud_rate_, 115200);
     
     // 订阅serial_data话题，用于接收要发送给STM32的数据
-    serial_data_sub_ = nh_.subscribe<processdata_pkg::serial_data>(
+    serial_data_sub_ = nh_.subscribe<common_msgs_pkg::serial_data>(
         "serial_data", 100, &SerialCommNode::serialDataCallback, this);
     
     // 发布标准里程计
     #ifdef ONLY_ENCODER
-        encoder_pub_ = nh_.advertise<serial_stm32_pkg::encoder>("encoder_msg", 50);
+        encoder_pub_ = nh_.advertise<common_msgs_pkg::encoder>("encoder_msg", 50);
     #else
         odom_pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
     #endif
@@ -54,7 +54,7 @@ bool SerialCommNode::setupSerialPort() {
     }
 }
 
-void SerialCommNode::serialDataCallback(const processdata_pkg::serial_data::ConstPtr& msg) {
+void SerialCommNode::serialDataCallback(const common_msgs_pkg::serial_data::ConstPtr& msg) {
     _clear_encoder = msg->clear_encoder; // 获取是否清除编码器数据的标志
     // ROS_INFO("Hello");
     if (!serial_.isOpen()) {

@@ -60,7 +60,7 @@ tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_cpp: /home/jetson/catkin_
 /home/jetson/catkin_ws/devel/include/tracking_pkg/track.h: /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg
 /home/jetson/catkin_ws/devel/include/tracking_pkg/track.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from tracking_pkg/track.msg"
-	cd /home/jetson/catkin_ws/src/tracking_pkg && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/include/tracking_pkg -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/jetson/catkin_ws/src/tracking_pkg && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/include/tracking_pkg -e /opt/ros/noetic/share/gencpp/cmake/..
 
 tracking_pkg_generate_messages_cpp: tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_cpp
 tracking_pkg_generate_messages_cpp: /home/jetson/catkin_ws/devel/include/tracking_pkg/track.h

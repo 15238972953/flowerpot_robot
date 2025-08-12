@@ -59,7 +59,7 @@ tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_nodejs: /home/jetson/catk
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/tracking_pkg/msg/track.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/tracking_pkg/msg/track.js: /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from tracking_pkg/track.msg"
-	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/tracking_pkg/msg
+	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/tracking_pkg/msg
 
 tracking_pkg_generate_messages_nodejs: tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_nodejs
 tracking_pkg_generate_messages_nodejs: /home/jetson/catkin_ws/devel/share/gennodejs/ros/tracking_pkg/msg/track.js

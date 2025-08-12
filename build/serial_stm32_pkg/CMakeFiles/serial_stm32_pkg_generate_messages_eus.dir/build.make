@@ -58,7 +58,7 @@ serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_eus: /home/jetson
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/serial_stm32_pkg/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for serial_stm32_pkg"
-	cd /home/jetson/catkin_ws/build/serial_stm32_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/serial_stm32_pkg serial_stm32_pkg std_msgs nav_msgs geometry_msgs tf2_msgs
+	cd /home/jetson/catkin_ws/build/serial_stm32_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/serial_stm32_pkg serial_stm32_pkg std_msgs nav_msgs geometry_msgs tf2_msgs
 
 serial_stm32_pkg_generate_messages_eus: serial_stm32_pkg/CMakeFiles/serial_stm32_pkg_generate_messages_eus
 serial_stm32_pkg_generate_messages_eus: /home/jetson/catkin_ws/devel/share/roseus/ros/serial_stm32_pkg/manifest.l

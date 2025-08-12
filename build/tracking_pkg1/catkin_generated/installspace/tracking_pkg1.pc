@@ -1,8 +1,0 @@
-prefix=/home/jetson/catkin_ws/install
-
-Name: tracking_pkg1
-Description: Description of tracking_pkg1
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: message_generation message_runtime roscpp rospy sensor_msgs std_msgs

@@ -1,4 +1,24 @@
 #!/usr/bin/env python3
+import sys
+import os
+
+# 用于查看当前python运行环境
+# # 打印Python解释器路径
+# print("Python executable:", sys.executable)
+
+# # 打印Python库搜索路径
+# print("Python sys.path:")
+# for path in sys.path:
+#     print(f"  - {path}")
+
+# # 打印ROS相关环境变量
+# print("ROS environment variables:")
+# for key in os.environ:
+#     if key.startswith("ROS_"):
+#         print(f"  - {key}: {os.environ[key]}")
+
+
+
 import rospy
 import cv2
 import numpy as np

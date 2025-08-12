@@ -1,8 +1,10 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "processdata_pkg: 1 messages, 0 services")
+message(WARNING "Invoking generate_messages() without having added any message or service file before.
+You should either add add_message_files() and/or add_service_files() calls or remove the invocation of generate_messages().")
+message(STATUS "processdata_pkg: 0 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iprocessdata_pkg:/home/jetson/catkin_ws/src/processdata_pkg/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg;-Iradar_msgs:/home/jetson/catkin_ws/src/radar_msgs/msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,23 +19,12 @@ add_custom_target(processdata_pkg_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg" NAME_WE)
-add_custom_target(_processdata_pkg_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "processdata_pkg" "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg" ""
-)
-
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
 
 ### Section generating for lang: gencpp
 ### Generating Messages
-_generate_msg_cpp(processdata_pkg
-  "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/processdata_pkg
-)
 
 ### Generating Services
 
@@ -49,8 +40,6 @@ add_custom_target(processdata_pkg_generate_messages_cpp
 add_dependencies(processdata_pkg_generate_messages processdata_pkg_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg" NAME_WE)
-add_dependencies(processdata_pkg_generate_messages_cpp _processdata_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(processdata_pkg_gencpp)
@@ -61,12 +50,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS processdata_pkg_generate_messages_c
 
 ### Section generating for lang: geneus
 ### Generating Messages
-_generate_msg_eus(processdata_pkg
-  "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/processdata_pkg
-)
 
 ### Generating Services
 
@@ -82,8 +65,6 @@ add_custom_target(processdata_pkg_generate_messages_eus
 add_dependencies(processdata_pkg_generate_messages processdata_pkg_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg" NAME_WE)
-add_dependencies(processdata_pkg_generate_messages_eus _processdata_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(processdata_pkg_geneus)
@@ -94,12 +75,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS processdata_pkg_generate_messages_e
 
 ### Section generating for lang: genlisp
 ### Generating Messages
-_generate_msg_lisp(processdata_pkg
-  "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/processdata_pkg
-)
 
 ### Generating Services
 
@@ -115,8 +90,6 @@ add_custom_target(processdata_pkg_generate_messages_lisp
 add_dependencies(processdata_pkg_generate_messages processdata_pkg_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg" NAME_WE)
-add_dependencies(processdata_pkg_generate_messages_lisp _processdata_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(processdata_pkg_genlisp)
@@ -127,12 +100,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS processdata_pkg_generate_messages_l
 
 ### Section generating for lang: gennodejs
 ### Generating Messages
-_generate_msg_nodejs(processdata_pkg
-  "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/processdata_pkg
-)
 
 ### Generating Services
 
@@ -148,8 +115,6 @@ add_custom_target(processdata_pkg_generate_messages_nodejs
 add_dependencies(processdata_pkg_generate_messages processdata_pkg_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg" NAME_WE)
-add_dependencies(processdata_pkg_generate_messages_nodejs _processdata_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(processdata_pkg_gennodejs)
@@ -160,12 +125,6 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS processdata_pkg_generate_messages_n
 
 ### Section generating for lang: genpy
 ### Generating Messages
-_generate_msg_py(processdata_pkg
-  "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/processdata_pkg
-)
 
 ### Generating Services
 
@@ -181,8 +140,6 @@ add_custom_target(processdata_pkg_generate_messages_py
 add_dependencies(processdata_pkg_generate_messages processdata_pkg_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg" NAME_WE)
-add_dependencies(processdata_pkg_generate_messages_py _processdata_pkg_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(processdata_pkg_genpy)
@@ -203,6 +160,9 @@ endif()
 if(TARGET std_msgs_generate_messages_cpp)
   add_dependencies(processdata_pkg_generate_messages_cpp std_msgs_generate_messages_cpp)
 endif()
+if(TARGET radar_msgs_generate_messages_cpp)
+  add_dependencies(processdata_pkg_generate_messages_cpp radar_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/processdata_pkg)
   # install generated code
@@ -213,6 +173,9 @@ if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/pr
 endif()
 if(TARGET std_msgs_generate_messages_eus)
   add_dependencies(processdata_pkg_generate_messages_eus std_msgs_generate_messages_eus)
+endif()
+if(TARGET radar_msgs_generate_messages_eus)
+  add_dependencies(processdata_pkg_generate_messages_eus radar_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/processdata_pkg)
@@ -225,6 +188,9 @@ endif()
 if(TARGET std_msgs_generate_messages_lisp)
   add_dependencies(processdata_pkg_generate_messages_lisp std_msgs_generate_messages_lisp)
 endif()
+if(TARGET radar_msgs_generate_messages_lisp)
+  add_dependencies(processdata_pkg_generate_messages_lisp radar_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/processdata_pkg)
   # install generated code
@@ -236,9 +202,12 @@ endif()
 if(TARGET std_msgs_generate_messages_nodejs)
   add_dependencies(processdata_pkg_generate_messages_nodejs std_msgs_generate_messages_nodejs)
 endif()
+if(TARGET radar_msgs_generate_messages_nodejs)
+  add_dependencies(processdata_pkg_generate_messages_nodejs radar_msgs_generate_messages_nodejs)
+endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/processdata_pkg)
-  install(CODE "execute_process(COMMAND \"/usr/bin/python3\" -m compileall \"${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/processdata_pkg\")")
+  install(CODE "execute_process(COMMAND \"/home/jetson/miniconda3/bin/python3\" -m compileall \"${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/processdata_pkg\")")
   # install generated code
   install(
     DIRECTORY ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/processdata_pkg
@@ -247,4 +216,7 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/proc
 endif()
 if(TARGET std_msgs_generate_messages_py)
   add_dependencies(processdata_pkg_generate_messages_py std_msgs_generate_messages_py)
+endif()
+if(TARGET radar_msgs_generate_messages_py)
+  add_dependencies(processdata_pkg_generate_messages_py radar_msgs_generate_messages_py)
 endif()

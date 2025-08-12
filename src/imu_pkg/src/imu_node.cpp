@@ -7,7 +7,7 @@ ReadState current_state = ReadState::WAIT_FOR_55;
 SerialReader::SerialReader(ros::NodeHandle& nh) : nh_(nh), private_nh_("~"), is_serial_connected_(false) {
     // 初始化 Publisher，话题名称为 "yaw_angle"
     #ifdef ONLY_YAW
-        yaw_pub_ = nh.advertise<std_msgs::Float32>("yaw_angle", 10);   // 发布 yaw 角度到 "yaw_angle" 话题
+        yaw_pub_ = nh.advertise<std_msgs::Float32>("/yaw_angle", 10);   // 发布 yaw 角度到 "yaw_angle" 话题
     #else
         imu_pub_ = nh.advertise<sensor_msgs::Imu>("/imu/data", 10);    // 发布 IMU 数据到 "/imu/data" 话题
     #endif

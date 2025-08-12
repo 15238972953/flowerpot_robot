@@ -15,10 +15,10 @@ ProcessDataNode::ProcessDataNode() {
     radar_processed_sub = nh.subscribe("Array_Radar", 1000, &ProcessDataNode::radardata_Callback, this);
     camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameradata_Callback, this);
     track_processed_sub = nh.subscribe("track_msg", 1000, &ProcessDataNode::trackdata_Callback, this);
-    yaw_processed_sub = nh.subscribe("yaw_angle", 1000, &ProcessDataNode::yawdata_Callback, this);
+    yaw_processed_sub = nh.subscribe("/yaw_angle", 1000, &ProcessDataNode::yawdata_Callback, this);
     encoder_processed_sub = nh.subscribe("encoder_msg", 1000, &ProcessDataNode::encoderdata_Callback, this);
     //初始化发布者
-    serial_data_pub = nh.advertise<processdata_pkg::serial_data>("serial_data", 1000);
+    serial_data_pub = nh.advertise<common_msgs_pkg::serial_data>("serial_data", 1000);
 }
 
 // 选择最近的花盆
@@ -39,7 +39,7 @@ Point ProcessDataNode::selectClosestPot(const std::vector<Point>& pots) {
     return closest;
 }
 
-void ProcessDataNode::encoderdata_Callback(const serial_stm32_pkg::encoder::ConstPtr& encoder_msg)
+void ProcessDataNode::encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg)
 {
     float left_distance = encoder_msg->left_distance;  // 左轮编码器数据
     float right_distance = encoder_msg->right_distance;  // 右轮编码器数据
@@ -76,13 +76,17 @@ int ProcessDataNode::extendLineCoordinates(const tracking_pkg::track::ConstPtr& 
         float b = y1 - k * x1;
         value_Y = static_cast<int>(k * 0 + b); // 计算y坐标
     }
-    ROS_INFO("Extended line coordinates: %d", value_Y);
+    // ROS_INFO("Extended line coordinates: %d", value_Y);
     return value_Y; 
 }
 
 // 获取循迹数据
 void ProcessDataNode::trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg)
 {
+    // Test
+    // extend_Y = extendLineCoordinates(track_msg);
+    // ROS_INFO("Extended line coordinates: %d", extend_Y);
+
     if (current_state == RobotState::INTERIM) {            // 过渡状态
         if (encoder_diatance >= INTERIM_distance) {  // 退出来需要的距离阈值
             extend_Y = extendLineCoordinates(track_msg);
@@ -92,25 +96,26 @@ void ProcessDataNode::trackdata_Callback(const tracking_pkg::track::ConstPtr& tr
                 return;
             }
             
-            PWM PWM_Motor = calculatePWM(yaw_angle, 90.0);     
+            PWM PWM_Motor = calculatePWM(yaw_angle, 90.0f);     
             serial_msg.PWM_Left = PWM_Motor.PWM_Left;
             serial_msg.PWM_Right = PWM_Motor.PWM_Right;
             serial_msg.command = COMMAND_COMMON;  // 正常状态
             serial_data_pub.publish(serial_msg);
             ros::Duration(0.1).sleep();  // 等待一段时间，模拟控制
         } else {
-            PWM PWM_Motor = calculatePWM(yaw_angle, 0.0);   // 目标角度为0.0    
+            PWM PWM_Motor = calculatePWM(yaw_angle, 0.0f);   // 目标角度为0.0    
             serial_msg.PWM_Left = PWM_Motor.PWM_Left;
             serial_msg.PWM_Right = PWM_Motor.PWM_Right;
             serial_msg.command = COMMAND_COMMON;
             serial_data_pub.publish(serial_msg);
         } 
-    }
-    if (current_state == RobotState::TRANSPORT) {            // 运输状态
+    } else if (current_state == RobotState::TRANSPORT) {            // 运输状态
         extend_Y = extendLineCoordinates(track_msg);
-        PWM PWM_Motor = calculatePWM(yaw_angle, extend_Y, 180.0, 480);     
+        // PWM PWM_Motor = calculatePWM(yaw_angle, extend_Y, 180.0, 480); 
+        PWM PWM_Motor = calculatePWM(yaw_angle, 480, 180.0, 480);    
         serial_msg.PWM_Left = PWM_Motor.PWM_Left;
         serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+        ROS_INFO("extend_Y: %d PWM_Motor:%d, %d", extend_Y, PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
         serial_msg.command = 15;
         serial_data_pub.publish(serial_msg);
     }

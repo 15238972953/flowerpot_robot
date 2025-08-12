@@ -60,12 +60,12 @@ tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_py: /home/jetson/catkin_w
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg/_track.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg/_track.py: /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG tracking_pkg/track"
-	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg
+	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg
 
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg/__init__.py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg/_track.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for tracking_pkg"
-	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg --initpy
+	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg --initpy
 
 tracking_pkg_generate_messages_py: tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_py
 tracking_pkg_generate_messages_py: /home/jetson/catkin_ws/devel/lib/python3/dist-packages/tracking_pkg/msg/_track.py

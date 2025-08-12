@@ -60,13 +60,13 @@ yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_nodejs: /home/jetson/catkin_w
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/coordinate.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/coordinate.js: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from yolo11_pkg/coordinate.msg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg
 
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/array.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/array.js: /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg
 /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/array.js: /home/jetson/catkin_ws/src/yolo11_pkg/msg/coordinate.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from yolo11_pkg/array.msg"
-	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg
+	cd /home/jetson/catkin_ws/build/yolo11_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/jetson/catkin_ws/src/yolo11_pkg/msg/array.msg -Iyolo11_pkg:/home/jetson/catkin_ws/src/yolo11_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolo11_pkg -o /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg
 
 yolo11_pkg_generate_messages_nodejs: yolo11_pkg/CMakeFiles/yolo11_pkg_generate_messages_nodejs
 yolo11_pkg_generate_messages_nodejs: /home/jetson/catkin_ws/devel/share/gennodejs/ros/yolo11_pkg/msg/coordinate.js

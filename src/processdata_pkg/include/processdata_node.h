@@ -7,7 +7,7 @@
 #include <yolo11_pkg/coordinate.h>
 #include <yolo11_pkg/array.h>
 #include <cmath>
-#include <processdata_pkg/serial_data.h>
+#include <common_msgs_pkg/serial_data.h>
 #include "HungarianAlgorithm.h"
 #include "KalmanFilter_fusion.h"
 #include "KalmanFilter_filter.h"
@@ -15,7 +15,7 @@
 #include <tracking_pkg/track.h>
 #include "track_transform.h"
 #include "std_msgs/Float32.h" 
-#include <serial_stm32_pkg/encoder.h>
+#include <common_msgs_pkg/encoder.h>
 
 #define INTERIM_distance 20 // 过渡状态需要的距离阈值
 
@@ -31,7 +31,7 @@ public:
 
 public:
     ProcessDataNode();
-    RobotState current_state = RobotState::GRASP;  // 初始状态为抓取状态
+    RobotState current_state = RobotState::TRANSPORT;  // 初始状态为抓取状态
 
 private:
     void cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg);
@@ -40,7 +40,7 @@ private:
     void trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg);
     void yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg);
     int extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg);
-    void encoderdata_Callback(const serial_stm32_pkg::encoder::ConstPtr& encoder_msg);
+    void encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg);
 
 private:
     ros::NodeHandle nh;
@@ -60,7 +60,7 @@ private:
     std::vector<Eigen::Vector2d> fused_matchs;   //保存融合后的数据
     KalmanFilterFusion fuser;   //融合相机和雷达的滤波器
      
-    processdata_pkg::serial_data serial_msg;    //通过串口发送给stm32的数据
+    common_msgs_pkg::serial_data serial_msg;    //通过串口发送给stm32的数据
     int command;  //用于记录机械臂的指令
 
     PerspectiveTransformer transformer;

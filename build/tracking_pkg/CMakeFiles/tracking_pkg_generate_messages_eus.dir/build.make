@@ -60,11 +60,11 @@ tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_eus: /home/jetson/catkin_
 /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg/msg/track.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg/msg/track.l: /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from tracking_pkg/track.msg"
-	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg/msg
+	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg -Itracking_pkg:/home/jetson/catkin_ws/src/tracking_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p tracking_pkg -o /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg/msg
 
 /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for tracking_pkg"
-	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg tracking_pkg std_msgs
+	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg tracking_pkg std_msgs
 
 tracking_pkg_generate_messages_eus: tracking_pkg/CMakeFiles/tracking_pkg_generate_messages_eus
 tracking_pkg_generate_messages_eus: /home/jetson/catkin_ws/devel/share/roseus/ros/tracking_pkg/msg/track.l

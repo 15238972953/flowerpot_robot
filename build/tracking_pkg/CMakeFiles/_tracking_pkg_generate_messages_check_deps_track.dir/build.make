@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 include tracking_pkg/CMakeFiles/_tracking_pkg_generate_messages_check_deps_track.dir/progress.make
 
 tracking_pkg/CMakeFiles/_tracking_pkg_generate_messages_check_deps_track:
-	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py tracking_pkg /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg 
+	cd /home/jetson/catkin_ws/build/tracking_pkg && ../catkin_generated/env_cached.sh /home/jetson/miniconda3/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py tracking_pkg /home/jetson/catkin_ws/src/tracking_pkg/msg/track.msg 
 
 _tracking_pkg_generate_messages_check_deps_track: tracking_pkg/CMakeFiles/_tracking_pkg_generate_messages_check_deps_track
 _tracking_pkg_generate_messages_check_deps_track: tracking_pkg/CMakeFiles/_tracking_pkg_generate_messages_check_deps_track.dir/build.make

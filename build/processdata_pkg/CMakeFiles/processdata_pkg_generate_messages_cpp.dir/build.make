@@ -53,17 +53,6 @@ CMAKE_BINARY_DIR = /home/jetson/catkin_ws/build
 # Include the progress variables for this target.
 include processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_cpp.dir/progress.make
 
-processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_cpp: /home/jetson/catkin_ws/devel/include/processdata_pkg/serial_data.h
-
-
-/home/jetson/catkin_ws/devel/include/processdata_pkg/serial_data.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
-/home/jetson/catkin_ws/devel/include/processdata_pkg/serial_data.h: /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg
-/home/jetson/catkin_ws/devel/include/processdata_pkg/serial_data.h: /opt/ros/noetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jetson/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from processdata_pkg/serial_data.msg"
-	cd /home/jetson/catkin_ws/src/processdata_pkg && /home/jetson/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/jetson/catkin_ws/src/processdata_pkg/msg/serial_data.msg -Iprocessdata_pkg:/home/jetson/catkin_ws/src/processdata_pkg/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p processdata_pkg -o /home/jetson/catkin_ws/devel/include/processdata_pkg -e /opt/ros/noetic/share/gencpp/cmake/..
-
-processdata_pkg_generate_messages_cpp: processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_cpp
-processdata_pkg_generate_messages_cpp: /home/jetson/catkin_ws/devel/include/processdata_pkg/serial_data.h
 processdata_pkg_generate_messages_cpp: processdata_pkg/CMakeFiles/processdata_pkg_generate_messages_cpp.dir/build.make
 
 .PHONY : processdata_pkg_generate_messages_cpp

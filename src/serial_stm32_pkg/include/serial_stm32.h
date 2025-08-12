@@ -3,12 +3,12 @@
 
 #include <ros/ros.h>
 #include <serial/serial.h>
-#include <processdata_pkg/serial_data.h>
+#include <common_msgs_pkg/serial_data.h>
 #include <vector>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <tf/transform_datatypes.h>
-#include <serial_stm32_pkg/encoder.h>
+#include <common_msgs_pkg/encoder.h>
 
 #define FRAME_SIZE 10
 #define HEADER_BYTE 0x55
@@ -27,14 +27,14 @@ public:
     void updateOdometry();
 
 private:
-    void serialDataCallback(const processdata_pkg::serial_data::ConstPtr& msg);
+    void serialDataCallback(const common_msgs_pkg::serial_data::ConstPtr& msg);
     bool setupSerialPort();
     
     ros::NodeHandle nh_;
     ros::Subscriber serial_data_sub_;   // 订阅serial_data话题
     #ifdef ONLY_ENCODER
         ros::Publisher encoder_pub_; // 发布编码器数据
-        serial_stm32_pkg::encoder encoder_msg; // 编码器数据
+        common_msgs_pkg::encoder encoder_msg; // 编码器数据
     #else
         ros::Publisher odom_pub_;    // 发布标准里程计
         nav_msgs::Odometry odom;
