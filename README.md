@@ -109,7 +109,7 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 **运行：** `rosrun tracking_pkg track.py`  
 
 # 9.camera发布图像话题
-rosrun camera_pkg camera_pkg_node
+`rosrun camera_pkg camera_pkg_node`
 
 
 # 更新中。。。
