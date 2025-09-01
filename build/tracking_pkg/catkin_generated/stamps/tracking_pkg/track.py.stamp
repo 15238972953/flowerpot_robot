@@ -40,7 +40,7 @@ class LineKalmanFilter:
             [0, 0, 0, 0, 1]
         ], np.float32)
         
-        # 观测矩阵（直接观测所有状态）
+        # 观测矩阵
         self.kf.measurementMatrix = np.array([
             [1, 0, 0, 0, 0],
             [0, 1, 0, 0, 0],
@@ -49,20 +49,35 @@ class LineKalmanFilter:
             [0, 0, 0, 0, 1]
         ], np.float32)
         
-        # 过程噪声协方差（调整滤波响应速度）
-        self.kf.processNoiseCov = np.eye(5, dtype=np.float32) * 0.01
+        # 调整过程噪声（增大以更快响应变化）
+        self.kf.processNoiseCov = np.eye(5, dtype=np.float32) * 0.2  # 从0.01增大到0.1
         
-        # 观测噪声协方差（调整对观测的信任度）
-        self.kf.measurementNoiseCov = np.eye(5, dtype=np.float32) * 0.1
-    
-    def is_valid_measurement(self, measurement, threshold=100.0):
-        # 计算预测值与观测值的马氏距离（Mahalanobis distance）
+        # 动态调整的观测噪声（初始值）
+        self.kf.measurementNoiseCov = np.eye(5, dtype=np.float32) * 1.0
+        
+        # 自适应参数
+        self.moving_avg_factor = 0.3  # 移动平均权重
+        self.dynamic_threshold = 200.0  # 初始马氏距离阈值
+        self.max_threshold = 500.0     # 最大允许阈值
+
+    def is_valid_measurement(self, measurement):
+        """动态调整阈值的有效性检查"""
         innovation = measurement - self.kf.predict()
         innovation_cov = self.kf.errorCovPre + self.kf.measurementNoiseCov
-        mahalanobis_dist = np.sqrt(innovation.T @ np.linalg.inv(innovation_cov) @ innovation).item()
-        print("Mahalanobis distance:", mahalanobis_dist)
-        # 如果马氏距离过大，则认为是异常值
-        return mahalanobis_dist < threshold
+        
+        try:
+            mahalanobis_dist = np.sqrt(innovation.T @ np.linalg.inv(innovation_cov) @ innovation).item()
+        except:
+            # 矩阵奇异时暂时接受观测
+            return True
+            
+        print(f"Mahalanobis distance: {mahalanobis_dist:.2f} (Threshold: {self.dynamic_threshold:.2f})")
+        
+        # 动态调整阈值（基于历史距离的移动平均）
+        self.dynamic_threshold = (1-self.moving_avg_factor)*self.dynamic_threshold + \
+                               self.moving_avg_factor*min(mahalanobis_dist*1.5, self.max_threshold)
+        
+        return mahalanobis_dist < self.dynamic_threshold
 
     def update(self, x1, y1, x2, y2, k):
         # 预测
@@ -70,22 +85,27 @@ class LineKalmanFilter:
         
         # 更新观测值
         measurement = np.array([[x1], [y1], [x2], [y2], [k]], np.float32)
-        # 如果观测值异常，则跳过更新，仅预测
+        
+        # 动态调整观测噪声（变化大时信任观测）
+        pos_change = np.linalg.norm(measurement[:4] - prediction[:4])
+        self.kf.measurementNoiseCov = np.eye(5, dtype=np.float32) * max(0.1, min(1.0, pos_change/10.0))
+        
         if not self.is_valid_measurement(measurement):
-            # print("Rejected outlier:", measurement.flatten())
-            return self.kf.predict().flatten()  # 返回预测值
+            # 异常值时：部分更新（仅用50%的观测）
+            print("Partial update due to fast movement")
+            blended = 0.5*measurement + 0.5*prediction
+            self.kf.correct(blended)
+        else:
+            # 正常更新
+            self.kf.correct(measurement)
         
-        # 修正
-        self.kf.correct(measurement)
-        
-        # 返回修正后的状态
         smoothed_state = self.kf.statePost
         return (
-            smoothed_state[0, 0],  # x1
-            smoothed_state[1, 0],  # y1
-            smoothed_state[2, 0],  # x2
-            smoothed_state[3, 0],  # y2
-            smoothed_state[4, 0]   # k
+            int(round(smoothed_state[0, 0])),
+            int(round(smoothed_state[1, 0])),
+            int(round(smoothed_state[2, 0])),
+            int(round(smoothed_state[3, 0])),
+            float(smoothed_state[4, 0])
         )
 
 def line_to_line_distance_ratio(line1, line2):
@@ -308,8 +328,8 @@ def detect_black_line_from_camera():
         
         # 2. 预处理
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        lower_black = np.array([0, 48, 0])
-        upper_black = np.array([110, 146, 117])
+        lower_black = np.array([150, 86, 125])
+        upper_black = np.array([179, 255, 255])
         mask = cv2.inRange(hsv, lower_black, upper_black)
 
 
@@ -338,24 +358,25 @@ def detect_black_line_from_camera():
                 if len(line) == 4:
                     x1, y1, x2, y2 = line
                     
-                    if is_valid_black_line(mask, line, check_distance=5, points_per_side=10, diff_threshold=0.5):
+                    # if is_valid_black_line(mask, line, check_distance=5, points_per_side=10, diff_threshold=0.5):
                         
-                        length = np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
-                
-                        if length > 200:
-                            if x1 != x2:
-                                k = (y2 - y1) / (x2 - x1)
-                            else:
-                                k = float('inf')
-                            # x1, y1, x2, y2, k = kf.update(x1, y1, x2, y2, k)
-                            cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                            track_msg = track()
-                            track_msg.line[0] = x1
-                            track_msg.line[1] = y1
-                            track_msg.line[2] = x2
-                            track_msg.line[3] = y2
-                            track_pub.publish(track_msg)
-                            print(f"直线坐标: ({x1},{y1})->({x2},{y2}), leng: {length:.2f} ")
+                    length = np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+            
+                    if length > 200:
+                        if x1 != x2:
+                            k = (y2 - y1) / (x2 - x1)
+                        else:
+                            k = float('inf')
+                        x1, y1, x2, y2, k = kf.update(x1, y1, x2, y2, k)
+                        print(f"Coordinates: pt1=({x1}, {y1}), pt2=({x2}, {y2})")
+                        cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                        track_msg = track()
+                        track_msg.line[0] = x1
+                        track_msg.line[1] = y1
+                        track_msg.line[2] = x2
+                        track_msg.line[3] = y2
+                        track_pub.publish(track_msg)
+                        print(f"直线坐标: ({x1},{y1})->({x2},{y2}), leng: {length:.2f} ")
 
             # 找出最长的直线
             # longest_line = max(lines, key=lambda line: (line[2]-line[0])**2 + (line[3]-line[1])**2)

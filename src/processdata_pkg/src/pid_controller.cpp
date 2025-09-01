@@ -87,7 +87,7 @@ PWM calculatePWM(const float yaw_angle, const int extend_y, const float Target_y
     PWM PWM_Value;
     // 初始化PID控制器，x和y方向分别使用不同的PID参数
     PIDController pid_yaw(1.0f, 0.1f, 0.01f);
-    PIDController pid_e_y(2.0f, 0.1f, 0.01f);
+    PIDController pid_e_y(0.5f, 0.1f, 0.01f);
 
     // 使用PID控制器计算x和y方向的输出
     auto yaw_pwm = pid_yaw.compute_Incremental(Target_yaw_angle, yaw_angle);

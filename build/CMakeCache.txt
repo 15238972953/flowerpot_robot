@@ -391,6 +391,12 @@ bondcpp_DIR:PATH=/opt/ros/noetic/share/bondcpp/cmake
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_headers-1.71.0
 
+//Value Computed by CMake
+camera_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/camera_pkg
+
+//Value Computed by CMake
+camera_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/camera_pkg
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
 
@@ -408,6 +414,9 @@ common_msgs_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/common_msgs_pkg
 
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/noetic/share/cpp_common/cmake
+
+//The directory containing a CMake configuration file for cv_bridge.
+cv_bridge_DIR:PATH=/opt/ros/noetic/share/cv_bridge/cmake
 
 //The directory containing a CMake configuration file for diagnostic_msgs.
 diagnostic_msgs_DIR:PATH=/opt/ros/noetic/share/diagnostic_msgs/cmake
@@ -490,6 +499,9 @@ gtest_hide_internal_symbols:BOOL=OFF
 
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
+
+//The directory containing a CMake configuration file for image_transport.
+image_transport_DIR:PATH=/opt/ros/noetic/share/image_transport/cmake
 
 //Value Computed by CMake
 imu_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/imu_pkg
@@ -833,7 +845,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=17
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=18
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -879,7 +891,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][c ][v1.71.0()]
 //Details about finding OpenCV
-FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][cfound components: core imgproc calib3d ][v4.5.4()]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.5.4()]
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/home/jetson/miniconda3/lib/python3.12/site-packages/em.py][v()]
 //Details about finding PythonInterp

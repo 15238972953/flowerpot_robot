@@ -26,7 +26,7 @@ def capture_and_save_photo():
     
     if ret:
         # 创建保存目录（如果不存在）
-        save_dir = "captured_photos"
+        save_dir = "/home/jetson/catkin_ws/src/tracking_pkg/captured_photos"
         os.makedirs(save_dir, exist_ok=True)
         
         # 生成带时间戳的文件名

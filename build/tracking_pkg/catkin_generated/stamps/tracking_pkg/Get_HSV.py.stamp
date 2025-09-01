@@ -27,7 +27,7 @@ cv2.createTrackbar('V_min', 'Threshold Adjuster', 0, 255, nothing)
 cv2.createTrackbar('V_max', 'Threshold Adjuster', 255, 255, nothing)
 
 # 读取图像
-image = cv2.imread('/home/jetson/catkin_ws/src/tracking_pkg/scripts/captured_photos/photo_20250807_074842.jpg')
+image = cv2.imread('/home/jetson/catkin_ws/src/tracking_pkg/captured_photos/photo_20250812_231637.jpg')
 hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
 while True:

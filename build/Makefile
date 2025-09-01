@@ -1204,7 +1204,7 @@ sensor_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make radar_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make camera_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 .PHONY : sensor_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -1217,7 +1217,7 @@ sensor_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_eus/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make radar_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make camera_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
 .PHONY : sensor_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -1230,7 +1230,7 @@ geometry_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_eus/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make radar_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make camera_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 .PHONY : geometry_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -1243,7 +1243,7 @@ geometry_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make radar_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make camera_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 .PHONY : geometry_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -1256,7 +1256,7 @@ sensor_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make radar_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make camera_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 .PHONY : sensor_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -1269,7 +1269,7 @@ sensor_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make radar_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make camera_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 .PHONY : sensor_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -1282,8 +1282,21 @@ geometry_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_py/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make radar_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make camera_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 .PHONY : geometry_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named camera_pkg_node
+
+# Build rule for target.
+camera_pkg_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 camera_pkg_node
+.PHONY : camera_pkg_node
+
+# fast build rule for target.
+camera_pkg_node/fast:
+	$(MAKE) -f camera_pkg/CMakeFiles/camera_pkg_node.dir/build.make camera_pkg/CMakeFiles/camera_pkg_node.dir/build
+.PHONY : camera_pkg_node/fast
 
 #=============================================================================
 # Target rules for targets named sensor_msgs_generate_messages_py
@@ -1295,7 +1308,7 @@ sensor_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_py/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make radar_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make camera_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -1308,7 +1321,7 @@ geometry_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make radar_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make camera_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 .PHONY : geometry_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -1321,7 +1334,7 @@ geometry_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f radar_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make radar_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f camera_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make camera_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -2788,6 +2801,7 @@ help:
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... camera_pkg_node"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_nodejs"

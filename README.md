@@ -99,7 +99,7 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 已实现
 
 # 7.IMU
-**串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyUSB0`)  
+**串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyUSB1`)  
 **帧率：** 10HZ;  
 **topic:** yaw_angle;    
 **运行：** `rosrun imu_pkg imu_node`
@@ -123,4 +123,3 @@ catkin_make --pkg common_msgs_pkg
 catkin_make --pkg tracking_pkg
 catkin_make --pkg processdata_pkg   
 ```
-

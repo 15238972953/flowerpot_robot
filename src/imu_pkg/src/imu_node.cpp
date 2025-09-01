@@ -7,12 +7,12 @@ ReadState current_state = ReadState::WAIT_FOR_55;
 SerialReader::SerialReader(ros::NodeHandle& nh) : nh_(nh), private_nh_("~"), is_serial_connected_(false) {
     // 初始化 Publisher，话题名称为 "yaw_angle"
     #ifdef ONLY_YAW
-        yaw_pub_ = nh.advertise<std_msgs::Float32>("/yaw_angle", 10);   // 发布 yaw 角度到 "yaw_angle" 话题
+        yaw_pub_ = nh.advertise<std_msgs::Float32>("yaw_angle", 10);   // 发布 yaw 角度到 "yaw_angle" 话题
     #else
         imu_pub_ = nh.advertise<sensor_msgs::Imu>("/imu/data", 10);    // 发布 IMU 数据到 "/imu/data" 话题
     #endif
     // 从参数服务器获取配置
-    private_nh_.param<std::string>("port", port_, "/dev/ttyUSB0");
+    private_nh_.param<std::string>("port", port_, "/dev/ttyUSB1");
     private_nh_.param<int>("baudrate", baudrate_, 9600);
     
     // 初始化串口
@@ -69,7 +69,7 @@ void SerialReader::processData(const std::vector<uint8_t> &frame) {
             if(frame[10] == static_cast<uint8_t>(frame[0] + frame[1] + frame[2] + frame[3] + frame[4] + 
                             frame[5] + frame[6] + frame[7] + frame[8] + frame[9])) {
                 float yaw = static_cast<float>(((frame[7]<<8)|frame[6])/32768.0f*180.0f);
-                // ROS_INFO("Now Angle - Yaw: %.2f", yaw);
+                ROS_INFO("Now Angle - Yaw: %.2f", yaw);
                 // 发布 yaw 数据
                 std_msgs::Float32 yaw_msg;
                 yaw_msg.data = yaw;

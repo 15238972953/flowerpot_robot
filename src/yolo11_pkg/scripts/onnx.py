@@ -6,19 +6,21 @@ import numpy as np
 import onnxruntime as ort
 import yaml
 import time
-from yolo11_pkg.msg import coordinate,array
+from yolo11_pkg.msg import coordinate, array
 import rospy
 from Coordinate_Transformation import pixel_to_world
-
+# from sensor_msgs.msg import Image
+from cv_bridge import CvBridge, CvBridgeError
+import threading
+from sensor_msgs.msg import CompressedImage
 
 class YOLOv8:
     """YOLOv8 object detection model class for handling inference and visualization."""
 
-    def __init__(self, onnx_model, yaml_file, input_source, confidence_thres, iou_thres):
+    def __init__(self, onnx_model, yaml_file, confidence_thres, iou_thres):
         """
         Initializes an instance of the YOLOv8 class.
         """
-        self.input_source = int(input_source) if input_source.isdigit() else input_source
         self.confidence_thres = confidence_thres
         self.iou_thres = iou_thres
 
@@ -41,9 +43,45 @@ class YOLOv8:
         self.input_shape = model_inputs[0].shape
         self.input_width, self.input_height = self.input_shape[2], self.input_shape[3]
 
-        # ros
+        # ROS initialization
         rospy.init_node("yolo11_node")
-        self.yolo11_pub = rospy.Publisher("yolo11_data",array,queue_size=30)
+        self.yolo11_pub = rospy.Publisher("yolo11_data", array, queue_size=30)
+        
+        # CV bridge for converting ROS Image messages to OpenCV images
+        self.bridge = CvBridge()
+        
+        # Subscribe to camera topic
+        # 根据你的实际相机话题修改这里，常见的有：
+        # "/camera/image_raw", "/usb_cam/image_raw", "/camera/color/image_raw"
+        # self.image_sub = rospy.Subscriber("/camera/image_raw", Image, self.image_callback)
+        self.image_sub = rospy.Subscriber("/camera/image_raw/compressed", CompressedImage, self.image_callback)
+
+        # Store the latest frame
+        self.latest_frame = None
+        self.frame_lock = threading.Lock()
+        
+        # FPS calculation
+        self.frame_count = 0
+        self.start_time = time.time()
+
+    def image_callback(self, msg):
+        """Callback for processing incoming compressed ROS image messages."""
+        try:
+            # 将压缩图像数据转换为numpy数组
+            np_arr = np.frombuffer(msg.data, np.uint8)
+            
+            # 使用OpenCV解码JPEG图像
+            cv_image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+            
+            if cv_image is not None:
+                # Store the latest frame
+                with self.frame_lock:
+                    self.latest_frame = cv_image
+            else:
+                rospy.logwarn("Failed to decode compressed image")
+                
+        except Exception as e:
+            rospy.logerr("Compressed image processing error: %s", e)
 
     def draw_detections(self, img, box, score, class_id):
         """Draws bounding boxes and labels."""
@@ -91,7 +129,6 @@ class YOLOv8:
         indices = cv2.dnn.NMSBoxes(boxes.tolist(), scores[valid_indices].tolist(),
                                    self.confidence_thres, self.iou_thres)
         
-        
         msg = array()
         if len(indices) > 0:
             for i in indices.flatten():
@@ -102,7 +139,7 @@ class YOLOv8:
                 pot_coordinate.x, pot_coordinate.y = pixel_to_world(pot_coordinate.x / 2, pot_coordinate.y / 2)
                 msg.array.append(pot_coordinate)
         self.yolo11_pub.publish(msg)
-        rospy.loginfo("yolo11_data:%s",msg)
+        rospy.loginfo("yolo11_data:%s", msg)
 
         return input_image
 
@@ -112,36 +149,48 @@ class YOLOv8:
 
         start_time = time.time()
         output = self.session.run(None, {self.input_name: img_data})
-        fps = 1.0 / (time.time() - start_time)
-        print(f"[INFO] YOLO FPS: {fps:.2f}")
+        inference_time = time.time() - start_time
+        
+        # Calculate FPS
+        self.frame_count += 1
+        elapsed_time = time.time() - self.start_time
+        if elapsed_time > 1.0:  # Update FPS every second
+            fps = self.frame_count / elapsed_time
+            rospy.loginfo("[INFO] YOLO FPS: %.2f, Inference time: %.3fs", fps, inference_time)
+            self.frame_count = 0
+            self.start_time = time.time()
 
         return self.postprocess(frame.copy(), output)
 
-    def run_video_detection(self):
-        """Runs object detection on a video stream."""
-        cap = cv2.VideoCapture(self.input_source)
-
-        if not cap.isOpened():
-            raise RuntimeError("无法打开视频源")
-
+    def run_ros_detection(self):
+        """Runs object detection on ROS image topics."""
         cv2.namedWindow("YOLOv8 Real-time Detection", cv2.WINDOW_NORMAL)
+        rospy.loginfo("YOLOv8 node started. Waiting for images...")
 
-        # Pre-warm the camera
-        for _ in range(5):
-            cap.read()
+        rate = rospy.Rate(30)  # 30 Hz
 
-        while True:
-            ret, frame = cap.read()
-            if not ret:
-                break
+        while not rospy.is_shutdown():
+            # Get the latest frame
+            with self.frame_lock:
+                if self.latest_frame is not None:
+                    frame = self.latest_frame.copy()
+                else:
+                    frame = None
 
-            processed_frame = self.process_frame(frame)
-            cv2.imshow("YOLOv8 Real-time Detection", processed_frame)
+            if frame is not None:
+                try:
+                    processed_frame = self.process_frame(frame)
+                    cv2.imshow("YOLOv8 Real-time Detection", processed_frame)
+                    
+                    # Check for quit key
+                    if cv2.waitKey(1) & 0xFF == ord('q'):
+                        break
+                        
+                except Exception as e:
+                    rospy.logerr("Error processing frame: %s", e)
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+            rate.sleep()
 
-        cap.release()
         cv2.destroyAllWindows()
 
 
@@ -149,10 +198,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/best_fp16.onnx", help="Path to ONNX model.")
     parser.add_argument("--yaml", default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/flower.yaml", help="Path to YAML file containing class names.")
-    parser.add_argument("--source", type=str, default="0", help="Video source (0 for webcam or video file path).")
     parser.add_argument("--conf-thres", type=float, default=0.8, help="Confidence threshold")
     parser.add_argument("--iou-thres", type=float, default=0.7, help="NMS IoU threshold")
     args = parser.parse_args()
 
-    detector = YOLOv8(args.model, args.yaml, args.source, args.conf_thres, args.iou_thres)
-    detector.run_video_detection()
+    detector = YOLOv8(args.model, args.yaml, args.conf_thres, args.iou_thres)
+    detector.run_ros_detection()
