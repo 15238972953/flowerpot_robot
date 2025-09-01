@@ -5,21 +5,18 @@ catkin_ws ————工作空间
 	|——— build/                                  # 编译空间，用于存放CMake和catkin的缓存信息、配置信息和其他中间文件
 	|——— devel/                                  # 开发空间，用于存放编译后生成的目标文件，包括头文件、动态&静态链接库、可执行文件等
 	|——— src/                                    # 源码
+  |     |--- camera_pkg/                       # 图像话题发布（用于yolo11和tracking）
+  |     |--- common_msgs_pkg/                  # 编码器数据和控制命令数据
+  |     |--- gmapping_pkg/                     # 建图包
+  |     |--- imu_pkg/                          # imu处理包
 	|     |--- lsx10/                            # 激光雷达驱动文件
-	|     |--- processdata_pkg/                  # 相机和雷达的数据进行处理融合操作
+  |     |--- odom_pkg/                         # odom融合数据包
+	|     |--- processdata_pkg/                  # 相机和雷达的数据进行处理融合操作（总处理）
 	|     |--- radar_msgs/                       # 雷达消息数据
-	|     |        |--- msg/                     # 雷达数据包
-	|     |        |--- CMakeLists.txt           # 配置编译规则
-	|     |        |--- package.xml              # 包信息
 	|     |--- radar_pkg/                        # 雷达数据处理
-	|     |        |--- src/                     # python处理雷达数据代码
-	|     |        |--- CMakeLists.txt           # 配置编译规则
-	|     |        |--- package.xml              # 包信息
+  |     |--- serial_stm32_pkg/                 # 给stm32下发命令 
+  |     |--- tracking_pkg/                     # 识别边界线导航
 	|     |--- yolo11_pkg/                       # 相机视觉识别调用部分代码
- 	|     |        |--- msg/                     # 相机数据包
- 	|     |        |--- scripts/                 # 相机调用代码及所需文件
-	|     |        |--- CMakeLists.txt           # 配置编译规则
-	|     |        |--- package.xml              # 包信息
 	|     |--- CMakeLists.txt                    # 配置编译规则
     |     |--- radar_note.txt                    # 部分命令记录
 ```
