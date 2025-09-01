@@ -104,10 +104,12 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 **topic:** yaw_angle;    
 **运行：** `rosrun imu_pkg imu_node`
 
-# 8.相机侧边循迹导航
+# 8.基于状态机的相机导航
 **环境：** 不需要conda
 **运行：** `rosrun tracking_pkg track.py`  
 
+# 9.camera发布图像话题
+rosrun camera_pkg camera_pkg_node
 
 
 # 更新中。。。
