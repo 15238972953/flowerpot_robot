@@ -344,10 +344,40 @@ PYTHON_VERSION:STRING=3
 PY_EM:STRING=/home/jetson/miniconda3/lib/python3.12/site-packages/em.py
 
 //Value Computed by CMake
+PotBot-HMI_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/PotBot-HMI
+
+//Value Computed by CMake
+PotBot-HMI_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/PotBot-HMI
+
+//Value Computed by CMake
+PotBotHMI_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/PotBot-HMI
+
+//Value Computed by CMake
+PotBotHMI_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/PotBot-HMI
+
+//Value Computed by CMake
+PotBot_HMI_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/PotBot_HMI
+
+//Value Computed by CMake
+PotBot_HMI_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/PotBot_HMI
+
+//Value Computed by CMake
 Project_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build
 
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src
+
+//The directory containing a CMake configuration file for Qt5Core.
+Qt5Core_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/Qt5Core
+
+//The directory containing a CMake configuration file for Qt5Gui.
+Qt5Gui_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/Qt5Gui
+
+//The directory containing a CMake configuration file for Qt5Widgets.
+Qt5Widgets_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/Qt5Widgets
+
+//The directory containing a CMake configuration file for Qt5.
+Qt5_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/Qt5
 
 //Path to a library.
 RT_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/librt.so
@@ -845,7 +875,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=18
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=19
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

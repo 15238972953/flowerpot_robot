@@ -25,6 +25,8 @@ import numpy as np
 from math import sqrt
 from itertools import combinations
 from tracking_pkg.msg import track
+from sensor_msgs.msg import CompressedImage  # 添加压缩图像消息导入
+import threading  # 添加线程支持
 
 class LineKalmanFilter:
     def __init__(self):
@@ -303,40 +305,56 @@ def is_valid_black_line(mask, line, check_distance=5, points_per_side=10, diff_t
     
     return True
 
-def detect_black_line_from_camera():
-
-    rospy.init_node("tracking_node")
-    track_pub = rospy.Publisher("track_msg",track,queue_size=30)
-
-    # 初始化摄像头
-    cap = cv2.VideoCapture(0)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-    if not cap.isOpened():
-        print("Error: 无法打开摄像头")
-        return
-
-    # 初始化卡尔曼滤波器
-    kf = LineKalmanFilter()
-    
-    while True:
-        # 1. 读取视频帧
-        ret, frame = cap.read()
-        if not ret:
-            print("Error: 无法读取视频帧")
-            break
+class BlackLineDetector:
+    def __init__(self):
+        # ROS初始化
+        rospy.init_node("tracking_node")
+        self.track_pub = rospy.Publisher("track_msg", track, queue_size=30)
         
+        # 初始化卡尔曼滤波器
+        self.kf = LineKalmanFilter()
+        
+        # 存储最新的帧
+        self.latest_frame = None
+        self.frame_lock = threading.Lock()
+        
+        # 订阅压缩图像话题
+        # 注意：根据你的实际相机话题修改这里
+        self.image_sub = rospy.Subscriber("/camera/image_raw/compressed", CompressedImage, self.image_callback)
+        
+        rospy.loginfo("BlackLineDetector initialized, subscribing to compressed image topic")
+
+    def image_callback(self, msg):
+        """压缩图像回调函数"""
+        try:
+            # 将压缩图像数据转换为numpy数组
+            np_arr = np.frombuffer(msg.data, np.uint8)
+            
+            # 使用OpenCV解码JPEG图像
+            cv_image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+            
+            if cv_image is not None:
+                # 存储最新的帧
+                with self.frame_lock:
+                    self.latest_frame = cv_image
+            else:
+                rospy.logwarn("Failed to decode compressed image")
+                
+        except Exception as e:
+            rospy.logerr("Compressed image processing error: %s", e)
+
+    def process_frame(self, frame):
+        """处理单帧图像"""
         # 2. 预处理
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         lower_black = np.array([150, 86, 125])
         upper_black = np.array([179, 255, 255])
         mask = cv2.inRange(hsv, lower_black, upper_black)
 
-
         # 3. 形态学操作
         kernel = np.ones((15,15), np.uint8)
         mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-        cv2.imshow('Mask Result', mask)
+        
         # 4. 边缘检测
         edges = cv2.Canny(mask, 100, 150)
 
@@ -350,7 +368,9 @@ def detect_black_line_from_camera():
             maxLineGap=10
         )
 
-        # 6. 绘制检测到的直线（优化版）
+        detected_lines = []
+        
+        # 6. 处理检测到的直线
         if lines is not None:
             lines = merge_lines(lines)
             # 画出所有检测到的直线
@@ -367,69 +387,62 @@ def detect_black_line_from_camera():
                             k = (y2 - y1) / (x2 - x1)
                         else:
                             k = float('inf')
-                        x1, y1, x2, y2, k = kf.update(x1, y1, x2, y2, k)
+                        x1, y1, x2, y2, k = self.kf.update(x1, y1, x2, y2, k)
                         print(f"Coordinates: pt1=({x1}, {y1}), pt2=({x2}, {y2})")
                         cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                        
+                        # 发布跟踪消息
                         track_msg = track()
                         track_msg.line[0] = x1
                         track_msg.line[1] = y1
                         track_msg.line[2] = x2
                         track_msg.line[3] = y2
-                        track_pub.publish(track_msg)
+                        self.track_pub.publish(track_msg)
+                        
+                        detected_lines.append((x1, y1, x2, y2))
                         print(f"直线坐标: ({x1},{y1})->({x2},{y2}), leng: {length:.2f} ")
 
-            # 找出最长的直线
-            # longest_line = max(lines, key=lambda line: (line[2]-line[0])**2 + (line[3]-line[1])**2)
-            # x1, y1, x2, y2 = longest_line
+        return frame, mask, detected_lines
 
-            
-            # # 延长直线到画面边缘
-            # height, width = frame.shape[:2]
-            
-            # # 计算直线参数 y = kx + b
-            # if x1 != x2:
-            #     k = (y2 - y1) / (x2 - x1)
-            #     smoothed_x1, smoothed_y1, smoothed_x2, smoothed_y2, smoothed_k = kf.update(x1, y1, x2, y2, k)
-            #     # smoothed_x1, smoothed_y1, smoothed_x2, smoothed_y2, smoothed_k = x1, y1, x2, y2, k
-            #     print(f"Detected line: ({x1}, {y1}) to ({x2}, {y2}) -> Smoothed: ({smoothed_x1:.2f}, {smoothed_y1:.2f}) to ({smoothed_x2:.2f}, {smoothed_y2:.2f})")
-            #     b = smoothed_y1 - smoothed_k * smoothed_x1
-            #     # 计算与左右边界的交点
-            #     x_left = 0
-            #     y_left = int(smoothed_k * x_left + b)
-                
-            #     x_right = width
-            #     y_right = int(smoothed_k * x_right + b)
-                
-            #     # 确保交点在画面内
-            #     if 0 <= y_left <= height and 0 <= y_right <= height:
-            #         cv2.line(frame, (x_left, y_left), (x_right, y_right), (0, 0, 255), 3)
-            #     else:
-            #         # 计算与上下边界的交点
-            #         y_top = 0
-            #         x_top = int((y_top - b) / smoothed_k) if smoothed_k != 0 else x1
+    def run_detection(self):
+        """运行边界线检测"""
+        cv2.namedWindow('Black Line Detection', cv2.WINDOW_NORMAL)
+        cv2.namedWindow('Mask Result', cv2.WINDOW_NORMAL)
+        rospy.loginfo("Black line detection started. Waiting for images...")
+
+        rate = rospy.Rate(30)  # 30 Hz
+
+        while not rospy.is_shutdown():
+            # 获取最新的帧
+            with self.frame_lock:
+                if self.latest_frame is not None:
+                    frame = self.latest_frame.copy()
+                else:
+                    frame = None
+
+            if frame is not None:
+                try:
+                    # 处理帧
+                    processed_frame, mask, lines = self.process_frame(frame)
                     
-            #         y_bottom = height
-            #         x_bottom = int((y_bottom - b) / smoothed_k) if smoothed_k != 0 else x1
+                    # 显示结果
+                    cv2.imshow('Black Line Detection', processed_frame)
+                    cv2.imshow('Mask Result', mask)
                     
-            #         if 0 <= x_top <= width:
-            #             cv2.line(frame, (int(x_top), int(y_top)), (int(smoothed_x1), int(smoothed_y1)), (0, 0, 255), 3)
-            #             # print(f"({x_top}, {y_top}) to ({x1}, {y1}), k = {k:.2f}")
-            #         if 0 <= x_bottom <= width:
-            #             cv2.line(frame, (int(x_bottom), int(y_bottom)), (int(smoothed_x1), int(smoothed_y1)), (0, 0, 255), 3)
-            #             # print(f"({x_bottom}, {y_bottom}) to ({x1}, {y1}), k = {k:.2f}")
-            # else:  # 垂直线
-            #     cv2.line(frame, (x1, 0), (x1, height), (0, 0, 255), 3)
+                    # 检查退出键
+                    if cv2.waitKey(1) & 0xFF == 27:  # ESC键
+                        break
+                        
+                except Exception as e:
+                    rospy.logerr("Error processing frame: %s", e)
 
-        # 7. 显示结果
-        cv2.imshow('Black Line Detection', frame)
-        
-        # 按ESC退出
-        if cv2.waitKey(1) == 27:
-            break
+            rate.sleep()
 
-    # 释放资源
-    cap.release()
-    cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
+
+def detect_black_line_from_camera():
+    detector = BlackLineDetector()
+    detector.run_detection()
 
 if __name__ == "__main__":
     try:

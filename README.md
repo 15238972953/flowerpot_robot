@@ -4,7 +4,7 @@
 catkin_ws ————工作空间
 	|——— build/                                  # 编译空间，用于存放CMake和catkin的缓存信息、配置信息和其他中间文件
 	|——— devel/                                  # 开发空间，用于存放编译后生成的目标文件，包括头文件、动态&静态链接库、可执行文件等
-	|——— src/                                    # 源码
+	|——— src/                                    # 源码  
     |     |--- camera_pkg/                       # 图像话题发布（用于yolo11和tracking）
     |     |--- common_msgs_pkg/                  # 编码器数据和控制命令数据
     |     |--- gmapping_pkg/                     # 建图包

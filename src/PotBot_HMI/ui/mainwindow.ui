@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1050</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>智能花盆摆放控制系统</string>
+  </property>
+  <property name="styleSheet">
+   <string>/* 浅色基调全局样式 */
+QMainWindow {
+    background-color: #F3F4F6;
+}
+QGroupBox {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-family: &quot;Microsoft YaHei&quot;;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 5px;
+    left: 15px;
+    color: #374151;
+    font-weight: bold;
+}
+QLabel {
+    color: #4B5563;
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 13px;
+}
+/* 强调数值的标签 */
+QLabel#BatteryValueLabel { color: #10B981; font-weight: bold; font-size: 14px; }
+QLabel#StatusValueLabel { color: #3B82F6; font-weight: bold; font-size: 14px; }
+QLabel#LatitudeValueLabel, QLabel#LongitudeValueLabel, QLabel#YawAngleValueLabel {
+    color: #111827; font-family: &quot;Consolas&quot;, monospace; font-weight: bold;
+}
+/* 输入框与下拉框 */
+QSpinBox, QComboBox {
+    padding: 6px;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    background-color: #F9FAFB;
+    color: #1F2937;
+}
+QSpinBox:focus, QComboBox:focus { border: 1px solid #3B82F6; }
+/* 按钮样式 */
+QPushButton {
+    border-radius: 6px;
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-weight: bold;
+}
+QPushButton#SettingLabel {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    color: #4B5563;
+    padding: 10px;
+}
+QPushButton#SettingLabel:hover { background-color: #F3F4F6; }
+QPushButton#StartLabel {
+    background-color: #3B82F6;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+}
+QPushButton#StartLabel:hover { background-color: #2563EB; }
+QPushButton#StartLabel:pressed { background-color: #1D4ED8; }
+/* 独特的相机与标题栏样式 */
+QLabel#CaneraLabel {
+    background-color: #111827;
+    color: #9CA3AF;
+    border-radius: 10px;
+    border: 2px solid #93C5FD;
+    font-size: 16px;
+}
+QGroupBox#titleLabel {
+    background-color: transparent;
+    border: none;
+    margin-top: 0px;
+}
+QGroupBox#titleLabel::title {
+    color: #111827;
+    font-size: 18px;
+    left: 0px;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
+    <property name="spacing">
+     <number>15</number>
+    </property>
+    <property name="leftMargin">
+     <number>20</number>
+    </property>
+    <property name="topMargin">
+     <number>20</number>
+    </property>
+    <property name="rightMargin">
+     <number>20</number>
+    </property>
+    <property name="bottomMargin">
+     <number>20</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QGroupBox" name="titleLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>智能花盆摆放上位机系统 v1.0</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_top">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="BatteryLabel">
+        <property name="text">
+         <string>电池电量:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="BatteryValueLabel">
+        <property name="text">
+         <string>78%</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_status">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="StatusLabel">
+        <property name="text">
+         <string>通信状态:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="StatusValueLabel">
+        <property name="text">
+         <string>已连接</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_body">
+      <property name="spacing">
+       <number>20</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_leftPanel">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <item>
+         <widget class="QGroupBox" name="ShowLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>320</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>实时位姿数据</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <property name="verticalSpacing">
+            <number>15</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="LatitudeLabel">
+             <property name="text">
+              <string>纬度 (Lat):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="LatitudeValueLabel">
+             <property name="text">
+              <string>31.2304° N</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="LongitudeLabel">
+             <property name="text">
+              <string>经度 (Lon):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="LongitudeValueLabel">
+             <property name="text">
+              <string>121.4737° E</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="YawAngleLabel">
+             <property name="text">
+              <string>偏航角 (Yaw):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="YawAngleValueLabel">
+             <property name="text">
+              <string>85.4°</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="SetLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>320</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>摆放作业参数</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="verticalSpacing">
+            <number>15</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="PotSpacingLabel">
+             <property name="text">
+              <string>摆放间距 (cm):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="PotSpacingValueLabel">
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="maximum">
+              <number>1000</number>
+             </property>
+             <property name="value">
+              <number>45</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="PotLayoutLabel">
+             <property name="text">
+              <string>排列方式:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="PotLayoutValueLabel">
+             <item>
+              <property name="text">
+               <string>三角错位排列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>正交矩阵排列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>单排直线排列</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_left">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="SettingLabel">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>系统设置</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="StartLabel">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>一键启动作业</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="CaneraLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>相机画面显示区
+(等待视频流接入...)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1050</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
