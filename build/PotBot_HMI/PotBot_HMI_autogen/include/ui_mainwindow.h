@@ -12,12 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
@@ -31,221 +30,265 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QVBoxLayout *verticalLayout_main;
-    QHBoxLayout *horizontalLayout;
-    QGroupBox *titleLabel;
-    QSpacerItem *horizontalSpacer_top;
-    QLabel *BatteryLabel;
+    QVBoxLayout *mainVLayout;
+    QHBoxLayout *topBar;
+    QLabel *logo;
+    QSpacerItem *s1;
+    QLabel *st1;
+    QLabel *ReadyStatusValueLabel;
+    QSpacerItem *s2;
+    QLabel *bt1;
     QLabel *BatteryValueLabel;
-    QSpacerItem *horizontalSpacer_status;
-    QLabel *StatusLabel;
-    QLabel *StatusValueLabel;
-    QHBoxLayout *horizontalLayout_body;
-    QVBoxLayout *verticalLayout_leftPanel;
-    QGroupBox *ShowLabel;
-    QGridLayout *gridLayout_2;
-    QLabel *LatitudeLabel;
+    QGroupBox *DataBox;
+    QHBoxLayout *hDataLayout;
+    QFrame *LatCard;
+    QVBoxLayout *vboxLayout;
+    QLabel *t1;
     QLabel *LatitudeValueLabel;
-    QLabel *LongitudeLabel;
+    QFrame *LonCard;
+    QVBoxLayout *vboxLayout1;
+    QLabel *t2;
     QLabel *LongitudeValueLabel;
-    QLabel *YawAngleLabel;
+    QFrame *YawCard;
+    QVBoxLayout *vboxLayout2;
+    QLabel *t3;
     QLabel *YawAngleValueLabel;
-    QGroupBox *SetLabel;
-    QGridLayout *gridLayout;
-    QLabel *PotSpacingLabel;
+    QFrame *CountCard;
+    QVBoxLayout *vboxLayout3;
+    QLabel *t4;
+    QLabel *PotCountValueLabel;
+    QHBoxLayout *bottomArea;
+    QGroupBox *ParamBox;
+    QVBoxLayout *vParamLayout;
+    QFrame *SpacingCard;
+    QHBoxLayout *hboxLayout;
+    QLabel *lb1;
     QSpinBox *PotSpacingValueLabel;
-    QLabel *PotLayoutLabel;
+    QFrame *ModeCard;
+    QHBoxLayout *hboxLayout1;
+    QLabel *lb2;
     QComboBox *PotLayoutValueLabel;
-    QSpacerItem *verticalSpacer_left;
+    QVBoxLayout *btnArea;
     QPushButton *SettingLabel;
     QPushButton *StartLabel;
-    QLabel *CaneraLabel;
-    QMenuBar *menubar;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1050, 720);
+        MainWindow->resize(1024, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        verticalLayout_main = new QVBoxLayout(centralwidget);
-        verticalLayout_main->setSpacing(15);
-        verticalLayout_main->setObjectName(QString::fromUtf8("verticalLayout_main"));
-        verticalLayout_main->setContentsMargins(20, 20, 20, 20);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        titleLabel = new QGroupBox(centralwidget);
-        titleLabel->setObjectName(QString::fromUtf8("titleLabel"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(titleLabel->sizePolicy().hasHeightForWidth());
-        titleLabel->setSizePolicy(sizePolicy);
-        titleLabel->setMinimumSize(QSize(170, 0));
+        mainVLayout = new QVBoxLayout(centralwidget);
+        mainVLayout->setSpacing(25);
+        mainVLayout->setObjectName(QString::fromUtf8("mainVLayout"));
+        mainVLayout->setContentsMargins(30, 20, 30, 20);
+        topBar = new QHBoxLayout();
+        topBar->setObjectName(QString::fromUtf8("topBar"));
+        logo = new QLabel(centralwidget);
+        logo->setObjectName(QString::fromUtf8("logo"));
 
-        horizontalLayout->addWidget(titleLabel);
+        topBar->addWidget(logo);
 
-        horizontalSpacer_top = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        s1 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout->addItem(horizontalSpacer_top);
+        topBar->addItem(s1);
 
-        BatteryLabel = new QLabel(centralwidget);
-        BatteryLabel->setObjectName(QString::fromUtf8("BatteryLabel"));
+        st1 = new QLabel(centralwidget);
+        st1->setObjectName(QString::fromUtf8("st1"));
 
-        horizontalLayout->addWidget(BatteryLabel);
+        topBar->addWidget(st1);
+
+        ReadyStatusValueLabel = new QLabel(centralwidget);
+        ReadyStatusValueLabel->setObjectName(QString::fromUtf8("ReadyStatusValueLabel"));
+
+        topBar->addWidget(ReadyStatusValueLabel);
+
+        s2 = new QSpacerItem(30, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        topBar->addItem(s2);
+
+        bt1 = new QLabel(centralwidget);
+        bt1->setObjectName(QString::fromUtf8("bt1"));
+
+        topBar->addWidget(bt1);
 
         BatteryValueLabel = new QLabel(centralwidget);
         BatteryValueLabel->setObjectName(QString::fromUtf8("BatteryValueLabel"));
 
-        horizontalLayout->addWidget(BatteryValueLabel);
-
-        horizontalSpacer_status = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer_status);
-
-        StatusLabel = new QLabel(centralwidget);
-        StatusLabel->setObjectName(QString::fromUtf8("StatusLabel"));
-
-        horizontalLayout->addWidget(StatusLabel);
-
-        StatusValueLabel = new QLabel(centralwidget);
-        StatusValueLabel->setObjectName(QString::fromUtf8("StatusValueLabel"));
-
-        horizontalLayout->addWidget(StatusValueLabel);
+        topBar->addWidget(BatteryValueLabel);
 
 
-        verticalLayout_main->addLayout(horizontalLayout);
+        mainVLayout->addLayout(topBar);
 
-        horizontalLayout_body = new QHBoxLayout();
-        horizontalLayout_body->setSpacing(20);
-        horizontalLayout_body->setObjectName(QString::fromUtf8("horizontalLayout_body"));
-        verticalLayout_leftPanel = new QVBoxLayout();
-        verticalLayout_leftPanel->setSpacing(15);
-        verticalLayout_leftPanel->setObjectName(QString::fromUtf8("verticalLayout_leftPanel"));
-        ShowLabel = new QGroupBox(centralwidget);
-        ShowLabel->setObjectName(QString::fromUtf8("ShowLabel"));
-        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(ShowLabel->sizePolicy().hasHeightForWidth());
-        ShowLabel->setSizePolicy(sizePolicy1);
-        ShowLabel->setMinimumSize(QSize(320, 0));
-        gridLayout_2 = new QGridLayout(ShowLabel);
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout_2->setVerticalSpacing(15);
-        LatitudeLabel = new QLabel(ShowLabel);
-        LatitudeLabel->setObjectName(QString::fromUtf8("LatitudeLabel"));
+        DataBox = new QGroupBox(centralwidget);
+        DataBox->setObjectName(QString::fromUtf8("DataBox"));
+        hDataLayout = new QHBoxLayout(DataBox);
+        hDataLayout->setSpacing(15);
+        hDataLayout->setObjectName(QString::fromUtf8("hDataLayout"));
+        hDataLayout->setContentsMargins(15, 15, 15, 15);
+        LatCard = new QFrame(DataBox);
+        LatCard->setObjectName(QString::fromUtf8("LatCard"));
+        vboxLayout = new QVBoxLayout(LatCard);
+        vboxLayout->setObjectName(QString::fromUtf8("vboxLayout"));
+        t1 = new QLabel(LatCard);
+        t1->setObjectName(QString::fromUtf8("t1"));
+        t1->setAlignment(Qt::AlignCenter);
 
-        gridLayout_2->addWidget(LatitudeLabel, 0, 0, 1, 1);
+        vboxLayout->addWidget(t1);
 
-        LatitudeValueLabel = new QLabel(ShowLabel);
+        LatitudeValueLabel = new QLabel(LatCard);
         LatitudeValueLabel->setObjectName(QString::fromUtf8("LatitudeValueLabel"));
-        LatitudeValueLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        LatitudeValueLabel->setAlignment(Qt::AlignCenter);
 
-        gridLayout_2->addWidget(LatitudeValueLabel, 0, 1, 1, 1);
+        vboxLayout->addWidget(LatitudeValueLabel);
 
-        LongitudeLabel = new QLabel(ShowLabel);
-        LongitudeLabel->setObjectName(QString::fromUtf8("LongitudeLabel"));
 
-        gridLayout_2->addWidget(LongitudeLabel, 1, 0, 1, 1);
+        hDataLayout->addWidget(LatCard);
 
-        LongitudeValueLabel = new QLabel(ShowLabel);
+        LonCard = new QFrame(DataBox);
+        LonCard->setObjectName(QString::fromUtf8("LonCard"));
+        vboxLayout1 = new QVBoxLayout(LonCard);
+        vboxLayout1->setObjectName(QString::fromUtf8("vboxLayout1"));
+        t2 = new QLabel(LonCard);
+        t2->setObjectName(QString::fromUtf8("t2"));
+        t2->setAlignment(Qt::AlignCenter);
+
+        vboxLayout1->addWidget(t2);
+
+        LongitudeValueLabel = new QLabel(LonCard);
         LongitudeValueLabel->setObjectName(QString::fromUtf8("LongitudeValueLabel"));
-        LongitudeValueLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        LongitudeValueLabel->setAlignment(Qt::AlignCenter);
 
-        gridLayout_2->addWidget(LongitudeValueLabel, 1, 1, 1, 1);
+        vboxLayout1->addWidget(LongitudeValueLabel);
 
-        YawAngleLabel = new QLabel(ShowLabel);
-        YawAngleLabel->setObjectName(QString::fromUtf8("YawAngleLabel"));
 
-        gridLayout_2->addWidget(YawAngleLabel, 2, 0, 1, 1);
+        hDataLayout->addWidget(LonCard);
 
-        YawAngleValueLabel = new QLabel(ShowLabel);
+        YawCard = new QFrame(DataBox);
+        YawCard->setObjectName(QString::fromUtf8("YawCard"));
+        vboxLayout2 = new QVBoxLayout(YawCard);
+        vboxLayout2->setObjectName(QString::fromUtf8("vboxLayout2"));
+        t3 = new QLabel(YawCard);
+        t3->setObjectName(QString::fromUtf8("t3"));
+        t3->setAlignment(Qt::AlignCenter);
+
+        vboxLayout2->addWidget(t3);
+
+        YawAngleValueLabel = new QLabel(YawCard);
         YawAngleValueLabel->setObjectName(QString::fromUtf8("YawAngleValueLabel"));
-        YawAngleValueLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        YawAngleValueLabel->setAlignment(Qt::AlignCenter);
 
-        gridLayout_2->addWidget(YawAngleValueLabel, 2, 1, 1, 1);
+        vboxLayout2->addWidget(YawAngleValueLabel);
 
 
-        verticalLayout_leftPanel->addWidget(ShowLabel);
+        hDataLayout->addWidget(YawCard);
 
-        SetLabel = new QGroupBox(centralwidget);
-        SetLabel->setObjectName(QString::fromUtf8("SetLabel"));
-        sizePolicy1.setHeightForWidth(SetLabel->sizePolicy().hasHeightForWidth());
-        SetLabel->setSizePolicy(sizePolicy1);
-        SetLabel->setMinimumSize(QSize(320, 0));
-        gridLayout = new QGridLayout(SetLabel);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setVerticalSpacing(15);
-        PotSpacingLabel = new QLabel(SetLabel);
-        PotSpacingLabel->setObjectName(QString::fromUtf8("PotSpacingLabel"));
+        CountCard = new QFrame(DataBox);
+        CountCard->setObjectName(QString::fromUtf8("CountCard"));
+        vboxLayout3 = new QVBoxLayout(CountCard);
+        vboxLayout3->setObjectName(QString::fromUtf8("vboxLayout3"));
+        t4 = new QLabel(CountCard);
+        t4->setObjectName(QString::fromUtf8("t4"));
+        t4->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addWidget(PotSpacingLabel, 0, 0, 1, 1);
+        vboxLayout3->addWidget(t4);
 
-        PotSpacingValueLabel = new QSpinBox(SetLabel);
+        PotCountValueLabel = new QLabel(CountCard);
+        PotCountValueLabel->setObjectName(QString::fromUtf8("PotCountValueLabel"));
+        PotCountValueLabel->setAlignment(Qt::AlignCenter);
+
+        vboxLayout3->addWidget(PotCountValueLabel);
+
+
+        hDataLayout->addWidget(CountCard);
+
+        hDataLayout->setStretch(0, 1);
+        hDataLayout->setStretch(1, 1);
+        hDataLayout->setStretch(2, 1);
+        hDataLayout->setStretch(3, 1);
+
+        mainVLayout->addWidget(DataBox);
+
+        bottomArea = new QHBoxLayout();
+        bottomArea->setSpacing(30);
+        bottomArea->setObjectName(QString::fromUtf8("bottomArea"));
+        bottomArea->setContentsMargins(0, 0, 0, 0);
+        ParamBox = new QGroupBox(centralwidget);
+        ParamBox->setObjectName(QString::fromUtf8("ParamBox"));
+        vParamLayout = new QVBoxLayout(ParamBox);
+        vParamLayout->setSpacing(20);
+        vParamLayout->setObjectName(QString::fromUtf8("vParamLayout"));
+        vParamLayout->setContentsMargins(20, 20, 20, 20);
+        SpacingCard = new QFrame(ParamBox);
+        SpacingCard->setObjectName(QString::fromUtf8("SpacingCard"));
+        hboxLayout = new QHBoxLayout(SpacingCard);
+        hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
+        hboxLayout->setContentsMargins(30, 20, 30, 20);
+        lb1 = new QLabel(SpacingCard);
+        lb1->setObjectName(QString::fromUtf8("lb1"));
+
+        hboxLayout->addWidget(lb1);
+
+        PotSpacingValueLabel = new QSpinBox(SpacingCard);
         PotSpacingValueLabel->setObjectName(QString::fromUtf8("PotSpacingValueLabel"));
-        PotSpacingValueLabel->setAlignment(Qt::AlignCenter);
-        PotSpacingValueLabel->setMaximum(1000);
         PotSpacingValueLabel->setValue(45);
 
-        gridLayout->addWidget(PotSpacingValueLabel, 0, 1, 1, 1);
+        hboxLayout->addWidget(PotSpacingValueLabel);
 
-        PotLayoutLabel = new QLabel(SetLabel);
-        PotLayoutLabel->setObjectName(QString::fromUtf8("PotLayoutLabel"));
 
-        gridLayout->addWidget(PotLayoutLabel, 1, 0, 1, 1);
+        vParamLayout->addWidget(SpacingCard);
 
-        PotLayoutValueLabel = new QComboBox(SetLabel);
-        PotLayoutValueLabel->addItem(QString());
+        ModeCard = new QFrame(ParamBox);
+        ModeCard->setObjectName(QString::fromUtf8("ModeCard"));
+        hboxLayout1 = new QHBoxLayout(ModeCard);
+        hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+        hboxLayout1->setContentsMargins(30, 20, 30, 20);
+        lb2 = new QLabel(ModeCard);
+        lb2->setObjectName(QString::fromUtf8("lb2"));
+
+        hboxLayout1->addWidget(lb2);
+
+        PotLayoutValueLabel = new QComboBox(ModeCard);
         PotLayoutValueLabel->addItem(QString());
         PotLayoutValueLabel->addItem(QString());
         PotLayoutValueLabel->setObjectName(QString::fromUtf8("PotLayoutValueLabel"));
 
-        gridLayout->addWidget(PotLayoutValueLabel, 1, 1, 1, 1);
+        hboxLayout1->addWidget(PotLayoutValueLabel);
 
 
-        verticalLayout_leftPanel->addWidget(SetLabel);
+        vParamLayout->addWidget(ModeCard);
 
-        verticalSpacer_left = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout_leftPanel->addItem(verticalSpacer_left);
+        bottomArea->addWidget(ParamBox);
 
+        btnArea = new QVBoxLayout();
+        btnArea->setSpacing(25);
+        btnArea->setObjectName(QString::fromUtf8("btnArea"));
+        btnArea->setContentsMargins(0, 0, 0, 0);
         SettingLabel = new QPushButton(centralwidget);
         SettingLabel->setObjectName(QString::fromUtf8("SettingLabel"));
-        SettingLabel->setCursor(QCursor(Qt::PointingHandCursor));
 
-        verticalLayout_leftPanel->addWidget(SettingLabel);
+        btnArea->addWidget(SettingLabel);
 
         StartLabel = new QPushButton(centralwidget);
         StartLabel->setObjectName(QString::fromUtf8("StartLabel"));
-        StartLabel->setCursor(QCursor(Qt::PointingHandCursor));
 
-        verticalLayout_leftPanel->addWidget(StartLabel);
-
-
-        horizontalLayout_body->addLayout(verticalLayout_leftPanel);
-
-        CaneraLabel = new QLabel(centralwidget);
-        CaneraLabel->setObjectName(QString::fromUtf8("CaneraLabel"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(CaneraLabel->sizePolicy().hasHeightForWidth());
-        CaneraLabel->setSizePolicy(sizePolicy2);
-        CaneraLabel->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_body->addWidget(CaneraLabel);
+        btnArea->addWidget(StartLabel);
 
 
-        verticalLayout_main->addLayout(horizontalLayout_body);
+        bottomArea->addLayout(btnArea);
 
+        bottomArea->setStretch(0, 4);
+        bottomArea->setStretch(1, 3);
+
+        mainVLayout->addLayout(bottomArea);
+
+        mainVLayout->setStretch(0, 1);
+        mainVLayout->setStretch(1, 2);
+        mainVLayout->setStretch(2, 7);
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1050, 20));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
@@ -258,111 +301,100 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\346\231\272\350\203\275\350\212\261\347\233\206\346\221\206\346\224\276\346\216\247\345\210\266\347\263\273\347\273\237", nullptr));
-        MainWindow->setStyleSheet(QApplication::translate("MainWindow", "/* \346\265\205\350\211\262\345\237\272\350\260\203\345\205\250\345\261\200\346\240\267\345\274\217 */\n"
-"QMainWindow {\n"
-"    background-color: #F3F4F6;\n"
-"}\n"
-"QGroupBox {\n"
-"    background-color: #FFFFFF;\n"
-"    border: 1px solid #E5E7EB;\n"
-"    border-radius: 8px;\n"
-"    margin-top: 15px;\n"
-"    font-family: \"Microsoft YaHei\";\n"
-"}\n"
-"QGroupBox::title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top left;\n"
-"    padding: 0 5px;\n"
-"    left: 15px;\n"
-"    color: #374151;\n"
-"    font-weight: bold;\n"
-"}\n"
-"QLabel {\n"
-"    color: #4B5563;\n"
-"    font-family: \"Microsoft YaHei\";\n"
-"    font-size: 13px;\n"
-"}\n"
-"/* \345\274\272\350\260\203\346\225\260\345\200\274\347\232\204\346\240\207\347\255\276 */\n"
-"QLabel#BatteryValueLabel { color: #10B981; font-weight: bold; font-size: 14px; }\n"
-"QLabel#StatusValueLabel { color: #3B82F6; font-weight: bold; font-size: 14px; }\n"
-"QLabel#LatitudeValueLabel, QLabel#LongitudeValueLabel, QLabel#YawAngleValueLabel {\n"
-"    color: #"
-                        "111827; font-family: \"Consolas\", monospace; font-weight: bold;\n"
-"}\n"
-"/* \350\276\223\345\205\245\346\241\206\344\270\216\344\270\213\346\213\211\346\241\206 */\n"
-"QSpinBox, QComboBox {\n"
-"    padding: 6px;\n"
-"    border: 1px solid #D1D5DB;\n"
-"    border-radius: 4px;\n"
-"    background-color: #F9FAFB;\n"
-"    color: #1F2937;\n"
-"}\n"
-"QSpinBox:focus, QComboBox:focus { border: 1px solid #3B82F6; }\n"
-"/* \346\214\211\351\222\256\346\240\267\345\274\217 */\n"
-"QPushButton {\n"
-"    border-radius: 6px;\n"
-"    font-family: \"Microsoft YaHei\";\n"
-"    font-weight: bold;\n"
-"}\n"
-"QPushButton#SettingLabel {\n"
-"    background-color: #FFFFFF;\n"
-"    border: 1px solid #D1D5DB;\n"
-"    color: #4B5563;\n"
-"    padding: 10px;\n"
-"}\n"
-"QPushButton#SettingLabel:hover { background-color: #F3F4F6; }\n"
-"QPushButton#StartLabel {\n"
-"    background-color: #3B82F6;\n"
-"    color: white;\n"
-"    padding: 15px;\n"
-"    font-size: 16px;\n"
-"    border: none;\n"
-"}\n"
-"QPushButton#StartLabel:hover { background-color: #"
-                        "2563EB; }\n"
-"QPushButton#StartLabel:pressed { background-color: #1D4ED8; }\n"
-"/* \347\213\254\347\211\271\347\232\204\347\233\270\346\234\272\344\270\216\346\240\207\351\242\230\346\240\217\346\240\267\345\274\217 */\n"
-"QLabel#CaneraLabel {\n"
-"    background-color: #111827;\n"
-"    color: #9CA3AF;\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #93C5FD;\n"
-"    font-size: 16px;\n"
-"}\n"
-"QGroupBox#titleLabel {\n"
-"    background-color: transparent;\n"
-"    border: none;\n"
-"    margin-top: 0px;\n"
-"}\n"
-"QGroupBox#titleLabel::title {\n"
-"    color: #111827;\n"
-"    font-size: 18px;\n"
-"    left: 0px;\n"
-"}\n"
-"", nullptr));
-        titleLabel->setTitle(QApplication::translate("MainWindow", "\346\231\272\350\203\275\350\212\261\347\233\206\346\221\206\346\224\276\344\270\212\344\275\215\346\234\272\347\263\273\347\273\237 v1.0", nullptr));
-        BatteryLabel->setText(QApplication::translate("MainWindow", "\347\224\265\346\261\240\347\224\265\351\207\217:", nullptr));
-        BatteryValueLabel->setText(QApplication::translate("MainWindow", "78%", nullptr));
-        StatusLabel->setText(QApplication::translate("MainWindow", "\351\200\232\344\277\241\347\212\266\346\200\201:", nullptr));
-        StatusValueLabel->setText(QApplication::translate("MainWindow", "\345\267\262\350\277\236\346\216\245", nullptr));
-        ShowLabel->setTitle(QApplication::translate("MainWindow", "\345\256\236\346\227\266\344\275\215\345\247\277\346\225\260\346\215\256", nullptr));
-        LatitudeLabel->setText(QApplication::translate("MainWindow", "\347\272\254\345\272\246 (Lat):", nullptr));
-        LatitudeValueLabel->setText(QApplication::translate("MainWindow", "31.2304\302\260 N", nullptr));
-        LongitudeLabel->setText(QApplication::translate("MainWindow", "\347\273\217\345\272\246 (Lon):", nullptr));
-        LongitudeValueLabel->setText(QApplication::translate("MainWindow", "121.4737\302\260 E", nullptr));
-        YawAngleLabel->setText(QApplication::translate("MainWindow", "\345\201\217\350\210\252\350\247\222 (Yaw):", nullptr));
-        YawAngleValueLabel->setText(QApplication::translate("MainWindow", "85.4\302\260", nullptr));
-        SetLabel->setTitle(QApplication::translate("MainWindow", "\346\221\206\346\224\276\344\275\234\344\270\232\345\217\202\346\225\260", nullptr));
-        PotSpacingLabel->setText(QApplication::translate("MainWindow", "\346\221\206\346\224\276\351\227\264\350\267\235 (cm):", nullptr));
-        PotLayoutLabel->setText(QApplication::translate("MainWindow", "\346\216\222\345\210\227\346\226\271\345\274\217:", nullptr));
-        PotLayoutValueLabel->setItemText(0, QApplication::translate("MainWindow", "\344\270\211\350\247\222\351\224\231\344\275\215\346\216\222\345\210\227", nullptr));
-        PotLayoutValueLabel->setItemText(1, QApplication::translate("MainWindow", "\346\255\243\344\272\244\347\237\251\351\230\265\346\216\222\345\210\227", nullptr));
-        PotLayoutValueLabel->setItemText(2, QApplication::translate("MainWindow", "\345\215\225\346\216\222\347\233\264\347\272\277\346\216\222\345\210\227", nullptr));
+        MainWindow->setStyleSheet(QApplication::translate("MainWindow", "\n"
+"    QMainWindow { background-color: #F0F2F5; }\n"
+"    \n"
+"    QGroupBox {\n"
+"        background-color: #FFFFFF;\n"
+"        border: 2px solid #DCDFE6;\n"
+"        border-radius: 20px;\n"
+"        margin-top: 25px;\n"
+"        font-family: \"Microsoft YaHei\";\n"
+"        font-weight: bold;\n"
+"    }\n"
+"    QGroupBox::title {\n"
+"        subcontrol-origin: margin;\n"
+"        subcontrol-position: top left;\n"
+"        padding: 5px 20px;\n"
+"        color: #444;\n"
+"        font-size: 28px;\n"
+"    }\n"
+"\n"
+"    /* \346\225\260\346\215\256\347\233\221\346\216\247\345\214\272\350\211\262\345\235\227 */\n"
+"    QFrame#LatCard { background-color: #B3E5FC; border: 2px solid #0288D1; border-radius: 15px; }\n"
+"    QFrame#LonCard { background-color: #C8E6C9; border: 2px solid #388E3C; border-radius: 15px; }\n"
+"    QFrame#YawCard { background-color: #FFF9C4; border: 2px solid #FBC02D; border-radius: 15px; }\n"
+"    QFrame#CountCard { background-color: #E1BEE7; border: 2px solid #7B1FA2; border-radius: 15px; "
+                        "}\n"
+"\n"
+"    /* \350\256\276\347\275\256\345\214\272\350\211\262\345\235\227 - \346\236\201\345\272\246\345\274\272\345\214\226 */\n"
+"    QFrame#SpacingCard { background-color: #E0F7FA; border: 3px solid #00ACC1; border-radius: 20px; }\n"
+"    QFrame#ModeCard { background-color: #FCE4EC; border: 3px solid #D81B60; border-radius: 20px; }\n"
+"\n"
+"    QLabel { color: #2D3436; font-family: \"Microsoft YaHei\"; font-weight: bold; }\n"
+"    \n"
+"    /* \345\267\250\345\244\247\345\214\226\346\214\211\351\222\256 */\n"
+"    QPushButton#SettingLabel { \n"
+"        background-color: #455A64; color: white; border-radius: 20px; \n"
+"        min-height: 120px; font-size: 42px; \n"
+"    }\n"
+"    QPushButton#StartLabel { \n"
+"        background-color: #0D47A1; color: white; border-radius: 20px; \n"
+"        min-height: 160px; font-size: 55px; \n"
+"    }\n"
+"    QPushButton:pressed { background-color: #1A237E; }\n"
+"\n"
+"    /* \350\256\276\347\275\256\345\214\272\350\276\223\345\205\245\346\241\206 - \345\255\227\345\217"
+                        "\267\346\236\201\345\244\247\345\214\226\351\200\202\351\205\215\346\224\276\345\244\247\347\252\227\345\217\243 */\n"
+"    QSpinBox, QComboBox {\n"
+"        min-height: 130px;\n"
+"        font-size: 52px;\n"
+"        font-weight: bold;\n"
+"        border: 3px solid #B0BEC5;\n"
+"        border-radius: 15px;\n"
+"        background-color: #FFFFFF;\n"
+"        padding: 0 20px;\n"
+"    }\n"
+"    QSpinBox::up-button, QSpinBox::down-button { width: 70px; }\n"
+"   ", nullptr));
+        logo->setText(QApplication::translate("MainWindow", "\360\237\244\226 PotBot \346\231\272\350\203\275\347\273\210\347\253\257", nullptr));
+        logo->setStyleSheet(QApplication::translate("MainWindow", "font-size: 40px; color: #0D47A1;", nullptr));
+        st1->setText(QApplication::translate("MainWindow", "\347\212\266\346\200\201:", nullptr));
+        st1->setStyleSheet(QApplication::translate("MainWindow", "font-size: 32px;", nullptr));
+        ReadyStatusValueLabel->setText(QApplication::translate("MainWindow", "\345\260\261\347\273\252", nullptr));
+        ReadyStatusValueLabel->setStyleSheet(QApplication::translate("MainWindow", "color: #2E7D32; font-size: 32px;", nullptr));
+        bt1->setText(QApplication::translate("MainWindow", "\347\224\265\351\207\217:", nullptr));
+        bt1->setStyleSheet(QApplication::translate("MainWindow", "font-size: 32px;", nullptr));
+        BatteryValueLabel->setText(QApplication::translate("MainWindow", "100%", nullptr));
+        BatteryValueLabel->setStyleSheet(QApplication::translate("MainWindow", "color: #E65100; font-size: 32px;", nullptr));
+        DataBox->setTitle(QApplication::translate("MainWindow", " \345\256\236\346\227\266\346\225\260\346\215\256\347\233\221\346\216\247 ", nullptr));
+        t1->setText(QApplication::translate("MainWindow", "\347\272\254\345\272\246", nullptr));
+        t1->setStyleSheet(QApplication::translate("MainWindow", "font-size: 30px;", nullptr));
+        LatitudeValueLabel->setText(QApplication::translate("MainWindow", "0.0", nullptr));
+        LatitudeValueLabel->setStyleSheet(QApplication::translate("MainWindow", "font-size: 38px;", nullptr));
+        t2->setText(QApplication::translate("MainWindow", "\347\273\217\345\272\246", nullptr));
+        t2->setStyleSheet(QApplication::translate("MainWindow", "font-size: 30px;", nullptr));
+        LongitudeValueLabel->setText(QApplication::translate("MainWindow", "0.0", nullptr));
+        LongitudeValueLabel->setStyleSheet(QApplication::translate("MainWindow", "font-size: 38px;", nullptr));
+        t3->setText(QApplication::translate("MainWindow", "\345\201\217\350\210\252\350\247\222", nullptr));
+        t3->setStyleSheet(QApplication::translate("MainWindow", "font-size: 30px;", nullptr));
+        YawAngleValueLabel->setText(QApplication::translate("MainWindow", "0.0\302\260", nullptr));
+        YawAngleValueLabel->setStyleSheet(QApplication::translate("MainWindow", "font-size: 38px;", nullptr));
+        t4->setText(QApplication::translate("MainWindow", "\346\220\254\350\277\220\346\225\260", nullptr));
+        t4->setStyleSheet(QApplication::translate("MainWindow", "font-size: 30px;", nullptr));
+        PotCountValueLabel->setText(QApplication::translate("MainWindow", "0", nullptr));
+        PotCountValueLabel->setStyleSheet(QApplication::translate("MainWindow", "font-size: 60px; color: #4A148C;", nullptr));
+        ParamBox->setTitle(QApplication::translate("MainWindow", " \344\275\234\344\270\232\345\217\202\346\225\260\350\256\276\347\275\256 ", nullptr));
+        lb1->setText(QApplication::translate("MainWindow", "\351\227\264\350\267\235\350\256\276\347\275\256:", nullptr));
+        lb1->setStyleSheet(QApplication::translate("MainWindow", "font-size: 52px;", nullptr));
+        PotSpacingValueLabel->setSuffix(QApplication::translate("MainWindow", " cm", nullptr));
+        lb2->setText(QApplication::translate("MainWindow", "\346\216\222\345\210\227\346\250\241\345\274\217:", nullptr));
+        lb2->setStyleSheet(QApplication::translate("MainWindow", "font-size: 52px;", nullptr));
+        PotLayoutValueLabel->setItemText(0, QApplication::translate("MainWindow", "\344\270\211\350\247\222\351\224\231\344\275\215", nullptr));
+        PotLayoutValueLabel->setItemText(1, QApplication::translate("MainWindow", "\347\237\251\351\230\265\346\216\222\345\210\227", nullptr));
 
-        SettingLabel->setText(QApplication::translate("MainWindow", "\347\263\273\347\273\237\350\256\276\347\275\256", nullptr));
-        StartLabel->setText(QApplication::translate("MainWindow", "\344\270\200\351\224\256\345\220\257\345\212\250\344\275\234\344\270\232", nullptr));
-        CaneraLabel->setText(QApplication::translate("MainWindow", "\347\233\270\346\234\272\347\224\273\351\235\242\346\230\276\347\244\272\345\214\272\n"
-"(\347\255\211\345\276\205\350\247\206\351\242\221\346\265\201\346\216\245\345\205\245...)", nullptr));
+        SettingLabel->setText(QApplication::translate("MainWindow", "\342\232\231 \347\263\273\347\273\237\350\256\276\347\275\256", nullptr));
+        StartLabel->setText(QApplication::translate("MainWindow", "\360\237\232\200 \344\270\200\351\224\256\345\220\257\345\212\250", nullptr));
     } // retranslateUi
 
 };

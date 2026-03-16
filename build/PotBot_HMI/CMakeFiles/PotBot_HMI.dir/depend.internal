@@ -542,12 +542,11 @@ PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs_win.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QApplication
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QComboBox
- /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGridLayout
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QFrame
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGroupBox
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QHBoxLayout
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QLabel
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMainWindow
- /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMenuBar
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMessageBox
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QPushButton
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QSpacerItem
@@ -559,8 +558,6 @@ PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractitemdelegate.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractslider.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractspinbox.h
- /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qaction.h
- /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qactiongroup.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qapplication.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qboxlayout.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qcombobox.h
@@ -573,8 +570,6 @@ PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlayout.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlayoutitem.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmainwindow.h
- /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmenu.h
- /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmenubar.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmessagebox.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qpushbutton.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qrubberband.h

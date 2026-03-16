@@ -15,12 +15,14 @@ MainWindow::MainWindow(RosInterface *ros, QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->StatusValueLabel->setText("Idle");
+    ui->ReadyStatusValueLabel->setText("Idle");
     ui->BatteryValueLabel->setText("0%");
     ui->YawAngleValueLabel->setText("0");
 
     ui->LatitudeValueLabel->setText("0.0");
     ui->LongitudeValueLabel->setText("0.0");
+
+    ui->PotCountValueLabel->setText("0");
 
     // ROS刷新定时器
     ros_timer = new QTimer(this);
@@ -62,7 +64,7 @@ void MainWindow::on_StartLabel_clicked()
     if(robotRunning)
     {
         ui->StartLabel->setText("STOP");
-        ui->StatusValueLabel->setText("Running");
+        ui->ReadyStatusValueLabel->setText("Running");
 
         qDebug() << "Robot Started";
 
@@ -82,7 +84,7 @@ void MainWindow::on_StartLabel_clicked()
     else
     {
         ui->StartLabel->setText("START");
-        ui->StatusValueLabel->setText("Stopped");
+        ui->ReadyStatusValueLabel->setText("Stopped");
 
         qDebug() << "Robot Stopped";
 

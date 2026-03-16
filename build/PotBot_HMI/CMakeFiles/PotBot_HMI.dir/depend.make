@@ -541,12 +541,11 @@ PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs_win.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QApplication
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QComboBox
-PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGridLayout
+PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QFrame
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGroupBox
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QHBoxLayout
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QLabel
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMainWindow
-PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMenuBar
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMessageBox
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QPushButton
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QSpacerItem
@@ -558,8 +557,6 @@ PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractitemdelegate.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractslider.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractspinbox.h
-PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qaction.h
-PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qactiongroup.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qapplication.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qboxlayout.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qcombobox.h
@@ -572,8 +569,6 @@ PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlayout.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlayoutitem.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmainwindow.h
-PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmenu.h
-PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmenubar.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmessagebox.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qpushbutton.h
 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o: /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qrubberband.h

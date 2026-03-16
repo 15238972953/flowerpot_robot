@@ -38,10 +38,6 @@ QMessageBox
 QTimer
 -
 
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.cpp
-ros_interface.h
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.h
-
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h
 /opt/ros/noetic/include/ros/ros/forwards.h
@@ -1898,9 +1894,9 @@ qapplication.h
 qcombobox.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qcombobox.h
 
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGridLayout
-qgridlayout.h
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qgridlayout.h
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/QFrame
+qframe.h
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qframe.h
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGroupBox
 qgroupbox.h
@@ -1917,10 +1913,6 @@ qlabel.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMainWindow
 qmainwindow.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmainwindow.h
-
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMenuBar
-qmenubar.h
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmenubar.h
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMessageBox
 qmessagebox.h
@@ -1980,28 +1972,6 @@ QtWidgets/qtwidgetsglobal.h
 QtWidgets/qwidget.h
 -
 QtGui/qvalidator.h
--
-
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qaction.h
-QtWidgets/qtwidgetsglobal.h
--
-QtGui/qkeysequence.h
--
-QtCore/qstring.h
--
-QtWidgets/qwidget.h
--
-QtCore/qvariant.h
--
-QtGui/qicon.h
--
-QtWidgets/qactiongroup.h
--
-
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qactiongroup.h
-QtWidgets/qtwidgetsglobal.h
--
-QtWidgets/qaction.h
 -
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qapplication.h
@@ -2122,24 +2092,6 @@ QtWidgets/qtwidgetsglobal.h
 QtWidgets/qwidget.h
 -
 QtWidgets/qtabwidget.h
--
-
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmenu.h
-QtWidgets/qtwidgetsglobal.h
--
-QtWidgets/qwidget.h
--
-QtCore/qstring.h
--
-QtGui/qicon.h
--
-QtWidgets/qaction.h
--
-
-/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmenubar.h
-QtWidgets/qtwidgetsglobal.h
--
-QtWidgets/qmenu.h
 -
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmessagebox.h
@@ -2293,7 +2245,7 @@ QtWidgets/QApplication
 -
 QtWidgets/QComboBox
 -
-QtWidgets/QGridLayout
+QtWidgets/QFrame
 -
 QtWidgets/QGroupBox
 -
@@ -2302,8 +2254,6 @@ QtWidgets/QHBoxLayout
 QtWidgets/QLabel
 -
 QtWidgets/QMainWindow
--
-QtWidgets/QMenuBar
 -
 QtWidgets/QPushButton
 -
