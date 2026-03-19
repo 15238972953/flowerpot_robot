@@ -5,7 +5,7 @@
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "potbot_hmi");
+    ros::init(argc, argv, "potbot_hmi_node");
 
     QApplication app(argc, argv);
 

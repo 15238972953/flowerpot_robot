@@ -48,14 +48,14 @@ set(UIS
 )
 
 ## 可执行文件
-add_executable(PotBot_HMI
+add_executable(potbot_hmi_node
   ${SOURCES}
   ${HEADERS}
   ${UIS}
 )
 
 ## 链接库
-target_link_libraries(PotBot_HMI
+target_link_libraries(potbot_hmi_node
   Qt5::Widgets
   ${catkin_LIBRARIES}
 )

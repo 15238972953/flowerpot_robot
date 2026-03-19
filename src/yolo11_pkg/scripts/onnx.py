@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/jetson/miniconda3/envs/yolo11/bin/python
 
 import argparse
 import cv2
@@ -54,7 +54,7 @@ class YOLOv8:
         # 根据你的实际相机话题修改这里，常见的有：
         # "/camera/image_raw", "/usb_cam/image_raw", "/camera/color/image_raw"
         # self.image_sub = rospy.Subscriber("/camera/image_raw", Image, self.image_callback)
-        self.image_sub = rospy.Subscriber("/camera/image_raw/compressed", CompressedImage, self.image_callback)
+        self.image_sub = rospy.Subscriber("/camera_node/image_raw/compressed", CompressedImage, self.image_callback)
 
         # Store the latest frame
         self.latest_frame = None
@@ -200,7 +200,9 @@ if __name__ == "__main__":
     parser.add_argument("--yaml", default="/home/jetson/catkin_ws/src/yolo11_pkg/scripts/flower.yaml", help="Path to YAML file containing class names.")
     parser.add_argument("--conf-thres", type=float, default=0.8, help="Confidence threshold")
     parser.add_argument("--iou-thres", type=float, default=0.7, help="NMS IoU threshold")
-    args = parser.parse_args()
+    
+    # args = parser.parse_args()
+    args, unknown = parser.parse_known_args()
 
     detector = YOLOv8(args.model, args.yaml, args.conf_thres, args.iou_thres)
     detector.run_ros_detection()

@@ -320,7 +320,7 @@ class BlackLineDetector:
         
         # 订阅压缩图像话题
         # 注意：根据你的实际相机话题修改这里
-        self.image_sub = rospy.Subscriber("/camera/image_raw/compressed", CompressedImage, self.image_callback)
+        self.image_sub = rospy.Subscriber("/camera_node/image_raw/compressed", CompressedImage, self.image_callback)
         
         rospy.loginfo("BlackLineDetector initialized, subscribing to compressed image topic")
 

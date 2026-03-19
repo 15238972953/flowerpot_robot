@@ -584,6 +584,19 @@ roscpp_generate_messages_cpp/fast:
 .PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named potbot_hmi_node
+
+# Build rule for target.
+potbot_hmi_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 potbot_hmi_node
+.PHONY : potbot_hmi_node
+
+# fast build rule for target.
+potbot_hmi_node/fast:
+	$(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build
+.PHONY : potbot_hmi_node/fast
+
+#=============================================================================
 # Target rules for targets named roscpp_generate_messages_eus
 
 # Build rule for target.
@@ -608,19 +621,6 @@ rosgraph_msgs_generate_messages_nodejs: cmake_check_build_system
 rosgraph_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f PotBot_HMI/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make PotBot_HMI/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named PotBot_HMI
-
-# Build rule for target.
-PotBot_HMI: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 PotBot_HMI
-.PHONY : PotBot_HMI
-
-# fast build rule for target.
-PotBot_HMI/fast:
-	$(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build
-.PHONY : PotBot_HMI/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_py
@@ -714,17 +714,17 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named PotBot_HMI_autogen
+# Target rules for targets named potbot_hmi_node_autogen
 
 # Build rule for target.
-PotBot_HMI_autogen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 PotBot_HMI_autogen
-.PHONY : PotBot_HMI_autogen
+potbot_hmi_node_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 potbot_hmi_node_autogen
+.PHONY : potbot_hmi_node_autogen
 
 # fast build rule for target.
-PotBot_HMI_autogen/fast:
-	$(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/build
-.PHONY : PotBot_HMI_autogen/fast
+potbot_hmi_node_autogen/fast:
+	$(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/build
+.PHONY : potbot_hmi_node_autogen/fast
 
 #=============================================================================
 # Target rules for targets named common_msgs_pkg_geneus
@@ -2773,9 +2773,9 @@ help:
 	@echo "... lslidar_msgs_generate_messages"
 	@echo "... lslidar_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_cpp"
+	@echo "... potbot_hmi_node"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... PotBot_HMI"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
@@ -2783,7 +2783,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... PotBot_HMI_autogen"
+	@echo "... potbot_hmi_node_autogen"
 	@echo "... common_msgs_pkg_geneus"
 	@echo "... _common_msgs_pkg_generate_messages_check_deps_encoder"
 	@echo "... _common_msgs_pkg_generate_messages_check_deps_serial_data"

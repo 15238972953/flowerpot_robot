@@ -183,6 +183,21 @@ roscpp_generate_messages_cpp/fast:
 .PHONY : roscpp_generate_messages_cpp/fast
 
 # Convenience name for target.
+PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/rule:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/rule
+.PHONY : PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/rule
+
+# Convenience name for target.
+potbot_hmi_node: PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/rule
+
+.PHONY : potbot_hmi_node
+
+# fast build rule for target.
+potbot_hmi_node/fast:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build
+.PHONY : potbot_hmi_node/fast
+
+# Convenience name for target.
 PotBot_HMI/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 PotBot_HMI/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 .PHONY : PotBot_HMI/CMakeFiles/roscpp_generate_messages_eus.dir/rule
@@ -211,21 +226,6 @@ rosgraph_msgs_generate_messages_nodejs: PotBot_HMI/CMakeFiles/rosgraph_msgs_gene
 rosgraph_msgs_generate_messages_nodejs/fast:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make PotBot_HMI/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-PotBot_HMI/CMakeFiles/PotBot_HMI.dir/rule:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 PotBot_HMI/CMakeFiles/PotBot_HMI.dir/rule
-.PHONY : PotBot_HMI/CMakeFiles/PotBot_HMI.dir/rule
-
-# Convenience name for target.
-PotBot_HMI: PotBot_HMI/CMakeFiles/PotBot_HMI.dir/rule
-
-.PHONY : PotBot_HMI
-
-# fast build rule for target.
-PotBot_HMI/fast:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build
-.PHONY : PotBot_HMI/fast
 
 # Convenience name for target.
 PotBot_HMI/CMakeFiles/roscpp_generate_messages_py.dir/rule:
@@ -333,46 +333,46 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/rule:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/rule
-.PHONY : PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/rule
+PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/rule:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/rule
+.PHONY : PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/rule
 
 # Convenience name for target.
-PotBot_HMI_autogen: PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/rule
+potbot_hmi_node_autogen: PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/rule
 
-.PHONY : PotBot_HMI_autogen
+.PHONY : potbot_hmi_node_autogen
 
 # fast build rule for target.
-PotBot_HMI_autogen/fast:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir/build
-.PHONY : PotBot_HMI_autogen/fast
+potbot_hmi_node_autogen/fast:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir/build
+.PHONY : potbot_hmi_node_autogen/fast
 
-PotBot_HMI_autogen/mocs_compilation.o: PotBot_HMI_autogen/mocs_compilation.cpp.o
+potbot_hmi_node_autogen/mocs_compilation.o: potbot_hmi_node_autogen/mocs_compilation.cpp.o
 
-.PHONY : PotBot_HMI_autogen/mocs_compilation.o
+.PHONY : potbot_hmi_node_autogen/mocs_compilation.o
 
 # target to build an object file
-PotBot_HMI_autogen/mocs_compilation.cpp.o:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/PotBot_HMI_autogen/mocs_compilation.cpp.o
-.PHONY : PotBot_HMI_autogen/mocs_compilation.cpp.o
+potbot_hmi_node_autogen/mocs_compilation.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/potbot_hmi_node_autogen/mocs_compilation.cpp.o
+.PHONY : potbot_hmi_node_autogen/mocs_compilation.cpp.o
 
-PotBot_HMI_autogen/mocs_compilation.i: PotBot_HMI_autogen/mocs_compilation.cpp.i
+potbot_hmi_node_autogen/mocs_compilation.i: potbot_hmi_node_autogen/mocs_compilation.cpp.i
 
-.PHONY : PotBot_HMI_autogen/mocs_compilation.i
+.PHONY : potbot_hmi_node_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-PotBot_HMI_autogen/mocs_compilation.cpp.i:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/PotBot_HMI_autogen/mocs_compilation.cpp.i
-.PHONY : PotBot_HMI_autogen/mocs_compilation.cpp.i
+potbot_hmi_node_autogen/mocs_compilation.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/potbot_hmi_node_autogen/mocs_compilation.cpp.i
+.PHONY : potbot_hmi_node_autogen/mocs_compilation.cpp.i
 
-PotBot_HMI_autogen/mocs_compilation.s: PotBot_HMI_autogen/mocs_compilation.cpp.s
+potbot_hmi_node_autogen/mocs_compilation.s: potbot_hmi_node_autogen/mocs_compilation.cpp.s
 
-.PHONY : PotBot_HMI_autogen/mocs_compilation.s
+.PHONY : potbot_hmi_node_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-PotBot_HMI_autogen/mocs_compilation.cpp.s:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/PotBot_HMI_autogen/mocs_compilation.cpp.s
-.PHONY : PotBot_HMI_autogen/mocs_compilation.cpp.s
+potbot_hmi_node_autogen/mocs_compilation.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/potbot_hmi_node_autogen/mocs_compilation.cpp.s
+.PHONY : potbot_hmi_node_autogen/mocs_compilation.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -380,7 +380,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/main.cpp.o
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -389,7 +389,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/main.cpp.i
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -398,7 +398,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/main.cpp.s
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/mainwindow.o: src/mainwindow.cpp.o
@@ -407,7 +407,7 @@ src/mainwindow.o: src/mainwindow.cpp.o
 
 # target to build an object file
 src/mainwindow.cpp.o:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.o
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
 .PHONY : src/mainwindow.cpp.o
 
 src/mainwindow.i: src/mainwindow.cpp.i
@@ -416,7 +416,7 @@ src/mainwindow.i: src/mainwindow.cpp.i
 
 # target to preprocess a source file
 src/mainwindow.cpp.i:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.i
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.i
 .PHONY : src/mainwindow.cpp.i
 
 src/mainwindow.s: src/mainwindow.cpp.s
@@ -425,7 +425,7 @@ src/mainwindow.s: src/mainwindow.cpp.s
 
 # target to generate assembly for a file
 src/mainwindow.cpp.s:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/mainwindow.cpp.s
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.s
 .PHONY : src/mainwindow.cpp.s
 
 src/ros_interface.o: src/ros_interface.cpp.o
@@ -434,7 +434,7 @@ src/ros_interface.o: src/ros_interface.cpp.o
 
 # target to build an object file
 src/ros_interface.cpp.o:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/ros_interface.cpp.o
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/ros_interface.cpp.o
 .PHONY : src/ros_interface.cpp.o
 
 src/ros_interface.i: src/ros_interface.cpp.i
@@ -443,7 +443,7 @@ src/ros_interface.i: src/ros_interface.cpp.i
 
 # target to preprocess a source file
 src/ros_interface.cpp.i:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/ros_interface.cpp.i
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/ros_interface.cpp.i
 .PHONY : src/ros_interface.cpp.i
 
 src/ros_interface.s: src/ros_interface.cpp.s
@@ -452,7 +452,7 @@ src/ros_interface.s: src/ros_interface.cpp.s
 
 # target to generate assembly for a file
 src/ros_interface.cpp.s:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/PotBot_HMI.dir/build.make PotBot_HMI/CMakeFiles/PotBot_HMI.dir/src/ros_interface.cpp.s
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/build.make PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/ros_interface.cpp.s
 .PHONY : src/ros_interface.cpp.s
 
 # Help Target
@@ -465,9 +465,9 @@ help:
 	@echo "... install/local"
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_cpp"
+	@echo "... potbot_hmi_node"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... PotBot_HMI"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... install"
 	@echo "... roscpp_generate_messages_nodejs"
@@ -479,10 +479,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... PotBot_HMI_autogen"
-	@echo "... PotBot_HMI_autogen/mocs_compilation.o"
-	@echo "... PotBot_HMI_autogen/mocs_compilation.i"
-	@echo "... PotBot_HMI_autogen/mocs_compilation.s"
+	@echo "... potbot_hmi_node_autogen"
+	@echo "... potbot_hmi_node_autogen/mocs_compilation.o"
+	@echo "... potbot_hmi_node_autogen/mocs_compilation.i"
+	@echo "... potbot_hmi_node_autogen/mocs_compilation.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

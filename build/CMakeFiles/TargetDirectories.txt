@@ -75,9 +75,9 @@
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/install/local.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/list_install_components.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/roscpp_generate_messages_cpp.dir
+/home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/potbot_hmi_node.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/roscpp_generate_messages_eus.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
-/home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/PotBot_HMI.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/roscpp_generate_messages_py.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/install.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/roscpp_generate_messages_nodejs.dir
@@ -89,7 +89,7 @@
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/edit_cache.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/roscpp_generate_messages_lisp.dir
 /home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
-/home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/PotBot_HMI_autogen.dir
+/home/jetson/catkin_ws/build/PotBot_HMI/CMakeFiles/potbot_hmi_node_autogen.dir
 /home/jetson/catkin_ws/build/common_msgs_pkg/CMakeFiles/install/strip.dir
 /home/jetson/catkin_ws/build/common_msgs_pkg/CMakeFiles/install/local.dir
 /home/jetson/catkin_ws/build/common_msgs_pkg/CMakeFiles/install.dir

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # 切换到conda环境
 source ~/miniconda3/bin/activate pointcloud  # 替换为你的conda路径和环境名
 

@@ -21,7 +21,7 @@ sleep 2
 gnome-terminal --title="All Nodes" -- bash -c "
 echo '[3/4] 启动all_node.launch...';
 sudo chmod 777 /dev/ttyTHS0
-rosrun radar_pkg all_node.launch;
+roslaunch radar_pkg all_node.launch;
 exec bash" &
 
 echo "所有节点已启动完成！"

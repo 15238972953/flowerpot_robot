@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/jetson/miniconda3/envs/pointcloud/bin/python
 
 import rospy
 from sensor_msgs.msg import LaserScan
