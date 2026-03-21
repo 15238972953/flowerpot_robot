@@ -14,7 +14,8 @@ MainWindow::MainWindow(RosInterface* rosInterface, QWidget *parent)
       robotRunning(false),
       fullScreenMode(true),  // 初始为全屏模式
       passwordInput(""),
-      correctPassword("123456")  // 默认密码
+      correctPassword("123456"),  // 默认密码
+      rosInterface(rosInterface)
 {
     ui->setupUi(this);
     
@@ -74,10 +75,21 @@ MainWindow::~MainWindow()
 // ROS数据更新
 void MainWindow::updateRosData()
 {
-    if(!rosInterface) return;
+    if(!rosInterface) {
+        qDebug() << "ROS Interface not initialized";
+        return;
+    }
 
     // 处理ROS回调
     rosInterface->spinOnce();
+
+    // 添加调试信息，查看是否收到数据
+    // static int counter = 0;
+    // if (counter++ % 10 == 0) {  // 每1秒打印一次（10 * 100ms）
+    //     qDebug() << "Yaw:" << rosInterface->yaw 
+    //              << "Lat:" << rosInterface->latitude 
+    //              << "Lon:" << rosInterface->longitude;
+    // }
 
     // 更新UI
     updateLatitude(rosInterface->latitude);
