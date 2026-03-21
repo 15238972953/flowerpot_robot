@@ -6,20 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/6YEA5652QU/moc_mainwindow.cpp
-mainwindow.h
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/6YEA5652QU/mainwindow.h
-QtCore/qbytearray.h
--
-QtCore/qmetatype.h
--
-
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/mocs_compilation.cpp
-6YEA5652QU/moc_mainwindow.cpp
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/6YEA5652QU/moc_mainwindow.cpp
-
 /home/jetson/catkin_ws/src/PotBot_HMI/include/mainwindow.h
 QMainWindow
+-
+QPushButton
 -
 QTimer
 -
@@ -36,16 +26,6 @@ std_msgs/Float32.h
 std_msgs/String.h
 -
 
-/home/jetson/catkin_ws/src/PotBot_HMI/src/main.cpp
-QApplication
--
-ros/ros.h
--
-mainwindow.h
-/home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.h
-ros_interface.h
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.h
-
 /home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.cpp
 mainwindow.h
 /home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.h
@@ -57,12 +37,12 @@ QString
 -
 QMessageBox
 -
-QTimer
+QButtonGroup
 -
-
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.cpp
-ros_interface.h
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.h
+QScreen
+-
+QFont
+-
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h
@@ -818,6 +798,26 @@ time.h
 qdebug.h
 /usr/include/aarch64-linux-gnu/qt5/QtCore/qdebug.h
 
+/usr/include/aarch64-linux-gnu/qt5/QtCore/QList
+qlist.h
+/usr/include/aarch64-linux-gnu/qt5/QtCore/qlist.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtCore/QObject
+qobject.h
+/usr/include/aarch64-linux-gnu/qt5/QtCore/qobject.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtCore/QRect
+qrect.h
+/usr/include/aarch64-linux-gnu/qt5/QtCore/qrect.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtCore/QSize
+qsize.h
+/usr/include/aarch64-linux-gnu/qt5/QtCore/qsize.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtCore/QSizeF
+qsize.h
+/usr/include/aarch64-linux-gnu/qt5/QtCore/qsize.h
+
 /usr/include/aarch64-linux-gnu/qt5/QtCore/QString
 qstring.h
 /usr/include/aarch64-linux-gnu/qt5/QtCore/qstring.h
@@ -1572,6 +1572,18 @@ QtCore/qpoint.h
 QtCore/qglobal.h
 -
 
+/usr/include/aarch64-linux-gnu/qt5/QtGui/QFont
+qfont.h
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qfont.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtGui/QScreen
+qscreen.h
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qscreen.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtGui/QTransform
+qtransform.h
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qtransform.h
+
 /usr/include/aarch64-linux-gnu/qt5/QtGui/qbrush.h
 QtGui/qtguiglobal.h
 -
@@ -1786,6 +1798,14 @@ QtGui/qcolor.h
 QtGui/qbrush.h
 -
 
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qpen.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qbrush.h
+-
+
 /usr/include/aarch64-linux-gnu/qt5/QtGui/qpixelformat.h
 QtGui/qtguiglobal.h
 -
@@ -1840,6 +1860,64 @@ QtCore/qprocessordetection.h
 QtGui/qtguiglobal.h
 -
 QtCore/qprocessordetection.h
+-
+
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qscreen.h
+QtGui/qtguiglobal.h
+-
+QtCore/QList
+-
+QtCore/QObject
+-
+QtCore/QRect
+-
+QtCore/QSize
+-
+QtCore/QSizeF
+-
+QtGui/QTransform
+-
+QtCore/qnamespace.h
+-
+
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qtextcursor.h
+QtGui/qtguiglobal.h
+-
+QtCore/qstring.h
+-
+QtCore/qshareddata.h
+-
+QtGui/qtextformat.h
+-
+
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qtextformat.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qfont.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qvector.h
+-
+QtCore/qvariant.h
+-
+QtGui/qpen.h
+-
+QtGui/qbrush.h
+-
+QtGui/qtextoption.h
+-
+
+/usr/include/aarch64-linux-gnu/qt5/QtGui/qtextoption.h
+QtGui/qtguiglobal.h
+-
+QtCore/qnamespace.h
+-
+QtCore/qchar.h
+-
+QtCore/qmetatype.h
 -
 
 /usr/include/aarch64-linux-gnu/qt5/QtGui/qtgui-config.h
@@ -1916,6 +1994,10 @@ QtGui/qtguiglobal.h
 qapplication.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qapplication.h
 
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/QButtonGroup
+qbuttongroup.h
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
+
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QComboBox
 qcombobox.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qcombobox.h
@@ -1923,6 +2005,10 @@ qcombobox.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QFrame
 qframe.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qframe.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGridLayout
+qgridlayout.h
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qgridlayout.h
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGroupBox
 qgroupbox.h
@@ -1935,6 +2021,10 @@ qboxlayout.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QLabel
 qlabel.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlabel.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/QLineEdit
+qlineedit.h
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlineedit.h
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMainWindow
 qmainwindow.h
@@ -1955,6 +2045,10 @@ qlayoutitem.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QSpinBox
 qspinbox.h
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qspinbox.h
+
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/QStackedWidget
+qstackedwidget.h
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qstackedwidget.h
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QStatusBar
 qstatusbar.h
@@ -2026,6 +2120,12 @@ QtWidgets/qlayout.h
 QtWidgets/qwidget.h
 -
 limits.h
+-
+
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtCore/qobject.h
 -
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qcombobox.h
@@ -2112,6 +2212,18 @@ QtCore/qrect.h
 limits.h
 -
 
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlineedit.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qframe.h
+-
+QtGui/qtextcursor.h
+-
+QtCore/qstring.h
+-
+QtCore/qmargins.h
+-
+
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmainwindow.h
 QtWidgets/qtwidgetsglobal.h
 -
@@ -2156,6 +2268,12 @@ QtWidgets/qabstractslider.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtWidgets/qabstractspinbox.h
+-
+
+/usr/include/aarch64-linux-gnu/qt5/QtWidgets/qstackedwidget.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qframe.h
 -
 
 /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qstatusbar.h
@@ -2273,11 +2391,15 @@ QtWidgets/QComboBox
 -
 QtWidgets/QFrame
 -
+QtWidgets/QGridLayout
+-
 QtWidgets/QGroupBox
 -
 QtWidgets/QHBoxLayout
 -
 QtWidgets/QLabel
+-
+QtWidgets/QLineEdit
 -
 QtWidgets/QMainWindow
 -
@@ -2286,6 +2408,8 @@ QtWidgets/QPushButton
 QtWidgets/QSpacerItem
 -
 QtWidgets/QSpinBox
+-
+QtWidgets/QStackedWidget
 -
 QtWidgets/QStatusBar
 -

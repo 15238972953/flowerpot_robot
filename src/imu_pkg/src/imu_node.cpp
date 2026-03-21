@@ -12,7 +12,7 @@ SerialReader::SerialReader(ros::NodeHandle& nh) : nh_(nh), private_nh_("~"), is_
         imu_pub_ = nh.advertise<sensor_msgs::Imu>("/imu/data", 10);    // 发布 IMU 数据到 "/imu/data" 话题
     #endif
     // 从参数服务器获取配置
-    private_nh_.param<std::string>("port", port_, "/dev/ttyUSB0");
+    private_nh_.param<std::string>("port", port_, "/dev/ttyUSB1");
     private_nh_.param<int>("baudrate", baudrate_, 9600);
     
     // 初始化串口

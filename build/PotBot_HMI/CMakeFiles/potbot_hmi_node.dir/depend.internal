@@ -172,7 +172,10 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/potbot_hmi_node_autogen/mocs_compilati
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs_win.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMainWindow
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QPushButton
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractbutton.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qpushbutton.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qtabwidget.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h
@@ -322,6 +325,7 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/main.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtCore/qvarlengtharray.h
  /usr/include/aarch64-linux-gnu/qt5/QtCore/qvector.h
  /usr/include/aarch64-linux-gnu/qt5/QtCore/qversiontagging.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/QSurfaceFormat
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qbrush.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qcolor.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qcursor.h
@@ -344,6 +348,7 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/main.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qregion.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qrgb.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qrgba64.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/qsurfaceformat.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qtgui-config.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qtguiglobal.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qtouchdevice.h
@@ -353,9 +358,12 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/main.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs_win.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QApplication
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMainWindow
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QPushButton
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractbutton.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qapplication.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmainwindow.h
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qpushbutton.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qtabwidget.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h
@@ -429,6 +437,11 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
  /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
  /usr/include/aarch64-linux-gnu/qt5/QtCore/QDebug
+ /usr/include/aarch64-linux-gnu/qt5/QtCore/QList
+ /usr/include/aarch64-linux-gnu/qt5/QtCore/QObject
+ /usr/include/aarch64-linux-gnu/qt5/QtCore/QRect
+ /usr/include/aarch64-linux-gnu/qt5/QtCore/QSize
+ /usr/include/aarch64-linux-gnu/qt5/QtCore/QSizeF
  /usr/include/aarch64-linux-gnu/qt5/QtCore/QString
  /usr/include/aarch64-linux-gnu/qt5/QtCore/QTimer
  /usr/include/aarch64-linux-gnu/qt5/QtCore/QVariant
@@ -510,6 +523,9 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtCore/qvarlengtharray.h
  /usr/include/aarch64-linux-gnu/qt5/QtCore/qvector.h
  /usr/include/aarch64-linux-gnu/qt5/QtCore/qversiontagging.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/QFont
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/QScreen
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/QTransform
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qbrush.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qcolor.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qcursor.h
@@ -526,12 +542,17 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qpaintdevice.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qpainterpath.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qpalette.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/qpen.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qpixelformat.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qpixmap.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qpolygon.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qregion.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qrgb.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qrgba64.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/qscreen.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/qtextcursor.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/qtextformat.h
+ /usr/include/aarch64-linux-gnu/qt5/QtGui/qtextoption.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qtgui-config.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qtguiglobal.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qtouchdevice.h
@@ -541,16 +562,20 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs_win.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QApplication
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QButtonGroup
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QComboBox
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QFrame
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGridLayout
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QGroupBox
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QHBoxLayout
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QLabel
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QLineEdit
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMainWindow
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QMessageBox
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QPushButton
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QSpacerItem
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QSpinBox
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QStackedWidget
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QStatusBar
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QVBoxLayout
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/QWidget
@@ -560,6 +585,7 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qabstractspinbox.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qapplication.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qboxlayout.h
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qbuttongroup.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qcombobox.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qdialog.h
@@ -569,6 +595,7 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlabel.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlayout.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlayoutitem.h
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qlineedit.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmainwindow.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qmessagebox.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qpushbutton.h
@@ -576,6 +603,7 @@ PotBot_HMI/CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qslider.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qspinbox.h
+ /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qstackedwidget.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qstatusbar.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qstyle.h
  /usr/include/aarch64-linux-gnu/qt5/QtWidgets/qstyleoption.h

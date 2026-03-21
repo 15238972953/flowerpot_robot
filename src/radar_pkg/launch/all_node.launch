@@ -1,4 +1,5 @@
 <!-- 所有ROS功能节点 -->
+<!-- output参数：log或screen -->
 <launch>
     <!-- PotBot_HMI节点 -->
     <node
@@ -9,51 +10,61 @@
         respawn = "true">
     </node>
 
-    <!-- 点云拟合节点 -->
+    <!-- IMU节点 -->
     <node
+        pkg = "imu_pkg"
+        type = "imu_node"
+        name = "imu_node"
+        output = "screen"
+        respawn = "true">
+    </node>
+
+    <!-- 点云拟合节点 -->
+    <!-- <node
         pkg = "radar_pkg"
         type = "PointCloudFitting_node.py"
         name = "PointCloudFitting_node"
-        output = "screen"
+        output = "log"
         respawn = "true">
-    </node>
+    </node> -->
 
     <!-- 相机节点 -->
-    <node 
+    <!-- <node 
         pkg = "camera_pkg"
         type = "camera_pkg_node"
         name = "camera_node"
-        output = "screen"
+        output = "log"
         respawn = "true">
-    </node>
+    </node> -->
 
     <!-- YOLO11节点 -->
-    <node
+    <!-- <node
         pkg = "yolo11_pkg"
         type = "onnx.py"
         name = "yolo11_node"
         output = "screen"
         respawn = "true">
-    </node>
+        <param name="no_show" value="true" />   
+    </node> -->
 
     <!-- 融合处理节点 -->
-    <node
+    <!-- <node
         pkg = "processdata_pkg"
         type = "processdata_node"
         name = "processdata_node"
-        output = "screen"
+        output = "log"
         respawn = "true">
-    </node>
+    </node> -->
     
     <!-- 串口通信节点 -->
-    <node
+    <!-- <node
         pkg="serial_stm32_pkg" 
         type="serial_stm32_node" 
         name="serial_stm32_node"
-        output="screen"
+        output="log"
         respawn="true">
         <param name="port" type="string" value="/dev/ttyTHS0" />
         <param name="baud_rate" type="int" value="115200" />
-    </node>
+    </node> -->
 
 </launch>

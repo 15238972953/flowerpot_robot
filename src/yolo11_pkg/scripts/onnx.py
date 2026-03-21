@@ -1,6 +1,7 @@
 #!/home/jetson/miniconda3/envs/yolo11/bin/python
 
 import argparse
+import sys
 import cv2
 import numpy as np
 import onnxruntime as ort
@@ -23,6 +24,8 @@ class YOLOv8:
         """
         self.confidence_thres = confidence_thres
         self.iou_thres = iou_thres
+
+        self.show_display = rospy.get_param('~no_show', False)  # 默认为 False，即显示画面
 
         # Load COCO classes
         with open(yaml_file, "r", encoding="utf-8") as f:
@@ -164,7 +167,8 @@ class YOLOv8:
 
     def run_ros_detection(self):
         """Runs object detection on ROS image topics."""
-        cv2.namedWindow("YOLOv8 Real-time Detection", cv2.WINDOW_NORMAL)
+        if self.show_display:
+            cv2.namedWindow("YOLOv8 Real-time Detection", cv2.WINDOW_NORMAL)
         rospy.loginfo("YOLOv8 node started. Waiting for images...")
 
         rate = rospy.Rate(30)  # 30 Hz
@@ -180,18 +184,25 @@ class YOLOv8:
             if frame is not None:
                 try:
                     processed_frame = self.process_frame(frame)
-                    cv2.imshow("YOLOv8 Real-time Detection", processed_frame)
+                    # 只在需要显示时才显示画面
+                    if self.show_display:
+                        cv2.imshow("YOLOv8 Real-time Detection", processed_frame)
                     
-                    # Check for quit key
-                    if cv2.waitKey(1) & 0xFF == ord('q'):
-                        break
-                        
+                        # Check for quit key
+                        if cv2.waitKey(1) & 0xFF == ord('q'):
+                            break
+                    else:
+                        # 不显示画面时，也需要让 OpenCV 处理事件（可选）
+                        # 可以添加一个短暂延时避免 CPU 占用过高
+                        rospy.sleep(0.001)
                 except Exception as e:
                     rospy.logerr("Error processing frame: %s", e)
 
             rate.sleep()
 
-        cv2.destroyAllWindows()
+        # 只在创建过窗口时才销毁
+        if self.show_display:
+            cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
@@ -201,6 +212,7 @@ if __name__ == "__main__":
     parser.add_argument("--conf-thres", type=float, default=0.8, help="Confidence threshold")
     parser.add_argument("--iou-thres", type=float, default=0.7, help="NMS IoU threshold")
     
+    parser.add_argument("--no-show", type=bool, default=True, help="禁用画面显示")
     # args = parser.parse_args()
     args, unknown = parser.parse_known_args()
 
