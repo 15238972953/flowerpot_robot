@@ -428,6 +428,33 @@ src/KalmanFilter_fusion.cpp.s:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/KalmanFilter_fusion.cpp.s
 .PHONY : src/KalmanFilter_fusion.cpp.s
 
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
 src/pid_controller.o: src/pid_controller.cpp.o
 
 .PHONY : src/pid_controller.o
@@ -543,6 +570,9 @@ help:
 	@echo "... src/KalmanFilter_fusion.o"
 	@echo "... src/KalmanFilter_fusion.i"
 	@echo "... src/KalmanFilter_fusion.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/pid_controller.o"
 	@echo "... src/pid_controller.i"
 	@echo "... src/pid_controller.s"

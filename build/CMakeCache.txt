@@ -315,6 +315,12 @@ EMPY_SCRIPT:STRING=/home/jetson/miniconda3/lib/python3.12/site-packages/em.py
 //The directory containing a CMake configuration file for GMock.
 GMock_DIR:PATH=GMock_DIR-NOTFOUND
 
+//Value Computed by CMake
+GPS_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/GPS_pkg
+
+//Value Computed by CMake
+GPS_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/GPS_pkg
+
 //The directory containing a CMake configuration file for GTest.
 GTest_DIR:PATH=/home/jetson/miniconda3/lib/cmake/GTest
 
@@ -875,7 +881,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=19
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=20
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

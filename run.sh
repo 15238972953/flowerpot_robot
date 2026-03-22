@@ -21,7 +21,7 @@ sleep 2
 gnome-terminal --title="All Nodes" -- bash -c "
 echo '[3/4] 启动all_node.launch...';
 sudo chmod 777 /dev/ttyTHS0
-sudo chmod 777 /dev/ttyUSB1     
+sudo chmod 777 /dev/ttyUSB0     
 roslaunch radar_pkg all_node.launch;
 exec bash" &
 

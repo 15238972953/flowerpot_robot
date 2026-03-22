@@ -7,6 +7,7 @@
 subdirs("gtest")
 subdirs("lsx10/lslidar")
 subdirs("lsx10/lslidar_msgs")
+subdirs("GPS_pkg")
 subdirs("PotBot_HMI")
 subdirs("common_msgs_pkg")
 subdirs("gmapping_pkg")

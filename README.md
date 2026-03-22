@@ -98,7 +98,7 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 # 7.IMU
 **串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyUSB0`)  
 **帧率：** 10HZ;  
-**topic:** yaw_angle;    
+**topic:** /yaw_angle;    
 **运行：** `rosrun imu_pkg imu_node`
 
 # 8.基于状态机的相机导航
@@ -108,6 +108,13 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 # 9.camera发布图像话题
 `rosrun camera_pkg camera_pkg_node`
 **作用：** 用于发布图像话题供yolo11和tracking订阅；如果不需要tracking话题的话，就不需要这个节点；
+
+# 10.GPS数据
+**串口号：** `/dev/ttyACM3`  
+**帧率：** 20HZ  
+**topic：** /gps_data  
+**运行：** `rosrun GPS_pkg GPS_pkg_node`
+
 
 
 # 更新中。。。
