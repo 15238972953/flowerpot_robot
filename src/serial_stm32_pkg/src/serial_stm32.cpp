@@ -1,6 +1,8 @@
 #include "serial_stm32.h"
 #include <iostream>
 
+int8_t is_recorded = 0x00; // 初始化为0x00，表示默认未完成一次记录
+
 // rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200
 SerialCommNode::SerialCommNode() {
     // 从参数服务器获取串口配置参数
@@ -63,10 +65,11 @@ void SerialCommNode::serialDataCallback(const common_msgs_pkg::serial_data::Cons
     }
     try {
         // 发送数据到STM32
+        nh_.setParam("/robot/is_recorded", is_recorded);
         std::vector<uint8_t> buffer(3);
         buffer[0] = msg->PWM_Left;
         buffer[1] = msg->PWM_Right;
-        buffer[2] = msg->command;
+        buffer[2] = msg->command | is_recorded;    // 将command与is_recorded进行按位或运算，合并到一个字节中发送
         size_t bytes_written = serial_.write(buffer);
         for(int i=0;i<buffer.size();++i){
             ROS_INFO("buffer:%d,%d",i,buffer[i]);
@@ -138,7 +141,7 @@ void SerialCommNode::updateOdometry() {
 
 
 void SerialCommNode::ReceiveData() {
-        ros::Rate rate(10); // 100Hz
+        ros::Rate rate(10); // 10Hz
         uint8_t buffer[FRAME_SIZE];
         size_t bytes_read = 0;
         
@@ -182,6 +185,12 @@ void SerialCommNode::ReceiveData() {
                         int32_t data2 = *reinterpret_cast<int32_t*>(&buffer[5]);
                         right_speed_ = static_cast<double>(data2)/10000.0;
                         updateOdometry();
+                        if(buffer[9] == RECORD_GPS) {
+                            nh.setParam("/robot/gps_flag", true);   // 设置GPS标志位为true，表示可以记录GPS信息
+                        }else {
+                            nh.setParam("/robot/gps_flag", false);  // 设置GPS标志位为false，表示不记录GPS信息
+                        }
+              
                         // ROS_INFO("Received data: Encoder_Left=%f, Encoder_Right=%f", 
                         //         left_speed_, right_speed_);
                     } else {

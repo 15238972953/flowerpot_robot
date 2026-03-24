@@ -238,11 +238,15 @@ void MainWindow::on_StartLabel_clicked()
             // 读取UI参数
             double spacing = ui->PotSpacingValueLabel->value();
             QString layout = ui->PotLayoutValueLabel->currentText();
-
+            int current_placement_type = (layout == "网格摆放") ? 0 : 1;
             // 发送参数
-            rosInterface->publishPotSpacing(spacing);
-            rosInterface->publishPotLayout(layout.toStdString());
-            rosInterface->publishStart(true);
+            if (ros_interface.sendTransportTask(current_placement_type, 
+                                                spacing/100.0,  // 转换为米
+                                                true)) {
+                ROS_INFO("任务已重新启动");
+            } else {
+                ROS_ERROR("任务启动失败");
+            }
         }
     }
     else

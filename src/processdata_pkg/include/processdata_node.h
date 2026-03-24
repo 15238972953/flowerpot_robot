@@ -7,11 +7,10 @@
 #include <yolo11_pkg/coordinate.h>
 #include <yolo11_pkg/array.h>
 #include <cmath>
-#include <common_msgs_pkg/serial_data.h>
+// #include <common_msgs_pkg/serial_data.h>
 #include "HungarianAlgorithm.h"
 #include "KalmanFilter_fusion.h"
 #include "KalmanFilter_filter.h"
-#include "pid_controller.h"
 #include <tracking_pkg/track.h>
 #include "track_transform.h"
 #include "std_msgs/Float32.h" 
@@ -21,17 +20,9 @@
 
 class ProcessDataNode {
 public:
-    enum class RobotState {
-        GRASP,       // 机器人处于抓取状态
-        INTERIM,     // 机器人处于过渡状态
-        TRANSPORT,   // 机器人处于运输状态
-        ARRANGE,     // 机器人处于摆放状态
-        RETURN,      // 机器人处于返回状态
-    };
 
 public:
     ProcessDataNode();
-    RobotState current_state = RobotState::TRANSPORT;  // 初始状态为抓取状态
 
 private:
     void cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg);
@@ -60,8 +51,8 @@ private:
     std::vector<Eigen::Vector2d> fused_matchs;   //保存融合后的数据
     KalmanFilterFusion fuser;   //融合相机和雷达的滤波器
      
-    common_msgs_pkg::serial_data serial_msg;    //通过串口发送给stm32的数据
-    int command;  //用于记录机械臂的指令
+    // common_msgs_pkg::serial_data serial_msg;    //通过串口发送给stm32的数据
+    // int command;  //用于记录机械臂的指令
 
     PerspectiveTransformer transformer;
 
@@ -69,10 +60,10 @@ private:
     int extend_Y; // 用于存储延长后的y坐标
     float encoder_diatance = 0.0; // 记录编码器的距离
 
-    // 抓取命令
-    const int COMMAND_GRASP = 10;  // 抓取指令
-    const int COMMAND_RELEASE = 20; // 释放指令
-    const int COMMAND_COMMON = 30;  // 平常指令
+    // // 抓取命令
+    // const int COMMAND_GRASP = 0x03;  // 抓取指令
+    // const int COMMAND_RELEASE = 0x04; // 释放指令
+    // const int COMMAND_COMMON = 0x05;  // 平常指令
 };
 
 std::vector<Point> convert(const std::vector<Eigen::Vector2d> eigenVectors);

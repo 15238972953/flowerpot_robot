@@ -10,10 +10,13 @@
 #include <tf/transform_datatypes.h>
 #include <common_msgs_pkg/encoder.h>
 
-#define FRAME_SIZE 10
+// #define FRAME_SIZE 10
+#define FRAME_SIZE 11     // 11字节：增加一个记录GPS信息的标志位
 #define HEADER_BYTE 0x55
 
 #define ONLY_ENCODER 1
+
+#define RECORD_GPS 0x23   // STM32发送的标志位，表示是否记录GPS信息
 
 class SerialCommNode {
 public:
@@ -52,9 +55,9 @@ private:
     ros::Time last_time_ = ros::Time::now();
 
     bool _clear_encoder = false; // 是否清除编码器数据
-        
-};
 
+    static int8_t is_recorded; // 是否完成一次记录
+};
 // uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high);
 // void packData(uint16_t data, uint8_t& byte1, uint8_t& byte2, uint8_t& byte3);
 

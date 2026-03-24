@@ -108,6 +108,7 @@ void DubinsPathPlanner::calculateNextTargetPoint() {
 
 }
 
+// 这里还有问题，待优化:2026.3.23（pengdefeng）
 void DubinsPathPlanner::run() {
     ros::Rate rate(20); // 20Hz
     

@@ -17,8 +17,8 @@ ProcessDataNode::ProcessDataNode() {
     track_processed_sub = nh.subscribe("track_msg", 1000, &ProcessDataNode::trackdata_Callback, this);
     yaw_processed_sub = nh.subscribe("yaw_angle", 1000, &ProcessDataNode::yawdata_Callback, this);
     encoder_processed_sub = nh.subscribe("encoder_msg", 1000, &ProcessDataNode::encoderdata_Callback, this);
-    //初始化发布者
-    serial_data_pub = nh.advertise<common_msgs_pkg::serial_data>("serial_data", 1000);
+    // //初始化发布者
+    // serial_data_pub = nh.advertise<common_msgs_pkg::serial_data>("serial_data", 1000);
 }
 
 // 选择最近的花盆
@@ -81,45 +81,45 @@ int ProcessDataNode::extendLineCoordinates(const tracking_pkg::track::ConstPtr& 
 }
 
 // 获取循迹数据
-void ProcessDataNode::trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg)
-{
-    // Test
-    // extend_Y = extendLineCoordinates(track_msg);
-    // ROS_INFO("Extended line coordinates: %d", extend_Y);
+// void ProcessDataNode::trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg)
+// {
+//     // Test
+//     // extend_Y = extendLineCoordinates(track_msg);
+//     // ROS_INFO("Extended line coordinates: %d", extend_Y);
 
-    if (current_state == RobotState::INTERIM) {            // 过渡状态
-        if (encoder_diatance >= INTERIM_distance) {  // 退出来需要的距离阈值
-            extend_Y = extendLineCoordinates(track_msg);
-            if (extend_Y >= 200)  // 根据实际情况调整
-            {
-                current_state = RobotState::TRANSPORT;  // 切换到运输状态
-                return;
-            }
+//     if (current_state == RobotState::INTERIM) {            // 过渡状态
+//         if (encoder_diatance >= INTERIM_distance) {  // 退出来需要的距离阈值
+//             extend_Y = extendLineCoordinates(track_msg);
+//             if (extend_Y >= 200)  // 根据实际情况调整
+//             {
+//                 current_state = RobotState::TRANSPORT;  // 切换到运输状态
+//                 return;
+//             }
             
-            PWM PWM_Motor = calculatePWM(yaw_angle, 90.0f);     
-            serial_msg.PWM_Left = PWM_Motor.PWM_Left;
-            serial_msg.PWM_Right = PWM_Motor.PWM_Right;
-            serial_msg.command = COMMAND_COMMON;  // 正常状态
-            serial_data_pub.publish(serial_msg);
-            ros::Duration(0.1).sleep();  // 等待一段时间，模拟控制
-        } else {
-            PWM PWM_Motor = calculatePWM(yaw_angle, 0.0f);   // 目标角度为0.0    
-            serial_msg.PWM_Left = PWM_Motor.PWM_Left;
-            serial_msg.PWM_Right = PWM_Motor.PWM_Right;
-            serial_msg.command = COMMAND_COMMON;
-            serial_data_pub.publish(serial_msg);
-        } 
-    } else if (current_state == RobotState::TRANSPORT) {            // 运输状态
-        extend_Y = extendLineCoordinates(track_msg);
-        // PWM PWM_Motor = calculatePWM(yaw_angle, extend_Y, 180.0, 480); 
-        PWM PWM_Motor = calculatePWM(180.0, extend_Y, 180.0, 480);    
-        serial_msg.PWM_Left = PWM_Motor.PWM_Left;
-        serial_msg.PWM_Right = PWM_Motor.PWM_Right;
-        ROS_INFO("extend_Y: %d PWM_Motor:%d, %d", extend_Y, PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
-        serial_msg.command = 15;
-        serial_data_pub.publish(serial_msg);
-    }
-}
+//             PWM PWM_Motor = calculatePWM(yaw_angle, 90.0f);     
+//             serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+//             serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+//             serial_msg.command = COMMAND_COMMON;  // 正常状态
+//             serial_data_pub.publish(serial_msg);
+//             ros::Duration(0.1).sleep();  // 等待一段时间，模拟控制
+//         } else {
+//             PWM PWM_Motor = calculatePWM(yaw_angle, 0.0f);   // 目标角度为0.0    
+//             serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+//             serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+//             serial_msg.command = COMMAND_COMMON;
+//             serial_data_pub.publish(serial_msg);
+//         } 
+//     } else if (current_state == RobotState::TRANSPORT) {            // 运输状态
+//         extend_Y = extendLineCoordinates(track_msg);
+//         // PWM PWM_Motor = calculatePWM(yaw_angle, extend_Y, 180.0, 480); 
+//         PWM PWM_Motor = calculatePWM(180.0, extend_Y, 180.0, 480);    
+//         serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+//         serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+//         ROS_INFO("extend_Y: %d PWM_Motor:%d, %d", extend_Y, PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
+//         serial_msg.command = 15;
+//         serial_data_pub.publish(serial_msg);
+//     }
+// }
 
 // 获取相机数据
 void ProcessDataNode::cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg)
@@ -160,6 +160,9 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         }
         //将雷达数据与相机数据进行融合
         fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
+        Point target_pot = selectClosestPot(convert(fused_matchs));
+        kf.Kalman_process(target_pot);
+        Eigen::Vector2d filtered_pos = kf.getPosition();
         // for (auto match:fused_matchs)
         // {
         //     ROS_INFO("fused_matchs:%.3f,%.3f",match[0],match[1]);
@@ -169,36 +172,36 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         // 1，如果当前状态是抓取状态，则选择最近的花盆作为目标位置
         // 2，如果当前状态是摆放状态，则通过所有花盆位置推算出新花盆应该摆放的位置
         // 3，如果当前状态是过渡、运输和返回状态，则不识别花盆位置
-        if (current_state == RobotState::GRASP) {
-            // 选择最近的花盆
-            Point target_pot = selectClosestPot(convert(fused_matchs));
+        // if (current_state == RobotState::GRASP) {
+        //     // 选择最近的花盆
+        //     Point target_pot = selectClosestPot(convert(fused_matchs));
             
-            // 卡尔曼滤波处理
-            kf.Kalman_process(target_pot);
-            // // 获取滤波后的目标位置（相对于机器人）
-            Eigen::Vector2d filtered_pos = kf.getPosition();
-            PWM PWM_Motor = calculatePWM(filtered_pos);
-            serial_msg.PWM_Left = PWM_Motor.PWM_Left;
-            serial_msg.PWM_Right = PWM_Motor.PWM_Right;
-            if (filtered_pos.y() < 20.0) {  // 如果y坐标小于20，说明花盆已经接近机器人
-                serial_msg.command = COMMAND_GRASP;  // 发送抓取指令
-                // 延时
-                ros::Duration(3.0).sleep();  // 等待3s，等待机械臂抓取完成
-                current_state = RobotState::INTERIM;  // 切换到过渡状态
-                serial_msg.clear_encoder = true; // 发送清除编码器数据的标志
-            } else{
-                serial_msg.command = COMMAND_COMMON;   // 正常状态
-            }
-            serial_data_pub.publish(serial_msg);
-            // ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
-            // ROS_INFO("Fused data:%.3f,%.3f",filtered_pos[0],filtered_pos[1]);
-        } else if (current_state == RobotState::ARRANGE) {            // 摆放状态
-            // 待实现
+        //     // 卡尔曼滤波处理
+        //     kf.Kalman_process(target_pot);
+        //     // // 获取滤波后的目标位置（相对于机器人）
+        //     Eigen::Vector2d filtered_pos = kf.getPosition();
+        //     PWM PWM_Motor = calculatePWM(filtered_pos);
+        //     serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+        //     serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+        //     if (filtered_pos.y() < 20.0) {  // 如果y坐标小于20，说明花盆已经接近机器人
+        //         serial_msg.command = COMMAND_GRASP;  // 发送抓取指令
+        //         // 延时
+        //         ros::Duration(3.0).sleep();  // 等待3s，等待机械臂抓取完成
+        //         current_state = RobotState::INTERIM;  // 切换到过渡状态
+        //         serial_msg.clear_encoder = true; // 发送清除编码器数据的标志
+        //     } else{
+        //         serial_msg.command = COMMAND_COMMON;   // 正常状态
+        //     }
+        //     serial_data_pub.publish(serial_msg);
+        //     // ROS_INFO("PWM_Motor:%d,%d", PWM_Motor.PWM_Left, PWM_Motor.PWM_Right);
+        //     // ROS_INFO("Fused data:%.3f,%.3f",filtered_pos[0],filtered_pos[1]);
+        // } else if (current_state == RobotState::ARRANGE) {            // 摆放状态
+        //     // 待实现
 
-        } else {      // 返回状态
-            // 不处理花盆位置
-            return;
-        }
+        // } else {      // 返回状态
+        //     // 不处理花盆位置
+        //     return;
+        // }
         
             
     }
