@@ -14,61 +14,61 @@
 
 (defclass common_msgs_pkg::encoder
   :super ros::object
-  :slots (_right_distance _left_distance ))
+  :slots (_right_speed _left_speed ))
 
 (defmethod common_msgs_pkg::encoder
   (:init
    (&key
-    ((:right_distance __right_distance) 0.0)
-    ((:left_distance __left_distance) 0.0)
+    ((:right_speed __right_speed) 0.0)
+    ((:left_speed __left_speed) 0.0)
     )
    (send-super :init)
-   (setq _right_distance (float __right_distance))
-   (setq _left_distance (float __left_distance))
+   (setq _right_speed (float __right_speed))
+   (setq _left_speed (float __left_speed))
    self)
-  (:right_distance
-   (&optional __right_distance)
-   (if __right_distance (setq _right_distance __right_distance)) _right_distance)
-  (:left_distance
-   (&optional __left_distance)
-   (if __left_distance (setq _left_distance __left_distance)) _left_distance)
+  (:right_speed
+   (&optional __right_speed)
+   (if __right_speed (setq _right_speed __right_speed)) _right_speed)
+  (:left_speed
+   (&optional __left_speed)
+   (if __left_speed (setq _left_speed __left_speed)) _left_speed)
   (:serialization-length
    ()
    (+
-    ;; float32 _right_distance
+    ;; float32 _right_speed
     4
-    ;; float32 _left_distance
+    ;; float32 _left_speed
     4
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; float32 _right_distance
-       (sys::poke _right_distance (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; float32 _left_distance
-       (sys::poke _left_distance (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _right_speed
+       (sys::poke _right_speed (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _left_speed
+       (sys::poke _left_speed (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; float32 _right_distance
-     (setq _right_distance (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; float32 _left_distance
-     (setq _left_distance (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _right_speed
+     (setq _right_speed (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _left_speed
+     (setq _left_speed (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get common_msgs_pkg::encoder :md5sum-) "8667235667f6c2bbcdbec984ca8922d9")
+(setf (get common_msgs_pkg::encoder :md5sum-) "25f978d6cccf487431c99e3026d97330")
 (setf (get common_msgs_pkg::encoder :datatype-) "common_msgs_pkg/encoder")
 (setf (get common_msgs_pkg::encoder :definition-)
-      "float32 right_distance
-float32 left_distance
+      "float32 right_speed
+float32 left_speed
 ")
 
 
 
-(provide :common_msgs_pkg/encoder "8667235667f6c2bbcdbec984ca8922d9")
+(provide :common_msgs_pkg/encoder "25f978d6cccf487431c99e3026d97330")
 
 

@@ -5,4 +5,4 @@ Description: Description of PotBot_HMI
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib 
-Requires: roscpp std_msgs
+Requires: roscpp std_msgs decision_making_pkg

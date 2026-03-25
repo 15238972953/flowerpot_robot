@@ -322,7 +322,7 @@ public:
 
         PotSpacingValueLabel = new QSpinBox(SpacingCard);
         PotSpacingValueLabel->setObjectName(QString::fromUtf8("PotSpacingValueLabel"));
-        PotSpacingValueLabel->setMinimum(10);
+        PotSpacingValueLabel->setMinimum(20);
         PotSpacingValueLabel->setMaximum(200);
         PotSpacingValueLabel->setValue(45);
 

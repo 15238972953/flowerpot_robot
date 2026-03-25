@@ -5,6 +5,7 @@ project(PotBot_HMI)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  decision_making_pkg  
 )
 
 ## Qt
@@ -22,7 +23,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS
 
 ## catkin package
 catkin_package(
-  CATKIN_DEPENDS roscpp std_msgs
+  CATKIN_DEPENDS roscpp std_msgs decision_making_pkg
 )
 
 ## include 目录

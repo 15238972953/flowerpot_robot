@@ -23,6 +23,7 @@ public:
     void updateBattery(int value);
     void updateLatitude(double lat);
     void updateLongitude(double lon);
+    void updateTransportedPotCount(int count);
     bool isFullScreenMode() const { return fullScreenMode; }
 
 protected:

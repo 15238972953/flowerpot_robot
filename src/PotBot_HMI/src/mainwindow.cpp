@@ -81,7 +81,7 @@ void MainWindow::updateRosData()
     }
 
     // 处理ROS回调
-    rosInterface->spinOnce();
+    ros::spinOnce();
 
     // 添加调试信息，查看是否收到数据
     // static int counter = 0;
@@ -225,6 +225,9 @@ void MainWindow::on_StartLabel_clicked()
 {
     robotRunning = !robotRunning;
 
+    int current_placement_type; // 当前选择的摆放方式（0=网格，1=三角）
+    double spacing; // 当前选择的摆放间距（厘米）
+
     if(robotRunning)
     {
         ui->StartLabel->setText("STOP");
@@ -236,11 +239,11 @@ void MainWindow::on_StartLabel_clicked()
         if(rosInterface)
         {
             // 读取UI参数
-            double spacing = ui->PotSpacingValueLabel->value();
+            spacing = ui->PotSpacingValueLabel->value();
             QString layout = ui->PotLayoutValueLabel->currentText();
-            int current_placement_type = (layout == "网格摆放") ? 0 : 1;
+            current_placement_type = (layout == "网格摆放") ? 0 : 1;
             // 发送参数
-            if (ros_interface.sendTransportTask(current_placement_type, 
+            if (rosInterface->sendTransportTask(current_placement_type, 
                                                 spacing/100.0,  // 转换为米
                                                 true)) {
                 ROS_INFO("任务已重新启动");
@@ -258,7 +261,9 @@ void MainWindow::on_StartLabel_clicked()
 
         // 发布ROS停止命令
         if(rosInterface)
-            rosInterface->publishStart(false);
+            rosInterface->sendTransportTask(current_placement_type, 
+                                                spacing/100.0,  // 转换为米
+                                                false);
     }
 }
 
@@ -372,6 +377,14 @@ void MainWindow::updateLongitude(double lon)
 {
     if (ui && ui->LongitudeValueLabel) {
         ui->LongitudeValueLabel->setText(QString::number(lon, 'f', 6));
+    }
+}
+
+// 更新已搬运花盆数量
+void MainWindow::updateTransportedPotCount(int count)
+{
+    if (ui && ui->PotCountValueLabel) {
+        ui->PotCountValueLabel->setText(QString::number(count));
     }
 }
 

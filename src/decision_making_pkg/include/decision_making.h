@@ -9,48 +9,19 @@
 #include <string>
 #include "decision_making_pkg/StartTransport.h"
 #include <common_msgs_pkg/serial_data.h>
+#include <std_msgs/Float32.h>
+#include <std_msgs/Int8.h>
+#include "pid_controller.h"
 
 #define M_PI 3.14159265358979323846
 #define IS_RECORDED 0x80   // STM32发送的标志位，表示完成一次记录
 #define IS_NOT_RECORDED 0x00   
 
-#define GPS_TO_POTPOINT_DISTANCE 0.2 // 机器人GPS定位与花盆实际坐标距离
-
+#define GPS_TO_POTPOINT_DISTANCE 0.527 // 机器人GPS定位与花盆实际坐标距离
+#define Lidar_TO_POTPOINT_DISTANCE 0.2   // 激光雷达与花盆实际坐标距离
 static bool ref_initialized = false;     // 是否已初始化参考点,以机器人上电点为参考点，将其他GPS坐标转换为相对于该点的平面坐标
 static double ref_lat_;
 static double ref_lon_;
-
-struct Point2D {
-    double x, y;      // 转换后的平面坐标
-
-    // 静态成员声明（需要在结构体外定义）
-    static bool ref_initialized;
-    static double ref_lat;
-    static double ref_lon;
-
-    Point2D(double x_ = 0, double y_ = 0) : x(x_), y(y_){}
-
-    static Point2D latlon_To_xy(double lat, double lon, double ref_lat, double ref_lon) {
-        const double R = 6371000.0; // 地球半径（米）
-        double lat_rad = lat * M_PI / 180.0;
-        double lon_rad = lon * M_PI / 180.0;
-        double ref_lat_rad = ref_lat * M_PI / 180.0;
-        double ref_lon_rad = ref_lon * M_PI / 180.0;
-        
-        double x = R * (lon_rad - ref_lon_rad) * cos(ref_lat_rad);
-        double y = R * (lat_rad - ref_lat_rad);
-        
-        return Point2D(x, y);
-    }
-};
-
-// 位姿点（包含位置和航向）
-struct PosePoint
-{
-    Point2D point;
-    double yaw;      // 航向角
-    PosePoint(double x = 0, double y = 0, double yaw_ = 0) : point(x, y), yaw(yaw_) {}
-};
 
 struct RectangleArea {
     // 四个点，顺序：左上、右上、右下、左下
@@ -108,47 +79,46 @@ private:
     ros::Subscriber gps_sub_;
     ros::Subscriber pot_coords_sub_; // 订阅花盆坐标的订阅者
     ros::Subscriber yaw_sub_;       // 订阅偏航角（从IMU获取）
-    
+    ros::Subscriber grasped_pub_;   // 订阅抓取完成标志位
+    ros::Subscriber released_pub_;  // 订阅释放完成标志位
     // 发布者
     ros::Publisher serial_data_pub;
-
+    ros::Publisher transported_pot_count_pub;  // 发布已搬运花盆数量
     // 服务
     ros::ServiceServer config_start_service_;
-    
+
+private:
     // 参数
     int required_points_;                  // 需要的点数（默认4）
     int record_interval_;               // 记录间隔时间（秒），防止重复记录
-
-    // 当前状态
-    PosePoint current_PosePoint_;              // 当前位姿
-    
-    // 目标点
-    Point2D target_point_;               // 目标位置
-
-    // 取花盆坐标
-    Point2D pickup_point;                // 取花点坐标
-
-    // 待摆放花盆坐标矩阵，用于记录每个花盆的坐标；
-    std::vector<std::vector<Point2D>> target_pots_matrix_; 
     double pot_placement_spacing; // 花盆摆放间距（米）
+
     enum class PlacementType {
         GRID_PLACEMENT = 0,    // 网格摆放
         TRIANGULAR_PLACEMENT = 1,  // 三角错位摆放
     };
+
     PlacementType pot_placement_type_ = PlacementType::GRID_PLACEMENT; // 默认摆放方式
+
+private:
+    // 当前状态
+    PosePoint current_PosePoint_;              // 当前位姿
+    // 目标点
+    Point2D target_point_;               // 目标位置
+
+    // 待摆放花盆坐标矩阵，用于记录每个花盆的坐标；
+    std::vector<std::vector<Point2D>> target_pots_matrix_; 
+    int total_targets;                   // 总的可摆放目标点数量
 
     // 状态变量
     std::vector<Point2D> recorded_points_; // 已记录的GPS点
     ros::Time last_record_time_;           // 上次记录时间
     bool gps_flag;                        // GPS标志位（从参数服务器读取）
 
-    // 计算每个花盆的摆放坐标
-    void calculatePotsMatrix(
-        const std::vector<Point2D>& recorded_points, 
-        double pot_placement_spacing,
-        PlacementType placement_type = pot_placement_type_);
-
     Point2D current_pot_coordinate; // 记录当前要抓取的花盆坐标
+
+    bool grasped_status = false; // 抓取完成状态
+    bool released_status = false; // 释放完成状态
 
     // 搬运状态
     enum class TaskState {
@@ -161,6 +131,11 @@ private:
     };
     TaskState current_state;
 
+    // 当前搬运的目标点索引,同时也表示已搬运花盆数量
+    int current_target_index = 0;
+    std_msgs::Int8 count_msg;
+
+private:
     // 发布执行指令
     common_msgs_pkg::serial_data serial_msg;    //通过串口发送给stm32的数据
     int command;  //用于记录机械臂的指令
@@ -169,13 +144,14 @@ private:
     const int COMMAND_GRASP = 0x03;  // 抓取指令
     const int COMMAND_RELEASE = 0x04; // 释放指令
     const int COMMAND_COMMON = 0x05;  // 平常指令
-    
+
+private:
     // 回调函数
     void gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg);
-    void spacingCallback(const std_msgs::Float64::ConstPtr& msg);
-    void placementTypeCallback(const std_msgs::Int8::ConstPtr& msg);
     void potCoordsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg);
     void yawCallback(const std_msgs::Float32::ConstPtr& msg);
+    void graspedStatusCallback(const std_msgs::Bool::ConstPtr& msg);
+    void releasedStatusCallback(const std_msgs::Bool::ConstPtr& msg);
 
     // 划定目标区域记录点
     void recordCurrentPosition(const Point2D& point);
@@ -183,11 +159,29 @@ private:
     // 计算两点之间的距离
     double distance(Point2D point1, Point2D point2);
     // 获取当前要摆放的目标点
-    void getCurrentTargetPoint(const Point2D& target);
-    
+    Point2D getCurrentTargetPoint();
+
     bool configstartCallback(decision_making_pkg::StartTransport::Request &req,
                         decision_making_pkg::StartTransport::Response &res);
     
+    // 计算每个花盆的摆放坐标
+    void calculatePotsMatrix(
+        const std::vector<Point2D>& recorded_points, 
+        double pot_placement_spacing,
+        PlacementType placement_type = PlacementType::GRID_PLACEMENT);
+    
+    // 等待开始信号
+    void WAITING_START_State();
+    // 移动到取花点
+    void MOVING_TO_PICKUP_State();
+    // 取花中
+    void PICKING_UP_State();
+    // 移动到摆放点
+    void MOVING_TO_PLACE_State();
+    // 摆放花盆
+    void PLACING_State();
+    // 任务完成
+    void TASK_COMPLETE_State();
 public:
     DecisionMaking();
     ~DecisionMaking();

@@ -455,33 +455,6 @@ src/main.cpp.s:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/pid_controller.o: src/pid_controller.cpp.o
-
-.PHONY : src/pid_controller.o
-
-# target to build an object file
-src/pid_controller.cpp.o:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/pid_controller.cpp.o
-.PHONY : src/pid_controller.cpp.o
-
-src/pid_controller.i: src/pid_controller.cpp.i
-
-.PHONY : src/pid_controller.i
-
-# target to preprocess a source file
-src/pid_controller.cpp.i:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/pid_controller.cpp.i
-.PHONY : src/pid_controller.cpp.i
-
-src/pid_controller.s: src/pid_controller.cpp.s
-
-.PHONY : src/pid_controller.s
-
-# target to generate assembly for a file
-src/pid_controller.cpp.s:
-	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/pid_controller.cpp.s
-.PHONY : src/pid_controller.cpp.s
-
 src/processdata_node.o: src/processdata_node.cpp.o
 
 .PHONY : src/processdata_node.o
@@ -573,9 +546,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/pid_controller.o"
-	@echo "... src/pid_controller.i"
-	@echo "... src/pid_controller.s"
 	@echo "... src/processdata_node.o"
 	@echo "... src/processdata_node.i"
 	@echo "... src/processdata_node.s"

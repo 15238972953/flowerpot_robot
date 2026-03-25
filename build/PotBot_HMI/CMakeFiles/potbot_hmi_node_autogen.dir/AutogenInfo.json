@@ -41,6 +41,8 @@
 	"MOC_INCLUDES" : 
 	[
 		"/home/jetson/catkin_ws/src/PotBot_HMI/include",
+		"/home/jetson/catkin_ws/devel/include",
+		"/home/jetson/catkin_ws/src/decision_making_pkg/include",
 		"/opt/ros/noetic/include",
 		"/opt/ros/noetic/include/xmlrpcpp",
 		"/usr/include/aarch64-linux-gnu/qt5",

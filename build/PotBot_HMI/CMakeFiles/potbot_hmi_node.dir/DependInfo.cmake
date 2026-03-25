@@ -26,6 +26,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "PotBot_HMI/potbot_hmi_node_autogen/include"
   "/home/jetson/catkin_ws/src/PotBot_HMI/include"
+  "/home/jetson/catkin_ws/devel/include"
+  "/home/jetson/catkin_ws/src/decision_making_pkg/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/aarch64-linux-gnu/qt5"

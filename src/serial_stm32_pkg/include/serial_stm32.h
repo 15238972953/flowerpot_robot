@@ -9,6 +9,7 @@
 #include <geometry_msgs/TransformStamped.h>
 #include <tf/transform_datatypes.h>
 #include <common_msgs_pkg/encoder.h>
+#include <std_msgs/Bool.h>
 
 // #define FRAME_SIZE 10
 #define FRAME_SIZE 11     // 11字节：增加一个记录GPS信息的标志位
@@ -16,7 +17,9 @@
 
 #define ONLY_ENCODER 1
 
-#define RECORD_GPS 0x23   // STM32发送的标志位，表示是否记录GPS信息
+#define RECORD_GPS 0x04   // STM32发送的标志位，表示是否记录GPS信息
+#define IF_GRASPED 0x02   // STM32发送的标志位，表示是否完成抓取
+#define IF_RELEASED 0x01  // STM32发送的标志位，表示是否完成释放
 
 class SerialCommNode {
 public:
@@ -37,6 +40,8 @@ private:
     ros::Subscriber serial_data_sub_;   // 订阅serial_data话题
     #ifdef ONLY_ENCODER
         ros::Publisher encoder_pub_; // 发布编码器数据
+        ros::Publisher grasped_pub;  // 发布抓取完成标志位
+        ros::Publisher released_pub; // 发布释放完成标志位
         common_msgs_pkg::encoder encoder_msg; // 编码器数据
     #else
         ros::Publisher odom_pub_;    // 发布标准里程计
@@ -57,6 +62,8 @@ private:
     bool _clear_encoder = false; // 是否清除编码器数据
 
     static int8_t is_recorded; // 是否完成一次记录
+    std_msgs::Bool grasped_msg; // 发布抓取完成标志位
+    std_msgs::Bool released_msg; // 发布释放完成标志位
 };
 // uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high);
 // void packData(uint16_t data, uint8_t& byte1, uint8_t& byte2, uint8_t& byte3);

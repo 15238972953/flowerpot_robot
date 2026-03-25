@@ -18,31 +18,31 @@ class encoder {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.right_distance = null;
-      this.left_distance = null;
+      this.right_speed = null;
+      this.left_speed = null;
     }
     else {
-      if (initObj.hasOwnProperty('right_distance')) {
-        this.right_distance = initObj.right_distance
+      if (initObj.hasOwnProperty('right_speed')) {
+        this.right_speed = initObj.right_speed
       }
       else {
-        this.right_distance = 0.0;
+        this.right_speed = 0.0;
       }
-      if (initObj.hasOwnProperty('left_distance')) {
-        this.left_distance = initObj.left_distance
+      if (initObj.hasOwnProperty('left_speed')) {
+        this.left_speed = initObj.left_speed
       }
       else {
-        this.left_distance = 0.0;
+        this.left_speed = 0.0;
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type encoder
-    // Serialize message field [right_distance]
-    bufferOffset = _serializer.float32(obj.right_distance, buffer, bufferOffset);
-    // Serialize message field [left_distance]
-    bufferOffset = _serializer.float32(obj.left_distance, buffer, bufferOffset);
+    // Serialize message field [right_speed]
+    bufferOffset = _serializer.float32(obj.right_speed, buffer, bufferOffset);
+    // Serialize message field [left_speed]
+    bufferOffset = _serializer.float32(obj.left_speed, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -50,10 +50,10 @@ class encoder {
     //deserializes a message object of type encoder
     let len;
     let data = new encoder(null);
-    // Deserialize message field [right_distance]
-    data.right_distance = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [left_distance]
-    data.left_distance = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [right_speed]
+    data.right_speed = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [left_speed]
+    data.left_speed = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
@@ -68,14 +68,14 @@ class encoder {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '8667235667f6c2bbcdbec984ca8922d9';
+    return '25f978d6cccf487431c99e3026d97330';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    float32 right_distance
-    float32 left_distance
+    float32 right_speed
+    float32 left_speed
     `;
   }
 
@@ -85,18 +85,18 @@ class encoder {
       msg = {};
     }
     const resolved = new encoder(null);
-    if (msg.right_distance !== undefined) {
-      resolved.right_distance = msg.right_distance;
+    if (msg.right_speed !== undefined) {
+      resolved.right_speed = msg.right_speed;
     }
     else {
-      resolved.right_distance = 0.0
+      resolved.right_speed = 0.0
     }
 
-    if (msg.left_distance !== undefined) {
-      resolved.left_distance = msg.left_distance;
+    if (msg.left_speed !== undefined) {
+      resolved.left_speed = msg.left_speed;
     }
     else {
-      resolved.left_distance = 0.0
+      resolved.left_speed = 0.0
     }
 
     return resolved;

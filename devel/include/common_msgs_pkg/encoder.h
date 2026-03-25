@@ -24,22 +24,22 @@ struct encoder_
   typedef encoder_<ContainerAllocator> Type;
 
   encoder_()
-    : right_distance(0.0)
-    , left_distance(0.0)  {
+    : right_speed(0.0)
+    , left_speed(0.0)  {
     }
   encoder_(const ContainerAllocator& _alloc)
-    : right_distance(0.0)
-    , left_distance(0.0)  {
+    : right_speed(0.0)
+    , left_speed(0.0)  {
   (void)_alloc;
     }
 
 
 
-   typedef float _right_distance_type;
-  _right_distance_type right_distance;
+   typedef float _right_speed_type;
+  _right_speed_type right_speed;
 
-   typedef float _left_distance_type;
-  _left_distance_type left_distance;
+   typedef float _left_speed_type;
+  _left_speed_type left_speed;
 
 
 
@@ -70,8 +70,8 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::common_msgs_pkg::encoder_<ContainerAllocator1> & lhs, const ::common_msgs_pkg::encoder_<ContainerAllocator2> & rhs)
 {
-  return lhs.right_distance == rhs.right_distance &&
-    lhs.left_distance == rhs.left_distance;
+  return lhs.right_speed == rhs.right_speed &&
+    lhs.left_speed == rhs.left_speed;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -128,12 +128,12 @@ struct MD5Sum< ::common_msgs_pkg::encoder_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "8667235667f6c2bbcdbec984ca8922d9";
+    return "25f978d6cccf487431c99e3026d97330";
   }
 
   static const char* value(const ::common_msgs_pkg::encoder_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x8667235667f6c2bbULL;
-  static const uint64_t static_value2 = 0xcdbec984ca8922d9ULL;
+  static const uint64_t static_value1 = 0x25f978d6cccf4874ULL;
+  static const uint64_t static_value2 = 0x31c99e3026d97330ULL;
 };
 
 template<class ContainerAllocator>
@@ -152,8 +152,8 @@ struct Definition< ::common_msgs_pkg::encoder_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32 right_distance\n"
-"float32 left_distance\n"
+    return "float32 right_speed\n"
+"float32 left_speed\n"
 ;
   }
 
@@ -172,8 +172,8 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.right_distance);
-      stream.next(m.left_distance);
+      stream.next(m.right_speed);
+      stream.next(m.left_speed);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -194,12 +194,12 @@ struct Printer< ::common_msgs_pkg::encoder_<ContainerAllocator> >
   {
     if (false || !indent.empty())
       s << std::endl;
-    s << indent << "right_distance: ";
-    Printer<float>::stream(s, indent + "  ", v.right_distance);
+    s << indent << "right_speed: ";
+    Printer<float>::stream(s, indent + "  ", v.right_speed);
     if (true || !indent.empty())
       s << std::endl;
-    s << indent << "left_distance: ";
-    Printer<float>::stream(s, indent + "  ", v.left_distance);
+    s << indent << "left_speed: ";
+    Printer<float>::stream(s, indent + "  ", v.left_speed);
   }
 };
 

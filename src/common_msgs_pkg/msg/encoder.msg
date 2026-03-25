@@ -1,2 +1,2 @@
-float32 right_distance
-float32 left_distance
+float32 right_speed
+float32 left_speed

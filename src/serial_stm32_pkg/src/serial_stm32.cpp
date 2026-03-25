@@ -1,7 +1,7 @@
 #include "serial_stm32.h"
 #include <iostream>
 
-int8_t is_recorded = 0x00; // 初始化为0x00，表示默认未完成一次记录
+int8_t SerialCommNode::is_recorded = 0x00; // 初始化为0x00，表示默认未完成一次记录
 
 // rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200
 SerialCommNode::SerialCommNode() {
@@ -17,6 +17,8 @@ SerialCommNode::SerialCommNode() {
     // 发布标准里程计
     #ifdef ONLY_ENCODER
         encoder_pub_ = nh_.advertise<common_msgs_pkg::encoder>("encoder_msg", 50);
+        grasped_pub = nh_.advertise<std_msgs::Bool>("grasped_status", 10);
+        released_pub = nh_.advertise<std_msgs::Bool>("released_status", 10);
     #else
         odom_pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
     #endif
@@ -57,7 +59,7 @@ bool SerialCommNode::setupSerialPort() {
 }
 
 void SerialCommNode::serialDataCallback(const common_msgs_pkg::serial_data::ConstPtr& msg) {
-    _clear_encoder = msg->clear_encoder; // 获取是否清除编码器数据的标志
+    // _clear_encoder = msg->clear_encoder; // 获取是否清除编码器数据的标志
     // ROS_INFO("Hello");
     if (!serial_.isOpen()) {
         ROS_INFO("Serial port is not open. Cannot send data.");
@@ -80,26 +82,29 @@ void SerialCommNode::serialDataCallback(const common_msgs_pkg::serial_data::Cons
     }
 }
 
-// 更新里程计信息
+// 更新里程计信息,编码器发布的应该是速度信息
 void SerialCommNode::updateOdometry() {
     #ifdef ONLY_ENCODER
-        if (_clear_encoder) {
-            encoder_msg.left_distance = 0.0;
-            encoder_msg.right_distance = 0.0;
-            _clear_encoder = false; // 重置清除标志
-        }
+        // if (_clear_encoder) {
+        //     encoder_msg.left_distance = 0.0;
+        //     encoder_msg.right_distance = 0.0;
+        //     _clear_encoder = false; // 重置清除标志
+        // }
         
-        // 计算时间间隔
-        ros::Time current_time = ros::Time::now();
-        float dt = (current_time - last_time_).toSec();
-        last_time_ = current_time;
+        // // 计算时间间隔
+        // ros::Time current_time = ros::Time::now();
+        // float dt = (current_time - last_time_).toSec();
+        // last_time_ = current_time;
 
-        // 分别计算左右轮的运动距离
-        float right_distance = right_speed_ * dt; 
-        float left_distance = left_speed_ * dt;
+        // // 分别计算左右轮的运动距离
+        // float right_distance = right_speed_ * dt; 
+        // float left_distance = left_speed_ * dt;
 
-        encoder_msg.right_distance += right_distance;
-        encoder_msg.left_distance += left_distance;
+        // encoder_msg.right_distance += right_distance;
+        // encoder_msg.left_distance += left_distance;
+        // encoder_pub_.publish(encoder_msg);
+        encoder_msg.right_speed = right_speed_;
+        encoder_msg.left_speed = left_speed_;
         encoder_pub_.publish(encoder_msg);
     #else
         // 计算时间间隔
@@ -185,12 +190,30 @@ void SerialCommNode::ReceiveData() {
                         int32_t data2 = *reinterpret_cast<int32_t*>(&buffer[5]);
                         right_speed_ = static_cast<double>(data2)/10000.0;
                         updateOdometry();
-                        if(buffer[9] == RECORD_GPS) {
-                            nh.setParam("/robot/gps_flag", true);   // 设置GPS标志位为true，表示可以记录GPS信息
+
+                        // GPS记录标志位参数服务器更新
+                        if(buffer[9] & RECORD_GPS) {
+                            nh_.setParam("/robot/gps_flag", true);   // 设置GPS标志位为true，表示可以记录GPS信息
                         }else {
-                            nh.setParam("/robot/gps_flag", false);  // 设置GPS标志位为false，表示不记录GPS信息
+                            nh_.setParam("/robot/gps_flag", false);  // 设置GPS标志位为false，表示不记录GPS信息
                         }
-              
+
+                        // 抓取完成标志位话题发布
+                        if(buffer[9] & IF_GRASPED) {
+                            grasped_msg.data = true;
+                        } else {
+                            grasped_msg.data = false;
+                        }
+                        grasped_pub.publish(grasped_msg);
+
+                        // 释放完成标志位话题发布
+                        if(buffer[9] & IF_RELEASED) {
+                            released_msg.data = true;
+                        }else{
+                            released_msg.data = false;
+                        }
+                        released_pub.publish(released_msg);
+
                         // ROS_INFO("Received data: Encoder_Left=%f, Encoder_Right=%f", 
                         //         left_speed_, right_speed_);
                     } else {

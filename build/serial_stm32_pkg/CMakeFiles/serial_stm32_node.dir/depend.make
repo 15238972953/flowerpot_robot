@@ -77,6 +77,7 @@ serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/r
 serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/ros/noetic/include/rosconsole/macros_generated.h
 serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/ros/noetic/include/serial/serial.h
 serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/ros/noetic/include/serial/v8stdint.h
+serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/ros/noetic/include/std_msgs/Bool.h
 serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/ros/noetic/include/std_msgs/Header.h
 serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/ros/noetic/include/tf/LinearMath/Matrix3x3.h
 serial_stm32_pkg/CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o: /opt/ros/noetic/include/tf/LinearMath/MinMax.h

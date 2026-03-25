@@ -8,12 +8,12 @@ import struct
 
 
 class encoder(genpy.Message):
-  _md5sum = "8667235667f6c2bbcdbec984ca8922d9"
+  _md5sum = "25f978d6cccf487431c99e3026d97330"
   _type = "common_msgs_pkg/encoder"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """float32 right_distance
-float32 left_distance"""
-  __slots__ = ['right_distance','left_distance']
+  _full_text = """float32 right_speed
+float32 left_speed"""
+  __slots__ = ['right_speed','left_speed']
   _slot_types = ['float32','float32']
 
   def __init__(self, *args, **kwds):
@@ -24,7 +24,7 @@ float32 left_distance"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       right_distance,left_distance
+       right_speed,left_speed
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -33,13 +33,13 @@ float32 left_distance"""
     if args or kwds:
       super(encoder, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
-      if self.right_distance is None:
-        self.right_distance = 0.
-      if self.left_distance is None:
-        self.left_distance = 0.
+      if self.right_speed is None:
+        self.right_speed = 0.
+      if self.left_speed is None:
+        self.left_speed = 0.
     else:
-      self.right_distance = 0.
-      self.left_distance = 0.
+      self.right_speed = 0.
+      self.left_speed = 0.
 
   def _get_types(self):
     """
@@ -54,7 +54,7 @@ float32 left_distance"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2f().pack(_x.right_distance, _x.left_distance))
+      buff.write(_get_struct_2f().pack(_x.right_speed, _x.left_speed))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -70,7 +70,7 @@ float32 left_distance"""
       _x = self
       start = end
       end += 8
-      (_x.right_distance, _x.left_distance,) = _get_struct_2f().unpack(str[start:end])
+      (_x.right_speed, _x.left_speed,) = _get_struct_2f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -84,7 +84,7 @@ float32 left_distance"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2f().pack(_x.right_distance, _x.left_distance))
+      buff.write(_get_struct_2f().pack(_x.right_speed, _x.left_speed))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -101,7 +101,7 @@ float32 left_distance"""
       _x = self
       start = end
       end += 8
-      (_x.right_distance, _x.left_distance,) = _get_struct_2f().unpack(str[start:end])
+      (_x.right_speed, _x.left_speed,) = _get_struct_2f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill

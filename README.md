@@ -70,7 +70,7 @@ code .
 
 在`roscore`和 `roslaunch lslidar_driver lslidar_serial.launch`的前提下，
 ```bash
-conda activate pointcloud
+conda activate pointcloud  (新版代码不需要执行这句来切换环境，可以直接运行)
 rosrun radar_pkg PointCloudFitting_node.py
 ```
 即可在终端输出花盆的极坐标信息；  
@@ -80,7 +80,7 @@ rosrun radar_pkg PointCloudFitting_node.py
 # 5、相机和雷达数据的处理
 相机节点运行：
 ```bash
-conda activate yolo11
+conda activate yolo11  (新版代码不需要执行这句来切换环境，可以直接运行)
 rosrun yolo11_pkg onnx.py
 ```
 

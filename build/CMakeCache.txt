@@ -454,6 +454,15 @@ cpp_common_DIR:PATH=/opt/ros/noetic/share/cpp_common/cmake
 //The directory containing a CMake configuration file for cv_bridge.
 cv_bridge_DIR:PATH=/opt/ros/noetic/share/cv_bridge/cmake
 
+//Value Computed by CMake
+decision_making_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/decision_making_pkg
+
+//The directory containing a CMake configuration file for decision_making_pkg.
+decision_making_pkg_DIR:PATH=/home/jetson/catkin_ws/devel/share/decision_making_pkg/cmake
+
+//Value Computed by CMake
+decision_making_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/decision_making_pkg
+
 //The directory containing a CMake configuration file for diagnostic_msgs.
 diagnostic_msgs_DIR:PATH=/opt/ros/noetic/share/diagnostic_msgs/cmake
 
@@ -601,6 +610,12 @@ odom_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/odom_pkg
 
 //Value Computed by CMake
 odom_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/odom_pkg
+
+//Value Computed by CMake
+path_planner_pkg_BINARY_DIR:STATIC=/home/jetson/catkin_ws/build/path_planner_pkg
+
+//Value Computed by CMake
+path_planner_pkg_SOURCE_DIR:STATIC=/home/jetson/catkin_ws/src/path_planner_pkg
 
 //The directory containing a CMake configuration file for pcl_conversions.
 pcl_conversions_DIR:PATH=/opt/ros/noetic/share/pcl_conversions/cmake
@@ -881,7 +896,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=20
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=22
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
