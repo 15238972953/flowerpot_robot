@@ -14,11 +14,12 @@ ProcessDataNode::ProcessDataNode() {
     // 初始化订阅者
     radar_processed_sub = nh.subscribe("Array_Radar", 1000, &ProcessDataNode::radardata_Callback, this);
     camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameradata_Callback, this);
-    track_processed_sub = nh.subscribe("track_msg", 1000, &ProcessDataNode::trackdata_Callback, this);
+    // track_processed_sub = nh.subscribe("track_msg", 1000, &ProcessDataNode::trackdata_Callback, this);
     yaw_processed_sub = nh.subscribe("yaw_angle", 1000, &ProcessDataNode::yawdata_Callback, this);
     encoder_processed_sub = nh.subscribe("encoder_msg", 1000, &ProcessDataNode::encoderdata_Callback, this);
     // //初始化发布者
     // serial_data_pub = nh.advertise<common_msgs_pkg::serial_data>("serial_data", 1000);
+    pot_coords_pub = nh.advertise<std_msgs::Float64MultiArray>("pot_coords", 1000);
 }
 
 // 选择最近的花盆
@@ -55,30 +56,30 @@ void ProcessDataNode::yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_ms
 }
 
 // 将直线坐标转为延长后的直线坐标
-int ProcessDataNode::extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg) 
-{
-    int16_t x1 = track_msg->line[0];  // 第1个元素
-    int16_t y1 = track_msg->line[1];  // 第2个元素
-    int16_t x2 = track_msg->line[2];  // 第3个元素
-    int16_t y2 = track_msg->line[3];  // 第4个元素
+// int ProcessDataNode::extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg) 
+// {
+//     int16_t x1 = track_msg->line[0];  // 第1个元素
+//     int16_t y1 = track_msg->line[1];  // 第2个元素
+//     int16_t x2 = track_msg->line[2];  // 第3个元素
+//     int16_t y2 = track_msg->line[3];  // 第4个元素
 
-    int value_Y = 0; // 用于存储延长后的y坐标
-    // 存储延长后的线段坐标
-    std::vector<int16_t> extended_line(4);
-    // 处理垂直线情况 (x1 == x2)
-    if (x1 == x2) {
-        value_Y = 480+200;  // 这种情况一般不会出现，如果真的出现，说明机器人跑到黑线的正中央了，这时当做黑线在机器人偏右边处理
-    }
-    // 处理斜线情况
-    else {
-        // 计算斜率和截距
-        float k = static_cast<float>(y2 - y1) / (x2 - x1);
-        float b = y1 - k * x1;
-        value_Y = static_cast<int>(k * 0 + b); // 计算y坐标
-    }
-    // ROS_INFO("Extended line coordinates: %d", value_Y);
-    return value_Y; 
-}
+//     int value_Y = 0; // 用于存储延长后的y坐标
+//     // 存储延长后的线段坐标
+//     std::vector<int16_t> extended_line(4);
+//     // 处理垂直线情况 (x1 == x2)
+//     if (x1 == x2) {
+//         value_Y = 480+200;  // 这种情况一般不会出现，如果真的出现，说明机器人跑到黑线的正中央了，这时当做黑线在机器人偏右边处理
+//     }
+//     // 处理斜线情况
+//     else {
+//         // 计算斜率和截距
+//         float k = static_cast<float>(y2 - y1) / (x2 - x1);
+//         float b = y1 - k * x1;
+//         value_Y = static_cast<int>(k * 0 + b); // 计算y坐标
+//     }
+//     // ROS_INFO("Extended line coordinates: %d", value_Y);
+//     return value_Y; 
+// }
 
 // 获取循迹数据
 // void ProcessDataNode::trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg)
@@ -162,7 +163,12 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
         Point target_pot = selectClosestPot(convert(fused_matchs));
         kf.Kalman_process(target_pot);
-        Eigen::Vector2d filtered_pos = kf.getPosition();
+
+        // 发布花盆坐标
+        std_msgs::Float64MultiArray pot_coords_msg;
+        pot_coords_msg.data.push_back(target_pot.x);
+        pot_coords_msg.data.push_back(target_pot.y);
+        pot_coords_pub.publish(pot_coords_msg);
         // for (auto match:fused_matchs)
         // {
         //     ROS_INFO("fused_matchs:%.3f,%.3f",match[0],match[1]);

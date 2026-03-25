@@ -16,29 +16,29 @@
 #include "std_msgs/Float32.h" 
 #include <common_msgs_pkg/encoder.h>
 
-#define INTERIM_distance 20 // 过渡状态需要的距离阈值
-
 class ProcessDataNode {
 public:
 
 public:
     ProcessDataNode();
+    void run();   // 主循环
 
 private:
     void cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg);
     void radardata_Callback(const radar_msgs::array::ConstPtr& radar_msg);
     Point selectClosestPot(const std::vector<Point>& pots);
-    void trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg);
+    // void trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg);
     void yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg);
-    int extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg);
+    // int extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg);
     void encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg);
 
 private:
     ros::NodeHandle nh;
     ros::Subscriber radar_processed_sub;
     ros::Subscriber camera_processed_sub;
-    ros::Subscriber track_processed_sub;
-    ros::Publisher serial_data_pub;
+    // ros::Subscriber track_processed_sub;
+    // ros::Publisher serial_data_pub;
+    ros::Publisher pot_coords_pub;      // 发布花盆坐标的发布者
     ros::Subscriber yaw_processed_sub; 
     ros::Subscriber encoder_processed_sub;
 

@@ -92,8 +92,19 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 
 # 6、串口通信
 `sudo chmod 777 /dev/ttyTHS0`  
-`rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200`  
-已实现
+`rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200`
+
+**串口数据说明：**  
+```bash
+1、stm32 --> jetson orin nano  
+消息包格式：[帧头] [左编码器] [右编码器] [状态位] [校验位]
+所占字节数： (1)      (4)       (4)      (1)      (1)
+其中，状态位：[(是否记录GPS)|(是否完成抓取)|(是否完成摆放)]用后三位表示，即：00000111  
+2、jetson orin nano --> stm32
+消息包格式：[帧头] [左PWM] [右PWM] [机械臂指令] [校验位]  
+所占字节数： (1)     (1)    (1)       (1)       (1)
+```
+
 
 # 7.IMU
 **串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyUSB0`)  

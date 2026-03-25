@@ -104,7 +104,7 @@ void DecisionMaking::potCoordsCallback(const std_msgs::Float64MultiArray::ConstP
         ROS_WARN("花盆坐标数据格式错误");
         return;
     }
-    current_pot_coordinate = Point2D(msg->data[0], msg->data[1]);
+    current_pot_coordinate = Point2D(msg->data[0]/100.0, msg->data[1]/100.0);  // 将坐标从厘米转换为米
 }
 
 // 处理接收到的yaw数据
@@ -297,14 +297,13 @@ void DecisionMaking::run() {
             
             // 取花中
             case TaskState::PICKING_UP:
-                PWM PWM_Motor = calculatePWM(filtered_pos);
+                PWM PWM_Motor = calculatePWM(current_pot_coordinate);
                 serial_msg.PWM_Left = PWM_Motor.PWM_Left;
                 serial_msg.PWM_Right = PWM_Motor.PWM_Right;
-                if (filtered_pos.y() < 20.0) {  // 如果y坐标小于20，说明花盆已经接近机器人
+                if (current_pot_coordinate.y() < GPS_TO_POTPOINT_DISTANCE) {  // 如果y坐标小于0.2m，说明花盆已经接近机器人
                     serial_msg.command = COMMAND_GRASP;  // 发送抓取指令
                     // 延时
                     ros::Duration(3.0).sleep();  // 等待3s，等待机械臂抓取完成
-                    current_state = RobotState::INTERIM;  // 切换到过渡状态
                     serial_msg.clear_encoder = true; // 发送清除编码器数据的标志
                 } else{
                     serial_msg.command = COMMAND_COMMON;   // 正常状态

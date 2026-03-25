@@ -14,6 +14,8 @@
 #define IS_RECORDED 0x80   // STM32发送的标志位，表示完成一次记录
 #define IS_NOT_RECORDED 0x00   
 
+#define GPS_TO_POTPOINT_DISTANCE 0.2 // 机器人GPS定位与花盆实际坐标距离
+
 static bool ref_initialized = false;     // 是否已初始化参考点,以机器人上电点为参考点，将其他GPS坐标转换为相对于该点的平面坐标
 static double ref_lat_;
 static double ref_lon_;
