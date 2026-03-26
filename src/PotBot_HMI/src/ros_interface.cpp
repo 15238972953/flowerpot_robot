@@ -10,6 +10,7 @@ RosInterface::RosInterface() : service_ready_(false)
     gps_sub = nh.subscribe("gps_data", 10, &RosInterface::gpsCallback, this);
     yaw_sub = nh.subscribe("/yaw_angle", 10, &RosInterface::yawCallback, this);
     transported_pot_count_sub = nh.subscribe("/transported_pot_count", 10, &RosInterface::transportedPotCountCallback, this);
+    ready_sub_ = nh.subscribe("/system_ready", 10, &RosInterface::readyCallback, this);
     
     // 如果需要发布者，取消注释
     // start_pub = nh.advertise<std_msgs::String>("/robot_start", 10);
@@ -113,6 +114,12 @@ void RosInterface::transportedPotCountCallback(const std_msgs::Int8::ConstPtr& m
 {
     transported_pot_count = msg->data;
     ROS_INFO("已搬运花盆数量更新: %d", transported_pot_count);
+}
+
+void RosInterface::readyCallback(const std_msgs::Bool::ConstPtr& msg)
+{
+    system_ready_ = msg->data;
+    ROS_INFO("系统准备状态更新: %s", system_ready_ ? "已就绪" : "未就绪");
 }
 
 // void RosInterface::publishStart(bool start)

@@ -18,6 +18,7 @@ public:
     double latitude;
     double longitude;
     float yaw;
+    bool system_ready_;
     int transported_pot_count; // 已搬运花盆数量
 public:
     // void publishStart(bool start);
@@ -33,11 +34,12 @@ private:
 
     ros::Subscriber gps_sub;
     ros::Subscriber yaw_sub;
+    ros::Subscriber ready_sub_;   // 所有节点是否准备就绪订阅者
     ros::Subscriber transported_pot_count_sub;
     // Service Client
     ros::ServiceClient client_;
     
-    bool service_ready_;
+    bool service_ready_;     // Service是否可用
     
     // ros::Publisher start_pub;
     // ros::Publisher spacing_pub;
@@ -46,6 +48,7 @@ private:
     void gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg);
     void yawCallback(const std_msgs::Float32::ConstPtr& msg);
     void transportedPotCountCallback(const std_msgs::Int8::ConstPtr& msg);
+    void readyCallback(const std_msgs::Bool::ConstPtr& msg);
 };
 
 #endif

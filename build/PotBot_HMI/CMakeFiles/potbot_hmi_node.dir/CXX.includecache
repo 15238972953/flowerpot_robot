@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/6YEA5652QU/moc_mainwindow.cpp
-mainwindow.h
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/6YEA5652QU/mainwindow.h
-QtCore/qbytearray.h
--
-QtCore/qmetatype.h
--
-
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/mocs_compilation.cpp
-6YEA5652QU/moc_mainwindow.cpp
-/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/6YEA5652QU/moc_mainwindow.cpp
-
 /home/jetson/catkin_ws/devel/include/decision_making_pkg/StartTransport.h
 ros/service_traits.h
 -
@@ -84,18 +72,6 @@ std_msgs/Bool.h
 decision_making_pkg/StartTransport.h
 -
 
-/home/jetson/catkin_ws/src/PotBot_HMI/src/main.cpp
-mainwindow.h
-/home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.h
-ros/ros.h
--
-QApplication
--
-QSurfaceFormat
--
-ros_interface.h
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.h
-
 /home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.cpp
 mainwindow.h
 /home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.h
@@ -113,10 +89,6 @@ QScreen
 -
 QFont
 -
-
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.cpp
-ros_interface.h
-/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.h
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h
@@ -1686,10 +1658,6 @@ qfont.h
 qscreen.h
 /usr/include/aarch64-linux-gnu/qt5/QtGui/qscreen.h
 
-/usr/include/aarch64-linux-gnu/qt5/QtGui/QSurfaceFormat
-qsurfaceformat.h
-/usr/include/aarch64-linux-gnu/qt5/QtGui/qsurfaceformat.h
-
 /usr/include/aarch64-linux-gnu/qt5/QtGui/QTransform
 qtransform.h
 /usr/include/aarch64-linux-gnu/qt5/QtGui/qtransform.h
@@ -1988,14 +1956,6 @@ QtCore/QSizeF
 QtGui/QTransform
 -
 QtCore/qnamespace.h
--
-
-/usr/include/aarch64-linux-gnu/qt5/QtGui/qsurfaceformat.h
-QtGui/qtguiglobal.h
--
-QtCore/qpair.h
--
-QtCore/qobjectdefs.h
 -
 
 /usr/include/aarch64-linux-gnu/qt5/QtGui/qtextcursor.h

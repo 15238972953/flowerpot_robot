@@ -174,8 +174,10 @@ void DecisionMaking::calculatePotsMatrix(const std::vector<Point2D>& recorded_po
     Point2D bottom_left = recorded_points[3];
     
     // 计算矩形宽度和高度
-    double width = (distance(bottom_left, bottom_right) + distance(top_left, top_right)) / 2.0; // 取上下边平均宽度
-    double height = (distance(bottom_left, top_left) + distance(bottom_right, top_right)) / 2.0; // 取左右边平均高度
+    double width = (distance(bottom_left, bottom_right) 
+                    + distance(top_left, top_right)) / 2.0; // 取上下边平均宽度
+    double height = (distance(bottom_left, top_left) 
+                    + distance(bottom_right, top_right)) / 2.0; // 取左右边平均高度
     
     ROS_INFO("矩形: 宽=%.2fm, 高=%.2fm, 间距=%.2fm", width, height, pot_placement_spacing);
     
@@ -319,7 +321,8 @@ void DecisionMaking::MOVING_TO_PICKUP_State() {
 
 // 取花中
 void DecisionMaking::PICKING_UP_State() {
-    PWM PWM_Motor = calculatePWM(current_pot_coordinate, Point2D(0.0, GPS_TO_POTPOINT_DISTANCE));  // 以取花点为坐标原点，计算当前花盆坐标的PWM值
+    PWM PWM_Motor = calculatePWM(current_pot_coordinate, 
+        Point2D(0.0, GPS_TO_POTPOINT_DISTANCE));  // 以取花点为坐标原点，计算当前花盆坐标的PWM值
     serial_msg.PWM_Left = PWM_Motor.PWM_Left;
     serial_msg.PWM_Right = PWM_Motor.PWM_Right;
     if (current_pot_coordinate.y < GPS_TO_POTPOINT_DISTANCE + 0.1) {  // 如果y坐标小于设定值，说明花盆已经接近机器人
@@ -366,6 +369,7 @@ void DecisionMaking::TASK_COMPLETE_State() {
     ROS_INFO("所有花盆搬运完成！");
 }
 
+// 主循环
 void DecisionMaking::run() {
     ros::Rate rate(10);
     

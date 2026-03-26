@@ -24,6 +24,7 @@ public:
     void updateLatitude(double lat);
     void updateLongitude(double lon);
     void updateTransportedPotCount(int count);
+    void updateSystemReadyStatus(bool ready);
     bool isFullScreenMode() const { return fullScreenMode; }
 
 protected:

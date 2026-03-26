@@ -1403,6 +1403,19 @@ processdata_pkg_genpy/fast:
 .PHONY : processdata_pkg_genpy/fast
 
 #=============================================================================
+# Target rules for targets named system_monitor_node
+
+# Build rule for target.
+system_monitor_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 system_monitor_node
+.PHONY : system_monitor_node
+
+# fast build rule for target.
+system_monitor_node/fast:
+	$(MAKE) -f system_monitor/CMakeFiles/system_monitor_node.dir/build.make system_monitor/CMakeFiles/system_monitor_node.dir/build
+.PHONY : system_monitor_node/fast
+
+#=============================================================================
 # Target rules for targets named sensor_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -3018,6 +3031,7 @@ help:
 	@echo "... processdata_node"
 	@echo "... processdata_pkg_generate_messages_eus"
 	@echo "... processdata_pkg_genpy"
+	@echo "... system_monitor_node"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_eus"

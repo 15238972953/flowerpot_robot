@@ -77,20 +77,24 @@ rosrun radar_pkg PointCloudFitting_node.py
 
 相机识别帧率大概50帧(FP16量化后)，激光雷达节点输出帧率为12帧；
 
-# 5、相机和雷达数据的处理
+# 5.camera发布图像话题
+`rosrun camera_pkg camera_pkg_node`  
+**作用：** 用于发布图像话题供yolo11和tracking订阅；如果不需要tracking话题的话，就不需要这个节点；
+
+# 6、yolo11识别
 相机节点运行：
 ```bash
 conda activate yolo11  (新版代码不需要执行这句来切换环境，可以直接运行)
 rosrun yolo11_pkg onnx.py
 ```
-
+# 7.传感器融合
 radar和yolo11发布节点，process_data中订阅节点并处理
 
 数据关联->数据融合->选择最近的花盆->PID计算出PWM；
 
 **运行：** `rosrun processdata_pkg processdata_node` 
 
-# 6、串口通信
+# 8、串口通信
 `sudo chmod 777 /dev/ttyTHS0`  
 `rosrun serial_stm32_pkg serial_stm32_node _port:=/dev/ttyTHS0 _baud_rate:=115200`
 
@@ -106,26 +110,29 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 ```
 
 
-# 7.IMU
+# 9.IMU
 **串口号：** /dev/ttyUSB0;(`sudo chmod 777 /dev/ttyUSB0`)  
 **帧率：** 10HZ;  
 **topic:** /yaw_angle;    
 **运行：** `rosrun imu_pkg imu_node`
 
-# 8.基于状态机的相机导航
-**环境：** 不需要conda
+# 10.基于状态机的相机导航
+**环境：** 不需要conda  
 **运行：** `rosrun tracking_pkg track.py`  
 
-# 9.camera发布图像话题
-`rosrun camera_pkg camera_pkg_node`
-**作用：** 用于发布图像话题供yolo11和tracking订阅；如果不需要tracking话题的话，就不需要这个节点；
 
-# 10.GPS数据
+
+# 11.GPS数据
 **串口号：** `/dev/ttyACM3`  
 **帧率：** 20HZ  
 **topic：** /gps_data  
 **运行：** `rosrun GPS_pkg GPS_pkg_node`
 
+# 12.HMI界面
+**运行：** `rosrun PotBot_HMI potbot_hmi_node`  
+
+# 13.系统节点监测
+**运行：** `rosrun system_monitor system_monitor_node` 
 
 
 # 更新中。。。

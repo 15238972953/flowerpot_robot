@@ -23,7 +23,7 @@ MainWindow::MainWindow(RosInterface* rosInterface, QWidget *parent)
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);  // 无边框窗口
     
     // 初始化主界面显示
-    ui->ReadyStatusValueLabel->setText("Idle");
+    ui->ReadyStatusValueLabel->setText("未就绪");
     ui->BatteryValueLabel->setText("92%");
     ui->YawAngleValueLabel->setText("0.0°");
 
@@ -95,6 +95,8 @@ void MainWindow::updateRosData()
     updateLatitude(rosInterface->latitude);
     updateLongitude(rosInterface->longitude);
     updateYawAngle(rosInterface->yaw);
+    updateTransportedPotCount(rosInterface->transported_pot_count);
+    updateSystemReadyStatus(rosInterface->system_ready_);
 }
 
 void MainWindow::showEvent(QShowEvent *event)
@@ -228,10 +230,9 @@ void MainWindow::on_StartLabel_clicked()
     int current_placement_type; // 当前选择的摆放方式（0=网格，1=三角）
     double spacing; // 当前选择的摆放间距（厘米）
 
-    if(robotRunning)
+    if(robotRunning && rosInterface->system_ready_)
     {
         ui->StartLabel->setText("STOP");
-        ui->ReadyStatusValueLabel->setText("Running");
 
         qDebug() << "Robot Started";
 
@@ -255,7 +256,6 @@ void MainWindow::on_StartLabel_clicked()
     else
     {
         ui->StartLabel->setText("START");
-        ui->ReadyStatusValueLabel->setText("Stopped");
 
         qDebug() << "Robot Stopped";
 
@@ -385,6 +385,21 @@ void MainWindow::updateTransportedPotCount(int count)
 {
     if (ui && ui->PotCountValueLabel) {
         ui->PotCountValueLabel->setText(QString::number(count));
+    }
+}
+
+// 更新系统准备状态
+void MainWindow::updateSystemReadyStatus(bool ready)
+{
+    if (ui && ui->ReadyStatusValueLabel) {
+        ui->ReadyStatusValueLabel->setText(ready ? "已就绪" : "未就绪");
+
+        // 根据状态改变颜色
+        if (ready) {
+            ui->ReadyStatusValueLabel->setStyleSheet("color: #27AE60; font-weight: bold;");
+        } else {
+            ui->ReadyStatusValueLabel->setStyleSheet("color: #E74C3C; font-weight: bold;");
+        }
     }
 }
 
