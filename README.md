@@ -120,18 +120,19 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 **环境：** 不需要conda  
 **运行：** `rosrun tracking_pkg track.py`  
 
-
-
 # 11.GPS数据
 **串口号：** `/dev/ttyACM3`  
 **帧率：** 20HZ  
 **topic：** /gps_data  
 **运行：** `rosrun GPS_pkg GPS_pkg_node`
 
-# 12.HMI界面
+# 12.导航决策节点
+**运行：** `rosrun decision_making_pkg decision_making_pkg_node`
+
+# 13.HMI界面
 **运行：** `rosrun PotBot_HMI potbot_hmi_node`  
 
-# 13.系统节点监测
+# 14.系统节点监测
 **运行：** `rosrun system_monitor system_monitor_node` 
 
 

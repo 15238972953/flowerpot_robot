@@ -8,6 +8,10 @@ bool Point2D::ref_initialized = false;
 double Point2D::ref_lat = 0.0;
 double Point2D::ref_lon = 0.0;
 
+Point DecisionMaking::target_area_top_left(0.0, 0.0);
+Point DecisionMaking::target_area_top_right(0.0, 0.0);
+
+
 DecisionMaking::DecisionMaking() : nh_(""), pnh_("~"),
     required_points_(4),
     record_interval_(1.0),
@@ -60,12 +64,14 @@ void DecisionMaking::gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& ms
                     ROS_WARN("记录间隔未到，忽略当前点");
                     return;
                 }
+                // 计算目标区域的方向角(以左上角和右上角计算)
+                target_area_top_left = recorded_points_.size() == 0 ? Point(lat, lon) : target_area_top_left;
+                target_area_top_right = recorded_points_.size() == 1 ? Point(lat, lon) : target_area_top_right;
+                target_area_bearing = calculatePerpendicularBearing(target_area_top_left, target_area_top_right);  
+
                 Point2D current_point = Point2D::latlon_To_xy(lat, lon, ref_lat_, ref_lon_);
                 recordCurrentPosition(current_point);
                 gps_flag = false; // 记录完当前点后将GPS标志位重置为false，等待下一次触发
-                nh_.setParam("/robot/is_recorded", IS_RECORDED);    // 设置已完成一次记录的标志
-            }else {
-                nh_.setParam("/robot/is_recorded", IS_NOT_RECORDED);
             }
         }else {
             current_PosePoint_.point = Point2D::latlon_To_xy(lat, lon, ref_lat_, ref_lon_);
@@ -301,9 +307,23 @@ Point2D DecisionMaking::getCurrentTargetPoint() {
     return target_pots_matrix_[row][col];
 }
 
-
-
-// 已知机器人当前位姿和目标点坐标，控制机器人移动到目标点
+// 根据两点的经纬度，计算垂直于这两点连线的方向角（用于确定摆放方向）
+double DecisionMaking::calculatePerpendicularBearing(const Point& p1, const Point& p2) {
+    // 计算线段方向角（弧度）
+    double dx = p2.longitude - p1.longitude;
+    double dy = p2.latitude - p1.latitude;
+    double angle = atan2(dx, dy);
+    
+    // 垂直方向加90度
+    double perp_angle = angle + M_PI / 2.0;
+    
+    // 转换为度数并归一化到0-360
+    double bearing = perp_angle * 180.0 / M_PI;
+    bearing = fmod(bearing, 360.0);
+    if (bearing < 0) bearing += 360.0;
+    
+    return bearing;
+}
 
 // 等待开始信号
 void DecisionMaking::WAITING_START_State() {
@@ -316,19 +336,29 @@ void DecisionMaking::WAITING_START_State() {
 
 // 移动到取花点
 void DecisionMaking::MOVING_TO_PICKUP_State() {
-
+    target_point_ = Start_Point_;  
+    if (distance(current_PosePoint_.point, target_point_) > 0.1) {
+        PWM PWM_Motor = calculatePWM(current_PosePoint_, target_point_);
+        serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+        serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+        serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
+    } else {
+        ROS_INFO("已到达摆放点，准备摆放花盆");
+        current_state = TaskState::PICKING_UP; // 进入取花状态
+    }
 }
 
 // 取花中
 void DecisionMaking::PICKING_UP_State() {
-    PWM PWM_Motor = calculatePWM(current_pot_coordinate, 
-        Point2D(0.0, GPS_TO_POTPOINT_DISTANCE));  // 以取花点为坐标原点，计算当前花盆坐标的PWM值
-    serial_msg.PWM_Left = PWM_Motor.PWM_Left;
-    serial_msg.PWM_Right = PWM_Motor.PWM_Right;
-    if (current_pot_coordinate.y < GPS_TO_POTPOINT_DISTANCE + 0.1) {  // 如果y坐标小于设定值，说明花盆已经接近机器人
+    if (current_pot_coordinate.y > GPS_TO_POTPOINT_DISTANCE + 0.1) {
+        PWM PWM_Motor = calculatePWM_linear(current_pot_coordinate, 
+                            Point2D(0.0, Lidar_TO_POTPOINT_DISTANCE));  // 以取花点为坐标原点，计算当前花盆坐标的PWM值
+        serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+        serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+    } else {  // 如果y坐标小于设定值，说明花盆已经接近机器人
+        serial_msg.PWM_Left = 0;
+        serial_msg.PWM_Right = 0;
         serial_msg.command = COMMAND_GRASP;  // 发送抓取指令
-    } else{
-        serial_msg.command = COMMAND_COMMON;   // 正常状态
     }
     if(grasped_status) {
         ROS_INFO("抓取完成，准备移动到摆放点");
@@ -340,6 +370,27 @@ void DecisionMaking::PICKING_UP_State() {
 // 移动到摆放点
 void DecisionMaking::MOVING_TO_PLACE_State() {
     target_point_ = getCurrentTargetPoint();  
+    if (distance(current_PosePoint_.point, target_point_) > 0.1) {
+        PWM PWM_Motor = calculatePWM(current_PosePoint_, target_point_);
+        serial_msg.PWM_Left = PWM_Motor.PWM_Left;
+        serial_msg.PWM_Right = PWM_Motor.PWM_Right;
+        serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
+    } else {
+        if(current_PosePoint_.yaw < target_area_bearing - 5 
+                        || current_PosePoint_.yaw > target_area_bearing + 5) {  // 如果偏航角与目标区域方向相差较大，优先调整角度
+            PWM angular_pwm = calculatePWM_angular(current_PosePoint_.yaw, target_area_bearing);
+            serial_msg.PWM_Left = angular_pwm.PWM_Left;
+            serial_msg.PWM_Right = angular_pwm.PWM_Right;
+            serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
+            ROS_INFO("调整角度中...");
+        } else {
+             serial_msg.PWM_Left = 0;
+             serial_msg.PWM_Right = 0;
+             serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
+            ROS_INFO("已到达摆放点，准备摆放花盆");
+            current_state = TaskState::PLACING;
+        }
+    }
 }
 
 // 摆放花盆

@@ -5,6 +5,4 @@
           PWM_RIGHT
           COMMAND-VAL
           COMMAND
-          CLEAR_ENCODER-VAL
-          CLEAR_ENCODER
 ))

@@ -35,6 +35,8 @@ public:
 private:
     void serialDataCallback(const common_msgs_pkg::serial_data::ConstPtr& msg);
     bool setupSerialPort();
+    // 累加和校验
+    uint8_t calculateChecksum(const std::vector<uint8_t>& data);
     
     ros::NodeHandle nh_;
     ros::Subscriber serial_data_sub_;   // 订阅serial_data话题

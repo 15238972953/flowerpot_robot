@@ -31,7 +31,10 @@ private:
     float integral_;
 };
 
-PWM calculatePWM(Point2D pot_pos, Point2D target_pos);
-PWM calculatePWM(double yaw_angle, double Target_yaw_angle);
+PWM calculatePWM_linear(Point2D pot_pos, Point2D target_pos);
+PWM calculatePWM_angular(double yaw_angle, double Target_yaw_angle);
+Point2D getTargetInVehicleFrame(const PosePoint& current, const Point2D& target);
+PWM calculatePWM(const PosePoint& current, const Point2D& target);
+
 
 #endif    

@@ -21,7 +21,6 @@ class serial_data {
       this.PWM_Left = null;
       this.PWM_Right = null;
       this.command = null;
-      this.clear_encoder = null;
     }
     else {
       if (initObj.hasOwnProperty('PWM_Left')) {
@@ -42,12 +41,6 @@ class serial_data {
       else {
         this.command = 0;
       }
-      if (initObj.hasOwnProperty('clear_encoder')) {
-        this.clear_encoder = initObj.clear_encoder
-      }
-      else {
-        this.clear_encoder = false;
-      }
     }
   }
 
@@ -59,8 +52,6 @@ class serial_data {
     bufferOffset = _serializer.int8(obj.PWM_Right, buffer, bufferOffset);
     // Serialize message field [command]
     bufferOffset = _serializer.int8(obj.command, buffer, bufferOffset);
-    // Serialize message field [clear_encoder]
-    bufferOffset = _serializer.bool(obj.clear_encoder, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -74,13 +65,11 @@ class serial_data {
     data.PWM_Right = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [command]
     data.command = _deserializer.int8(buffer, bufferOffset);
-    // Deserialize message field [clear_encoder]
-    data.clear_encoder = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 4;
+    return 3;
   }
 
   static datatype() {
@@ -90,7 +79,7 @@ class serial_data {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '23aa005a44d993632cdb1134fc156a3a';
+    return '55d8902ce6b1a26e186815e49dac35e0';
   }
 
   static messageDefinition() {
@@ -99,7 +88,6 @@ class serial_data {
     int8 PWM_Left
     int8 PWM_Right
     int8 command
-    bool clear_encoder
     `;
   }
 
@@ -128,13 +116,6 @@ class serial_data {
     }
     else {
       resolved.command = 0
-    }
-
-    if (msg.clear_encoder !== undefined) {
-      resolved.clear_encoder = msg.clear_encoder;
-    }
-    else {
-      resolved.clear_encoder = false
     }
 
     return resolved;

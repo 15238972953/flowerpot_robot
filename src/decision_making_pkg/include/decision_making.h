@@ -14,11 +14,9 @@
 #include "pid_controller.h"
 
 #define M_PI 3.14159265358979323846
-#define IS_RECORDED 0x80   // STM32发送的标志位，表示完成一次记录
-#define IS_NOT_RECORDED 0x00   
+#define GPS_TO_POTPOINT_DISTANCE 0.527 // 机器人GPS定位与花盆实际坐标距离(米)
+#define Lidar_TO_POTPOINT_DISTANCE 0.2   // 激光雷达与花盆实际坐标距离(米)
 
-#define GPS_TO_POTPOINT_DISTANCE 0.527 // 机器人GPS定位与花盆实际坐标距离
-#define Lidar_TO_POTPOINT_DISTANCE 0.2   // 激光雷达与花盆实际坐标距离
 static bool ref_initialized = false;     // 是否已初始化参考点,以机器人上电点为参考点，将其他GPS坐标转换为相对于该点的平面坐标
 static double ref_lat_;
 static double ref_lon_;
@@ -109,6 +107,9 @@ private:
     // 待摆放花盆坐标矩阵，用于记录每个花盆的坐标；
     std::vector<std::vector<Point2D>> target_pots_matrix_; 
     int total_targets;                   // 总的可摆放目标点数量
+    static Point target_area_top_left;     // 目标区域左上角坐标（相对于参考点的平面坐标）
+    static Point target_area_top_right; // 目标区域右上角坐标（相对于参考点的平面坐标）
+    double target_area_bearing;          // 两点连线的方向角（弧度）
 
     // 状态变量
     std::vector<Point2D> recorded_points_; // 已记录的GPS点
@@ -116,6 +117,8 @@ private:
     bool gps_flag;                        // GPS标志位（从参数服务器读取）
 
     Point2D current_pot_coordinate; // 记录当前要抓取的花盆坐标
+
+    Point2D Start_Point_; // 记录花盆摆放区坐标，会更新（相对于参考点的平面坐标）
 
     bool grasped_status = false; // 抓取完成状态
     bool released_status = false; // 释放完成状态
@@ -169,6 +172,9 @@ private:
         const std::vector<Point2D>& recorded_points, 
         double pot_placement_spacing,
         PlacementType placement_type = PlacementType::GRID_PLACEMENT);
+    
+    // 根据两点的经纬度，计算垂直于这两点连线的方向角（用于确定摆放方向）
+    double calculatePerpendicularBearing(const Point& p1, const Point& p2);
     
     // 等待开始信号
     void WAITING_START_State();

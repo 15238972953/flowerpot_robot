@@ -58,6 +58,15 @@ bool SerialCommNode::setupSerialPort() {
     }
 }
 
+// 累加和校验
+uint8_t SerialCommNode::calculateChecksum(const std::vector<uint8_t>& data) {
+    uint8_t sum = 0;
+    for (size_t i = 0; i < data.size() - 1; ++i) { // 最后一个字节是校验位，不参与计算
+        sum += data[i];
+    }
+    return sum;
+}
+
 void SerialCommNode::serialDataCallback(const common_msgs_pkg::serial_data::ConstPtr& msg) {
     // _clear_encoder = msg->clear_encoder; // 获取是否清除编码器数据的标志
     // ROS_INFO("Hello");
@@ -67,11 +76,13 @@ void SerialCommNode::serialDataCallback(const common_msgs_pkg::serial_data::Cons
     }
     try {
         // 发送数据到STM32
-        nh_.setParam("/robot/is_recorded", is_recorded);
-        std::vector<uint8_t> buffer(3);
-        buffer[0] = msg->PWM_Left;
-        buffer[1] = msg->PWM_Right;
-        buffer[2] = msg->command | is_recorded;    // 将command与is_recorded进行按位或运算，合并到一个字节中发送
+        std::vector<uint8_t> buffer(5);
+        buffer[0] = HEADER_BYTE; // 帧头
+        buffer[1] = msg->PWM_Left;
+        buffer[2] = msg->PWM_Right;
+        buffer[3] = msg->command;  
+        buffer[4] = calculateChecksum(buffer); // 填充最后一个字节，确保数据长度正确
+
         size_t bytes_written = serial_.write(buffer);
         for(int i=0;i<buffer.size();++i){
             ROS_INFO("buffer:%d,%d",i,buffer[i]);

@@ -28,6 +28,12 @@ struct Point2D {
     }
 };
 
+struct Point {
+    double latitude;
+    double longitude;
+    Point(double lat = 0, double lon = 0) : latitude(lat), longitude(lon) {}
+};
+
 // 位姿点（包含位置和航向）
 struct PosePoint
 {

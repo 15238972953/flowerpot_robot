@@ -8,15 +8,14 @@ import struct
 
 
 class serial_data(genpy.Message):
-  _md5sum = "23aa005a44d993632cdb1134fc156a3a"
+  _md5sum = "55d8902ce6b1a26e186815e49dac35e0"
   _type = "common_msgs_pkg/serial_data"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int8 PWM_Left
 int8 PWM_Right
-int8 command
-bool clear_encoder"""
-  __slots__ = ['PWM_Left','PWM_Right','command','clear_encoder']
-  _slot_types = ['int8','int8','int8','bool']
+int8 command"""
+  __slots__ = ['PWM_Left','PWM_Right','command']
+  _slot_types = ['int8','int8','int8']
 
   def __init__(self, *args, **kwds):
     """
@@ -26,7 +25,7 @@ bool clear_encoder"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       PWM_Left,PWM_Right,command,clear_encoder
+       PWM_Left,PWM_Right,command
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -41,13 +40,10 @@ bool clear_encoder"""
         self.PWM_Right = 0
       if self.command is None:
         self.command = 0
-      if self.clear_encoder is None:
-        self.clear_encoder = False
     else:
       self.PWM_Left = 0
       self.PWM_Right = 0
       self.command = 0
-      self.clear_encoder = False
 
   def _get_types(self):
     """
@@ -62,7 +58,7 @@ bool clear_encoder"""
     """
     try:
       _x = self
-      buff.write(_get_struct_3bB().pack(_x.PWM_Left, _x.PWM_Right, _x.command, _x.clear_encoder))
+      buff.write(_get_struct_3b().pack(_x.PWM_Left, _x.PWM_Right, _x.command))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -77,9 +73,8 @@ bool clear_encoder"""
       end = 0
       _x = self
       start = end
-      end += 4
-      (_x.PWM_Left, _x.PWM_Right, _x.command, _x.clear_encoder,) = _get_struct_3bB().unpack(str[start:end])
-      self.clear_encoder = bool(self.clear_encoder)
+      end += 3
+      (_x.PWM_Left, _x.PWM_Right, _x.command,) = _get_struct_3b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -93,7 +88,7 @@ bool clear_encoder"""
     """
     try:
       _x = self
-      buff.write(_get_struct_3bB().pack(_x.PWM_Left, _x.PWM_Right, _x.command, _x.clear_encoder))
+      buff.write(_get_struct_3b().pack(_x.PWM_Left, _x.PWM_Right, _x.command))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -109,9 +104,8 @@ bool clear_encoder"""
       end = 0
       _x = self
       start = end
-      end += 4
-      (_x.PWM_Left, _x.PWM_Right, _x.command, _x.clear_encoder,) = _get_struct_3bB().unpack(str[start:end])
-      self.clear_encoder = bool(self.clear_encoder)
+      end += 3
+      (_x.PWM_Left, _x.PWM_Right, _x.command,) = _get_struct_3b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -120,9 +114,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_3bB = None
-def _get_struct_3bB():
-    global _struct_3bB
-    if _struct_3bB is None:
-        _struct_3bB = struct.Struct("<3bB")
-    return _struct_3bB
+_struct_3b = None
+def _get_struct_3b():
+    global _struct_3b
+    if _struct_3b is None:
+        _struct_3b = struct.Struct("<3b")
+    return _struct_3b

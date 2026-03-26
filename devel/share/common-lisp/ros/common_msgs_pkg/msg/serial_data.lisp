@@ -21,12 +21,7 @@
     :reader command
     :initarg :command
     :type cl:fixnum
-    :initform 0)
-   (clear_encoder
-    :reader clear_encoder
-    :initarg :clear_encoder
-    :type cl:boolean
-    :initform cl:nil))
+    :initform 0))
 )
 
 (cl:defclass serial_data (<serial_data>)
@@ -51,11 +46,6 @@
 (cl:defmethod command-val ((m <serial_data>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader common_msgs_pkg-msg:command-val is deprecated.  Use common_msgs_pkg-msg:command instead.")
   (command m))
-
-(cl:ensure-generic-function 'clear_encoder-val :lambda-list '(m))
-(cl:defmethod clear_encoder-val ((m <serial_data>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader common_msgs_pkg-msg:clear_encoder-val is deprecated.  Use common_msgs_pkg-msg:clear_encoder instead.")
-  (clear_encoder m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <serial_data>) ostream)
   "Serializes a message object of type '<serial_data>"
   (cl:let* ((signed (cl:slot-value msg 'PWM_Left)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
@@ -67,7 +57,6 @@
   (cl:let* ((signed (cl:slot-value msg 'command)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     )
-  (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:if (cl:slot-value msg 'clear_encoder) 1 0)) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <serial_data>) istream)
   "Deserializes a message object of type '<serial_data>"
@@ -80,7 +69,6 @@
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'command) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
-    (cl:setf (cl:slot-value msg 'clear_encoder) (cl:not (cl:zerop (cl:read-byte istream))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<serial_data>)))
@@ -91,19 +79,18 @@
   "common_msgs_pkg/serial_data")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<serial_data>)))
   "Returns md5sum for a message object of type '<serial_data>"
-  "23aa005a44d993632cdb1134fc156a3a")
+  "55d8902ce6b1a26e186815e49dac35e0")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'serial_data)))
   "Returns md5sum for a message object of type 'serial_data"
-  "23aa005a44d993632cdb1134fc156a3a")
+  "55d8902ce6b1a26e186815e49dac35e0")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<serial_data>)))
   "Returns full string definition for message of type '<serial_data>"
-  (cl:format cl:nil "int8 PWM_Left~%int8 PWM_Right~%int8 command~%bool clear_encoder~%~%"))
+  (cl:format cl:nil "int8 PWM_Left~%int8 PWM_Right~%int8 command~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'serial_data)))
   "Returns full string definition for message of type 'serial_data"
-  (cl:format cl:nil "int8 PWM_Left~%int8 PWM_Right~%int8 command~%bool clear_encoder~%~%"))
+  (cl:format cl:nil "int8 PWM_Left~%int8 PWM_Right~%int8 command~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <serial_data>))
   (cl:+ 0
-     1
      1
      1
      1
@@ -114,5 +101,4 @@
     (cl:cons ':PWM_Left (PWM_Left msg))
     (cl:cons ':PWM_Right (PWM_Right msg))
     (cl:cons ':command (command msg))
-    (cl:cons ':clear_encoder (clear_encoder msg))
 ))

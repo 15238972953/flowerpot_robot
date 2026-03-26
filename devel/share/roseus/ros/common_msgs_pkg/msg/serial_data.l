@@ -14,7 +14,7 @@
 
 (defclass common_msgs_pkg::serial_data
   :super ros::object
-  :slots (_PWM_Left _PWM_Right _command _clear_encoder ))
+  :slots (_PWM_Left _PWM_Right _command ))
 
 (defmethod common_msgs_pkg::serial_data
   (:init
@@ -22,13 +22,11 @@
     ((:PWM_Left __PWM_Left) 0)
     ((:PWM_Right __PWM_Right) 0)
     ((:command __command) 0)
-    ((:clear_encoder __clear_encoder) nil)
     )
    (send-super :init)
    (setq _PWM_Left (round __PWM_Left))
    (setq _PWM_Right (round __PWM_Right))
    (setq _command (round __command))
-   (setq _clear_encoder __clear_encoder)
    self)
   (:PWM_Left
    (&optional __PWM_Left)
@@ -39,9 +37,6 @@
   (:command
    (&optional __command)
    (if __command (setq _command __command)) _command)
-  (:clear_encoder
-   (&optional (__clear_encoder :null))
-   (if (not (eq __clear_encoder :null)) (setq _clear_encoder __clear_encoder)) _clear_encoder)
   (:serialization-length
    ()
    (+
@@ -50,8 +45,6 @@
     ;; int8 _PWM_Right
     1
     ;; int8 _command
-    1
-    ;; bool _clear_encoder
     1
     ))
   (:serialize
@@ -64,8 +57,6 @@
        (write-byte _PWM_Right s)
      ;; int8 _command
        (write-byte _command s)
-     ;; bool _clear_encoder
-       (if _clear_encoder (write-byte -1 s) (write-byte 0 s))
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -79,23 +70,20 @@
    ;; int8 _command
      (setq _command (sys::peek buf ptr- :char)) (incf ptr- 1)
      (if (> _command 127) (setq _command (- _command 256)))
-   ;; bool _clear_encoder
-     (setq _clear_encoder (not (= 0 (sys::peek buf ptr- :char)))) (incf ptr- 1)
    ;;
    self)
   )
 
-(setf (get common_msgs_pkg::serial_data :md5sum-) "23aa005a44d993632cdb1134fc156a3a")
+(setf (get common_msgs_pkg::serial_data :md5sum-) "55d8902ce6b1a26e186815e49dac35e0")
 (setf (get common_msgs_pkg::serial_data :datatype-) "common_msgs_pkg/serial_data")
 (setf (get common_msgs_pkg::serial_data :definition-)
       "int8 PWM_Left
 int8 PWM_Right
 int8 command
-bool clear_encoder
 ")
 
 
 
-(provide :common_msgs_pkg/serial_data "23aa005a44d993632cdb1134fc156a3a")
+(provide :common_msgs_pkg/serial_data "55d8902ce6b1a26e186815e49dac35e0")
 
 

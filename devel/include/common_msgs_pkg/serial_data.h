@@ -26,14 +26,12 @@ struct serial_data_
   serial_data_()
     : PWM_Left(0)
     , PWM_Right(0)
-    , command(0)
-    , clear_encoder(false)  {
+    , command(0)  {
     }
   serial_data_(const ContainerAllocator& _alloc)
     : PWM_Left(0)
     , PWM_Right(0)
-    , command(0)
-    , clear_encoder(false)  {
+    , command(0)  {
   (void)_alloc;
     }
 
@@ -47,9 +45,6 @@ struct serial_data_
 
    typedef int8_t _command_type;
   _command_type command;
-
-   typedef uint8_t _clear_encoder_type;
-  _clear_encoder_type clear_encoder;
 
 
 
@@ -82,8 +77,7 @@ bool operator==(const ::common_msgs_pkg::serial_data_<ContainerAllocator1> & lhs
 {
   return lhs.PWM_Left == rhs.PWM_Left &&
     lhs.PWM_Right == rhs.PWM_Right &&
-    lhs.command == rhs.command &&
-    lhs.clear_encoder == rhs.clear_encoder;
+    lhs.command == rhs.command;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -140,12 +134,12 @@ struct MD5Sum< ::common_msgs_pkg::serial_data_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "23aa005a44d993632cdb1134fc156a3a";
+    return "55d8902ce6b1a26e186815e49dac35e0";
   }
 
   static const char* value(const ::common_msgs_pkg::serial_data_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x23aa005a44d99363ULL;
-  static const uint64_t static_value2 = 0x2cdb1134fc156a3aULL;
+  static const uint64_t static_value1 = 0x55d8902ce6b1a26eULL;
+  static const uint64_t static_value2 = 0x186815e49dac35e0ULL;
 };
 
 template<class ContainerAllocator>
@@ -167,7 +161,6 @@ struct Definition< ::common_msgs_pkg::serial_data_<ContainerAllocator> >
     return "int8 PWM_Left\n"
 "int8 PWM_Right\n"
 "int8 command\n"
-"bool clear_encoder\n"
 ;
   }
 
@@ -189,7 +182,6 @@ namespace serialization
       stream.next(m.PWM_Left);
       stream.next(m.PWM_Right);
       stream.next(m.command);
-      stream.next(m.clear_encoder);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -220,10 +212,6 @@ struct Printer< ::common_msgs_pkg::serial_data_<ContainerAllocator> >
       s << std::endl;
     s << indent << "command: ";
     Printer<int8_t>::stream(s, indent + "  ", v.command);
-    if (true || !indent.empty())
-      s << std::endl;
-    s << indent << "clear_encoder: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.clear_encoder);
   }
 };
 
