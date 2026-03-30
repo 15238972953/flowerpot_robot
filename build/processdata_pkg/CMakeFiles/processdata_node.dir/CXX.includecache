@@ -164,11 +164,9 @@ opencv2/opencv.hpp
 iostream
 -
 
-/home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.cpp
+/home/jetson/catkin_ws/src/processdata_pkg/src/main.cpp
 processdata_node.h
 /home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.h
-utility
--
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h

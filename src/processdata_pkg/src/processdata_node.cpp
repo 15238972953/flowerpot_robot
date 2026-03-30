@@ -125,7 +125,7 @@ void ProcessDataNode::yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_ms
 // 获取相机数据
 void ProcessDataNode::cameradata_Callback(const yolo11_pkg::array::ConstPtr& camera_msg)
 {
-    tmp_camera_points.clear();
+    camera_points.clear();
     for(const auto& camera_data: camera_msg->array){
         float x = camera_data.x;
         float y = camera_data.y;
@@ -134,44 +134,27 @@ void ProcessDataNode::cameradata_Callback(const yolo11_pkg::array::ConstPtr& cam
         // ROS_INFO("Received camera:%.3f,%.3f",r,theta_rad);
         // ROS_INFO("Received xycamera:%.3f,%.3f",x,y);
 
-        tmp_camera_points.emplace_back(x,y);
+        camera_points.emplace_back(x,y);
     }
 }
 
 // 获取雷达数据，并与相机数据做数据关联与融合
 void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& radar_msg)
 {
+    radar_points.clear();
     for(const auto& radar_data: radar_msg->array){
         float x = -radar_data.r * 100 * std::sin(radar_data.phi);  // 计算x坐标
         float y = radar_data.r * 100 * std::cos(radar_data.phi);  // 计算y坐标
         // ROS_INFO("Received radar:%.3f,%.3f",radar_data.r,radar_data.phi);
-        // ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
+        ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
 
         radar_points.emplace_back(x,y);
     }
-    camera_points = tmp_camera_points;
-    
-    // ROS_INFO("Matchs:%lu ,%lu",camera_points.size(),radar_points.size());
-    if(camera_points.size() > 0 && radar_points.size() > 0) {
-        // 进行数据关联
-        auto matched_pairs = associatePoints(radar_points, camera_points, 15);  // 最大匹配距离为10
 
-        for (const auto& pair : matched_pairs) {
-            camera_matchs.emplace_back(pair.first.toVector2d());
-            radar_matchs.emplace_back(pair.second.toVector2d());
-        }
-        
-        //将雷达数据与相机数据进行融合
-        fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
-        Point target_pot = selectClosestPot(convert(fused_matchs));
-        kf.Kalman_process(target_pot);
-        ROS_INFO("target_pot:x = %.3f, y = %.3f",target_pot.x, target_pot.y);
+    // ROS_INFO("Matchs:%lu ,%lu",camera_points.size(),radar_points.size());
+    
 
         // 发布花盆坐标
-        std_msgs::Float64MultiArray pot_coords_msg;
-        pot_coords_msg.data.push_back(target_pot.x);
-        pot_coords_msg.data.push_back(target_pot.y);
-        pot_coords_pub.publish(pot_coords_msg);
         // for (auto match:fused_matchs)
         // {
         //     ROS_INFO("fused_matchs:%.3f,%.3f",match[0],match[1]);
@@ -211,9 +194,4 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         //     // 不处理花盆位置
         //     return;
         // }
-        
-            
-    }
-    camera_points.clear();
-    radar_points.clear();
 }

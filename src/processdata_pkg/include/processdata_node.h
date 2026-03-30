@@ -45,7 +45,6 @@ private:
 
     // 存储最新数据
     std::vector<Point> camera_points;
-    std::vector<Point> tmp_camera_points;
     std::vector<Point> radar_points;
 
     std::vector<Eigen::Vector2d> camera_matchs, radar_matchs;  //保存匹配后的数据
@@ -60,6 +59,9 @@ private:
     float yaw_angle; // 记录当前的yaw角度
     int extend_Y; // 用于存储延长后的y坐标
     float encoder_diatance = 0.0; // 记录编码器的距离
+
+    Point camera_pot;   // 相机当前坐标点
+    Point target_pot;   // 存储融合后的目标点
 
     // // 抓取命令
     // const int COMMAND_GRASP = 0x03;  // 抓取指令
