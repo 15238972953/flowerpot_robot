@@ -31,7 +31,7 @@ private:
     // void trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg);
     void yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg);
     // int extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg);
-    void encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg);
+    // void encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg);
 
 private:
     ros::NodeHandle nh;
@@ -41,7 +41,7 @@ private:
     // ros::Publisher serial_data_pub;
     ros::Publisher pot_coords_pub;      // 发布花盆坐标的发布者
     ros::Subscriber yaw_processed_sub; 
-    ros::Subscriber encoder_processed_sub;
+    // ros::Subscriber encoder_processed_sub;
 
     // 存储最新数据
     std::vector<Point> camera_points;

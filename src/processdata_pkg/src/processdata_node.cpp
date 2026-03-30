@@ -16,7 +16,7 @@ ProcessDataNode::ProcessDataNode() {
     camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameradata_Callback, this);
     // track_processed_sub = nh.subscribe("track_msg", 1000, &ProcessDataNode::trackdata_Callback, this);
     yaw_processed_sub = nh.subscribe("yaw_angle", 1000, &ProcessDataNode::yawdata_Callback, this);
-    encoder_processed_sub = nh.subscribe("encoder_msg", 1000, &ProcessDataNode::encoderdata_Callback, this);
+    // encoder_processed_sub = nh.subscribe("encoder_msg", 1000, &ProcessDataNode::encoderdata_Callback, this);
     // //初始化发布者
     // serial_data_pub = nh.advertise<common_msgs_pkg::serial_data>("serial_data", 1000);
     pot_coords_pub = nh.advertise<std_msgs::Float64MultiArray>("pot_coords", 1000);
@@ -40,12 +40,12 @@ Point ProcessDataNode::selectClosestPot(const std::vector<Point>& pots) {
     return closest;
 }
 
-void ProcessDataNode::encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg)
-{
-    float left_distance = encoder_msg->left_distance;  // 左轮编码器数据
-    float right_distance = encoder_msg->right_distance;  // 右轮编码器数据
-    encoder_diatance = (left_distance + right_distance) / 2.0;
-}
+// void ProcessDataNode::encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg)
+// {
+//     float left_distance = encoder_msg->left_distance;  // 左轮编码器数据
+//     float right_distance = encoder_msg->right_distance;  // 右轮编码器数据
+//     encoder_diatance = (left_distance + right_distance) / 2.0;
+// }
 
 void ProcessDataNode::yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg) 
 {
@@ -145,7 +145,7 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         float x = -radar_data.r * 100 * std::sin(radar_data.phi);  // 计算x坐标
         float y = radar_data.r * 100 * std::cos(radar_data.phi);  // 计算y坐标
         // ROS_INFO("Received radar:%.3f,%.3f",radar_data.r,radar_data.phi);
-        // ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
+        ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
 
         radar_points.emplace_back(x,y);
     }
