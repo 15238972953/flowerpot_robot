@@ -145,24 +145,27 @@ void ProcessDataNode::radardata_Callback(const radar_msgs::array::ConstPtr& rada
         float x = -radar_data.r * 100 * std::sin(radar_data.phi);  // 计算x坐标
         float y = radar_data.r * 100 * std::cos(radar_data.phi);  // 计算y坐标
         // ROS_INFO("Received radar:%.3f,%.3f",radar_data.r,radar_data.phi);
-        ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
+        // ROS_INFO("Received xyradar:%.3f,%.3f",x,y);
 
         radar_points.emplace_back(x,y);
     }
     camera_points = tmp_camera_points;
+    
     // ROS_INFO("Matchs:%lu ,%lu",camera_points.size(),radar_points.size());
     if(camera_points.size() > 0 && radar_points.size() > 0) {
         // 进行数据关联
-        auto matched_pairs = associatePoints(radar_points, camera_points, 10);  // 最大匹配距离为10
+        auto matched_pairs = associatePoints(radar_points, camera_points, 15);  // 最大匹配距离为10
 
         for (const auto& pair : matched_pairs) {
             camera_matchs.emplace_back(pair.first.toVector2d());
             radar_matchs.emplace_back(pair.second.toVector2d());
         }
+        
         //将雷达数据与相机数据进行融合
         fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
         Point target_pot = selectClosestPot(convert(fused_matchs));
         kf.Kalman_process(target_pot);
+        ROS_INFO("target_pot:x = %.3f, y = %.3f",target_pot.x, target_pot.y);
 
         // 发布花盆坐标
         std_msgs::Float64MultiArray pot_coords_msg;

@@ -17,26 +17,51 @@ HungarianAlgorithm::HungarianAlgorithm(const std::vector<std::vector<float>>& co
 }
 
 std::vector<int> HungarianAlgorithm::solve() {
-    std::vector<int> assignment(N, -1);  // 初始化为-1表示未匹配
+    std::vector<int> assignment(N, -1);
 
     if (N == 0 || M == 0) {
         return assignment;
     }
 
-    for (int i = 1; i <= N; ++i) {
+    // 对于非方阵的情况，需要进行调整
+    int n = std::max(N, M);  // 使用最大维度
+    
+    // 重新调整 u, v, p, way 的大小
+    u.assign(n + 1, 0);
+    v.assign(n + 1, 0);
+    p.assign(n + 1, 0);
+    way.assign(n + 1, 0);
+    
+    // 创建扩展的成本矩阵（填充大值）
+    std::vector<std::vector<float>> extended_cost(n, std::vector<float>(n, std::numeric_limits<float>::max()));
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            extended_cost[i][j] = cost[i][j];
+        }
+    }
+
+    for (int i = 1; i <= n; ++i) {
         p[0] = i;
         int j0 = 0;
-        std::vector<float> minv(M + 1, std::numeric_limits<float>::max());
-        std::vector<bool> used(M + 1, false);
+        std::vector<float> minv(n + 1, std::numeric_limits<float>::max());
+        std::vector<bool> used(n + 1, false);
+        
+        int iteration_count = 0;
+        int max_iterations = n * 2;  // 防止无限循环
 
         do {
+            if (++iteration_count > max_iterations) {
+                // 防止死循环
+                break;
+            }
+            
             used[j0] = true;
-            int i0 = p[j0], j1;
+            int i0 = p[j0], j1 = 0;
             float delta = std::numeric_limits<float>::max();
 
-            for (int j = 1; j <= M; ++j) {
+            for (int j = 1; j <= n; ++j) {
                 if (!used[j]) {
-                    float cur = cost[i0 - 1][j - 1] - u[i0] - v[j];
+                    float cur = extended_cost[i0 - 1][j - 1] - u[i0] - v[j];
                     if (cur < minv[j]) {
                         minv[j] = cur;
                         way[j] = j0;
@@ -48,7 +73,7 @@ std::vector<int> HungarianAlgorithm::solve() {
                 }
             }
 
-            for (int j = 0; j <= M; ++j) {
+            for (int j = 0; j <= n; ++j) {
                 if (used[j]) {
                     u[p[j]] += delta;
                     v[j] -= delta;
@@ -58,8 +83,20 @@ std::vector<int> HungarianAlgorithm::solve() {
             }
 
             j0 = j1;
-        } while (p[j0] != 0);
+            
+            // 添加安全检查
+            if (j0 < 0 || j0 > n) {
+                break;
+            }
+            
+        } while (p[j0] != 0 && iteration_count <= max_iterations);
+        
+        if (iteration_count > max_iterations) {
+            // 如果达到最大迭代次数，跳出循环
+            break;
+        }
 
+        // 修改增广路径
         do {
             int j1 = way[j0];
             p[j0] = p[j1];
@@ -67,8 +104,9 @@ std::vector<int> HungarianAlgorithm::solve() {
         } while (j0 != 0);
     }
 
+    // 构建匹配结果，只考虑实际存在的点
     for (int j = 1; j <= M; ++j) {
-        if (p[j] != 0) {
+        if (p[j] != 0 && p[j] - 1 < N) {
             assignment[p[j] - 1] = j - 1;
         }
     }

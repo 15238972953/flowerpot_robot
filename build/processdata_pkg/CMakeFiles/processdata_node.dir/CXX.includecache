@@ -164,14 +164,6 @@ opencv2/opencv.hpp
 iostream
 -
 
-/home/jetson/catkin_ws/src/processdata_pkg/src/KalmanFilter_filter.cpp
-KalmanFilter_filter.h
-/home/jetson/catkin_ws/src/processdata_pkg/src/KalmanFilter_filter.h
-
-/home/jetson/catkin_ws/src/processdata_pkg/src/main.cpp
-processdata_node.h
-/home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.h
-
 /home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.cpp
 processdata_node.h
 /home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.h
