@@ -17,8 +17,14 @@ catkin_ws ————工作空间
     |     |--- serial_stm32_pkg/                 # 给stm32下发命令 
     |     |--- tracking_pkg/                     # 识别边界线导航
 	|     |--- yolo11_pkg/                       # 相机视觉识别调用部分代码
+	|     |--- decision_making_pkg/              # 总决策功能包
+	|     |--- GPS_pkg/                          # GPS功能包
+	|     |--- path_planner_pkg/                 # 路径规划功能包
+	|     |--- PotBot_HMI/                       # HMI交互界面
+	|     |---system_monitor/                    # 系统监控
 	|     |--- CMakeLists.txt                    # 配置编译规则
     |     |--- radar_note.txt                    # 部分命令记录
+	|——— run.sh                                  # 一键启动
 ```
 
 
@@ -102,7 +108,7 @@ radar和yolo11发布节点，process_data中订阅节点并处理
 ```bash
 1、stm32 --> jetson orin nano  
 消息包格式：[帧头] [左编码器] [右编码器] [状态位] [校验位]
-所占字节数： (1)      (4)       (4)      (1)      (1)
+所占字节数： (1)      (1)       (1)      (1)      (1)
 其中，状态位：[(是否记录GPS)|(是否完成抓取)|(是否完成摆放)]用后三位表示，即：00000111  
 2、jetson orin nano --> stm32
 消息包格式：[帧头] [左PWM] [右PWM] [机械臂指令] [校验位]  
