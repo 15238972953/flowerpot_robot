@@ -9,6 +9,7 @@ void ProcessDataNode::run() {
         #if ONLY_CAMERA==1
             if(camera_points.size() > 0) {
                 target_pot = selectClosestPot(camera_points);
+                kf.Kalman_process(target_pot);
             }
 
         #else
@@ -25,7 +26,7 @@ void ProcessDataNode::run() {
                 //将雷达数据与相机数据进行融合
                 fused_matchs = fuser.fusePositions(camera_matchs, radar_matchs);
                 target_pot = selectClosestPot(convert(fused_matchs));
-                // kf.Kalman_process(target_pot);
+                kf.Kalman_process(target_pot);
                 ROS_INFO("target_pot:x = %.3f, y = %.3f",target_pot.x, target_pot.y);
 
                 radar_matchs.clear();

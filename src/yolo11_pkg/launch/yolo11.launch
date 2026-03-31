@@ -1,0 +1,11 @@
+<!-- YOLO11节点 -->
+<launch>
+    <node
+        pkg = "yolo11_pkg"
+        type = "onnx.py"
+        name = "yolo11_node"
+        output = "screen"
+        respawn = "true">
+        <args="--show false">   
+    </node>
+</launch>

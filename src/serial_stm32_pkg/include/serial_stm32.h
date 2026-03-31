@@ -11,8 +11,7 @@
 #include <common_msgs_pkg/encoder.h>
 #include <std_msgs/Bool.h>
 
-// #define FRAME_SIZE 10
-#define FRAME_SIZE 11     // 11字节：增加一个记录GPS信息的标志位
+#define FRAME_SIZE 5  
 #define HEADER_BYTE 0x55
 
 #define ONLY_ENCODER 1

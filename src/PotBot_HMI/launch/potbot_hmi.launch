@@ -1,0 +1,10 @@
+<!-- PotBot_HMI节点 -->
+<launch>
+    <node
+        pkg = "PotBot_HMI"
+        type = "potbot_hmi_node"
+        name = "potbot_hmi_node"
+        output = "screen"
+        respawn = "true">
+    </node>
+</launch>

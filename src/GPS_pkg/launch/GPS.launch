@@ -1,0 +1,10 @@
+<!-- GPS节点 -->
+<launch>
+    <node
+        pkg = "GPS_pkg"
+        type = "GPS_pkg_node"
+        name = "gps_node"
+        output = "screen"
+        respawn = "true">
+    </node>
+</launch>

@@ -42,7 +42,7 @@ DecisionMaking::~DecisionMaking() {}
 // 处理接收到的GPS数据
 void DecisionMaking::gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg) {
     if (msg->data.size() < 4) {
-        ROS_WARN("GPS数据格式错误");
+        ROS_WARN("GPS data error!");
         return;
     }
     
@@ -55,13 +55,13 @@ void DecisionMaking::gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& ms
             ref_lat_ = lat;
             ref_lon_ = lon;
             ref_initialized = true;
-            ROS_INFO("参考点已设置: (%.8f, %.8f)", ref_lat_, ref_lon_);
+            ROS_INFO("The reference point has been set: (%.8f, %.8f)", ref_lat_, ref_lon_);
         }else if(recorded_points_.size() < required_points_){ 
             nh_.getParam("/robot/gps_flag", gps_flag);
             if(gps_flag == true) { 
                 double time_since_last = (ros::Time::now() - last_record_time_).toSec();
                 if(time_since_last < record_interval_) {
-                    ROS_WARN("记录间隔未到，忽略当前点");
+                    ROS_WARN("If the recording interval has not arrived, ignore the current point");
                     return;
                 }
                 // 计算目标区域的方向角(以左上角和右上角计算)
@@ -84,7 +84,7 @@ bool DecisionMaking::configstartCallback(decision_making_pkg::StartTransport::Re
     // 验证参数
     if (req.placement_spacing < 0.2 || req.placement_spacing > 2.0) {
         res.success = false;
-        res.message = "摆放间距必须在0.2-2.0米之间";
+        res.message = "The placement spacing must be between 0.2 and 2.0 meters";
         return true;
     }
     
@@ -94,28 +94,28 @@ bool DecisionMaking::configstartCallback(decision_making_pkg::StartTransport::Re
                          PlacementType::TRIANGULAR_PLACEMENT;
     pot_placement_spacing = req.placement_spacing;
     
-    ROS_INFO("收到配置: 摆放方式=%s, 间距=%.2f米", 
-             req.placement_type == 0 ? "网格" : "三角",
+    ROS_INFO("Received configuration: Placement method=%s, Spacing=%.2fm", 
+             req.placement_type == 0 ? "Grid" : "Triangle",
              pot_placement_spacing);
     
     // 如果需要立即开始
     if (req.start) {
-        ROS_INFO("开始搬运任务");
+        ROS_INFO("Start the moving task");
         current_state = TaskState::MOVING_TO_PICKUP;
     }else {
         current_state = TaskState::WAITING_START;
-        ROS_INFO("配置已设置，等待开始信号");
+        ROS_INFO("The configuration has been set. Wait for the start signal");
     }
     
     res.success = true;
-    res.message = "配置成功";
+    res.message = "Configuration successful";
     return true;
 }
 
 // 处理待抓取花盆坐标参数更新
 void DecisionMaking::potCoordsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg) {
     if (msg->data.size() % 2 != 0) {
-        ROS_WARN("花盆坐标数据格式错误");
+        ROS_WARN("The format of the flowerpot coordinate data is incorrect");
         return;
     }
     current_pot_coordinate = Point2D(msg->data[0]/100.0, msg->data[1]/100.0);  // 将坐标从厘米转换为米
@@ -124,26 +124,26 @@ void DecisionMaking::potCoordsCallback(const std_msgs::Float64MultiArray::ConstP
 // 处理接收到的yaw数据
 void DecisionMaking::yawCallback(const std_msgs::Float32::ConstPtr& yaw_msg) {
     current_PosePoint_.yaw = yaw_msg->data;
-    ROS_DEBUG("航向角更新: %.2f°", current_PosePoint_.yaw);
+    ROS_DEBUG("Heading Angle update: %.2f°", current_PosePoint_.yaw);
 }
 
 // 处理接收到的抓取完成状态
 void DecisionMaking::graspedStatusCallback(const std_msgs::Bool::ConstPtr& msg) {
     grasped_status = msg->data;
-    ROS_INFO("抓取完成状态更新: %s", grasped_status ? "已完成" : "未完成");
+    ROS_INFO("Update the status after the capture is completed: %s", grasped_status ? "Completed" : "Unfinished");
 }
 
 // 处理接收到的释放完成状态
 void DecisionMaking::releasedStatusCallback(const std_msgs::Bool::ConstPtr& msg) {
     released_status = msg->data;
-    ROS_INFO("释放完成状态更新: %s", released_status ? "已完成" : "未完成");
+    ROS_INFO("Release the completion status update: %s", released_status ? "Completed" : "Unfinished");
 }
 
 // 划定目标区域
 void DecisionMaking::recordCurrentPosition(const Point2D& point) {
     // 检查是否已经记录了足够的点
     if (recorded_points_.size() > required_points_) {
-        ROS_WARN("已记录%d个点，忽略新点", (int)recorded_points_.size());
+        ROS_WARN("have been recorded%dpoints,Ignore the new points", (int)recorded_points_.size());
         return;
     }else if(recorded_points_.size() == required_points_) {    
         // 根据四个点的坐标计算每个花盆的摆放坐标
@@ -154,7 +154,7 @@ void DecisionMaking::recordCurrentPosition(const Point2D& point) {
         recorded_points_.push_back(point);
         last_record_time_ = ros::Time::now();
         
-        ROS_INFO("记录点 %d/%d: (%.8f, %.8f)",
+        ROS_INFO("Record point %d/%d: (%.8f, %.8f)",
                 (int)recorded_points_.size(), required_points_,
                 point.x, point.y);
     }
@@ -170,7 +170,7 @@ void DecisionMaking::calculatePotsMatrix(const std::vector<Point2D>& recorded_po
                                                   double pot_placement_spacing,
                                                   PlacementType placement_type) {
     if (recorded_points.size() != 4) {
-        ROS_ERROR("需要4个点定义矩形，当前: %zu", recorded_points.size());
+        ROS_ERROR("Four points are needed to define a rectangle at present: %zu", recorded_points.size());
         return;
     }
     
@@ -185,7 +185,7 @@ void DecisionMaking::calculatePotsMatrix(const std::vector<Point2D>& recorded_po
     double height = (distance(bottom_left, top_left) 
                     + distance(bottom_right, top_right)) / 2.0; // 取左右边平均高度
     
-    ROS_INFO("矩形: 宽=%.2fm, 高=%.2fm, 间距=%.2fm", width, height, pot_placement_spacing);
+    ROS_INFO("Rectangle: wide=%.2fm, high=%.2fm, spacing=%.2fm", width, height, pot_placement_spacing);
     
     // 计算方向向量
     Point2D x_dir((bottom_right.x - bottom_left.x) / width,
@@ -215,7 +215,7 @@ void DecisionMaking::calculatePotsMatrix(const std::vector<Point2D>& recorded_po
             }
             target_pots_matrix_.push_back(row_pots);
         }
-        ROS_INFO("网格摆放: %d行 x %d列", rows, cols);
+        ROS_INFO("Grid placement: %drows x %dcols", rows, cols);
         
     } else if (placement_type == PlacementType::TRIANGULAR_PLACEMENT) {
         // 三角错位摆放
@@ -245,13 +245,13 @@ void DecisionMaking::calculatePotsMatrix(const std::vector<Point2D>& recorded_po
                 target_pots_matrix_.push_back(row_pots);
             }
         }
-        ROS_INFO("三角摆放: %d行", rows);
+        ROS_INFO("Triangular placement: %drows", rows);
     }
     
     for (const auto& row : target_pots_matrix_) {
         total_targets += row.size();
     }
-    ROS_INFO("共生成 %d 个花盆", total_targets);
+    ROS_INFO("total generate %d flowerpots", total_targets);
 }
 
 // 获取当前要摆放的目标点
@@ -259,7 +259,7 @@ Point2D DecisionMaking::getCurrentTargetPoint() {
     if (current_target_index >= total_targets) {
         // 所有花盆已搬运完成
         current_state = TaskState::TASK_COMPLETE;
-        ROS_INFO("所有花盆已搬运完成，共 %d 个", total_targets);
+        ROS_INFO("All the flowerpots have been moved, total %d pots", total_targets);
         return Point2D(0, 0);  // 返回原点或无效点
     }
     
@@ -274,7 +274,7 @@ Point2D DecisionMaking::getCurrentTargetPoint() {
         row = current_target_index / cols_per_row;
         col = current_target_index % cols_per_row;
         
-        ROS_DEBUG("网格摆放: 索引=%d, 行=%d, 列=%d", current_target_index, row, col);
+        ROS_DEBUG("Grid placement: index=%d, row=%d, col=%d", current_target_index, row, col);
         
     } else if (pot_placement_type_ == PlacementType::TRIANGULAR_PLACEMENT) {
         // 三角摆放：每行列数可能不同，需要遍历查找
@@ -291,13 +291,13 @@ Point2D DecisionMaking::getCurrentTargetPoint() {
             cumulative_count += cols_in_row;
         }
         
-        ROS_DEBUG("三角摆放: 索引=%d, 行=%d, 列=%d", current_target_index, row, col);
+        ROS_DEBUG("Triangular placement: index=%d, row=%d, col=%d", current_target_index, row, col);
     }
     
     // 边界检查
     if (row >= (int)target_pots_matrix_.size() || 
         col >= (int)target_pots_matrix_[row].size()) {
-        ROS_ERROR("索引越界: 索引=%d, 行=%d, 列=%d, 总行数=%zu, 当前行列数=%zu",
+        ROS_ERROR("Index out-of-bounds: index=%d, row=%d, col=%d, Total number of rows=%zu, Current number of rows and columns=%zu",
                   current_target_index, row, col, 
                   target_pots_matrix_.size(), 
                   target_pots_matrix_[row].size());
@@ -331,7 +331,7 @@ void DecisionMaking::WAITING_START_State() {
     serial_msg.PWM_Right = 0;
     serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
     target_point_ = current_PosePoint_.point; // 以当前位姿作为取花点
-    ROS_INFO("等待中...");
+    ROS_INFO("Waiting...");
 }
 
 // 移动到取花点
@@ -343,7 +343,7 @@ void DecisionMaking::MOVING_TO_PICKUP_State() {
         serial_msg.PWM_Right = PWM_Motor.PWM_Right;
         serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
     } else {
-        ROS_INFO("已到达摆放点，准备摆放花盆");
+        ROS_INFO("Arrived at placement point, ready to place flower pots.");
         current_state = TaskState::PICKING_UP; // 进入取花状态
     }
 }
@@ -361,7 +361,7 @@ void DecisionMaking::PICKING_UP_State() {
         serial_msg.command = COMMAND_GRASP;  // 发送抓取指令
     }
     if(grasped_status) {
-        ROS_INFO("抓取完成，准备移动到摆放点");
+        ROS_INFO("Grasping completed, moving to placement point.");
         current_state = TaskState::MOVING_TO_PLACE;
         grasped_status = false; // 重置状态
     }
@@ -382,12 +382,12 @@ void DecisionMaking::MOVING_TO_PLACE_State() {
             serial_msg.PWM_Left = angular_pwm.PWM_Left;
             serial_msg.PWM_Right = angular_pwm.PWM_Right;
             serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
-            ROS_INFO("调整角度中...");
+            ROS_INFO("Adjusting angle…");
         } else {
              serial_msg.PWM_Left = 0;
              serial_msg.PWM_Right = 0;
              serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
-            ROS_INFO("已到达摆放点，准备摆放花盆");
+            ROS_INFO("Arrived at placement point, ready to place flower pots.");
             current_state = TaskState::PLACING;
         }
     }
@@ -395,17 +395,17 @@ void DecisionMaking::MOVING_TO_PLACE_State() {
 
 // 摆放花盆
 void DecisionMaking::PLACING_State() {
-    ROS_INFO("摆放花盆中...");
+    ROS_INFO("Placing flower pot…");
 
     // 实现摆放
     serial_msg.command = COMMAND_RELEASE;  // 发送释放指令
     if(released_status) {
-        ROS_INFO("摆放完成");
+        ROS_INFO("Placement completed.");
         current_state = TaskState::MOVING_TO_PICKUP; // 返回等待下一个取花点的状态
         released_status = false; // 重置状态
     }
 
-    ROS_INFO("第 %d 个花盆摆放完成", current_target_index + 1);
+    ROS_INFO("Flower pot No. %d placed successfully.", current_target_index + 1);
 
     // 移动到下一个花盆
     current_target_index++;
@@ -417,7 +417,7 @@ void DecisionMaking::TASK_COMPLETE_State() {
     serial_msg.PWM_Left = 0;
     serial_msg.PWM_Right = 0;
     serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
-    ROS_INFO("所有花盆搬运完成！");
+    ROS_INFO("All flower pots transported successfully!");
 }
 
 // 主循环
@@ -425,44 +425,48 @@ void DecisionMaking::run() {
     ros::Rate rate(10);
     
     current_state = TaskState::WAITING_START;
-    
+    bool flag =true;
     while (ros::ok()) {
         ros::spinOnce();
         count_msg.data = current_target_index;
         transported_pot_count_pub.publish(count_msg);  // 发布已搬运花盆数量
         
         // 状态机
-        switch (current_state) {
-            // 等待开始信号,在点击开始按钮时机器人需要放在待抓取花盆区域（即需要能看到花盆）
-            case TaskState::WAITING_START:
-                WAITING_START_State();
-                break;
+        // switch (current_state) {
+        //     // 等待开始信号,在点击开始按钮时机器人需要放在待抓取花盆区域（即需要能看到花盆）
+        //     case TaskState::WAITING_START:
+        //         WAITING_START_State();
+        //         break;
 
-            // 移动到取花点
-            case TaskState::MOVING_TO_PICKUP:
-                MOVING_TO_PICKUP_State();
-                break;
+        //     // 移动到取花点
+        //     case TaskState::MOVING_TO_PICKUP:
+        //         MOVING_TO_PICKUP_State();
+        //         break;
             
-            // 取花中
-            case TaskState::PICKING_UP:
-                PICKING_UP_State();
-                break;
+        //     // 取花中
+        //     case TaskState::PICKING_UP:
+        //         PICKING_UP_State();
+        //         break;
             
-            // 移动到摆放点
-            case TaskState::MOVING_TO_PLACE:
-                MOVING_TO_PLACE_State();
-                break;
+        //     // 移动到摆放点
+        //     case TaskState::MOVING_TO_PLACE:
+        //         MOVING_TO_PLACE_State();
+        //         break;
             
-            // 摆放花盆
-            case TaskState::PLACING:
-                PLACING_State();
-                break;
+        //     // 摆放花盆
+        //     case TaskState::PLACING:
+        //         PLACING_State();
+        //         break;
             
-            // 任务完成
-            case TaskState::TASK_COMPLETE:
-                TASK_COMPLETE_State();
-                break;
-        }
+        //     // 任务完成
+        //     case TaskState::TASK_COMPLETE:
+        //         TASK_COMPLETE_State();
+        //         break;
+        // }
+        serial_msg.PWM_Left = 0;
+        serial_msg.PWM_Right = 0;
+        serial_msg.command = COMMAND_GRASP;
+
         serial_data_pub.publish(serial_msg);
         rate.sleep();
     }

@@ -196,21 +196,21 @@ void SerialCommNode::ReceiveData() {
                     // 验证校验和
                     if (checksum == buffer[FRAME_SIZE - 1]) {
                         // 解析数据
-                        int32_t data1 = *reinterpret_cast<int32_t*>(&buffer[1]);
-                        left_speed_ = static_cast<double>(data1)/10000.0;
-                        int32_t data2 = *reinterpret_cast<int32_t*>(&buffer[5]);
-                        right_speed_ = static_cast<double>(data2)/10000.0;
+                        int8_t data1 = buffer[1];
+                        left_speed_ = data1;
+                        int8_t data2 = buffer[2];
+                        right_speed_ = data2;
                         updateOdometry();
 
                         // GPS记录标志位参数服务器更新
-                        if(buffer[9] & RECORD_GPS) {
+                        if(buffer[3] & RECORD_GPS) {
                             nh_.setParam("/robot/gps_flag", true);   // 设置GPS标志位为true，表示可以记录GPS信息
                         }else {
                             nh_.setParam("/robot/gps_flag", false);  // 设置GPS标志位为false，表示不记录GPS信息
                         }
 
                         // 抓取完成标志位话题发布
-                        if(buffer[9] & IF_GRASPED) {
+                        if(buffer[3] & IF_GRASPED) {
                             grasped_msg.data = true;
                         } else {
                             grasped_msg.data = false;
@@ -218,7 +218,7 @@ void SerialCommNode::ReceiveData() {
                         grasped_pub.publish(grasped_msg);
 
                         // 释放完成标志位话题发布
-                        if(buffer[9] & IF_RELEASED) {
+                        if(buffer[3] & IF_RELEASED) {
                             released_msg.data = true;
                         }else{
                             released_msg.data = false;

@@ -9,6 +9,7 @@
 #include <sensor_msgs/Imu.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2/LinearMath/Matrix3x3.h>
+#include <deque>
 
 #define ONLY_YAW 1
 
@@ -26,6 +27,8 @@ public:
     void run();
 
 private:
+    void readData();
+    void parseFrame(const std::vector<uint8_t>& frame);
     /**
      * @brief 初始化串口
      * @return 初始化是否成功
@@ -35,7 +38,6 @@ private:
     /**
      * @brief 读取并处理串口数据
      */
-    void readData();
 
     ros::NodeHandle nh_;            // ROS节点句柄
     ros::NodeHandle private_nh_;    // 私有节点句柄(用于获取参数)
@@ -51,6 +53,7 @@ private:
     bool is_serial_connected_;      // 串口连接状态
     static constexpr uint8_t FRAME_HEADER = 0x55;  // 数据帧头
     sensor_msgs::Imu imu;
+    std::deque<uint8_t> buffer_;
 };
 
 #endif // MY_SERIAL_COMMUNICATION_SERIAL_READER_H

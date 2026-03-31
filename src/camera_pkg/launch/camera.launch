@@ -1,0 +1,10 @@
+<!-- 相机节点 -->
+<launch>
+    <node 
+        pkg = "camera_pkg"
+        type = "camera_pkg_node"
+        name = "camera_node"
+        output = "log"
+        respawn = "true">
+    </node>
+</launch>

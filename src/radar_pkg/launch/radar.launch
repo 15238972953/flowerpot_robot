@@ -1,0 +1,10 @@
+<!-- 点云拟合节点 -->
+<launch>
+    <node
+        pkg = "radar_pkg"
+        type = "PointCloudFitting_node.py"
+        name = "PointCloudFitting_node"
+        output = "log"
+        respawn = "true">
+    </node>
+</launch>

@@ -1,0 +1,10 @@
+<!-- 决策节点 -->
+<launch>
+    <node 
+        pkg = "decision_making_pkg"
+        type = "decision_making_pkg_node"
+        name = "decision_making_node"
+        output = "log"
+        respawn = "true">
+    </node>
+</launch>

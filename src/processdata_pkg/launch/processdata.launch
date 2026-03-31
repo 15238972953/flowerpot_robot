@@ -1,0 +1,10 @@
+<!-- 融合处理节点 -->
+<launch>
+    <node
+        pkg = "processdata_pkg"
+        type = "processdata_node"
+        name = "processdata_node"
+        output = "log"
+        respawn = "true">
+    </node>
+</launch>

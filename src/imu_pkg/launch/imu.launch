@@ -1,0 +1,10 @@
+<!-- IMU节点 -->
+<launch>
+    <node
+        pkg = "imu_pkg"
+        type = "imu_node"
+        name = "imu_node"
+        output = "screen"
+        respawn = "true">
+    </node>
+</launch>

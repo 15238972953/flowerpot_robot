@@ -1,0 +1,10 @@
+<!-- 系统监控节点 -->
+<launch>
+    <node
+        pkg = "system_monitor"
+        type = "system_monitor_node"
+        name = "node_monitor"
+        output = "log"
+        respawn = "true">
+    </node>
+</launch>

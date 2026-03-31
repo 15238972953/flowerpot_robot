@@ -1,0 +1,12 @@
+<!-- 串口通信节点 -->
+<launch>
+    <node
+        pkg="serial_stm32_pkg" 
+        type="serial_stm32_node" 
+        name="serial_stm32_node"
+        output="log"
+        respawn="true">
+        <param name="port" type="string" value="/dev/ttyTHS0" />
+        <param name="baud_rate" type="int" value="115200" />
+    </node>
+</launch>

@@ -66,6 +66,9 @@ void NodeMonitor::checkNodes(const ros::TimerEvent& event) {
             ROS_INFO("Waiting for nodes: %d/%d", 
                      (int)(required_nodes_.size() - missing_nodes.size()),
                      (int)required_nodes_.size());
+            for(const auto& node_ : missing_nodes){
+                ROS_ERROR("missing_node:%s", node_.c_str());
+            }
         }
     }
     
