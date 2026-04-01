@@ -7,6 +7,6 @@
         output="log"
         respawn="true">
         <param name="port" type="string" value="/dev/ttyTHS0" />
-        <param name="baud_rate" type="int" value="115200" />
+        <param name="baud_rate" type="int" value="9600" />
     </node>
 </launch>

@@ -6,6 +6,6 @@
         name = "yolo11_node"
         output = "screen"
         respawn = "true">
-        <args="--show false">   
+        <param name="show" value="false"/>  
     </node>
 </launch>

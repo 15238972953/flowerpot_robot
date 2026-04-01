@@ -77,8 +77,6 @@ private:
     ros::Subscriber gps_sub_;
     ros::Subscriber pot_coords_sub_; // 订阅花盆坐标的订阅者
     ros::Subscriber yaw_sub_;       // 订阅偏航角（从IMU获取）
-    ros::Subscriber grasped_pub_;   // 订阅抓取完成标志位
-    ros::Subscriber released_pub_;  // 订阅释放完成标志位
     // 发布者
     ros::Publisher serial_data_pub;
     ros::Publisher transported_pot_count_pub;  // 发布已搬运花盆数量
@@ -111,8 +109,13 @@ private:
     static Point target_area_top_right; // 目标区域右上角坐标（相对于参考点的平面坐标）
     double target_area_bearing;          // 两点连线的方向角（弧度）
 
-    // 状态变量
-    std::vector<Point2D> recorded_points_; // 已记录的GPS点
+    // 已记录的GPS点
+    std::vector<Point2D> recorded_points_={
+        (0.5, -0.26),
+        (-0.05, 0.86),
+        (3, -3.4),
+        (-3.1, -2)
+    }; 
     ros::Time last_record_time_;           // 上次记录时间
     bool gps_flag;                        // GPS标志位（从参数服务器读取）
 
@@ -153,8 +156,6 @@ private:
     void gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg);
     void potCoordsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg);
     void yawCallback(const std_msgs::Float32::ConstPtr& msg);
-    void graspedStatusCallback(const std_msgs::Bool::ConstPtr& msg);
-    void releasedStatusCallback(const std_msgs::Bool::ConstPtr& msg);
 
     // 划定目标区域记录点
     void recordCurrentPosition(const Point2D& point);

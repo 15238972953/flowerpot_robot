@@ -1,0 +1,132 @@
+[
+{
+  "directory": "/home/jetson/catkin_ws/build/gtest/googlemock",
+  "command": "/usr/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -isystem /usr/src/googletest/googlemock/include -isystem /usr/src/googletest/googlemock -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest  -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -DGTEST_HAS_PTHREAD=1 -std=c++11 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /usr/src/googletest/googlemock/src/gmock_main.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/gtest/googlemock",
+  "command": "/usr/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest  -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -DGTEST_HAS_PTHREAD=1 -std=c++11 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/gtest/googletest",
+  "command": "/usr/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_main_EXPORTS -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest  -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -DGTEST_HAS_PTHREAD=1 -std=c++11 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /usr/src/googletest/googletest/src/gtest_main.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/gtest/googletest",
+  "command": "/usr/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest  -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/GPS_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"GPS_pkg\\\" -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp    -o CMakeFiles/GPS_pkg_node.dir/src/GPSData.cpp.o -c /home/jetson/catkin_ws/src/GPS_pkg/src/GPSData.cpp",
+  "file": "/home/jetson/catkin_ws/src/GPS_pkg/src/GPSData.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/decision_making_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"decision_making_pkg\\\" -I/home/jetson/catkin_ws/devel/include -I/home/jetson/catkin_ws/src/decision_making_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp    -o CMakeFiles/decision_making_pkg_node.dir/src/pid_controller.cpp.o -c /home/jetson/catkin_ws/src/decision_making_pkg/src/pid_controller.cpp",
+  "file": "/home/jetson/catkin_ws/src/decision_making_pkg/src/pid_controller.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/decision_making_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"decision_making_pkg\\\" -I/home/jetson/catkin_ws/devel/include -I/home/jetson/catkin_ws/src/decision_making_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp    -o CMakeFiles/decision_making_pkg_node.dir/src/decision_making.cpp.o -c /home/jetson/catkin_ws/src/decision_making_pkg/src/decision_making.cpp",
+  "file": "/home/jetson/catkin_ws/src/decision_making_pkg/src/decision_making.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/PotBot_HMI",
+  "command": "/usr/bin/c++  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"PotBot_HMI\\\" -I/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/include -I/home/jetson/catkin_ws/src/PotBot_HMI/include -I/home/jetson/catkin_ws/devel/include -I/home/jetson/catkin_ws/src/decision_making_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -isystem /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++    -fPIC -o CMakeFiles/potbot_hmi_node.dir/potbot_hmi_node_autogen/mocs_compilation.cpp.o -c /home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/mocs_compilation.cpp",
+  "file": "/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/mocs_compilation.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/PotBot_HMI",
+  "command": "/usr/bin/c++  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"PotBot_HMI\\\" -I/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/include -I/home/jetson/catkin_ws/src/PotBot_HMI/include -I/home/jetson/catkin_ws/devel/include -I/home/jetson/catkin_ws/src/decision_making_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -isystem /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++    -fPIC -o CMakeFiles/potbot_hmi_node.dir/src/main.cpp.o -c /home/jetson/catkin_ws/src/PotBot_HMI/src/main.cpp",
+  "file": "/home/jetson/catkin_ws/src/PotBot_HMI/src/main.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/PotBot_HMI",
+  "command": "/usr/bin/c++  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"PotBot_HMI\\\" -I/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/include -I/home/jetson/catkin_ws/src/PotBot_HMI/include -I/home/jetson/catkin_ws/devel/include -I/home/jetson/catkin_ws/src/decision_making_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -isystem /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++    -fPIC -o CMakeFiles/potbot_hmi_node.dir/src/mainwindow.cpp.o -c /home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.cpp",
+  "file": "/home/jetson/catkin_ws/src/PotBot_HMI/src/mainwindow.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/PotBot_HMI",
+  "command": "/usr/bin/c++  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"PotBot_HMI\\\" -I/home/jetson/catkin_ws/build/PotBot_HMI/potbot_hmi_node_autogen/include -I/home/jetson/catkin_ws/src/PotBot_HMI/include -I/home/jetson/catkin_ws/devel/include -I/home/jetson/catkin_ws/src/decision_making_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/aarch64-linux-gnu/qt5 -isystem /usr/include/aarch64-linux-gnu/qt5/QtWidgets -isystem /usr/include/aarch64-linux-gnu/qt5/QtGui -isystem /usr/include/aarch64-linux-gnu/qt5/QtCore -isystem /usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++    -fPIC -o CMakeFiles/potbot_hmi_node.dir/src/ros_interface.cpp.o -c /home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.cpp",
+  "file": "/home/jetson/catkin_ws/src/PotBot_HMI/src/ros_interface.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/processdata_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"processdata_pkg\\\" -I/home/jetson/catkin_ws/src/processdata_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /usr/include/opencv4    -o CMakeFiles/processdata_node.dir/src/processdata_node.cpp.o -c /home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.cpp",
+  "file": "/home/jetson/catkin_ws/src/processdata_pkg/src/processdata_node.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/processdata_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"processdata_pkg\\\" -I/home/jetson/catkin_ws/src/processdata_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /usr/include/opencv4    -o CMakeFiles/processdata_node.dir/src/HungarianAlgorithm.cpp.o -c /home/jetson/catkin_ws/src/processdata_pkg/src/HungarianAlgorithm.cpp",
+  "file": "/home/jetson/catkin_ws/src/processdata_pkg/src/HungarianAlgorithm.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/processdata_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"processdata_pkg\\\" -I/home/jetson/catkin_ws/src/processdata_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /usr/include/opencv4    -o CMakeFiles/processdata_node.dir/src/KalmanFilter_fusion.cpp.o -c /home/jetson/catkin_ws/src/processdata_pkg/src/KalmanFilter_fusion.cpp",
+  "file": "/home/jetson/catkin_ws/src/processdata_pkg/src/KalmanFilter_fusion.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/processdata_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"processdata_pkg\\\" -I/home/jetson/catkin_ws/src/processdata_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /usr/include/opencv4    -o CMakeFiles/processdata_node.dir/src/KalmanFilter_filter.cpp.o -c /home/jetson/catkin_ws/src/processdata_pkg/src/KalmanFilter_filter.cpp",
+  "file": "/home/jetson/catkin_ws/src/processdata_pkg/src/KalmanFilter_filter.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/processdata_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"processdata_pkg\\\" -I/home/jetson/catkin_ws/src/processdata_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /usr/include/opencv4    -o CMakeFiles/processdata_node.dir/src/track_transform.cpp.o -c /home/jetson/catkin_ws/src/processdata_pkg/src/track_transform.cpp",
+  "file": "/home/jetson/catkin_ws/src/processdata_pkg/src/track_transform.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/processdata_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"processdata_pkg\\\" -I/home/jetson/catkin_ws/src/processdata_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /usr/include/opencv4    -o CMakeFiles/processdata_node.dir/src/main.cpp.o -c /home/jetson/catkin_ws/src/processdata_pkg/src/main.cpp",
+  "file": "/home/jetson/catkin_ws/src/processdata_pkg/src/main.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/processdata_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"processdata_pkg\\\" -I/home/jetson/catkin_ws/src/processdata_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /usr/include/opencv4    -o CMakeFiles/processdata_node.dir/src/save_file.cpp.o -c /home/jetson/catkin_ws/src/processdata_pkg/src/save_file.cpp",
+  "file": "/home/jetson/catkin_ws/src/processdata_pkg/src/save_file.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/system_monitor",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"system_monitor\\\" -I/home/jetson/catkin_ws/src/system_monitor/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp    -o CMakeFiles/system_monitor_node.dir/src/node_monitor.cpp.o -c /home/jetson/catkin_ws/src/system_monitor/src/node_monitor.cpp",
+  "file": "/home/jetson/catkin_ws/src/system_monitor/src/node_monitor.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/camera_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"camera_pkg\\\" -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/home/jetson/catkin_ws/src/camera_pkg/opencv_calib3d -I/home/jetson/catkin_ws/src/camera_pkg/opencv_core -I/home/jetson/catkin_ws/src/camera_pkg/opencv_dnn -I/home/jetson/catkin_ws/src/camera_pkg/opencv_features2d -I/home/jetson/catkin_ws/src/camera_pkg/opencv_flann -I/home/jetson/catkin_ws/src/camera_pkg/opencv_gapi -I/home/jetson/catkin_ws/src/camera_pkg/opencv_highgui -I/home/jetson/catkin_ws/src/camera_pkg/opencv_imgcodecs -I/home/jetson/catkin_ws/src/camera_pkg/opencv_imgproc -I/home/jetson/catkin_ws/src/camera_pkg/opencv_ml -I/home/jetson/catkin_ws/src/camera_pkg/opencv_objdetect -I/home/jetson/catkin_ws/src/camera_pkg/opencv_photo -I/home/jetson/catkin_ws/src/camera_pkg/opencv_stitching -I/home/jetson/catkin_ws/src/camera_pkg/opencv_video -I/home/jetson/catkin_ws/src/camera_pkg/opencv_videoio -isystem /usr/include/opencv4    -o CMakeFiles/camera_pkg_node.dir/src/camera.cpp.o -c /home/jetson/catkin_ws/src/camera_pkg/src/camera.cpp",
+  "file": "/home/jetson/catkin_ws/src/camera_pkg/src/camera.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/imu_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"imu_pkg\\\" -I/home/jetson/catkin_ws/src/imu_pkg/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/boost    -o CMakeFiles/imu_node.dir/src/imu_node.cpp.o -c /home/jetson/catkin_ws/src/imu_pkg/src/imu_node.cpp",
+  "file": "/home/jetson/catkin_ws/src/imu_pkg/src/imu_node.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/serial_stm32_pkg",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"serial_stm32_pkg\\\" -I/home/jetson/catkin_ws/src/serial_stm32_pkg/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp    -o CMakeFiles/serial_stm32_node.dir/src/serial_stm32.cpp.o -c /home/jetson/catkin_ws/src/serial_stm32_pkg/src/serial_stm32.cpp",
+  "file": "/home/jetson/catkin_ws/src/serial_stm32_pkg/src/serial_stm32.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/lsx10/lslidar_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"lslidar_driver\\\" -I/home/jetson/catkin_ws/src/lsx10/lslidar_driver/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.10 -I/usr/include/vtk-7.1 -I/usr/include/freetype2    -std=c++14 -std=gnu++14 -o CMakeFiles/lslidar_driver_node.dir/src/lslidar_driver_node.cc.o -c /home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/lslidar_driver_node.cc",
+  "file": "/home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/lslidar_driver_node.cc"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/lsx10/lslidar_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"lslidar_driver\\\" -Dlslidar_serial_EXPORTS -I/home/jetson/catkin_ws/src/lsx10/lslidar_driver/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.10 -I/usr/include/vtk-7.1 -I/usr/include/freetype2  -fPIC   -std=c++14 -std=gnu++14 -o CMakeFiles/lslidar_serial.dir/src/lsiosr.cpp.o -c /home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/lsiosr.cpp",
+  "file": "/home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/lsiosr.cpp"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/lsx10/lslidar_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"lslidar_driver\\\" -Dlslidar_input_EXPORTS -I/home/jetson/catkin_ws/src/lsx10/lslidar_driver/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.10 -I/usr/include/vtk-7.1 -I/usr/include/freetype2  -fPIC   -std=c++14 -std=gnu++14 -o CMakeFiles/lslidar_input.dir/src/input.cc.o -c /home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/input.cc",
+  "file": "/home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/input.cc"
+},
+{
+  "directory": "/home/jetson/catkin_ws/build/lsx10/lslidar_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"lslidar_driver\\\" -Dlslidar_driver_EXPORTS -I/home/jetson/catkin_ws/src/lsx10/lslidar_driver/include -I/home/jetson/catkin_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.10 -I/usr/include/vtk-7.1 -I/usr/include/freetype2  -fPIC   -std=c++14 -std=gnu++14 -o CMakeFiles/lslidar_driver.dir/src/lslidar_driver.cc.o -c /home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/lslidar_driver.cc",
+  "file": "/home/jetson/catkin_ws/src/lsx10/lslidar_driver/src/lslidar_driver.cc"
+}
+]

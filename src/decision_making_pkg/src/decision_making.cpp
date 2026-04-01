@@ -24,10 +24,6 @@ DecisionMaking::DecisionMaking() : nh_(""), pnh_("~"),
     pot_coords_sub_ = nh_.subscribe("/pot_coords", 10, &DecisionMaking::potCoordsCallback, this);
     // 订阅偏航角（从IMU获取）
     yaw_sub_ = nh_.subscribe("/yaw_angle", 10, &DecisionMaking::yawCallback, this);
-    // 订阅抓取完成标志位
-    grasped_pub_ = nh_.subscribe("/grasped_status", 10, &DecisionMaking::graspedStatusCallback, this);
-    // 订阅释放完成标志位
-    released_pub_ = nh_.subscribe("/released_status", 10, &DecisionMaking::releasedStatusCallback, this);
     // 创建Service服务器
     config_start_service_ = nh_.advertiseService("/start_transport", 
                                               &DecisionMaking::configstartCallback, 
@@ -41,7 +37,7 @@ DecisionMaking::~DecisionMaking() {}
 
 // 处理接收到的GPS数据
 void DecisionMaking::gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& msg) {
-    if (msg->data.size() < 4) {
+    if (msg->data.size() < required_points_) {
         ROS_WARN("GPS data error!");
         return;
     }
@@ -56,7 +52,7 @@ void DecisionMaking::gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& ms
             ref_lon_ = lon;
             ref_initialized = true;
             ROS_INFO("The reference point has been set: (%.8f, %.8f)", ref_lat_, ref_lon_);
-        }else if(recorded_points_.size() < required_points_){ 
+        }else if(recorded_points_.size() < 4){ 
             nh_.getParam("/robot/gps_flag", gps_flag);
             if(gps_flag == true) { 
                 double time_since_last = (ros::Time::now() - last_record_time_).toSec();
@@ -67,11 +63,12 @@ void DecisionMaking::gpsCallback(const std_msgs::Float64MultiArray::ConstPtr& ms
                 // 计算目标区域的方向角(以左上角和右上角计算)
                 target_area_top_left = recorded_points_.size() == 0 ? Point(lat, lon) : target_area_top_left;
                 target_area_top_right = recorded_points_.size() == 1 ? Point(lat, lon) : target_area_top_right;
-                target_area_bearing = calculatePerpendicularBearing(target_area_top_left, target_area_top_right);  
+                target_area_bearing = calculatePerpendicularBearing(target_area_top_left, target_area_top_right); 
 
                 Point2D current_point = Point2D::latlon_To_xy(lat, lon, ref_lat_, ref_lon_);
                 recordCurrentPosition(current_point);
-                gps_flag = false; // 记录完当前点后将GPS标志位重置为false，等待下一次触发
+                ROS_INFO("Have Recorded %d point", recorded_points_.size());
+                nh_.setParam("/robot/gps_flag", false); // 记录完当前点后将GPS标志位重置为false，等待下一次触发
             }
         }else {
             current_PosePoint_.point = Point2D::latlon_To_xy(lat, lon, ref_lat_, ref_lon_);
@@ -101,7 +98,7 @@ bool DecisionMaking::configstartCallback(decision_making_pkg::StartTransport::Re
     // 如果需要立即开始
     if (req.start) {
         ROS_INFO("Start the moving task");
-        current_state = TaskState::MOVING_TO_PICKUP;
+        current_state = TaskState::PICKING_UP;
     }else {
         current_state = TaskState::WAITING_START;
         ROS_INFO("The configuration has been set. Wait for the start signal");
@@ -127,26 +124,17 @@ void DecisionMaking::yawCallback(const std_msgs::Float32::ConstPtr& yaw_msg) {
     ROS_DEBUG("Heading Angle update: %.2f°", current_PosePoint_.yaw);
 }
 
-// 处理接收到的抓取完成状态
-void DecisionMaking::graspedStatusCallback(const std_msgs::Bool::ConstPtr& msg) {
-    grasped_status = msg->data;
-    ROS_INFO("Update the status after the capture is completed: %s", grasped_status ? "Completed" : "Unfinished");
-}
-
-// 处理接收到的释放完成状态
-void DecisionMaking::releasedStatusCallback(const std_msgs::Bool::ConstPtr& msg) {
-    released_status = msg->data;
-    ROS_INFO("Release the completion status update: %s", released_status ? "Completed" : "Unfinished");
-}
-
 // 划定目标区域
 void DecisionMaking::recordCurrentPosition(const Point2D& point) {
     // 检查是否已经记录了足够的点
     if (recorded_points_.size() > required_points_) {
-        ROS_WARN("have been recorded%dpoints,Ignore the new points", (int)recorded_points_.size());
+        ROS_WARN("have been recorded %d points,Ignore the new points", (int)recorded_points_.size());
         return;
     }else if(recorded_points_.size() == required_points_) {    
         // 根据四个点的坐标计算每个花盆的摆放坐标
+        for(const auto& point_: recorded_points_) {
+            ROS_INFO("Point.x=%.2f, Point.y=%.2f",point_.x,point_.y);
+        }
         calculatePotsMatrix(recorded_points_, pot_placement_spacing, pot_placement_type_);
         return;
     } else {
@@ -327,15 +315,16 @@ double DecisionMaking::calculatePerpendicularBearing(const Point& p1, const Poin
 
 // 等待开始信号
 void DecisionMaking::WAITING_START_State() {
+    ROS_INFO("Waiting...");
     serial_msg.PWM_Left = 0;
     serial_msg.PWM_Right = 0;
     serial_msg.command = COMMAND_COMMON;   // 发送正常状态指令
-    target_point_ = current_PosePoint_.point; // 以当前位姿作为取花点
-    ROS_INFO("Waiting...");
+    target_point_ = current_PosePoint_.point; // 以当前位姿作为取花点 
 }
 
 // 移动到取花点
 void DecisionMaking::MOVING_TO_PICKUP_State() {
+    ROS_INFO("MOVING_TO_PICKUP...");
     target_point_ = Start_Point_;  
     if (distance(current_PosePoint_.point, target_point_) > 0.1) {
         PWM PWM_Motor = calculatePWM(current_PosePoint_, target_point_);
@@ -350,7 +339,9 @@ void DecisionMaking::MOVING_TO_PICKUP_State() {
 
 // 取花中
 void DecisionMaking::PICKING_UP_State() {
+    ROS_INFO("PICKING_UP...");
     if (current_pot_coordinate.y > GPS_TO_POTPOINT_DISTANCE + 0.1) {
+        ROS_INFO("current_pot_coordinate.y=%.2f", current_pot_coordinate.y);
         PWM PWM_Motor = calculatePWM_linear(current_pot_coordinate, 
                             Point2D(0.0, Lidar_TO_POTPOINT_DISTANCE));  // 以取花点为坐标原点，计算当前花盆坐标的PWM值
         serial_msg.PWM_Left = PWM_Motor.PWM_Left;
@@ -360,15 +351,17 @@ void DecisionMaking::PICKING_UP_State() {
         serial_msg.PWM_Right = 0;
         serial_msg.command = COMMAND_GRASP;  // 发送抓取指令
     }
+    nh_.getParam("/robot/grasped", grasped_status);
     if(grasped_status) {
         ROS_INFO("Grasping completed, moving to placement point.");
         current_state = TaskState::MOVING_TO_PLACE;
-        grasped_status = false; // 重置状态
+        nh_.setParam("/robot/grasped", false);
     }
 }
 
 // 移动到摆放点
 void DecisionMaking::MOVING_TO_PLACE_State() {
+    ROS_INFO("MOVING_TO_PLACE...");
     target_point_ = getCurrentTargetPoint();  
     if (distance(current_PosePoint_.point, target_point_) > 0.1) {
         PWM PWM_Motor = calculatePWM(current_PosePoint_, target_point_);
@@ -399,10 +392,11 @@ void DecisionMaking::PLACING_State() {
 
     // 实现摆放
     serial_msg.command = COMMAND_RELEASE;  // 发送释放指令
+    nh_.getParam("/robot/released", released_status);
     if(released_status) {
         ROS_INFO("Placement completed.");
         current_state = TaskState::MOVING_TO_PICKUP; // 返回等待下一个取花点的状态
-        released_status = false; // 重置状态
+        nh_.setParam("/robot/released", false);
     }
 
     ROS_INFO("Flower pot No. %d placed successfully.", current_target_index + 1);
@@ -424,48 +418,44 @@ void DecisionMaking::TASK_COMPLETE_State() {
 void DecisionMaking::run() {
     ros::Rate rate(10);
     
-    current_state = TaskState::WAITING_START;
-    bool flag =true;
+    current_state = TaskState::MOVING_TO_PLACE;
     while (ros::ok()) {
         ros::spinOnce();
         count_msg.data = current_target_index;
         transported_pot_count_pub.publish(count_msg);  // 发布已搬运花盆数量
         
         // 状态机
-        // switch (current_state) {
-        //     // 等待开始信号,在点击开始按钮时机器人需要放在待抓取花盆区域（即需要能看到花盆）
-        //     case TaskState::WAITING_START:
-        //         WAITING_START_State();
-        //         break;
+        switch (current_state) {
+            // 等待开始信号,在点击开始按钮时机器人需要放在待抓取花盆区域（即需要能看到花盆）
+            case TaskState::WAITING_START:
+                WAITING_START_State();
+                break;
 
-        //     // 移动到取花点
-        //     case TaskState::MOVING_TO_PICKUP:
-        //         MOVING_TO_PICKUP_State();
-        //         break;
+            // 移动到取花点
+            case TaskState::MOVING_TO_PICKUP:
+                MOVING_TO_PICKUP_State();
+                break;
             
-        //     // 取花中
-        //     case TaskState::PICKING_UP:
-        //         PICKING_UP_State();
-        //         break;
+            // 取花中
+            case TaskState::PICKING_UP:
+                PICKING_UP_State();
+                break;
             
-        //     // 移动到摆放点
-        //     case TaskState::MOVING_TO_PLACE:
-        //         MOVING_TO_PLACE_State();
-        //         break;
+            // 移动到摆放点
+            case TaskState::MOVING_TO_PLACE:
+                MOVING_TO_PLACE_State();
+                break;
             
-        //     // 摆放花盆
-        //     case TaskState::PLACING:
-        //         PLACING_State();
-        //         break;
+            // 摆放花盆
+            case TaskState::PLACING:
+                PLACING_State();
+                break;
             
-        //     // 任务完成
-        //     case TaskState::TASK_COMPLETE:
-        //         TASK_COMPLETE_State();
-        //         break;
-        // }
-        serial_msg.PWM_Left = 0;
-        serial_msg.PWM_Right = 0;
-        serial_msg.command = COMMAND_GRASP;
+            // 任务完成
+            case TaskState::TASK_COMPLETE:
+                TASK_COMPLETE_State();
+                break;
+        }
 
         serial_data_pub.publish(serial_msg);
         rate.sleep();

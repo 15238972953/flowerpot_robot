@@ -128,18 +128,18 @@
     
     /* 信息行样式 */
     QFrame#InfoRow1, QFrame#InfoRow2, QFrame#InfoRow3,
-    QFrame#HardwareRow1, QFrame#HardwareRow2, QFrame#HardwareRow3, QFrame#HardwareRow4 {
+    QFrame#HardwareRow1, QFrame#HardwareRow2, QFrame#HardwareRow3 {
         background-color: transparent;
         min-height: 45px;
     }
     QLabel#labelVersion, QLabel#labelAuthor, QLabel#labelBuild,
-    QLabel#labelPlatform, QLabel#labelOperatingSystem, QLabel#labelMotor, QLabel#labelSensor {
+    QLabel#labelPlatform, QLabel#labelOperatingSystem, QLabel#labelSensor {
         font-size: 18px;
         color: #7F8C8D;
         min-width: 120px;
     }
     QLabel#VersionValue, QLabel#AuthorValue, QLabel#BuildValue,
-    QLabel#PlatformValue, QLabel#OperatingSystemValue, QLabel#MotorValue, QLabel#SensorValue {
+    QLabel#PlatformValue, QLabel#OperatingSystemValue, QLabel#SensorValue {
         font-size: 20px;
         color: #2C3E50;
         font-weight: bold;
@@ -880,7 +880,7 @@
                </widget>
               </item>
               
-              <!-- 右侧列 - 硬件信息 -->
+              <!-- 右侧列 - 硬件信息 (仅三行) -->
               <item>
                <widget class="QFrame" name="HardwareCard">
                 <layout class="QVBoxLayout" name="hardwareCardLayout">
@@ -971,27 +971,6 @@
                    <item>
                     <widget class="QFrame" name="HardwareRow3">
                      <layout class="QHBoxLayout" name="hardwareRow3Layout">
-                      <item>
-                       <widget class="QLabel" name="labelMotor">
-                        <property name="text">
-                         <string>电机配置：</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="MotorValue">
-                        <property name="text">
-                         <string>直流无刷电机×4</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                   
-                   <item>
-                    <widget class="QFrame" name="HardwareRow4">
-                     <layout class="QHBoxLayout" name="hardwareRow4Layout">
                       <item>
                        <widget class="QLabel" name="labelSensor">
                         <property name="text">

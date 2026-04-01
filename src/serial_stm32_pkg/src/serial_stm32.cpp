@@ -8,7 +8,7 @@ SerialCommNode::SerialCommNode() {
     // 从参数服务器获取串口配置参数
     ros::NodeHandle private_nh("~");
     private_nh.param<std::string>("port", port_, "/dev/ttyTHS0");
-    private_nh.param("baud_rate", baud_rate_, 115200);
+    private_nh.param("baud_rate", baud_rate_, 9600);
     
     // 订阅serial_data话题，用于接收要发送给STM32的数据
     serial_data_sub_ = nh_.subscribe<common_msgs_pkg::serial_data>(
@@ -17,8 +17,6 @@ SerialCommNode::SerialCommNode() {
     // 发布标准里程计
     #ifdef ONLY_ENCODER
         encoder_pub_ = nh_.advertise<common_msgs_pkg::encoder>("encoder_msg", 50);
-        grasped_pub = nh_.advertise<std_msgs::Bool>("grasped_status", 10);
-        released_pub = nh_.advertise<std_msgs::Bool>("released_status", 10);
     #else
         odom_pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
     #endif
@@ -157,93 +155,89 @@ void SerialCommNode::updateOdometry() {
 
 
 void SerialCommNode::ReceiveData() {
-        ros::Rate rate(10); // 10Hz
-        uint8_t buffer[FRAME_SIZE];
-        size_t bytes_read = 0;
-        
-        while (ros::ok()) {
-            // 清空缓冲区并尝试读取
-            serial_.flushInput();
-            // 尝试读取一帧数据
-            try {
-                bytes_read = serial_.read(buffer, FRAME_SIZE);
-            } catch (serial::IOException& e) {
-                ROS_ERROR_STREAM("Serial read error: " << e.what());
-                continue;
-            }
-            
-            // 检查是否收到完整帧
-            if (bytes_read == FRAME_SIZE) {
-                // 打印接收数据
-                // std::stringstream ss;
-                // ss << "Received bytes:";
-                // for (int i = 0; i < FRAME_SIZE; ++i) {
-                //     ss << " 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
-                // }
-                // ROS_INFO("%s", ss.str().c_str());
-                // int32_t data1 = *reinterpret_cast<int32_t*>(&buffer[1]);
-                // ROS_INFO("Left  Speed: %.4f m/s", static_cast<float>(data1/10000.0));
-                // int32_t data2 = *reinterpret_cast<int32_t*>(&buffer[5]);
-                // ROS_INFO("right Speed: %.4f m/s", static_cast<float>(data2/10000.0));
-
-                // 验证帧头
-                if (buffer[0] == HEADER_BYTE) {
-                    // 计算校验和
-                    uint8_t checksum = 0;
-                    for (int i = 0; i < FRAME_SIZE - 1; i++) {
-                        checksum += buffer[i];
-                    }
-                    // 验证校验和
-                    if (checksum == buffer[FRAME_SIZE - 1]) {
-                        // 解析数据
-                        int8_t data1 = buffer[1];
-                        left_speed_ = data1;
-                        int8_t data2 = buffer[2];
-                        right_speed_ = data2;
-                        updateOdometry();
-
-                        // GPS记录标志位参数服务器更新
-                        if(buffer[3] & RECORD_GPS) {
-                            nh_.setParam("/robot/gps_flag", true);   // 设置GPS标志位为true，表示可以记录GPS信息
-                        }else {
-                            nh_.setParam("/robot/gps_flag", false);  // 设置GPS标志位为false，表示不记录GPS信息
-                        }
-
-                        // 抓取完成标志位话题发布
-                        if(buffer[3] & IF_GRASPED) {
-                            grasped_msg.data = true;
-                        } else {
-                            grasped_msg.data = false;
-                        }
-                        grasped_pub.publish(grasped_msg);
-
-                        // 释放完成标志位话题发布
-                        if(buffer[3] & IF_RELEASED) {
-                            released_msg.data = true;
-                        }else{
-                            released_msg.data = false;
-                        }
-                        released_pub.publish(released_msg);
-
-                        // ROS_INFO("Received data: Encoder_Left=%f, Encoder_Right=%f", 
-                        //         left_speed_, right_speed_);
-                    } else {
-                        ROS_WARN("Checksum error: expected 0x%02X, got 0x%02X", 
-                                checksum, buffer[FRAME_SIZE - 1]);
-                    }
-                } else {
-                    ROS_WARN("Invalid header: 0x%02X (expected 0x%02X)", 
-                            buffer[0], HEADER_BYTE);
-                }
-            } else if (bytes_read > 0) {
-                ROS_WARN("Incomplete frame: received %zu bytes (expected %d)", 
-                        bytes_read, FRAME_SIZE);
-            }
-            
-            ros::spinOnce();
-            rate.sleep();
+    ros::Rate rate(100); // 100Hz   可以优化一下，使用异步读取 + 环形缓冲区
+    uint8_t buffer[FRAME_SIZE];
+    size_t bytes_read = 0;
+    
+    while (ros::ok()) {
+        // 清空缓冲区并尝试读取
+        // serial_.flushInput();
+        // 尝试读取一帧数据
+        try {
+            bytes_read = serial_.read(buffer, FRAME_SIZE);
+        } catch (serial::IOException& e) {
+            ROS_ERROR_STREAM("Serial read error: " << e.what());
+            continue;
         }
+        
+        // 检查是否收到完整帧
+        if (bytes_read == FRAME_SIZE) {
+            // 打印接收数据
+            // std::stringstream ss;
+            // ss << "Received bytes:";
+            // for (int i = 0; i < FRAME_SIZE; ++i) {
+            //     ss << " 0x" << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]);
+            // }
+            // ROS_INFO("%s", ss.str().c_str());
+            // int32_t data1 = *reinterpret_cast<int32_t*>(&buffer[1]);
+            // ROS_INFO("Left  Speed: %.4f m/s", static_cast<float>(data1/10000.0));
+            // int32_t data2 = *reinterpret_cast<int32_t*>(&buffer[5]);
+            // ROS_INFO("right Speed: %.4f m/s", static_cast<float>(data2/10000.0));
+
+            // 验证帧头
+            if (buffer[0] == HEADER_BYTE) {
+                // 计算校验和
+                uint8_t checksum = 0;
+                for (int i = 0; i < FRAME_SIZE - 1; i++) {
+                    checksum += buffer[i];
+                }
+                // 验证校验和
+                if (checksum == buffer[FRAME_SIZE - 1]) {
+                    // ROS_INFO("get true zhen");
+                    // 解析数据
+                    int8_t data1 = buffer[1];
+                    left_speed_ = data1;
+                    int8_t data2 = buffer[2];
+                    right_speed_ = data2;
+                    updateOdometry();
+                    // ROS_INFO("buffer[3]=%d!", buffer[3]);
+                    // GPS记录标志位参数服务器更新
+                    if(buffer[3] & RECORD_GPS) {
+                        ROS_INFO("Get gps_flag!");
+                        nh_.setParam("/robot/gps_flag", true);   // 设置GPS标志位为true，表示可以记录GPS信息
+                    }
+
+                    // 抓取完成标志位话题发布
+                    if(buffer[3] & IF_GRASPED) {
+                        ROS_INFO("Get grasped_status!");
+                        nh_.setParam("/robot/grasped", true);
+                    }
+
+                    // 释放完成标志位话题发布
+                    if(buffer[3] & IF_RELEASED) {
+                        ROS_INFO("Get released_status!");
+                        nh_.setParam("/robot/released", true);
+                    }
+
+                    // ROS_INFO("Received data: Encoder_Left=%f, Encoder_Right=%f", 
+                    //         left_speed_, right_speed_);
+                } else {
+                    ROS_WARN("Checksum error: expected 0x%02X, got 0x%02X", 
+                            checksum, buffer[FRAME_SIZE - 1]);
+                }
+            } else {
+                ROS_WARN("Invalid header: 0x%02X (expected 0x%02X)", 
+                        buffer[0], HEADER_BYTE);
+            }
+        } else if (bytes_read > 0) {
+            ROS_WARN("Incomplete frame: received %zu bytes (expected %d)", 
+                    bytes_read, FRAME_SIZE);
+        }
+        
+        ros::spinOnce();
+        rate.sleep();
     }
+}
 
 //CRC校验：CRC4多项式 x^4 + x + 1 (0x3)
 // uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high) {

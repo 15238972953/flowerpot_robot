@@ -16,10 +16,10 @@
 #include "std_msgs/Float32.h" 
 #include <common_msgs_pkg/encoder.h>
 #include <std_msgs/Float64MultiArray.h>
+#include "save_file.h"
+
 
 class ProcessDataNode {
-public:
-
 public:
     ProcessDataNode();
     void run();   // 主循环
@@ -29,7 +29,7 @@ private:
     void radardata_Callback(const radar_msgs::array::ConstPtr& radar_msg);
     Point selectClosestPot(const std::vector<Point>& pots);
     // void trackdata_Callback(const tracking_pkg::track::ConstPtr& track_msg);
-    void yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg);
+    // void yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg);
     // int extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg);
     // void encoderdata_Callback(const common_msgs_pkg::encoder::ConstPtr& encoder_msg);
 
@@ -40,7 +40,7 @@ private:
     // ros::Subscriber track_processed_sub;
     // ros::Publisher serial_data_pub;
     ros::Publisher pot_coords_pub;      // 发布花盆坐标的发布者
-    ros::Subscriber yaw_processed_sub; 
+    // ros::Subscriber yaw_processed_sub; 
     // ros::Subscriber encoder_processed_sub;
 
     // 存储最新数据
@@ -56,9 +56,9 @@ private:
 
     PerspectiveTransformer transformer;
 
-    float yaw_angle; // 记录当前的yaw角度
-    int extend_Y; // 用于存储延长后的y坐标
-    float encoder_diatance = 0.0; // 记录编码器的距离
+    // float yaw_angle; // 记录当前的yaw角度
+    // int extend_Y; // 用于存储延长后的y坐标
+    // float encoder_diatance = 0.0; // 记录编码器的距离
 
     Point camera_pot;   // 相机当前坐标点
     Point target_pot;   // 存储融合后的目标点
@@ -67,6 +67,8 @@ private:
     // const int COMMAND_GRASP = 0x03;  // 抓取指令
     // const int COMMAND_RELEASE = 0x04; // 释放指令
     // const int COMMAND_COMMON = 0x05;  // 平常指令
+
+    Point filtered_pos; // 存储滤波后的坐标
 };
 
 std::vector<Point> convert(const std::vector<Eigen::Vector2d> eigenVectors);

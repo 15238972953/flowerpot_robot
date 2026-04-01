@@ -75,9 +75,9 @@ roslaunch processdata_pkg processdata.launch;
 exec bash" &
 
 # 12. 启动 decision_making 节点
-gnome-terminal --title="decision_making Nodes" -- bash -c "
-echo '[12/12] 启动 decision_making.launch...';  
-roslaunch decision_making_pkg decision_making.launch;
-exec bash" &
+# gnome-terminal --title="decision_making Nodes" -- bash -c "
+# echo '[12/12] 启动 decision_making.launch...';  
+# roslaunch decision_making_pkg decision_making.launch;
+# exec bash" &
 
 echo "所有节点已启动完成！"

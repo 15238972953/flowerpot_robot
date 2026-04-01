@@ -55,7 +55,6 @@ MainWindow::MainWindow(RosInterface* rosInterface, QWidget *parent)
     ui->BuildValue->setText("Release (ARM64)");
     ui->PlatformValue->setText("Jetson Orin Nano 8GB");
     ui->OperatingSystemValue->setText("Linux22.04/ROS1");
-    ui->MotorValue->setText("直流无刷电机 ×4");
     ui->SensorValue->setText("IMU/Encoder/Lidar");
     
     // 调整字体大小适应7寸屏

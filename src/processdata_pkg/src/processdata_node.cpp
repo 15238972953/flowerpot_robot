@@ -1,8 +1,6 @@
 #include "processdata_node.h"
 #include <utility>
 
-KalmanFilter kf;      //最近目标的靠近滤波器
-
 std::vector<Point> convert(const std::vector<Eigen::Vector2d> eigenVectors) {
     std::vector<Point> points(eigenVectors.size());
     std::transform(eigenVectors.begin(), eigenVectors.end(), points.begin(),
@@ -15,7 +13,7 @@ ProcessDataNode::ProcessDataNode() {
     radar_processed_sub = nh.subscribe("Array_Radar", 1000, &ProcessDataNode::radardata_Callback, this);
     camera_processed_sub = nh.subscribe("yolo11_data", 1000, &ProcessDataNode::cameradata_Callback, this);
     // track_processed_sub = nh.subscribe("track_msg", 1000, &ProcessDataNode::trackdata_Callback, this);
-    yaw_processed_sub = nh.subscribe("yaw_angle", 1000, &ProcessDataNode::yawdata_Callback, this);
+    // yaw_processed_sub = nh.subscribe("yaw_angle", 1000, &ProcessDataNode::yawdata_Callback, this);
     // encoder_processed_sub = nh.subscribe("encoder_msg", 1000, &ProcessDataNode::encoderdata_Callback, this);
     // //初始化发布者
     // serial_data_pub = nh.advertise<common_msgs_pkg::serial_data>("serial_data", 1000);
@@ -47,13 +45,6 @@ Point ProcessDataNode::selectClosestPot(const std::vector<Point>& pots) {
 //     encoder_diatance = (left_distance + right_distance) / 2.0;
 // }
 
-void ProcessDataNode::yawdata_Callback(const std_msgs::Float32::ConstPtr& yaw_msg) 
-{
-    // 处理接收到的yaw数据
-    yaw_angle = yaw_msg->data;
-    // 这里可以添加对yaw_angle的处理逻辑
-    // ROS_INFO("Received yaw angle: %.2f", yaw_angle);
-}
 
 // 将直线坐标转为延长后的直线坐标
 // int ProcessDataNode::extendLineCoordinates(const tracking_pkg::track::ConstPtr& track_msg) 

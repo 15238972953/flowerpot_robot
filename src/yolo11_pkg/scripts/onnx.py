@@ -25,7 +25,7 @@ class YOLOv8:
         self.confidence_thres = confidence_thres
         self.iou_thres = iou_thres
 
-        self.show_display = rospy.get_param('--show', True)  # 默认为 True，即显示画面
+        self.show_display = rospy.get_param('~show', False)  # 默认为 True，即显示画面
 
         # Load COCO classes
         with open(yaml_file, "r", encoding="utf-8") as f:
@@ -212,7 +212,7 @@ if __name__ == "__main__":
     parser.add_argument("--conf-thres", type=float, default=0.8, help="Confidence threshold")
     parser.add_argument("--iou-thres", type=float, default=0.7, help="NMS IoU threshold")
     
-    parser.add_argument("--show", type=bool, default=True, help="禁用画面显示")
+    parser.add_argument("--show", type=bool, default=False, help="禁用画面显示")
     # args = parser.parse_args()
     args, unknown = parser.parse_known_args()
 

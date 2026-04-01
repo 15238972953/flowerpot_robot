@@ -10,7 +10,9 @@ void ProcessDataNode::run() {
             if(camera_points.size() > 0) {
                 target_pot = selectClosestPot(camera_points);
                 kf.Kalman_process(target_pot);
-            }
+                filtered_pos = kf.getPosition();
+                // appendPoint("/home/jetson/catkin_ws/src/processdata_pkg/gps_data.txt", filtered_pos.x(), filtered_pos.y());
+            }   
 
         #else
             if(camera_points.size() > 0 && radar_points.size() > 0) {
@@ -35,8 +37,8 @@ void ProcessDataNode::run() {
 
         // 发布topic
         std_msgs::Float64MultiArray pot_coords_msg;
-        pot_coords_msg.data.push_back(target_pot.x);
-        pot_coords_msg.data.push_back(target_pot.y);
+        pot_coords_msg.data.push_back(filtered_pos.x);
+        pot_coords_msg.data.push_back(filtered_pos.y);
         pot_coords_pub.publish(pot_coords_msg);
 
         camera_matchs.clear();

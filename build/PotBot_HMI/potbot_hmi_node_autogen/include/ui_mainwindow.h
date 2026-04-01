@@ -146,10 +146,6 @@ public:
     QLabel *OperatingSystemValue;
     QFrame *HardwareRow3;
     QHBoxLayout *hardwareRow3Layout;
-    QLabel *labelMotor;
-    QLabel *MotorValue;
-    QFrame *HardwareRow4;
-    QHBoxLayout *hardwareRow4Layout;
     QLabel *labelSensor;
     QLabel *SensorValue;
     QFrame *SettingsBottomFrame;
@@ -688,35 +684,18 @@ public:
         HardwareRow3->setObjectName(QString::fromUtf8("HardwareRow3"));
         hardwareRow3Layout = new QHBoxLayout(HardwareRow3);
         hardwareRow3Layout->setObjectName(QString::fromUtf8("hardwareRow3Layout"));
-        labelMotor = new QLabel(HardwareRow3);
-        labelMotor->setObjectName(QString::fromUtf8("labelMotor"));
+        labelSensor = new QLabel(HardwareRow3);
+        labelSensor->setObjectName(QString::fromUtf8("labelSensor"));
 
-        hardwareRow3Layout->addWidget(labelMotor);
+        hardwareRow3Layout->addWidget(labelSensor);
 
-        MotorValue = new QLabel(HardwareRow3);
-        MotorValue->setObjectName(QString::fromUtf8("MotorValue"));
+        SensorValue = new QLabel(HardwareRow3);
+        SensorValue->setObjectName(QString::fromUtf8("SensorValue"));
 
-        hardwareRow3Layout->addWidget(MotorValue);
+        hardwareRow3Layout->addWidget(SensorValue);
 
 
         hardwareInfoLayout->addWidget(HardwareRow3);
-
-        HardwareRow4 = new QFrame(HardwareCard);
-        HardwareRow4->setObjectName(QString::fromUtf8("HardwareRow4"));
-        hardwareRow4Layout = new QHBoxLayout(HardwareRow4);
-        hardwareRow4Layout->setObjectName(QString::fromUtf8("hardwareRow4Layout"));
-        labelSensor = new QLabel(HardwareRow4);
-        labelSensor->setObjectName(QString::fromUtf8("labelSensor"));
-
-        hardwareRow4Layout->addWidget(labelSensor);
-
-        SensorValue = new QLabel(HardwareRow4);
-        SensorValue->setObjectName(QString::fromUtf8("SensorValue"));
-
-        hardwareRow4Layout->addWidget(SensorValue);
-
-
-        hardwareInfoLayout->addWidget(HardwareRow4);
 
 
         hardwareCardLayout->addLayout(hardwareInfoLayout);
@@ -904,18 +883,18 @@ public:
 "    /* \344\277\241\346\201\257\350\241\214\346\240\267\345\274\217 */\n"
 "    QFrame#InfoRow1, QFrame#InfoRow2, QFrame#InfoRow3,\n"
 "    QFrame#HardwareRow1, QFrame"
-                        "#HardwareRow2, QFrame#HardwareRow3, QFrame#HardwareRow4 {\n"
+                        "#HardwareRow2, QFrame#HardwareRow3 {\n"
 "        background-color: transparent;\n"
 "        min-height: 45px;\n"
 "    }\n"
 "    QLabel#labelVersion, QLabel#labelAuthor, QLabel#labelBuild,\n"
-"    QLabel#labelPlatform, QLabel#labelOperatingSystem, QLabel#labelMotor, QLabel#labelSensor {\n"
+"    QLabel#labelPlatform, QLabel#labelOperatingSystem, QLabel#labelSensor {\n"
 "        font-size: 18px;\n"
 "        color: #7F8C8D;\n"
 "        min-width: 120px;\n"
 "    }\n"
 "    QLabel#VersionValue, QLabel#AuthorValue, QLabel#BuildValue,\n"
-"    QLabel#PlatformValue, QLabel#OperatingSystemValue, QLabel#MotorValue, QLabel#SensorValue {\n"
+"    QLabel#PlatformValue, QLabel#OperatingSystemValue, QLabel#SensorValue {\n"
 "        font-size: 20px;\n"
 "        color: #2C3E50;\n"
 "        font-weight: bold;\n"
@@ -929,10 +908,10 @@ public:
 "    QPushButton#DevModeBtn {\n"
 "        background-color: #E74C3C;\n"
 "        color: white;\n"
-"    "
-                        "    border-radius: 12px;\n"
+"        border-radius: 12px;\n"
 "        font-size: 22px;\n"
-"        font-weight: bold;\n"
+" "
+                        "       font-weight: bold;\n"
 "        min-height: 65px;\n"
 "    }\n"
 "    QPushButton#DevModeBtn:hover {\n"
@@ -963,9 +942,9 @@ public:
 "    }\n"
 "    \n"
 "    /* \345\257\206\347\240\201\345\257\271\350\257\235\346\241\206\346\240\267\345\274\217 */\n"
-""
-                        "    QFrame#passwordDialogFrame {\n"
-"        background-color: rgba(0, 0, 0, 150);\n"
+"    QFrame#passwordDialogFrame {\n"
+"        background-"
+                        "color: rgba(0, 0, 0, 150);\n"
 "        border-radius: 15px;\n"
 "    }\n"
 "    QFrame#passwordDialog {\n"
@@ -993,9 +972,9 @@ public:
 "        font-size: 22px;\n"
 "        min-height: 55px;\n"
 "        border-radius: 10px;\n"
-"     "
-                        "   font-weight: bold;\n"
-"        background-color: #ECF0F1;\n"
+"        font-weight: bold;\n"
+"        background-color: #ECF"
+                        "0F1;\n"
 "        color: #2C3E50;\n"
 "    }\n"
 "    QPushButton#num0:hover, QPushButton#num1:hover, QPushButton#num2:hover, QPushButton#num3:hover, QPushButton#num4:hover,\n"
@@ -1022,10 +1001,10 @@ public:
 "        font-size: 22px;\n"
 "        min-height: 55px;\n"
 "        border-radius: 10px;\n"
-"        font-weight: "
-                        "bold;\n"
+"        font-weight: bold;\n"
 "        background-color: #27AE60;\n"
-"        color: white;\n"
+"       "
+                        " color: white;\n"
 "    }\n"
 "    QPushButton#cancelPasswordBtn {\n"
 "        font-size: 22px;\n"
@@ -1098,8 +1077,6 @@ public:
         PlatformValue->setText(QApplication::translate("MainWindow", "Jetson Orin Nano", nullptr));
         labelOperatingSystem->setText(QApplication::translate("MainWindow", "\346\223\215\344\275\234\347\263\273\347\273\237\357\274\232", nullptr));
         OperatingSystemValue->setText(QApplication::translate("MainWindow", "Linux22.04/ROS1", nullptr));
-        labelMotor->setText(QApplication::translate("MainWindow", "\347\224\265\346\234\272\351\205\215\347\275\256\357\274\232", nullptr));
-        MotorValue->setText(QApplication::translate("MainWindow", "\347\233\264\346\265\201\346\227\240\345\210\267\347\224\265\346\234\272\303\2274", nullptr));
         labelSensor->setText(QApplication::translate("MainWindow", "\344\274\240\346\204\237\345\231\250\357\274\232", nullptr));
         SensorValue->setText(QApplication::translate("MainWindow", "IMU/Encoder/Lidar", nullptr));
         DevModeBtn->setText(QApplication::translate("MainWindow", "\360\237\224\223 \350\277\233\345\205\245\345\274\200\345\217\221\350\200\205\346\250\241\345\274\217", nullptr));

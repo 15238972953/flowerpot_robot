@@ -482,6 +482,33 @@ src/processdata_node.cpp.s:
 	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/processdata_node.cpp.s
 .PHONY : src/processdata_node.cpp.s
 
+src/save_file.o: src/save_file.cpp.o
+
+.PHONY : src/save_file.o
+
+# target to build an object file
+src/save_file.cpp.o:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/save_file.cpp.o
+.PHONY : src/save_file.cpp.o
+
+src/save_file.i: src/save_file.cpp.i
+
+.PHONY : src/save_file.i
+
+# target to preprocess a source file
+src/save_file.cpp.i:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/save_file.cpp.i
+.PHONY : src/save_file.cpp.i
+
+src/save_file.s: src/save_file.cpp.s
+
+.PHONY : src/save_file.s
+
+# target to generate assembly for a file
+src/save_file.cpp.s:
+	cd /home/jetson/catkin_ws/build && $(MAKE) -f processdata_pkg/CMakeFiles/processdata_node.dir/build.make processdata_pkg/CMakeFiles/processdata_node.dir/src/save_file.cpp.s
+.PHONY : src/save_file.cpp.s
+
 src/track_transform.o: src/track_transform.cpp.o
 
 .PHONY : src/track_transform.o
@@ -549,6 +576,9 @@ help:
 	@echo "... src/processdata_node.o"
 	@echo "... src/processdata_node.i"
 	@echo "... src/processdata_node.s"
+	@echo "... src/save_file.o"
+	@echo "... src/save_file.i"
+	@echo "... src/save_file.s"
 	@echo "... src/track_transform.o"
 	@echo "... src/track_transform.i"
 	@echo "... src/track_transform.s"

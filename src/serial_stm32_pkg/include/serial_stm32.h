@@ -41,8 +41,6 @@ private:
     ros::Subscriber serial_data_sub_;   // 订阅serial_data话题
     #ifdef ONLY_ENCODER
         ros::Publisher encoder_pub_; // 发布编码器数据
-        ros::Publisher grasped_pub;  // 发布抓取完成标志位
-        ros::Publisher released_pub; // 发布释放完成标志位
         common_msgs_pkg::encoder encoder_msg; // 编码器数据
     #else
         ros::Publisher odom_pub_;    // 发布标准里程计
@@ -63,8 +61,6 @@ private:
     bool _clear_encoder = false; // 是否清除编码器数据
 
     static int8_t is_recorded; // 是否完成一次记录
-    std_msgs::Bool grasped_msg; // 发布抓取完成标志位
-    std_msgs::Bool released_msg; // 发布释放完成标志位
 };
 // uint8_t calculateCRC4(uint8_t byte1, uint8_t byte2, uint8_t byte3_high);
 // void packData(uint16_t data, uint8_t& byte1, uint8_t& byte2, uint8_t& byte3);

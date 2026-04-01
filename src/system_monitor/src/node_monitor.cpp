@@ -7,7 +7,7 @@ NodeMonitor::NodeMonitor() : all_ready_(false) {
     required_nodes_.push_back("camera_node");  // 发布相机话题
     required_nodes_.push_back("imu_node");     // 发布IMU数据（包括偏航角）
     required_nodes_.push_back("yolo11_node");    // 发布YOLOv11检测结果（花盆坐标）
-    required_nodes_.push_back("GPS_pkg_node");     // 发布GPS数据（经纬度）
+    required_nodes_.push_back("gps_node");     // 发布GPS数据（经纬度）
     required_nodes_.push_back("serial_stm32_node");   // 发布与STM32通信的信息
     required_nodes_.push_back("decision_making_node");   // 发布决策结果
     required_nodes_.push_back("potbot_hmi_node");   // 发布HMI界面
